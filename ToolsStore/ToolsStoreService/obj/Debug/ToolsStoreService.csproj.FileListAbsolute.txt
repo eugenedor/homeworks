@@ -1,0 +1,10 @@
+E:\projects\ToolsStore\ToolsStoreService\bin\Debug\ToolsStoreService.exe.config
+E:\projects\ToolsStore\ToolsStoreService\bin\Debug\ToolsStoreService.exe
+E:\projects\ToolsStore\ToolsStoreService\bin\Debug\ToolsStoreService.pdb
+E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.ProjectInstaller.resources
+E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.ToolsStoreService.resources
+E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.csproj.GenerateResource.Cache
+E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.exe
+E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.pdb
+E:\projects\ToolsStore\ToolsStoreService\bin\Debug\_installWinService.bat
+E:\projects\ToolsStore\ToolsStoreService\bin\Debug\_unistallWinService.bat
