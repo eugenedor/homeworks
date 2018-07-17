@@ -1,10 +1,16 @@
 select m.BrandId, m.ModelId from SK_MODEL m order by m.BrandId, m.ModelId;
-select * from RS_PRODUCT p order by ProductId desc
-select * from RS_PRICE pr order by PriceId desc
+select * from RS_PRODUCT p where p.BrandId = 1;
+select * from RS_PRODUCT p order by ProductId desc;
+select * from RS_PRICE pr order by PriceId desc;
 
 --test1 - bad--
 INSERT INTO dbo.RS_PRODUCT (EquipmentId, BrandId, ModelId, Name)
 VALUES (1, 2, 1, '');
+
+UPDATE dbo.RS_PRODUCT
+SET BrandId = 1, --1
+    ModelId = 3  --4
+WHERE  ProductId = 4;
 
 --test2 - good--
 delete pr
