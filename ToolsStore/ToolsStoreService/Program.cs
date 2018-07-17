@@ -14,6 +14,10 @@ namespace ToolsStoreService
         /// </summary>
         static void Main()
         {
+            //Application.EnableVisualStyles();
+            //Application.SetCompatibleTextRenderingDefault(false);
+            //Application.Run(new Form1());
+
             ServiceBase[] ServicesToRun;
             ServicesToRun = new ServiceBase[]
             {
