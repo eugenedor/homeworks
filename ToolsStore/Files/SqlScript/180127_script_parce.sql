@@ -1,0 +1,11 @@
+DECLARE @x NVARCHAR(250)
+
+SET @x = 'RS_ORDER_ADDRESS'
+SET @X = SUBSTRING(@x, 4, LEN(@x)- 3)
+SET @x = UPPER(SUBSTRING(@x, 1, 1)) + LOWER(SUBSTRING(@x, 2, LEN(@x)- 1))
+WHILE CHARINDEX('_', @x, 1) <> 0
+BEGIN
+	SELECT @x =  REPLACE(@x, SUBSTRING(@x, CHARINDEX('_', @x, 1), 2), UPPER(SUBSTRING(@x, CHARINDEX('_', @x, 1) + 1, 1)))
+END
+SET @x =  @x + 'Id'
+SELECT @x

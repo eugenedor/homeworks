@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<packet>
+  <hdr>
+    <type>Category</type>
+    <version>1.1</version>
+    <date>2018.01.28</date>
+  </hdr>
+  <rec>
+    <Code>ElectricTool</Code>
+    <Name>Электроинструменты</Name>
+    <Ord>1</Ord>
+  </rec>
+  <rec>
+    <Code>AccElectricTool</Code>
+    <Name>Аксессуары для электроинструмента</Name>
+    <Ord>2</Ord>
+  </rec>
+  <rec>
+    <Code>HandTool</Code>
+    <Name>Ручной инструмент</Name>
+    <Ord>3</Ord>
+  </rec>
+  <rec>
+    <Code>FixingTool</Code>
+    <Name>Фиксирующий инструмент </Name>
+    <Ord>4</Ord>
+  </rec>
+  <rec>
+    <Code>ConstructionTool</Code>
+    <Name>Инструмент для строительства</Name>
+    <Ord>5</Ord>
+  </rec>
+  <rec>
+    <Code>MeasuringTool</Code>
+    <Name>Измерительно-разметочный инструмент</Name>
+    <Ord>6</Ord>
+  </rec>
+  <rec>
+    <Code>HouseholdTool</Code>
+    <Name>Хозяйственный инструмент</Name>
+    <Ord>7</Ord>
+  </rec>
+  <rec>
+    <Code>Wrench</Code>
+    <Name>Гаечные ключи</Name>
+    <Ord>8</Ord>
+  </rec>
+  <rec>
+    <Code>Hammer</Code>
+    <Name>Молотки</Name>
+    <Ord>9</Ord>
+  </rec>
+  <rec>
+    <Code>Screw-drivers</Code>
+    <Name>Отвертки</Name>
+    <Ord>10</Ord>
+  </rec>
+  <rec>
+    <Code>Saw</Code>
+    <Name>Пилы</Name>
+    <Ord>11</Ord>
+  </rec>
+  <rec>
+    <Code>Workplace</Code>
+    <Name>Всё для рабочего места</Name>
+    <Ord>12</Ord>
+  </rec>
+  <rec>
+    <Code>MiniWash</Code>
+    <Name>Минимойки</Name>
+    <Ord>13</Ord>
+  </rec>
+  <rec>
+    <Code>VacuumCleaner</Code>
+    <Name>Пылесосы</Name>
+    <Ord>14</Ord>
+  </rec>
+  <rec>
+    <Code>Quillwort</Code>
+    <Name>Расходники</Name>
+    <Ord>15</Ord>
+  </rec>
+</packet>
