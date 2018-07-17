@@ -8,3 +8,4 @@ E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.exe
 E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.pdb
 E:\projects\ToolsStore\ToolsStoreService\bin\Debug\_installWinService.bat
 E:\projects\ToolsStore\ToolsStoreService\bin\Debug\_unistallWinService.bat
+E:\projects\ToolsStore\ToolsStoreService\bin\Debug\xsd\Category.xsd
