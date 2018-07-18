@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clss\category\Category.cs" />
+    <Compile Include="db\DataBaseManager.cs" />
     <Compile Include="file\FileManager.cs" />
     <Compile Include="file\FileWithParam.cs" />
     <Compile Include="file\LoadRule.cs" />
