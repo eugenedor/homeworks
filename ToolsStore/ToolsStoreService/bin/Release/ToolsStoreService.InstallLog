@@ -1,0 +1,37 @@
+﻿Выполняется установка сборки 'E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.InstallLog
+   assemblypath = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe
+Устанавливается служба ToolsStoreService...
+Создается исходный EventLog ToolsStoreService в журнале Application...
+Выполняется откат для сборки 'E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.InstallLog
+   assemblypath = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe
+Восстанавливается исходное состояние журнала событий для источника ToolsStoreService.
+При выполнении программы установки System.Diagnostics.EventLogInstaller на этапе отката возникло исключение.
+System.Security.SecurityException: Источник не найден, но не удалось выполнить поиск по нескольким или всем журналам событий.  Недоступные журналы: Security.
+На этапе отката процедуры установки возникло исключение. Это исключение будет проигнорировано, и откат будет продолжен. Однако после завершения отката компьютер может не вернуться полностью в исходное состояние.
+Выполняется установка сборки 'E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.InstallLog
+   assemblypath = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe
+Устанавливается служба ToolsStoreService...
+Служба ToolsStoreService успешно установлена.
+Создается исходный EventLog ToolsStoreService в журнале Application...
+Выполняется фиксация сборки 'E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.InstallLog
+   assemblypath = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe
+Выполняется удаление сборки 'E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe'.
+Затронуты следующие параметры:
+   logtoconsole = 
+   logfile = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.InstallLog
+   assemblypath = E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe
+Выполняется удаление источника EventLog ToolsStoreService.
+Выполняется удаление службы ToolsStoreService из системы...
+Служба ToolsStoreService успешно удалена из системы.

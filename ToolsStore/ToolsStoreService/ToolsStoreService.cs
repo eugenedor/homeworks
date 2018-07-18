@@ -8,7 +8,7 @@ using System.ServiceProcess;
 using System.Text;
 using System.Threading.Tasks;
 using ToolsStoreService.log;
-//using ToolsStoreService.file;
+using ToolsStoreService.file;
 
 namespace ToolsStoreService
 {
@@ -34,7 +34,7 @@ namespace ToolsStoreService
                 //запуск загрузки xml при старте
                 try
                 {
-                    //FileManager.LoadFiles();
+                    FileManager.LoadFiles();
                 }
                 catch (Exception ex)
                 {
@@ -84,7 +84,7 @@ namespace ToolsStoreService
                 try
                 {
                     _timer.Stop();
-                    //FileManager.LoadFiles();
+                    FileManager.LoadFiles();
                 }
                 catch (Exception ex)
                 {

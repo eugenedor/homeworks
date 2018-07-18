@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ToolsStoreService.log;
+using ToolsStoreService.file;
 
 namespace ToolsStoreService
 {
@@ -18,8 +20,8 @@ namespace ToolsStoreService
 
             string conn;
             conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
-            //Log.write(conn);
-            //FileManager.LoadFiles();
+            Log.write(conn);
+            FileManager.LoadFiles();
         }
     }
 }

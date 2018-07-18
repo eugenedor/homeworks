@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using ToolsStoreService.clss.category;
 using ToolsStoreService.file;
 using ToolsStoreService.log;
-//using ToolsStoreService.db;
+using ToolsStoreService.db;
 
 namespace ToolsStoreService.mngr
 {
@@ -36,8 +36,8 @@ namespace ToolsStoreService.mngr
                         return false;    
                     }
 
-                    //if (!DataBaseManager.LoadCategory(rec.Code, rec.Name, rec.Ord, fwp.Name))
-                    //    return false;                    
+                    if (!DataBaseManager.LoadCategory(rec.Code, rec.Name, rec.Ord, fwp.Name))
+                        return false;                    
                 }
                 return true;
             }
