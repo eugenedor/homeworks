@@ -50,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clss\category\Category.cs" />
+    <Compile Include="file\FileManager.cs" />
+    <Compile Include="file\FileWithParam.cs" />
+    <Compile Include="file\LoadRule.cs" />
+    <Compile Include="file\Utils.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
