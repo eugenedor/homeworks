@@ -12,7 +12,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using ToolsStoreService.log;
 using ToolsStoreService.clss.category;
-//using ToolsStoreService.mngr;
+using ToolsStoreService.mngr;
 
 namespace ToolsStoreService.file
 {
@@ -498,8 +498,8 @@ namespace ToolsStoreService.file
 
                 if (pck != null)
                 {
-                    //if (!CategoryManager.Load(pck, fwp))
-                    //    return false;
+                    if (!CategoryManager.Load(pck, fwp))
+                        return false;
 
                     return true;
                 }
