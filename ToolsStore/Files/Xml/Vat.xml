@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<packet>
+  <hdr>
+    <type>Vat</type>
+    <version>1.1</version>
+    <date>2018.07.25</date>
+  </hdr>
+  <rec>
+    <Vat>0</Vat>
+    <Name>0%</Name>
+    <Rem>0</Rem>
+  </rec>
+  <rec>
+    <Vat>10</Vat>
+    <Name>10%</Name>
+    <Rem>0</Rem>
+  </rec>
+  <rec>
+    <Vat>18</Vat>
+    <Name>18%</Name>
+    <Rem>0</Rem>
+  </rec>
+  <rec>
+    <Vat>20</Vat>
+    <Name>20%</Name>
+    <Rem>0</Rem>
+  </rec>  
+</packet>
