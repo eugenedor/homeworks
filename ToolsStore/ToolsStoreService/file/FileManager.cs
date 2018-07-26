@@ -11,7 +11,6 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using ToolsStoreService.log;
-using ToolsStoreService.clss.category;
 using ToolsStoreService.mngr;
 
 namespace ToolsStoreService.file
@@ -445,6 +444,9 @@ namespace ToolsStoreService.file
                 case "loadcategory":
                     loaded = LoadCategory(fwp);
                     break;
+                case "loadvat":
+                    loaded = LoadVat(fwp);
+                    break;
                 default:
                     loaded = LoadError(fwp);
                     break;
@@ -479,12 +481,12 @@ namespace ToolsStoreService.file
                     return false;
 
                 //xmlserializer - deserialize
-                packet pck;
-                XmlSerializer ser = new XmlSerializer(typeof(packet), xRoot);
+                clss.category.packet pck;
+                XmlSerializer ser = new XmlSerializer(typeof(clss.category.packet), xRoot);
                 TextReader srr = new StringReader(xmlStr);
                 try
                 {
-                    pck = ser.Deserialize(srr) as packet;
+                    pck = ser.Deserialize(srr) as clss.category.packet;
                 }
                 catch (Exception ex)
                 {
@@ -550,6 +552,60 @@ namespace ToolsStoreService.file
                 xmlStr = xNode.OuterXml;
 
                 return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Загрузка НДС
+        /// </summary>
+        private static bool LoadVat(FileWithParam fwp)
+        {
+            XmlRootAttribute xRoot;
+            string xmlStr;
+            try
+            {
+                //xml-узел, xml-строка
+                if (!Load(fwp, "packet", out xRoot, out xmlStr))
+                    return false;
+
+                //проверка xml-строки
+                if (!CheckXmlString(xmlStr))
+                    return false;
+
+                //xmlserializer - deserialize
+                clss.vat.packet pck;
+                XmlSerializer ser = new XmlSerializer(typeof(clss.vat.packet), xRoot);
+                TextReader srr = new StringReader(xmlStr);
+                try
+                {
+                    pck = ser.Deserialize(srr) as clss.vat.packet;
+                }
+                catch (Exception ex)
+                {
+                    Log.write(ex.Message);
+                    return false;
+                }
+                finally
+                {
+                    srr.Close();
+                }
+
+                if (pck != null)
+                {
+                    if (!VatManager.Load(pck))
+                        return false;
+
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
             catch (Exception ex)
             {

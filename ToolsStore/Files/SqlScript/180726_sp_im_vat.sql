@@ -14,7 +14,7 @@ AS
 BEGIN
 	DECLARE @tempMessage NVARCHAR(MAX) = NULL
 
-	IF (NULLIF(@vat, '') IS NULL)
+	IF (@vat IS NULL)
 	BEGIN
 		SET @tempMessage = 'Код - пустое значение'
 		RAISERROR (@tempMessage , 16, 1) 

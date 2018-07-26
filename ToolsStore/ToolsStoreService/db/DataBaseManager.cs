@@ -50,5 +50,45 @@ namespace ToolsStoreService.db
                     cmd.Connection.Close();
             }                          
         }
+
+        public static bool LoadVat(long vat, string name, bool rem)
+        {
+            string conn;
+            conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
+
+            var cmd = new SqlCommand("SP_IM_VAT", new SqlConnection(conn));
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 3600;
+
+            try
+            {
+                cmd.Parameters.Add("@vat", SqlDbType.BigInt);
+                cmd.Parameters.Add("@name", SqlDbType.NVarChar, 100);
+                cmd.Parameters.Add("@rem", SqlDbType.Bit);
+
+                cmd.Parameters["@vat"].Value = vat;
+                cmd.Parameters["@name"].Value = name;
+                cmd.Parameters["@rem"].Value = rem;
+
+                if (cmd.Connection.State != ConnectionState.Closed)
+                    cmd.Connection.Close();
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (cmd.Connection.State != ConnectionState.Closed)
+                    cmd.Connection.Close();
+            }
+        }
     }
 }
