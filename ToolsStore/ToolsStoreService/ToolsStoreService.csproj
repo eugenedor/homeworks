@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clss\category\Category.cs" />
+    <Compile Include="clss\vat\Vat.cs" />
     <Compile Include="db\DataBaseManager.cs" />
     <Compile Include="file\FileManager.cs" />
     <Compile Include="file\FileWithParam.cs" />
@@ -81,6 +82,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="xsd\Category.xsd">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="xsd\Vat.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

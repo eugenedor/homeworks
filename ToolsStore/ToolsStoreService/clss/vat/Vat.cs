@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace ToolsStoreService.clss.category
+namespace ToolsStoreService.clss.vat
 {
 
     /// <remarks/>
@@ -109,22 +109,22 @@ namespace ToolsStoreService.clss.category
     public partial class packetRec
     {
 
-        private string codeField;
+        private long vatField;
 
         private string nameField;
 
-        private int ordField;
+        private bool remField;
 
         /// <remarks/>
-        public string Code
+        public long Vat
         {
             get
             {
-                return this.codeField;
+                return this.vatField;
             }
             set
             {
-                this.codeField = value;
+                this.vatField = value;
             }
         }
 
@@ -142,15 +142,15 @@ namespace ToolsStoreService.clss.category
         }
 
         /// <remarks/>
-        public int Ord
+        public bool Rem
         {
             get
             {
-                return this.ordField;
+                return this.remField;
             }
             set
             {
-                this.ordField = value;
+                this.remField = value;
             }
         }
     }

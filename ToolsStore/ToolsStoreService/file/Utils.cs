@@ -31,8 +31,20 @@ namespace ToolsStoreService.file
                     XsdName = "Category.xsd"
                 };
 
+                LoadRule lrVat = new LoadRule()
+                {
+                    Code = "Vat",
+                    FileName = "Vat.xml",
+                    IsActive = true,
+                    MethodLoad = "LoadVat",
+                    Order = 2,
+                    PathToXsd = pathToXsd + "\\xsd",
+                    XsdName = "Vat.xsd"
+                };
+
                 List<LoadRule> loadrules = new List<LoadRule>();
                 loadrules.Add(lrCategory);
+                loadrules.Add(lrVat);
 
                 return loadrules;
             }
