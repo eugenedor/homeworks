@@ -12,7 +12,7 @@ namespace ToolsStoreService.mngr
 {
     class CategoryManager
     {
-        public static bool Load(packet pck, FileWithParam fwp)
+        public static bool Load(packet pck)
         {
             try
             {
@@ -36,7 +36,7 @@ namespace ToolsStoreService.mngr
                         return false;    
                     }
 
-                    if (!DataBaseManager.LoadCategory(rec.Code, rec.Name, rec.Ord, fwp.Name))
+                    if (!DataBaseManager.LoadCategory(rec.Code, rec.Name, rec.Ord))
                         return false;                    
                 }
                 return true;

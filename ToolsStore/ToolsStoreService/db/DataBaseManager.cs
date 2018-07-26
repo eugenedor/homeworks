@@ -11,7 +11,7 @@ namespace ToolsStoreService.db
 {
     class DataBaseManager
     {
-        public static bool LoadCategory(string code, string name, int ord, string fileName)
+        public static bool LoadCategory(string code, string name, int ord)
         {
             string conn;
             conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
@@ -25,12 +25,10 @@ namespace ToolsStoreService.db
                 cmd.Parameters.Add("@code", SqlDbType.NVarChar, 100);
                 cmd.Parameters.Add("@name", SqlDbType.NVarChar, 250);
                 cmd.Parameters.Add("@ord", SqlDbType.Int);
-                cmd.Parameters.Add("@filename", SqlDbType.NVarChar, 100);
 
                 cmd.Parameters["@code"].Value = code;
                 cmd.Parameters["@name"].Value = name;
                 cmd.Parameters["@ord"].Value = ord;
-                cmd.Parameters["@filename"].Value = fileName;
 
                 if (cmd.Connection.State != ConnectionState.Closed)
                     cmd.Connection.Close();

@@ -498,7 +498,7 @@ namespace ToolsStoreService.file
 
                 if (pck != null)
                 {
-                    if (!CategoryManager.Load(pck, fwp))
+                    if (!CategoryManager.Load(pck))
                         return false;
 
                     return true;
