@@ -13,9 +13,59 @@ namespace ToolsStoreService.db
 {
     class DataBaseManager
     {
-        public static bool GetLoadRule()
+        public static bool GetLoadRule(string path, out List<LoadRule> lrs)
         {
-            return true;
+            lrs = new List<LoadRule>();
+            try
+            {
+                string conn;
+                conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
+
+                var daLoadRule = new SqlDataAdapter("SP_GET_LOAD_RULE", new SqlConnection(conn));
+                daLoadRule.SelectCommand.CommandType = CommandType.StoredProcedure;
+                daLoadRule.SelectCommand.CommandTimeout = 1800;
+                daLoadRule.SelectCommand.Parameters.Add("@Path", System.Data.SqlDbType.NVarChar, 1000);
+                daLoadRule.SelectCommand.Parameters["@Path"].Value = path;
+                daLoadRule.TableMappings.AddRange(new System.Data.Common.DataTableMapping[] {
+                        new System.Data.Common.DataTableMapping("Table", "SP_GET_LOAD_RULE", new System.Data.Common.DataColumnMapping[] {
+                        new System.Data.Common.DataColumnMapping("LoadRuleId", "LoadRuleId"),
+                        new System.Data.Common.DataColumnMapping("Code", "Code"),
+                        new System.Data.Common.DataColumnMapping("FileName", "FileName"),
+                        new System.Data.Common.DataColumnMapping("IsActive", "IsActive"),
+                        new System.Data.Common.DataColumnMapping("MethodLoad", "MethodLoad"),
+                        new System.Data.Common.DataColumnMapping("PathToXsd", "PathToXsd"),
+                        new System.Data.Common.DataColumnMapping("XsdName", "XsdName"),
+                        new System.Data.Common.DataColumnMapping("Descr", "Descr"),
+                        new System.Data.Common.DataColumnMapping("Ord", "Ord")})});
+
+                var dsLoadRule = new dsLoadRule();
+                dsLoadRule.Clear();
+                daLoadRule.Fill(dsLoadRule);
+
+                foreach (dsLoadRule.SP_GET_LOAD_RULERow row in dsLoadRule.SP_GET_LOAD_RULE)
+                {
+                    LoadRule lr = new LoadRule();
+
+                    lr.Code = row.Code;
+                    lr.FileName = row.FileName;
+                    lr.IsActive = row.IsActive;
+                    lr.MethodLoad = row.MethodLoad;
+                    lr.PathToXsd = row.PathToXsd;
+                    lr.XsdName = row.XsdName;
+                    lr.Description = row.Descr;
+                    lr.Order = row.Ord;
+
+                    lrs.Add(lr);
+                }
+                                
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                lrs = null;
+                return false;
+            }
         }
 
         public static bool LoadCategory(string code, string name, int ord)

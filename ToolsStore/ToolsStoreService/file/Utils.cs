@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.IO;
 using ToolsStoreService.log;
+using ToolsStoreService.db;
 
 namespace ToolsStoreService.file
 {
@@ -13,44 +14,21 @@ namespace ToolsStoreService.file
         /// <summary>
         /// Получить список правил
         /// </summary>
-        /// <returns></returns>
         public static List<LoadRule> GetLoadRules()
         {
             try
             {
                 string pathToXsd = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-
-                LoadRule lrCategory = new LoadRule()
-                {
-                    Code = "Category",
-                    FileName = "Category.xml",
-                    IsActive = true,
-                    MethodLoad = "LoadCategory",
-                    Order = 1,
-                    PathToXsd = pathToXsd + "\\xsd",
-                    XsdName = "Category.xsd"
-                };
-
-                LoadRule lrVat = new LoadRule()
-                {
-                    Code = "Vat",
-                    FileName = "Vat.xml",
-                    IsActive = true,
-                    MethodLoad = "LoadVat",
-                    Order = 2,
-                    PathToXsd = pathToXsd + "\\xsd",
-                    XsdName = "Vat.xsd"
-                };
-
                 List<LoadRule> loadrules = new List<LoadRule>();
-                loadrules.Add(lrCategory);
-                loadrules.Add(lrVat);
+
+                if (!DataBaseManager.GetLoadRule(pathToXsd, out loadrules))
+                    throw new Exception("Ошибка инициализации правил загрузки");
 
                 return loadrules;
             }
-            catch
+            catch (Exception ex)
             {
-                Log.write("Ошибка инициализации правил загрузки");
+                Log.write(ex.Message);
                 return null;
             }
         }

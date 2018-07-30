@@ -32,11 +32,6 @@ namespace ToolsStoreService.file
         public string MethodLoad { get; set; }
 
         /// <summary>
-        /// Порядок
-        /// </summary>
-        public int Order { get; set; }
-
-        /// <summary>
         /// Путь к файлам xsd-схем
         /// </summary>
         public string PathToXsd { get; set; }
@@ -45,5 +40,15 @@ namespace ToolsStoreService.file
         /// Наименование xsd-файла
         /// </summary>
         public string XsdName { get; set; }
+
+        /// <summary>
+        /// Описание
+        /// </summary>
+        public string Description { get; set; }
+
+        /// <summary>
+        /// Порядок
+        /// </summary>
+        public int Order { get; set; }
     }
 }
