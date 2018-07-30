@@ -42,9 +42,9 @@ namespace ToolsStoreService.db
                 dsLoadRule.Clear();
                 daLoadRule.Fill(dsLoadRule);
 
-                foreach (dsLoadRule.SP_GET_LOAD_RULERow row in dsLoadRule.SP_GET_LOAD_RULE)
+                foreach (var row in dsLoadRule.SP_GET_LOAD_RULE)
                 {
-                    LoadRule lr = new LoadRule();
+                    var lr = new LoadRule();
 
                     lr.Code = row.Code;
                     lr.FileName = row.FileName;
