@@ -6,11 +6,18 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using ToolsStoreService.log;
+using ToolsStoreService.ds;
+using ToolsStoreService.file;
 
 namespace ToolsStoreService.db
 {
     class DataBaseManager
     {
+        public static bool GetLoadRule()
+        {
+            return true;
+        }
+
         public static bool LoadCategory(string code, string name, int ord)
         {
             string conn;

@@ -52,6 +52,11 @@
     <Compile Include="clss\category\Category.cs" />
     <Compile Include="clss\vat\Vat.cs" />
     <Compile Include="db\DataBaseManager.cs" />
+    <Compile Include="ds\dsLoadRule.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsLoadRule.xsd</DependentUpon>
+    </Compile>
     <Compile Include="file\FileManager.cs" />
     <Compile Include="file\FileWithParam.cs" />
     <Compile Include="file\LoadRule.cs" />
@@ -82,6 +87,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ds\dsLoadRule.xsc">
+      <DependentUpon>dsLoadRule.xsd</DependentUpon>
+    </None>
+    <None Include="ds\dsLoadRule.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsLoadRule.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="ds\dsLoadRule.xss">
+      <DependentUpon>dsLoadRule.xsd</DependentUpon>
+    </None>
     <None Include="xsd\Category.xsd">
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -105,6 +121,7 @@
       <DependentUpon>ToolsStoreService.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
