@@ -185,7 +185,7 @@ namespace ToolsStoreService.file
                                 fwp.SignValidData = true;
 
                                 string errMsg;
-                                string xsdPath = lr.PathToXsd + "\\" + lr.XsdName;
+                                string xsdPath = lr.PathToXsd + lr.XsdName;
                                 //валидация xml
                                 if (CheckValidate(xnldoc, xsdPath, out errMsg)) //успешная валдация - правило найдено - прекращение поиска правил
                                 {

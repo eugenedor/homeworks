@@ -54,7 +54,7 @@ GO
 --insert mt_load_rule
 --
 INSERT INTO dbo.MT_LOAD_RULE (Code, FileName, IsActive, MethodLoad, PathToXsd, XsdName, Descr, Ord)
-     VALUES ('Category', 'Category.xml', 1, 'LoadCategory', '\xsd\', 'Category.xsd', 'Категории', 1);
+     VALUES ('Category', 'Category.xml', 1, 'LoadCategory', 'xsd', 'Category.xsd', 'Категории', 1);
 INSERT INTO dbo.MT_LOAD_RULE (Code, FileName, IsActive, MethodLoad, PathToXsd, XsdName, Descr, Ord)
-     VALUES ('Vat', 'Vat.xml', 1, 'LoadVat', '\xsd\', 'Vat.xsd', 'НДС', 2);
+     VALUES ('Vat', 'Vat.xml', 1, 'LoadVat', 'xsd', 'Vat.xsd', 'НДС', 2);
 GO
