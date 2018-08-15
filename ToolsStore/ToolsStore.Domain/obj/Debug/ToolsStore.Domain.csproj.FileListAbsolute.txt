@@ -1,0 +1,4 @@
+E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\ToolsStore.Domain.dll
+E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\ToolsStore.Domain.pdb
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.dll
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.pdb

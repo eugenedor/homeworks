@@ -1,0 +1,6 @@
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Release\ToolsStore.UnitTests.dll
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Release\ToolsStore.UnitTests.pdb
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Release\Microsoft.VisualStudio.QualityTools.UnitTestFramework.xml
+E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Release\ToolsStore.UnitTests.dll
+E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Release\ToolsStore.UnitTests.pdb

@@ -1,0 +1,4 @@
+E:\projects\ToolsStore\ToolsStore.Domain\bin\Release\ToolsStore.Domain.dll
+E:\projects\ToolsStore\ToolsStore.Domain\bin\Release\ToolsStore.Domain.pdb
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Release\ToolsStore.Domain.dll
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Release\ToolsStore.Domain.pdb
