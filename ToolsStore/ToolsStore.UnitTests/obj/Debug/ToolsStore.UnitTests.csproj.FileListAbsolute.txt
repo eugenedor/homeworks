@@ -51,3 +51,4 @@ E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.WebPages.Razor.
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Microsoft.Owin.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.Optimization.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.csprojResolveAssemblyReference.cache
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.UnitTests.dll.config
