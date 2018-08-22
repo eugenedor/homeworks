@@ -5,6 +5,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using Ninject;
+using ToolsStore.Domain.Entities;
+using ToolsStore.Domain.Abstract;
+using Moq;
 
 namespace ToolsStore.WebUI.Infrastructure
 {
@@ -31,7 +34,7 @@ namespace ToolsStore.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            //// конфигурирование контейнера
+            // конфигурирование контейнера
             //ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
 
             //EmailSettings emailSettings = new EmailSettings
@@ -42,14 +45,14 @@ namespace ToolsStore.WebUI.Infrastructure
             //ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
             //ninjectKernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
 
-            ////Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            ////mock.Setup(m => m.Products).Returns(new List<Product>
-            ////{
-            ////    new Product { Name = "Football", Price = 25 },
-            ////    new Product { Name = "Surf board", Price = 179 },
-            ////    new Product { Name = "Running shoes", Price = 95 }
-            ////}.AsQueryable());
-            ////ninjectKernel.Bind<IProductRepository>().ToConstant(mock.Object);
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new List<RS_PRODUCT>
+            {
+                new RS_PRODUCT { ProductId = 1, BrandId = 1, EquipmentId = 1, ModelId = 1, Name = "Makita BO3710" },
+                new RS_PRODUCT { ProductId = 2, BrandId = 3, EquipmentId = 1, ModelId = 2, Name = "Интерскол ПШМ-104/220" },
+                new RS_PRODUCT { ProductId = 3, BrandId = 14, EquipmentId = 1, ModelId = 3, Name = "Фиолент МПШ 4-28Э" }
+            }.AsQueryable());
+            ninjectKernel.Bind<IProductRepository>().ToConstant(mock.Object);
         }
     }
 }

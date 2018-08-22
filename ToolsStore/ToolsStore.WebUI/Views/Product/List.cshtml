@@ -1,0 +1,13 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.RS_PRODUCT>
+
+@{
+    ViewBag.Title = "Products";
+}
+
+@foreach (var p in Model)
+{
+    <div class="item">
+        <h3>@p.Name</h3>
+        @p.ProductId
+    </div>
+}
