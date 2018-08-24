@@ -4,11 +4,11 @@ using Moq;
 using ToolsStore.Domain.Abstract;
 using ToolsStore.Domain.Entities;
 using ToolsStore.WebUI.Controllers;
-//using ToolsStore.WebUI.Models;
+using ToolsStore.WebUI.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
-//using ToolsStore.WebUI.HtmlHelpers;
+using ToolsStore.WebUI.HtmlHelpers;
 
 
 namespace ToolsStore.UnitTests
@@ -33,12 +33,60 @@ namespace ToolsStore.UnitTests
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
             // Action
-            IEnumerable<RS_PRODUCT> result = (IEnumerable<RS_PRODUCT>)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model; //IEnumerable<RS_PRODUCT> result = (IEnumerable<RS_PRODUCT>)controller.List(2).Model;
             // Assert
-            RS_PRODUCT[] prodArray = result.ToArray();
+            RS_PRODUCT[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
             Assert.AreEqual(prodArray[0].Name, "P4");
             Assert.AreEqual(prodArray[1].Name, "P5");
+        }
+
+        [TestMethod]
+        public void Can_Generate_Page_Links()
+        {
+            // Arrange - define an HTML helper - we need to do this
+            // in order to apply the extension method
+            HtmlHelper myHelper = null;
+            // Arrange - create PagingInfo data
+            PagingInfo pagingInfo = new PagingInfo
+            {
+                CurrentPage = 2,
+                TotalItems = 28,
+                ItemsPerPage = 10
+            };
+            // Arrange - set up the delegate using a lambda expression
+            Func<int, string> pageUrlDelegate = i => "Page" + i;
+            // Act
+            MvcHtmlString result = myHelper.PageLinks(pagingInfo, pageUrlDelegate);
+            // Assert
+            Assert.AreEqual(result.ToString(), @"<a href=""Page1"">1</a>"
+            + @"<a class=""selected"" href=""Page2"">2</a>"
+            + @"<a href=""Page3"">3</a>");
+        }
+
+        [TestMethod]
+        public void Can_Send_Pagination_View_Model()
+        {
+            // Arrange
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new RS_PRODUCT[] {
+                                                new RS_PRODUCT {ProductId = 1, Name = "P1"},
+                                                new RS_PRODUCT {ProductId = 2, Name = "P2"},
+                                                new RS_PRODUCT {ProductId = 3, Name = "P3"},
+                                                new RS_PRODUCT {ProductId = 4, Name = "P4"},
+                                                new RS_PRODUCT {ProductId = 5, Name = "P5"}
+            }.AsQueryable());
+            // Arrange
+            ProductController controller = new ProductController(mock.Object);
+            controller.PageSize = 3;
+            // Act
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model;
+            // Assert
+            PagingInfo pageInfo = result.PagingInfo;
+            Assert.AreEqual(pageInfo.CurrentPage, 2);
+            Assert.AreEqual(pageInfo.ItemsPerPage, 3);
+            Assert.AreEqual(pageInfo.TotalItems, 5);
+            Assert.AreEqual(pageInfo.TotalPages, 2);
         }
     }
 }

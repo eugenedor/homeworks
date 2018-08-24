@@ -20,3 +20,4 @@ E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.Razor.xml
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.WebPages.xml
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.csprojResolveAssemblyReference.cache
