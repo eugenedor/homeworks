@@ -41,7 +41,7 @@ open _cur2
 	fetch next from _cur2 INTO @name
 	while @@fetch_status  = 0
 	BEGIN
-		SET @string = 'SELECT * FROM ToolsStore.dbo.[' + @name +']'
+		SET @string = 'SELECT ''' + @name +''' as name, count(*) as cntRecord FROM ToolsStore.dbo.[' + @name +']'
 		EXECUTE sp_executesql @string
 		PRINT @string
 		fetch next from _cur2 into @name
