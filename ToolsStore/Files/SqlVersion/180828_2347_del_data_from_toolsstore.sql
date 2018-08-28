@@ -1,7 +1,7 @@
-USE ToolsStore2
+USE ToolsStore
 GO
 
-IF DB_NAME() <> N'ToolsStore2' SET NOEXEC ON
+IF DB_NAME() <> N'ToolsStore' SET NOEXEC ON
 GO
 
 

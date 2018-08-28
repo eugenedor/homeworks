@@ -13,7 +13,7 @@ GO
 -- Создать резервную копию базы данных в файл с именем: <имя_базы_данных>_<гггг>_<мм>_<дд>_<чч>_<мин>.bak
 --
 DECLARE @db_name SYSNAME
-SET @db_name = N'ToolsStore2'
+SET @db_name = N'ToolsStore'
 
 DECLARE @filepath NVARCHAR(4000)
 SET @filepath = N'E:\backup\' + @db_name + '_backup_' +                                       /*определить основную часть*/ 

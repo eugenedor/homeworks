@@ -1,4 +1,4 @@
-USE ToolsStore2
+USE ToolsStore
 GO 
 
 --SELECT * FROM sys.tables WHERE type_desc = 'USER_TABLE' AND name like '%life[_]%'
