@@ -6,30 +6,27 @@ namespace ToolsStore.Domain.Entities
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
 
-    public partial class CT_CATEGORY
+    public partial class CT_IMAGE
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public CT_CATEGORY()
+        public CT_IMAGE()
         {
-            SK_EQUIPMENT = new HashSet<SK_EQUIPMENT>();
+            RS_PRODUCT = new HashSet<RS_PRODUCT>();
         }
 
         [Key]
-        public long CategoryId { get; set; }
+        public long ImageId { get; set; }
 
         [Required]
-        [StringLength(100)]
-        public string Code { get; set; }
+        public byte[] Data { get; set; }
 
-        [Required]
-        [StringLength(250)]
+        [StringLength(50)]
+        public string MimeType { get; set; }
+
+        [StringLength(300)]
         public string Name { get; set; }
 
-        public int? Ord { get; set; }
-
-        public DateTime? DateLoad { get; set; }
-
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<SK_EQUIPMENT> SK_EQUIPMENT { get; set; }
+        public virtual ICollection<RS_PRODUCT> RS_PRODUCT { get; set; }
     }
 }

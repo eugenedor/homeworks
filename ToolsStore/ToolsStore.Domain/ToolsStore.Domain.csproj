@@ -83,11 +83,14 @@
     <Compile Include="Concrete\EFProductRepository.cs" />
     <Compile Include="Entities\CT_BRAND.cs" />
     <Compile Include="Entities\CT_CATEGORY.cs" />
+    <Compile Include="Entities\CT_IMAGE.cs" />
     <Compile Include="Entities\CT_VAT.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
+    <Compile Include="Entities\MT_LOAD_RULE.cs" />
+    <Compile Include="Entities\MT_SETTING.cs" />
     <Compile Include="Entities\RS_PRICE.cs" />
     <Compile Include="Entities\RS_PRODUCT.cs" />
-    <Compile Include="Entities\SK_EMPLOYEE.cs" />
+    <Compile Include="Entities\SK_EQUIPMENT.cs" />
     <Compile Include="Entities\SK_MODEL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

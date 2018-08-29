@@ -15,10 +15,13 @@ namespace ToolsStore.Domain.Concrete
 
         public virtual DbSet<CT_BRAND> CT_BRAND { get; set; }
         public virtual DbSet<CT_CATEGORY> CT_CATEGORY { get; set; }
+        public virtual DbSet<CT_IMAGE> CT_IMAGE { get; set; }
         public virtual DbSet<CT_VAT> CT_VAT { get; set; }
+        public virtual DbSet<MT_LOAD_RULE> MT_LOAD_RULE { get; set; }
+        public virtual DbSet<MT_SETTING> MT_SETTING { get; set; }
         public virtual DbSet<RS_PRICE> RS_PRICE { get; set; }
         public virtual DbSet<RS_PRODUCT> RS_PRODUCT { get; set; }
-        public virtual DbSet<SK_EMPLOYEE> SK_EMPLOYEE { get; set; }
+        public virtual DbSet<SK_EQUIPMENT> SK_EQUIPMENT { get; set; }
         public virtual DbSet<SK_MODEL> SK_MODEL { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -32,6 +35,14 @@ namespace ToolsStore.Domain.Concrete
                 .HasMany(e => e.SK_MODEL)
                 .WithRequired(e => e.CT_BRAND)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<CT_IMAGE>()
+                .Property(e => e.MimeType)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<CT_IMAGE>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
 
             modelBuilder.Entity<CT_VAT>()
                 .HasMany(e => e.RS_PRICE)
@@ -65,6 +76,11 @@ namespace ToolsStore.Domain.Concrete
             modelBuilder.Entity<RS_PRODUCT>()
                 .HasMany(e => e.RS_PRICE)
                 .WithRequired(e => e.RS_PRODUCT)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<SK_EQUIPMENT>()
+                .HasMany(e => e.RS_PRODUCT)
+                .WithRequired(e => e.SK_EQUIPMENT)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<SK_MODEL>()
