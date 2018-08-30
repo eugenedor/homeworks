@@ -24,6 +24,6 @@ namespace ToolsStore.WebUI.Models
         /// <summary>
         /// Текущее оборудование
         /// </summary>
-        public long? CurrentEquipment { get; set; }
+        public long CurrentEquipment { get; set; }
     }
 }

@@ -33,7 +33,7 @@ namespace ToolsStore.UnitTests
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
             // Action
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(null, 2).Model; //IEnumerable<RS_PRODUCT> result = (IEnumerable<RS_PRODUCT>)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(-1, 2).Model; //IEnumerable<RS_PRODUCT> result = (IEnumerable<RS_PRODUCT>)controller.List(2).Model;
             // Assert
             RS_PRODUCT[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
@@ -80,7 +80,7 @@ namespace ToolsStore.UnitTests
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
             // Act
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(null, 2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(-1, 2).Model;
             // Assert
             PagingInfo pageInfo = result.PagingInfo;
             Assert.AreEqual(pageInfo.CurrentPage, 2);

@@ -18,7 +18,7 @@ namespace ToolsStore.WebUI.Controllers
             this.repository = productRepository;
         }
 
-        public ViewResult List(long? equipment, int page = 1)
+        public ViewResult List(long equipment, int page = 1)
         {
             //return View(repository.Products
             //                      .OrderBy(p => p.ProductId)
@@ -28,7 +28,7 @@ namespace ToolsStore.WebUI.Controllers
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = repository.Products
-                                .Where(p => equipment == null || p.EquipmentId == (long)equipment)
+                                .Where(p => equipment == -1 || p.EquipmentId == equipment)
                                      .OrderBy(p => p.ProductId)
                                      .Skip((page - 1) * PageSize)
                                      .Take(PageSize),
