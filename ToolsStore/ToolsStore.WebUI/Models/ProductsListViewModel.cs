@@ -20,5 +20,10 @@ namespace ToolsStore.WebUI.Models
         /// Пейджинг (нумерация страниц)
         /// </summary>
         public PagingInfo PagingInfo { get; set; }
+
+        /// <summary>
+        /// Текущее оборудование
+        /// </summary>
+        public long? CurrentEquipment { get; set; }
     }
 }

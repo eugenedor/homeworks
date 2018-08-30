@@ -33,7 +33,7 @@ namespace ToolsStore.UnitTests
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
             // Action
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model; //IEnumerable<RS_PRODUCT> result = (IEnumerable<RS_PRODUCT>)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(null, 2).Model; //IEnumerable<RS_PRODUCT> result = (IEnumerable<RS_PRODUCT>)controller.List(2).Model;
             // Assert
             RS_PRODUCT[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
@@ -80,13 +80,37 @@ namespace ToolsStore.UnitTests
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
             // Act
-            ProductsListViewModel result = (ProductsListViewModel)controller.List(2).Model;
+            ProductsListViewModel result = (ProductsListViewModel)controller.List(null, 2).Model;
             // Assert
             PagingInfo pageInfo = result.PagingInfo;
             Assert.AreEqual(pageInfo.CurrentPage, 2);
             Assert.AreEqual(pageInfo.ItemsPerPage, 3);
             Assert.AreEqual(pageInfo.TotalItems, 5);
             Assert.AreEqual(pageInfo.TotalPages, 2);
+        }
+
+        [TestMethod]
+        public void Can_Filter_Products()
+        {
+            // Arrange
+            // - create the mock repository
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new RS_PRODUCT[] {
+                                                new RS_PRODUCT {ProductId = 1, Name = "P1", EquipmentId = 1},
+                                                new RS_PRODUCT {ProductId = 2, Name = "P2", EquipmentId = 2},
+                                                new RS_PRODUCT {ProductId = 3, Name = "P3", EquipmentId = 1},
+                                                new RS_PRODUCT {ProductId = 4, Name = "P4", EquipmentId = 2},
+                                                new RS_PRODUCT {ProductId = 5, Name = "P5", EquipmentId = 3}
+            }.AsQueryable());
+            // Arrange - create a controller and make the page size 3 items
+            ProductController controller = new ProductController(mock.Object);
+            controller.PageSize = 3;
+            // Action
+            RS_PRODUCT[] result = ((ProductsListViewModel)controller.List(2, 1).Model).Products.ToArray();
+            // Assert
+            Assert.AreEqual(result.Length, 2);
+            Assert.IsTrue(result[0].Name == "P2" && result[0].EquipmentId == 2);
+            Assert.IsTrue(result[1].Name == "P4" && result[1].EquipmentId == 2);
         }
     }
 }
