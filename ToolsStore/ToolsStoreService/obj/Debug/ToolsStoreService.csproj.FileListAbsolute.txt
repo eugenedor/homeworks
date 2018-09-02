@@ -10,3 +10,4 @@ E:\projects\ToolsStore\ToolsStoreService\bin\Debug\_installWinService.bat
 E:\projects\ToolsStore\ToolsStoreService\bin\Debug\_unistallWinService.bat
 E:\projects\ToolsStore\ToolsStoreService\bin\Debug\xsd\Category.xsd
 E:\projects\ToolsStore\ToolsStoreService\bin\Debug\xsd\Vat.xsd
+E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.csprojResolveAssemblyReference.cache
