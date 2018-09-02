@@ -112,5 +112,28 @@ namespace ToolsStore.UnitTests
             Assert.IsTrue(result[0].Name == "P2" && result[0].EquipmentId == 2);
             Assert.IsTrue(result[1].Name == "P4" && result[1].EquipmentId == 2);
         }
+
+        [TestMethod]
+        public void Can_Create_Equipments()
+        {
+            // Arrange
+            // - create the mock repository
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Equipments).Returns(new SK_EQUIPMENT[] {
+                                                  new SK_EQUIPMENT {EquipmentId = 1, Name = "P1"},
+                                                  new SK_EQUIPMENT {EquipmentId = 2, Name = "P2"},
+                                                  new SK_EQUIPMENT {EquipmentId = 3, Name = "P3"}
+            }.AsQueryable());
+
+            // Arrange - create the controller
+            NavController target = new NavController(mock.Object);
+            // Act = get the set of categories
+            SK_EQUIPMENT[] results = ((IEnumerable<SK_EQUIPMENT>)target.Menu().Model).ToArray();
+            // Assert
+            Assert.AreEqual(results.Length, 3);
+            Assert.AreEqual(results[0].Name, "P1");
+            Assert.AreEqual(results[1].Name, "P2");
+            Assert.AreEqual(results[2].Name, "P3");
+        }
     }
 }

@@ -11,7 +11,7 @@
         <div class="title">Магазин инструментов</div>
     </div>
     <div id="equipments">
-        Мы добавим что-то полезное здесь позже
+        @{ Html.RenderAction("Menu", "Nav"); }
     </div>
     <div id="content">
         @RenderBody()

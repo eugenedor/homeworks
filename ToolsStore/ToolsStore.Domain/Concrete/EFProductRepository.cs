@@ -17,5 +17,15 @@ namespace ToolsStore.Domain.Concrete
         {
             get { return context.RS_PRODUCT; }
         }
+
+        public IQueryable<SK_EQUIPMENT> Equipments
+        {
+            get { return context.SK_EQUIPMENT; }
+        }
+
+        public IQueryable<CT_CATEGORY> Categories
+        {
+            get { return context.CT_CATEGORY; }
+        }
     }
 }
