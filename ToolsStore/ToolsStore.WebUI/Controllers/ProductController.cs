@@ -37,7 +37,9 @@ namespace ToolsStore.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = repository.Products.Count()
+                    TotalItems = equipment == -1  ?
+                        repository.Products.Count() :
+                        repository.Products.Where(x => x.EquipmentId == equipment).Count()
                 },
                 CurrentEquipment = equipment
             };

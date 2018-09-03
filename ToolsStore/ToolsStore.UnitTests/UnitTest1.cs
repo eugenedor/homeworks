@@ -155,5 +155,33 @@ namespace ToolsStore.UnitTests
             // Assert
             Assert.AreEqual(equipmentToSelect, result);
         }
+
+        [TestMethod]
+        public void Generate_Category_Specific_Product_Count()
+        {
+            // Arrange
+            // - create the mock repository
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Products).Returns(new RS_PRODUCT[] {
+                                                new RS_PRODUCT {ProductId = 1, Name = "P1", EquipmentId = 1},
+                                                new RS_PRODUCT {ProductId = 2, Name = "P2", EquipmentId = 2},
+                                                new RS_PRODUCT {ProductId = 3, Name = "P3", EquipmentId = 1},
+                                                new RS_PRODUCT {ProductId = 4, Name = "P4", EquipmentId = 2},
+                                                new RS_PRODUCT {ProductId = 5, Name = "P5", EquipmentId = 3}
+            }.AsQueryable());
+            // Arrange - create a controller and make the page size 3 items
+            ProductController target = new ProductController(mock.Object);
+            target.PageSize = 3;
+            // Action - test the product counts for different categories
+            int res1 = ((ProductsListViewModel)target.List(1).Model).PagingInfo.TotalItems;
+            int res2 = ((ProductsListViewModel)target.List(2).Model).PagingInfo.TotalItems;
+            int res3 = ((ProductsListViewModel)target.List(3).Model).PagingInfo.TotalItems;
+            int resAll = ((ProductsListViewModel)target.List(-1).Model).PagingInfo.TotalItems;
+            // Assert
+            Assert.AreEqual(res1, 2);
+            Assert.AreEqual(res2, 2);
+            Assert.AreEqual(res3, 1);
+            Assert.AreEqual(resAll, 5);
+        }
     }
 }
