@@ -17,8 +17,10 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public PartialViewResult Menu()
+        public PartialViewResult Menu(long equipment = -1)
         {
+            ViewBag.SelectedEquipments = equipment;
+
             IEnumerable<SK_EQUIPMENT> equipments = (from eqp in repository.Equipments
                                                     join cat1 in repository.Categories on eqp.CategoryId equals cat1.CategoryId into cat2
                                                     from cat in cat2.DefaultIfEmpty()

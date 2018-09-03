@@ -1,0 +1,18 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.SK_EQUIPMENT>
+
+@Html.ActionLink("Home", "List", "Product")
+
+@foreach (var link in Model)
+{
+    @Html.RouteLink(link.Name, new
+    {
+        controller = "Product",
+        action = "List",
+        equipment = link.EquipmentId,
+        page = 1
+    },
+    new
+    {
+        @class = link.EquipmentId == ViewBag.SelectedEquipments ? "selected" : null
+    })
+}

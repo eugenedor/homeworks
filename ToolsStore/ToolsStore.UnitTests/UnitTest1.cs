@@ -135,5 +135,25 @@ namespace ToolsStore.UnitTests
             Assert.AreEqual(results[1].Name, "P2");
             Assert.AreEqual(results[2].Name, "P3");
         }
+
+        [TestMethod]
+        public void Indicates_Selected_Equipment()
+        {
+            // Arrange
+            // - create the mock repository
+            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            mock.Setup(m => m.Equipments).Returns(new SK_EQUIPMENT[] {
+                                                  new SK_EQUIPMENT {EquipmentId = 1, Name = "P1"},
+                                                  new SK_EQUIPMENT {EquipmentId = 2, Name = "P2"},
+            }.AsQueryable());
+            // Arrange - create the controller
+            NavController target = new NavController(mock.Object);
+            // Arrange - define the category to selected
+            long equipmentToSelect = 1;
+            // Action
+            long result = target.Menu(equipmentToSelect).ViewBag.SelectedEquipments;
+            // Assert
+            Assert.AreEqual(equipmentToSelect, result);
+        }
     }
 }
