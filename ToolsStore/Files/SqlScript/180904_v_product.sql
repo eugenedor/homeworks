@@ -1,9 +1,19 @@
-SELECT pr.ProductId, pr.EquipmentId, pr.BrandId, pr.ModelId, pr.ImageId, 
+USE ToolsStore
+GO
+
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+
+CREATE VIEW dbo.V_PRODUCT
+AS 
+SELECT pr.ProductId, pr.EquipmentId, eq.CategoryId, pr.BrandId, pr.ModelId, pr.ImageId, 
 	   pr.Name, pr.Descr, pr.Mass, pr.Length, pr.Width, pr.Height, pr.Color, pr.Power, pr.Kit,
-	   eq.CategoryId, eq.Code EquipmentCode, eq.Name EquipmentName, eq.NameExtra EquipmentNameExtra, eq.Ord EquipmentOrd,
-	   ct.Code CategoryCode, ct.Name CategoryName, ct.Ord CategoryOrd,
-	   br.Code BrandCode, br.Name BrandName,
-	   md.Code ModelCode, md.Name ModelName,
+	   eq.Name EquipmentName, eq.NameExtra EquipmentNameExtra,
+	   ct.Name CategoryName, br.Name BrandName, md.Name ModelName,
 	   im.Data, im.MimeType, im.Name ImageName,
 	   prc.PriceWithVat, prc.PriceWithoutVat, prc.DateBegin, prc.DateEnd,
 	   v.Vat, v.Name VatName, v.Rem VatRem
@@ -23,4 +33,6 @@ FROM RS_PRODUCT pr
           AND GETDATE() BETWEEN prc.DateBegin AND prc.DateEnd
 	 LEFT JOIN CT_VAT v 
 	   ON prc.VatId = v.VatId
-	      AND v.Rem = 0
+	      AND v.Rem = 0;
+
+GO
