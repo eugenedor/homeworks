@@ -1,5 +1,6 @@
 ﻿using System.Linq;
 using ToolsStore.Domain.Entities;
+using System.Collections.Generic;
 
 namespace ToolsStore.Domain.Abstract
 {
@@ -10,5 +11,17 @@ namespace ToolsStore.Domain.Abstract
         IQueryable<SK_EQUIPMENT> Equipments { get; }
 
         IQueryable<CT_CATEGORY> Categories { get; }
+
+        IQueryable<CT_BRAND> Brands { get; }
+
+        IQueryable<SK_MODEL> Models { get; }
+
+        IQueryable<CT_IMAGE> Images { get; }
+
+        IQueryable<RS_PRICE> Prices { get; }
+
+        IQueryable<CT_VAT> Vats { get; }
+
+        //IEnumerable<Product> Prod { get; }
     }
 }

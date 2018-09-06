@@ -14,7 +14,7 @@ namespace ToolsStore.WebUI.Models
         /// <summary>
         /// Товары
         /// </summary>
-        public IEnumerable<RS_PRODUCT> Products { get; set; }
+        public IEnumerable<Product> Products { get; set; }
 
         /// <summary>
         /// Пейджинг (нумерация страниц)

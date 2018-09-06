@@ -27,5 +27,30 @@ namespace ToolsStore.Domain.Concrete
         {
             get { return context.CT_CATEGORY; }
         }
+
+        public IQueryable<CT_BRAND> Brands
+        {
+            get { return context.CT_BRAND; }
+        }
+
+        public IQueryable<SK_MODEL> Models
+        {
+            get { return context.SK_MODEL; }
+        }
+
+        public IQueryable<CT_IMAGE> Images
+        {
+            get { return context.CT_IMAGE; }
+        }
+
+        public IQueryable<RS_PRICE> Prices
+        {
+            get { return context.RS_PRICE; }
+        }
+
+        public IQueryable<CT_VAT> Vats
+        {
+            get { return context.CT_VAT; }
+        }
     }
 }
