@@ -41,7 +41,11 @@ namespace ToolsStore.WebUI.Models
 
         public string EquipmentNameExtra { get; set; }
 
+        public int? EquipmentOrd { get; set; }
+
         public string CategoryName { get; set; }
+
+        public int? CategoryOrd { get; set; }
 
         public string BrandName { get; set; }
 

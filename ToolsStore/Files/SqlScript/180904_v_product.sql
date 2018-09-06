@@ -12,15 +12,15 @@ CREATE VIEW dbo.V_PRODUCT
 AS 
 SELECT pr.ProductId, pr.EquipmentId, eq.CategoryId, pr.BrandId, pr.ModelId, pr.ImageId, 
 	   pr.Name, pr.Descr, pr.Mass, pr.Length, pr.Width, pr.Height, pr.Color, pr.Power, pr.Kit,
-	   eq.Name EquipmentName, eq.NameExtra EquipmentNameExtra,
-	   ct.Name CategoryName, br.Name BrandName, md.Name ModelName,
+	   eq.Name EquipmentName, eq.NameExtra EquipmentNameExtra, eq.Ord EquipmentOrd,
+	   ct.Name CategoryName, ct.Ord CategoryOrd, br.Name BrandName, md.Name ModelName, 
 	   im.Data, im.MimeType, im.Name ImageName,
 	   prc.PriceWithVat, prc.PriceWithoutVat, prc.DateBegin, prc.DateEnd,
 	   v.Vat, v.Name VatName, v.Rem VatRem
 FROM RS_PRODUCT pr
      JOIN SK_EQUIPMENT eq
 	   ON pr.EquipmentId = eq.EquipmentId
-     LEFT JOIN CT_CATEGORY ct 
+     JOIN CT_CATEGORY ct 
 	   ON eq.CategoryId = ct.CategoryId
      JOIN CT_BRAND br 
 	   ON pr.BrandId = br.BrandId
