@@ -36,7 +36,7 @@ namespace ToolsStore.WebUI
             );
 
             routes.MapRoute(null,
-            "{equipment}",
+            "Equipment{equipment}",
             new
             {
                 controller = "Product",
@@ -46,7 +46,7 @@ namespace ToolsStore.WebUI
             );
 
             routes.MapRoute(null,
-            "{equipment}/Page{page}",
+            "Equipment{equipment}/Page{page}",
             new
             {
                 controller = "Product",
