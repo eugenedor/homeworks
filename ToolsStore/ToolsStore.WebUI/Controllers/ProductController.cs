@@ -12,7 +12,7 @@ namespace ToolsStore.WebUI.Controllers
     public class ProductController : Controller
     {
         private IProductRepository repo;
-        public int PageSize = 4;
+        public int PageSize = 10;
         public ProductController(IProductRepository productRepository)
         {
             this.repo = productRepository;
