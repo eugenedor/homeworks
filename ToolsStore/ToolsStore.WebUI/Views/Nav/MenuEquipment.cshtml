@@ -5,12 +5,12 @@
 @foreach (var link in Model.OrderBy(x => x.Name))
 {
     @Html.RouteLink(link.Name, new
-    {
-        controller = "Product",
-        action = "List",
-        equipment = link.EquipmentId,
-        page = 1
-    },
+{
+    controller = "Product",
+    action = "List",
+    equipment = link.EquipmentId,
+    page = 1
+},
     new
     {
         @class = link.EquipmentId == ViewBag.SelectedEquipments ? "selected" : null

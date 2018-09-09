@@ -128,7 +128,7 @@ namespace ToolsStore.UnitTests
             // Arrange - create the controller
             NavController target = new NavController(mock.Object);
             // Act = get the set of categories
-            SK_EQUIPMENT[] results = ((IEnumerable<SK_EQUIPMENT>)target.Menu().Model).ToArray();
+            SK_EQUIPMENT[] results = ((IEnumerable<SK_EQUIPMENT>)target.MenuEquipment().Model).ToArray();
             // Assert
             Assert.AreEqual(results.Length, 3);
             Assert.AreEqual(results[0].Name, "P1");
@@ -151,7 +151,7 @@ namespace ToolsStore.UnitTests
             // Arrange - define the category to selected
             long equipmentToSelect = 1;
             // Action
-            long result = target.Menu(equipmentToSelect).ViewBag.SelectedEquipments;
+            long result = target.MenuEquipment(equipmentToSelect).ViewBag.SelectedEquipments;
             // Assert
             Assert.AreEqual(equipmentToSelect, result);
         }

@@ -17,7 +17,7 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public PartialViewResult Menu(long equipment = -1)
+        public PartialViewResult MenuEquipment(long equipment = -1)
         {
             ViewBag.SelectedEquipments = equipment;
 
