@@ -2,6 +2,7 @@
 
 <div class="item">
     <h2>@Model.ProductId. @Model.Name</h2>
-    <p><font size="4">@Model.EquipmentName (@Model.CategoryName.ToLower())</font></p>
+    <p><font size="3">Тип оборудования: @Model.EquipmentName.ToLower()</font></p>
+    <p><font size="3">Категория: @Model.CategoryName.ToLower()</font></p>
     <h3>Цена: @Model.PriceWithVat</h3>
 </div>
