@@ -49,17 +49,6 @@ namespace ToolsStore.WebUI
             );
 
             routes.MapRoute(null,
-            "Equipment{equipment}/Page{page}",
-            new
-            {
-                controller = "Product",
-                action = "List",
-                category = (long)-1
-            },
-            new { page = @"\d+" }
-            );
-
-            routes.MapRoute(null,
             "Category{category}",
             new
             {
@@ -68,6 +57,17 @@ namespace ToolsStore.WebUI
                 equipment = (long)-1,
                 page = 1
             }
+            );
+
+            routes.MapRoute(null,
+            "Equipment{equipment}/Page{page}",
+            new
+            {
+                controller = "Product",
+                action = "List",
+                category = (long)-1
+            },
+            new { page = @"\d+" }
             );
 
             routes.MapRoute(null,

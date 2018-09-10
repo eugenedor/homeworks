@@ -17,21 +17,25 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public PartialViewResult MenuEquipment(long equipment = -1)
+        public PartialViewResult MenuEquipment(long category = -1, long equipment = -1)
         {
             ViewBag.SelectedEquipments = equipment;
 
-            IEnumerable<SK_EQUIPMENT> equipments = (from eqp in repository.Equipments
-                                                        //join cat1 in repository.Categories on eqp.CategoryId equals cat1.CategoryId into cat2
-                                                        //from cat in cat2.DefaultIfEmpty()
-                                                        //orderby eqp.CategoryId != null ? cat.Ord : 0 ascending, eqp.Ord ascending
-                                                    select eqp).Distinct();
+            if (category == -1 && equipment >= 0)
+                category = repository.Equipments.Where(x => x.EquipmentId == equipment).First().CategoryId ?? -1;
+
+            IEnumerable<SK_EQUIPMENT> equipments = (from eq in repository.Equipments
+                                                    where (eq.CategoryId == category)
+                                                    select eq);
 
             return PartialView(equipments);
         }
 
-        public PartialViewResult MenuCategory(long category = -1)
+        public PartialViewResult MenuCategory(long category = -1, long equipment = -1)
         {
+            if (category == -1 && equipment >= 0)
+                category = repository.Equipments.Where(x => x.EquipmentId == equipment).First().CategoryId ?? -1;
+
             ViewBag.SelectedCategories = category;
 
             IEnumerable<CT_CATEGORY> categories = (from ct in repository.Categories

@@ -12,7 +12,9 @@ namespace ToolsStore.WebUI.Controllers
     public class ProductController : Controller
     {
         private IProductRepository repo;
-        public int PageSize = 10;
+
+        public const int PAGESIZE = 4;
+
         public ProductController(IProductRepository productRepository)
         {
             this.repo = productRepository;
@@ -106,7 +108,7 @@ namespace ToolsStore.WebUI.Controllers
                                             Vat = v.Vat,
                                             VatName = v.Name,
                                             VatRem = v.Rem
-                                        }).Skip((page - 1) * PageSize).Take(PageSize);
+                                        }).Skip((page - 1) * PAGESIZE).Take(PAGESIZE);
 
             int totalItems = GetTotalItems(category, equipment);
 
@@ -117,7 +119,7 @@ namespace ToolsStore.WebUI.Controllers
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
-                    ItemsPerPage = PageSize,
+                    ItemsPerPage = PAGESIZE,
                     TotalItems = totalItems
                 },
                 CurrentEquipment = equipment,
