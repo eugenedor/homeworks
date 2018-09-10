@@ -18,7 +18,28 @@ namespace ToolsStore.WebUI.Controllers
             this.repo = productRepository;
         }
 
-        public ViewResult List(long equipment, int page = 1)
+        public int GetTotalItems(long category, long equipment)
+        {
+            if (category == -1 && equipment == -1)
+                return repo.Products.Count();
+
+            if (category == -1 && equipment >= 0)
+                return repo.Products.Where(x => x.EquipmentId == equipment).Count();
+
+            if (category >= 0 && equipment == -1)
+                return (from pr in repo.Products
+                        join eq in repo.Equipments on pr.EquipmentId equals eq.EquipmentId
+                        where eq.CategoryId == category
+                        select pr.ProductId).Count();
+
+            return (from pr in repo.Products
+                    join eq in repo.Equipments on pr.EquipmentId equals eq.EquipmentId
+                    where pr.EquipmentId == equipment
+                          && eq.CategoryId == category
+                    select pr.ProductId).Count();
+        }
+
+        public ViewResult List(long category, long equipment, int page = 1)
         {
             //return View(repository.Products
             //                      .OrderBy(p => p.ProductId)
@@ -43,12 +64,13 @@ namespace ToolsStore.WebUI.Controllers
                                                       where price.DateBegin <= curDate && curDate <= price.DateEnd
                                                       select price) on pr.ProductId equals prc1.ProductId into prc2
                                         from prc in prc2.DefaultIfEmpty()
-                                           
+
                                         join v1 in (from vat in repo.Vats
                                                     where !vat.Rem
                                                     select vat) on prc.VatId equals v1.VatId into v2
                                         from v in v2.DefaultIfEmpty()
-                                        where equipment == -1 || pr.EquipmentId == equipment
+                                        where (equipment == -1 || pr.EquipmentId == equipment)
+                                              && (category == -1 || eq.CategoryId == category)
                                         orderby pr.ProductId
                                         select new Product
                                         {
@@ -73,7 +95,7 @@ namespace ToolsStore.WebUI.Controllers
                                             CategoryName = ct.Name,
                                             CategoryOrd = ct.Ord,
                                             BrandName = br.Name,
-                                            ModelName =md.Name,
+                                            ModelName = md.Name,
                                             Data = im.Data,
                                             MimeType = im.MimeType,
                                             ImageName = im.Name,
@@ -86,6 +108,8 @@ namespace ToolsStore.WebUI.Controllers
                                             VatRem = v.Rem
                                         }).Skip((page - 1) * PageSize).Take(PageSize);
 
+            int totalItems = GetTotalItems(category, equipment);
+
             ProductsListViewModel model = new ProductsListViewModel
             {
                 Products = prd,
@@ -94,11 +118,10 @@ namespace ToolsStore.WebUI.Controllers
                 {
                     CurrentPage = page,
                     ItemsPerPage = PageSize,
-                    TotalItems = equipment == -1  ?
-                        repo.Products.Count() :
-                        repo.Products.Where(x => x.EquipmentId == equipment).Count()
+                    TotalItems = totalItems
                 },
-                CurrentEquipment = equipment
+                CurrentEquipment = equipment,
+                CurrentCategory = category
             };
 
             return View(model);

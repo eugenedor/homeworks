@@ -46,13 +46,19 @@ padding: .6em;
 DIV#content
 {
 border-left: 2px solid gray;
-margin-left: 16em;
+margin-left: 42em;
 padding: 1em;
 }
 DIV#equipments
 {
 float: left;
-width: 15em;
+width: 20em;
+padding: .3em;
+}
+DIV#categories
+{
+float: left;
+width: 20em;
 padding: .3em;
 }
 DIV.item
@@ -109,3 +115,13 @@ border-bottom: 1px solid silver;
 DIV#equipments A.selected { background-color: #666; color: White; }
 DIV#equipments A:hover { background-color: #CCC; }
 DIV#equipments A.selected:hover { background-color: #666; }
+
+DIV#categories A
+{
+font: bold 1.1em "Arial Narrow","Franklin Gothic Medium",Arial; display: block;
+text-decoration: none; padding: .6em; color: Black;
+border-bottom: 1px solid silver;
+}
+DIV#categories A.selected { background-color: #666; color: White; }
+DIV#categories A:hover { background-color: #CCC; }
+DIV#categories A.selected:hover { background-color: #666; }

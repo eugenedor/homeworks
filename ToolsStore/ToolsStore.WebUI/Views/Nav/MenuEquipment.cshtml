@@ -1,7 +1,5 @@
 ﻿@model IEnumerable<ToolsStore.Domain.Entities.SK_EQUIPMENT>
 
-@Html.ActionLink("ВСЕ ИНСТРУМЕНТЫ", "List", "Product")
-
 @foreach (var link in Model.OrderBy(x => x.Name))
 {
     @Html.RouteLink(link.Name, new

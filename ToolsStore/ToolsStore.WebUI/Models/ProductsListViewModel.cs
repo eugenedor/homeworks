@@ -22,6 +22,11 @@ namespace ToolsStore.WebUI.Models
         public PagingInfo PagingInfo { get; set; }
 
         /// <summary>
+        /// Текущая категория
+        /// </summary>
+        public long CurrentCategory { get; set; }
+
+        /// <summary>
         /// Текущее оборудование
         /// </summary>
         public long CurrentEquipment { get; set; }
