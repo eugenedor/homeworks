@@ -13,7 +13,7 @@ namespace ToolsStore.WebUI.Controllers
     {
         private IProductRepository repository;
 
-        public const int PAGESIZE = 4;
+        public int PageSize = 4;
 
         public ProductController(IProductRepository productRepository)
         {
@@ -54,7 +54,7 @@ namespace ToolsStore.WebUI.Controllers
                                         where (equipment == -1 || p.EquipmentId == equipment)
                                               && (category == -1 || p.CategoryId == category)
                                         orderby p.ProductId
-                                        select p).Skip((page - 1) * PAGESIZE).Take(PAGESIZE);
+                                        select p).Skip((page - 1) * PageSize).Take(PageSize);
 
             int totalItems = GetTotalItems(category, equipment);
 
@@ -65,7 +65,7 @@ namespace ToolsStore.WebUI.Controllers
                 PagingInfo = new PagingInfo
                 {
                     CurrentPage = page,
-                    ItemsPerPage = PAGESIZE,
+                    ItemsPerPage = PageSize,
                     TotalItems = totalItems
                 },
                 CurrentEquipment = equipment,
