@@ -88,6 +88,7 @@
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Entities\MT_LOAD_RULE.cs" />
     <Compile Include="Entities\MT_SETTING.cs" />
+    <Compile Include="Entities\Product.cs" />
     <Compile Include="Entities\RS_PRICE.cs" />
     <Compile Include="Entities\RS_PRODUCT.cs" />
     <Compile Include="Entities\SK_EQUIPMENT.cs" />

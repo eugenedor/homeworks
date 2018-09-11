@@ -6,7 +6,7 @@ namespace ToolsStore.Domain.Abstract
 {
     public interface IProductRepository
     {
-        IQueryable<RS_PRODUCT> Products { get; }
+        IQueryable<RS_PRODUCT> Prdcts { get; }
 
         IQueryable<SK_EQUIPMENT> Equipments { get; }
 
@@ -22,6 +22,6 @@ namespace ToolsStore.Domain.Abstract
 
         IQueryable<CT_VAT> Vats { get; }
 
-        //IEnumerable<Product> Prod { get; }
+        IEnumerable<Product> Products { get; }
     }
 }
