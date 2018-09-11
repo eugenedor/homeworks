@@ -14,7 +14,7 @@ using ToolsStore.WebUI.HtmlHelpers;
 namespace ToolsStore.UnitTests
 {
     [TestClass]
-    public class UnitTest1
+    public class UnitTest
     {
         [TestMethod]
         public void Can_Paginate()
