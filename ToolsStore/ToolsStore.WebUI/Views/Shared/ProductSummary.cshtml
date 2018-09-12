@@ -2,6 +2,12 @@
 
 <div class="item">
     <h2>@Model.Name</h2>
+    @using (Html.BeginForm("AddToCart", "Cart"))
+    {
+        @Html.HiddenFor(x => x.ProductId)
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+        <input type="submit" value="+ Добавить в корзину" />
+    }
     <p><font size="3">Тип оборудования: @Model.EquipmentName.ToLower()</font></p>
     <p><font size="3">Категория: @Model.CategoryName.ToLower()</font></p>
     <h3>Цена: @Model.PriceWithVat</h3>
