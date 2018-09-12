@@ -1,0 +1,39 @@
+﻿@model ToolsStore.WebUI.Models.CartIndexViewModel
+@{
+    ViewBag.Title = "Магазин инструментов: Ваша корзина";
+}
+<h2>Ваша корзина</h2>
+<table width="90%" align="center">
+    <thead>
+        <tr>
+            <th align="center">Количество</th>
+            <th align="left">Наименование товара</th>
+            <th align="left">Тип оборудования</th>
+            <th align="right">Цена</th>
+            <th align="right">Подитог</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var line in Model.Cart.Lines)
+        {
+            <tr>
+                <td align="center">@line.Quantity</td>
+                <td align="left">@line.Product.Name</td>
+                <td align="left">@line.Product.EquipmentName</td>
+                <td align="right">@line.Product.PriceWithVat.ToString()</td>
+                <td align="right">@((line.Quantity * line.Product.PriceWithVat).ToString())</td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3" align="right">Итог:</td>
+            <td align="right">
+                @Model.Cart.ComputeTotalValue().ToString()
+            </td>
+        </tr>
+    </tfoot>
+</table>
+<p align="center" class="actionButtons">
+    <a href="@Model.ReturnUrl">Продолжить покупки</a>
+</p>
