@@ -35,12 +35,10 @@ namespace ToolsStore.Domain.Entities
         }
 
         /// <summary>
-        /// Удалить товар из корзины
+        /// Удалить 1 элемент товара из корзины
         /// </summary>
-        public void RemoveLine(Product product)
+        public void RemoveItem(Product product)
         {
-            //lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
-
             //Удалить одну позицию
             int cntQuantity = lineCollection.Where(p => p.Product.ProductId == product.ProductId).Sum(x => x.Quantity);
             if (cntQuantity > 1)
@@ -52,6 +50,14 @@ namespace ToolsStore.Domain.Entities
             {
                 lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);  // Если всё удалить, а не одну позицию
             }
+        }
+
+        /// <summary>
+        /// Удалить товар из корзины
+        /// </summary>
+        public void RemoveLine(Product product)
+        {
+            lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
         }
 
         /// <summary>

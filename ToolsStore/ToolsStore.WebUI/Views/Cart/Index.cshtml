@@ -23,11 +23,27 @@
                 <td align="right">@line.Product.PriceWithVat.ToString()</td>
                 <td align="right">@((line.Quantity * line.Product.PriceWithVat).ToString())</td>
                 <td>
-                    @using (Html.BeginForm("RemoveFromCart", "Cart"))
+                    @using (Html.BeginForm("AddToCart", "Cart"))
                     {
                         @Html.Hidden("ProductId", line.Product.ProductId)
                         @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="actionButtons" type="submit" value="- Удалить из корзины" />
+                        <input class="actionButtons" type="submit" value="+ Добавить" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemFromCart", "Cart"))
+                    {
+                        @Html.Hidden("ProductId", line.Product.ProductId)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="actionButtons" type="submit" value="- Удалить" />
+                    }
+                </td>
+                <td>
+                    @using (Html.BeginForm("RemLineFromCart", "Cart"))
+                    {
+                        @Html.Hidden("ProductId", line.Product.ProductId)
+                        @Html.HiddenFor(x => x.ReturnUrl)
+                        <input class="actionButtons" type="submit" value="- Удалить ВСЕ" />
                     }
                 </td>
             </tr>

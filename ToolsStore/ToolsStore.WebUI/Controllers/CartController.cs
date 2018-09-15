@@ -37,7 +37,17 @@ namespace ToolsStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemoveFromCart(Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult RemFromCart(Cart cart, int productId, string returnUrl)
+        {
+            Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
+            if (product != null)
+            {
+                cart.RemoveItem(product);         //GetCart().RemoveItem(product);
+            }
+            return RedirectToAction("Index", new { returnUrl });
+        }
+
+        public RedirectToRouteResult RemLineFromCart(Cart cart, int productId, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
@@ -46,6 +56,7 @@ namespace ToolsStore.WebUI.Controllers
             }
             return RedirectToAction("Index", new { returnUrl });
         }
+
         private Cart GetCart()
         {
             Cart cart = (Cart)Session["Cart"];
@@ -55,6 +66,11 @@ namespace ToolsStore.WebUI.Controllers
                 Session["Cart"] = cart;
             }
             return cart;
+        }
+
+        public PartialViewResult Summary(Cart cart)
+        {
+            return PartialView(cart);
         }
     }
 }
