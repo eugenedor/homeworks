@@ -29,16 +29,9 @@ namespace ToolsStore.WebUI.Controllers
                 return repository.Products.Where(x => x.EquipmentId == equipment).Count();
 
             if (category >= 0 && equipment == -1)
-                return (from pr in repository.Products
-                        join eq in repository.Equipments on pr.EquipmentId equals eq.EquipmentId
-                        where eq.CategoryId == category
-                        select pr.ProductId).Count();
+                return repository.Products.Where(x => x.CategoryId == category).Count();
 
-            return (from pr in repository.Products
-                    join eq in repository.Equipments on pr.EquipmentId equals eq.EquipmentId
-                    where pr.EquipmentId == equipment
-                          && eq.CategoryId == category
-                    select pr.ProductId).Count();
+            return repository.Products.Where(x => x.EquipmentId == equipment && x.CategoryId == category).Count();
         }
 
         public ViewResult List(long category, long equipment, int page = 1)
