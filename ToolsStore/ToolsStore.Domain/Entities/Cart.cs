@@ -39,19 +39,19 @@ namespace ToolsStore.Domain.Entities
         /// </summary>
         public void RemoveLine(Product product)
         {
-            lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
+            //lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
 
-            ////Удалить одну позицию
-            //int cntQuantity = lineCollection.Where(p => p.Product.ProductId == product.ProductId).Sum(x => x.Quantity);
-            //if (cntQuantity > 1)
-            //{
-            //    CartLine line = lineCollection.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
-            //    line.Quantity -= 1;
-            //}
-            //else
-            //{
-            //    lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);  // Если всё удалить, а не одну позицию
-            //}
+            //Удалить одну позицию
+            int cntQuantity = lineCollection.Where(p => p.Product.ProductId == product.ProductId).Sum(x => x.Quantity);
+            if (cntQuantity > 1)
+            {
+                CartLine line = lineCollection.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
+                line.Quantity -= 1;
+            }
+            else
+            {
+                lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);  // Если всё удалить, а не одну позицию
+            }
         }
 
         /// <summary>
