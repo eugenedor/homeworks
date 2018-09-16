@@ -1,7 +1,4 @@
-E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.UnitTests.dll
-E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.UnitTests.pdb
-E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.dll
-E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.pdb
+E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.csprojResolveAssemblyReference.cache
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ApplicationInsights.config
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\roslyn\csc.exe
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -15,6 +12,9 @@ E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\roslyn\System.Reflection.M
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\roslyn\vbc.exe
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\roslyn\VBCSCompiler.exe
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\roslyn\VBCSCompiler.exe.config
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.UnitTests.dll.config
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.UnitTests.dll
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.UnitTests.pdb
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Castle.Core.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Microsoft.Web.Infrastructure.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Moq.dll
@@ -29,6 +29,7 @@ E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.WebPages.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.WebPages.Razor.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.Domain.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.WebUI.dll
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\EntityFramework.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Microsoft.Owin.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.Optimization.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Owin.dll
@@ -46,9 +47,8 @@ E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.Razor.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.WebPages.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.WebPages.Razor.xml
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\EntityFramework.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Microsoft.Owin.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.Optimization.xml
-E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.csprojResolveAssemblyReference.cache
-E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ToolsStore.UnitTests.dll.config
-E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\EntityFramework.dll
-E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\EntityFramework.xml
+E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.dll
+E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.pdb

@@ -8,4 +8,5 @@
     </span>
     @Html.ActionLink("Перейти к корзине", "Index", "Cart", 
         new {   returnUrl = Request.Url.PathAndQuery}, null)
+    @Html.ActionLink("Очистить корзину", "ClearCart", "Cart")
 </div>

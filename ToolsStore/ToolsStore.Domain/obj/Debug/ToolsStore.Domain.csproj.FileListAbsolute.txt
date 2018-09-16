@@ -1,8 +1,6 @@
+E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\ToolsStore.Domain.dll.config
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\ToolsStore.Domain.dll
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\ToolsStore.Domain.pdb
-E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.dll
-E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.pdb
-E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\ToolsStore.Domain.dll.config
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\EntityFramework.dll
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\EntityFramework.SqlServer.dll
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\Microsoft.Web.Infrastructure.dll
@@ -20,3 +18,6 @@ E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.Razor.xml
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.WebPages.xml
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.WebPages.Deployment.xml
 E:\projects\ToolsStore\ToolsStore.Domain\bin\Debug\System.Web.WebPages.Razor.xml
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.dll
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.pdb
+E:\projects\ToolsStore\ToolsStore.Domain\obj\Debug\ToolsStore.Domain.csprojResolveAssemblyReference.cache

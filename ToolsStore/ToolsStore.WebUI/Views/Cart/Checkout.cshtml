@@ -1,0 +1,29 @@
+﻿@model ToolsStore.Domain.Entities.ShippingDetails
+@{
+    ViewBag.Title = "Магазин инстпументов: оплата";
+}
+
+<h2>Оплатить</h2>
+Пожалуйста, введите свои данные, и мы отправим ваши товары прямо сейчас!
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary()
+    <h3>Отправить к</h3>
+    <div>Наименование: @Html.EditorFor(x => x.Name)</div>
+    <h3>Адрес</h3>
+    <div>Линия 1: @Html.EditorFor(x => x.Line1)</div>
+    <div>Линия 2: @Html.EditorFor(x => x.Line2)</div>
+    <div>Линия 3: @Html.EditorFor(x => x.Line3)</div>
+    <div>Город: @Html.EditorFor(x => x.City)</div>
+    <div>Область: @Html.EditorFor(x => x.State)</div>
+    <div>Почтовый индекс: @Html.EditorFor(x => x.Zip)</div>
+    <div>Страна: @Html.EditorFor(x => x.Country)</div>
+    <h3>Опции</h3>
+    <label>
+        @Html.EditorFor(x => x.GiftWrap)
+        Упаковать в подарочную упаковку
+    </label>
+    <p align="center">
+        <input class="actionButtons" type="submit" value="Выполнить заказ" />
+    </p>
+}

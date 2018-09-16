@@ -72,5 +72,19 @@ namespace ToolsStore.WebUI.Controllers
         {
             return PartialView(cart);
         }
+
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+
+        public RedirectToRouteResult ClearCart(Cart cart, string returnUrl)
+        {
+            if (cart.Lines.Count() > 0)
+            {
+                cart.Clear();
+            }
+            return RedirectToAction("List", "Product");            
+        }
     }
 }
