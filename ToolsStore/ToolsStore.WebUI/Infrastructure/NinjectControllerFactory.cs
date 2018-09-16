@@ -9,6 +9,7 @@ using ToolsStore.Domain.Entities;
 using ToolsStore.Domain.Abstract;
 using Moq;
 using ToolsStore.Domain.Concrete;
+using System.Configuration;
 
 namespace ToolsStore.WebUI.Infrastructure
 {
@@ -37,6 +38,13 @@ namespace ToolsStore.WebUI.Infrastructure
         {
             // конфигурирование контейнера
             ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
+
+            EmailSettings emailSettings = new EmailSettings
+            {
+                WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
+            };
+
+            ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
 
             //EmailSettings emailSettings = new EmailSettings
             //{
