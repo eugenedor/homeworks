@@ -35,18 +35,17 @@ namespace ToolsStore.Domain.Concrete
                     smtpClient.EnableSsl = false;
                 }
                 StringBuilder body = new StringBuilder()
-                .AppendLine("A new order has been submitted")
-                .AppendLine("---")
-                .AppendLine("Items:");
+                .AppendLine("Был отправлен новый заказ")
+                .AppendLine("------------------------------------------------")
+                .AppendLine("Предметы:");
                 foreach (var line in cart.Lines)
                 {
                     var subtotal = line.Product.PriceWithVat * line.Quantity;
-                    body.AppendFormat("{0} x {1} (subtotal: {2}", line.Quantity,
-                    line.Product.Name, subtotal);
+                    body.AppendFormat("{0} x {1} Подитог: {2} ", line.Quantity, line.Product.Name, subtotal);
                 }
-                body.AppendFormat("Total order value: {0}", cart.ComputeTotalValue())
-                .AppendLine("---")
-                .AppendLine("Ship to:")
+                body.AppendFormat("Общая сумма: {0} ", cart.ComputeTotalValue())
+                .AppendLine("------------------------------------------------")
+                .AppendLine("Отправить к:")
                 .AppendLine(shippingInfo.Name)
                 .AppendLine(shippingInfo.Line1)
                 .AppendLine(shippingInfo.Line2 ?? "")
@@ -55,13 +54,13 @@ namespace ToolsStore.Domain.Concrete
                 .AppendLine(shippingInfo.State ?? "")
                 .AppendLine(shippingInfo.Country)
                 .AppendLine(shippingInfo.Zip)
-                .AppendLine("---")
-                .AppendFormat("Gift wrap: {0}", shippingInfo.GiftWrap ? "Yes" : "No");
+                .AppendLine("------------------------------------------------")
+                .AppendFormat("Упаковать в подарочную упаковку: {0}", shippingInfo.GiftWrap ? "да" : "нет");
                 MailMessage mailMessage = new MailMessage(
-                emailSettings.MailFromAddress, // From
-                emailSettings.MailToAddress, // To
-                "New order submitted!", // Subject
-                body.ToString()); // Body
+                emailSettings.MailFromAddress,                    // From
+                emailSettings.MailToAddress,                      // To
+                "Новый заказ!",                                   // Subject
+                body.ToString());                                 // Body
                 if (emailSettings.WriteAsFile)
                 {
                     mailMessage.BodyEncoding = Encoding.Unicode; //Encoding.ASCII;
