@@ -41,10 +41,10 @@ namespace ToolsStore.Domain.Concrete
                 foreach (var line in cart.Lines)
                 {
                     var subtotal = line.Product.PriceWithVat * line.Quantity;
-                    body.AppendFormat("{0} x {1} (subtotal: {2:c}", line.Quantity,
+                    body.AppendFormat("{0} x {1} (subtotal: {2}", line.Quantity,
                     line.Product.Name, subtotal);
                 }
-                body.AppendFormat("Total order value: {0:c}", cart.ComputeTotalValue())
+                body.AppendFormat("Total order value: {0}", cart.ComputeTotalValue())
                 .AppendLine("---")
                 .AppendLine("Ship to:")
                 .AppendLine(shippingInfo.Name)
@@ -64,7 +64,7 @@ namespace ToolsStore.Domain.Concrete
                 body.ToString()); // Body
                 if (emailSettings.WriteAsFile)
                 {
-                    mailMessage.BodyEncoding = Encoding.ASCII;
+                    mailMessage.BodyEncoding = Encoding.Unicode; //Encoding.ASCII;
                 }
                 smtpClient.Send(mailMessage);
             }

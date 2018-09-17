@@ -8,6 +8,7 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary()
+
     <h3>Отправить к</h3>
     <div>Наименование: @Html.EditorFor(x => x.Name)</div>
     <h3>Адрес</h3>
