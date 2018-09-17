@@ -41,9 +41,17 @@ namespace ToolsStore.Domain.Concrete
                 foreach (var line in cart.Lines)
                 {
                     var subtotal = line.Product.PriceWithVat * line.Quantity;
-                    body.AppendFormat("{0} x {1} Подитог: {2} ", line.Quantity, line.Product.Name, subtotal);
+                    body.AppendFormat("{0} x {1} ({2}, {3}). Подитог: {4}; {5}", 
+                                      line.Quantity, 
+                                      line.Product.Name, 
+                                      line.Product.EquipmentName.ToLower(), 
+                                      line.Product.CategoryName.ToLower(), 
+                                      subtotal, 
+                                      Environment.NewLine);
                 }
-                body.AppendFormat("Общая сумма: {0} ", cart.ComputeTotalValue())
+                body.AppendLine("");
+                body.AppendFormat("ОБЩАЯ СУММА: {0}", cart.ComputeTotalValue());
+                body.AppendLine("")
                 .AppendLine("------------------------------------------------")
                 .AppendLine("Отправить к:")
                 .AppendLine(shippingInfo.Name)
