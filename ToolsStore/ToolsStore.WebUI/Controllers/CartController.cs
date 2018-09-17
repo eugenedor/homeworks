@@ -12,10 +12,12 @@ namespace ToolsStore.WebUI.Controllers
     public class CartController : Controller
     {
         private IProductRepository repository;
+        private IOrderProcessor orderProcessor;
 
-        public CartController(IProductRepository repo)
+        public CartController(IProductRepository repo, IOrderProcessor proc)
         {
             repository = repo;
+            orderProcessor = proc;
         }
 
         // GET: Cart
@@ -25,6 +27,25 @@ namespace ToolsStore.WebUI.Controllers
                 Cart = cart,                      //Теперь через специальный связыватель модели, а так: "Cart = GetCart(),"
                 ReturnUrl = returnUrl
             });
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Извините, ваша корзина пуста!");
+            }
+            if (ModelState.IsValid)
+            {
+                orderProcessor.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                return View("Completed");
+            }
+            else
+            {
+                return View(shippingDetails);
+            }
         }
 
         public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
