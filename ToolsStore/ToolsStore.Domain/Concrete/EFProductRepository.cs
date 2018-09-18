@@ -107,6 +107,7 @@ namespace ToolsStore.Domain.Concrete
                                     Data = im.Data,
                                     MimeType = im.MimeType,
                                     ImageName = im.Name,
+                                    PriceId = prc.PriceId,
                                     PriceWithVat = prc.PriceWithVat,
                                     PriceWithoutVat = prc.PriceWithoutVat,
                                     DateBegin = prc.DateBegin,

@@ -58,6 +58,8 @@ namespace ToolsStore.Domain.Entities
 
         public string ImageName { get; set; }
 
+        public long? PriceId { get; set; }
+
         public decimal? PriceWithVat { get; set; }
 
         public decimal? PriceWithoutVat { get; set; }
