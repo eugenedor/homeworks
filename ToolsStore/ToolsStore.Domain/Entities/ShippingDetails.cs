@@ -9,8 +9,14 @@ namespace ToolsStore.Domain.Entities
 {
     public class ShippingDetails
     {
+        
+        [Required(ErrorMessage = "Введите фамилию")]
+        public string Surname { get; set; }
         [Required(ErrorMessage = "Введите имя")]
         public string Name { get; set; }
+        [Required(ErrorMessage = "Введите номер телефона")]
+        public string Phone { get; set; }
+        public string Email { get; set; }
         [Required(ErrorMessage = "Введите первую адресную строку")]
         public string Line1 { get; set; }
         public string Line2 { get; set; }

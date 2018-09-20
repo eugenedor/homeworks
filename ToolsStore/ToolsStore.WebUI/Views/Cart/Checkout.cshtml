@@ -9,8 +9,11 @@
 {
     @Html.ValidationSummary()
 
-    <h3>Отправить к</h3>
-    <div>Наименование: @Html.EditorFor(x => x.Name)</div>
+    <h3>Контактная информация</h3>
+    <div>Фамилия: @Html.EditorFor(x => x.Surname)</div>
+    <div>Имя: @Html.EditorFor(x => x.Name)</div>
+    <div>Мобильный телефон: @Html.EditorFor(x => x.Phone)</div>
+    <div>Электронная почта: @Html.EditorFor(x => x.Email)</div>
     <h3>Адрес</h3>
     <div>Линия 1: @Html.EditorFor(x => x.Line1)</div>
     <div>Линия 2: @Html.EditorFor(x => x.Line2)</div>

@@ -4,17 +4,18 @@ GO
 CREATE TABLE [dbo].[RS_ORDER]
 (
 	[OrderId] [bigint] IDENTITY(1,1) NOT NULL,
-	[Name] [nvarchar](250) NOT NULL,
+	[Surname] [nvarchar](100) NOT NULL,
+	[Name] [nvarchar](100) NOT NULL,
+	[Phone] [nvarchar](50) NOT NULL,
+	[Email] [nvarchar](50) NULL,
 	[Line1] [nvarchar](250) NOT NULL,
 	[Line2] [nvarchar](150) NULL,
 	[Line3] [nvarchar](150) NULL,
-	[City]  [nvarchar](100) NOT NULL,
+	[City] [nvarchar](100) NOT NULL,
 	[State] [nvarchar](100) NOT NULL,
 	[Zip] [nvarchar](50) NULL,
 	[Country] [nvarchar](100) NOT NULL,
 	[GiftWrap] [bit] NOT NULL,
-	[Phone] [nvarchar](50) NOT NULL,
-	[Email] [nvarchar](50) NULL,
 	[DateOrder] [datetime] NULL,
  CONSTRAINT [PK_RS_ORDER] PRIMARY KEY CLUSTERED ([OrderId])
 ) ON [PRIMARY]
