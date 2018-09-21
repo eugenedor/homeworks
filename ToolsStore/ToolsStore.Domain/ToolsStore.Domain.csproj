@@ -94,6 +94,8 @@
     <Compile Include="Entities\MT_LOAD_RULE.cs" />
     <Compile Include="Entities\MT_SETTING.cs" />
     <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\RS_CART.cs" />
+    <Compile Include="Entities\RS_ORDER.cs" />
     <Compile Include="Entities\RS_PRICE.cs" />
     <Compile Include="Entities\RS_PRODUCT.cs" />
     <Compile Include="Entities\ShippingDetails.cs" />

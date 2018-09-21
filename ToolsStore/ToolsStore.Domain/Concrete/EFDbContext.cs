@@ -4,8 +4,9 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using ToolsStore.Domain.Entities;
 
-namespace ToolsStore.Domain.Concrete
+namespace ToolsStore.Domain.Entities
 {
+
     public partial class EFDbContext : DbContext
     {
         public EFDbContext()
@@ -19,6 +20,8 @@ namespace ToolsStore.Domain.Concrete
         public virtual DbSet<CT_VAT> CT_VAT { get; set; }
         public virtual DbSet<MT_LOAD_RULE> MT_LOAD_RULE { get; set; }
         public virtual DbSet<MT_SETTING> MT_SETTING { get; set; }
+        public virtual DbSet<RS_CART> RS_CART { get; set; }
+        public virtual DbSet<RS_ORDER> RS_ORDER { get; set; }
         public virtual DbSet<RS_PRICE> RS_PRICE { get; set; }
         public virtual DbSet<RS_PRODUCT> RS_PRODUCT { get; set; }
         public virtual DbSet<SK_EQUIPMENT> SK_EQUIPMENT { get; set; }
@@ -49,6 +52,11 @@ namespace ToolsStore.Domain.Concrete
                 .WithRequired(e => e.CT_VAT)
                 .WillCascadeOnDelete(false);
 
+            modelBuilder.Entity<RS_ORDER>()
+                .HasMany(e => e.RS_CART)
+                .WithRequired(e => e.RS_ORDER)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<RS_PRICE>()
                 .Property(e => e.PriceWithVat)
                 .HasPrecision(17, 2);
@@ -72,6 +80,11 @@ namespace ToolsStore.Domain.Concrete
             modelBuilder.Entity<RS_PRODUCT>()
                 .Property(e => e.Height)
                 .HasPrecision(10, 2);
+
+            modelBuilder.Entity<RS_PRODUCT>()
+                .HasMany(e => e.RS_CART)
+                .WithRequired(e => e.RS_PRODUCT)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RS_PRODUCT>()
                 .HasMany(e => e.RS_PRICE)

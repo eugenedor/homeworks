@@ -8,6 +8,12 @@ namespace ToolsStore.Domain.Entities
 
     public partial class RS_PRICE
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public RS_PRICE()
+        {
+            RS_CART = new HashSet<RS_CART>();
+        }
+
         [Key]
         public long PriceId { get; set; }
 
@@ -24,6 +30,9 @@ namespace ToolsStore.Domain.Entities
         public DateTime? DateEnd { get; set; }
 
         public virtual CT_VAT CT_VAT { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RS_CART> RS_CART { get; set; }
 
         public virtual RS_PRODUCT RS_PRODUCT { get; set; }
     }
