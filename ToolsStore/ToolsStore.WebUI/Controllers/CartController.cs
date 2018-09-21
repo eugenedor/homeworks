@@ -39,6 +39,7 @@ namespace ToolsStore.WebUI.Controllers
             if (ModelState.IsValid)
             {
                 orderProcessor.ProcessOrder(cart, shippingDetails);
+                orderProcessor.SaveOrder(cart, shippingDetails);
                 cart.Clear();
                 return View("Completed");
             }

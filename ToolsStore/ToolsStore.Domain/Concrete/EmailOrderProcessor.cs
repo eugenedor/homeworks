@@ -12,6 +12,8 @@ namespace ToolsStore.Domain.Concrete
 {
     public class EmailOrderProcessor : IOrderProcessor
     {
+        private EFDbContext context = new EFDbContext();
+
         private EmailSettings emailSettings;
         public EmailOrderProcessor(EmailSettings settings)
         {
@@ -79,6 +81,43 @@ namespace ToolsStore.Domain.Concrete
                     mailMessage.BodyEncoding = Encoding.Unicode; //Encoding.ASCII;
                 }
                 smtpClient.Send(mailMessage);
+            }
+        }
+
+        public void SaveOrder(Cart cart, ShippingDetails shippingInfo)
+        {
+            RS_ORDER ordr = new RS_ORDER();
+            ordr.Surname = shippingInfo.Surname;
+            ordr.Name = shippingInfo.Name;
+            ordr.Phone = shippingInfo.Phone;
+            ordr.Email = shippingInfo.Email;
+            ordr.Line1 = shippingInfo.Line1;
+            ordr.Line2 = shippingInfo.Line2;
+            ordr.Line3 = shippingInfo.Line3;
+            ordr.City = shippingInfo.City;
+            ordr.State = shippingInfo.State;
+            ordr.Zip = shippingInfo.Zip;
+            ordr.Country = shippingInfo.Country;
+            ordr.GiftWrap = shippingInfo.GiftWrap;
+            ordr.DateOrder = DateTime.Now;
+
+            context.RS_ORDER.Add(ordr);
+            context.SaveChanges();
+
+            long orderId = ordr.OrderId;
+
+            if (orderId > 0)
+            {
+                foreach (CartLine crtLine in cart.Lines)
+                {
+                    RS_CART crt = new RS_CART();
+                    crt.OrderId = orderId;
+                    crt.ProductId = crtLine.Product.ProductId;
+                    crt.PriceId = crtLine.Product.PriceId;
+                    crt.Quantity = crtLine.Quantity;
+                    context.RS_CART.Add(crt);
+                }
+                context.SaveChanges();
             }
         }
     }
