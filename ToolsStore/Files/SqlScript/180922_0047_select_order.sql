@@ -15,4 +15,6 @@ from RS_ORDER ordr
      join RS_CART crt on ordr.OrderId = crt.OrderId
 	 join RS_PRODUCT pr on crt.ProductId = pr.ProductId
 	 join SK_EQUIPMENT eq on pr.EquipmentId = eq.EquipmentId
-	 left join RS_PRICE prc on crt.PriceId = prc.PriceId;
+	 left join RS_PRICE prc on crt.PriceId = prc.PriceId
+where ordr.OrderId = 1
+order by ordr.OrderId, crt.CartId;
