@@ -1,0 +1,47 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.MT_LOAD_RULE>
+
+@{
+    ViewBag.Title = "Администрирование: правила загрузки";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Правила загрузки</h1>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Код</th>
+        <th>Наименование файла </th>
+        <th>Активность</th>
+        <th>Метод загрузки</th>
+        <th>Путь к XSD-файлу</th>
+        <th>Наименование XSD-файла</th>
+        <th>Описание</th>
+        <th>Порядок</th>
+        <th>Действие</th>
+    </tr>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@item.LoadRuleId</td>
+            <td>@Html.ActionLink(item.Code, "Edit", new { item.LoadRuleId })</td>
+            <td>@item.FileName</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+            <td>@item.MethodLoad</td>
+            <td>@item.PathToXsd</td>
+            <td>@item.XsdName</td>
+            <td>@item.Descr</td>
+            <td>@item.Ord</td>
+            <td>
+                @using (Html.BeginForm("Delete", "Admin"))
+                {
+                    @Html.Hidden("LoadRuleId", item.LoadRuleId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("+ Добавить правило загрузки", "Create")
+</p>
