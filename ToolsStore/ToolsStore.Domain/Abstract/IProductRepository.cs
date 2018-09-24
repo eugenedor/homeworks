@@ -22,6 +22,8 @@ namespace ToolsStore.Domain.Abstract
 
         IQueryable<CT_VAT> Vats { get; }
 
+        IQueryable<MT_LOAD_RULE> LoadRules { get; }
+
         IEnumerable<Product> Products { get; }
     }
 }

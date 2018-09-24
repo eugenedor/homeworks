@@ -53,6 +53,11 @@ namespace ToolsStore.Domain.Concrete
             get { return context.CT_VAT; }
         }
 
+        public IQueryable<MT_LOAD_RULE> LoadRules
+        {
+            get { return context.MT_LOAD_RULE; }
+        }
+
         public IEnumerable<Product> Products
         {
             get
