@@ -1,14 +1,16 @@
+using System;
+using System.Collections.Generic;
+using System.Web.Mvc;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+
 namespace ToolsStore.Domain.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     public partial class MT_LOAD_RULE
     {
         [Key]
+        [HiddenInput(DisplayValue = false)]
         public long LoadRuleId { get; set; }
 
         [Required]
@@ -35,6 +37,7 @@ namespace ToolsStore.Domain.Entities
 
         [Required]
         [StringLength(250)]
+        [DataType(DataType.MultilineText)]
         public string Descr { get; set; }
 
         public int Ord { get; set; }

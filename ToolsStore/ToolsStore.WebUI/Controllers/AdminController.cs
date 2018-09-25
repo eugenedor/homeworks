@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using ToolsStore.Domain.Abstract;
+using ToolsStore.Domain.Entities;
 
 namespace ToolsStore.WebUI.Controllers
 {
@@ -16,10 +17,15 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        // GET: Admin
         public ViewResult Index()
         {
             return View(repository.LoadRules);
+        }
+
+        public ViewResult Edit(int loadRuleId)
+        {
+            MT_LOAD_RULE loadRule = repository.LoadRules.Where(p => p.LoadRuleId == loadRuleId).FirstOrDefault(); //.FirstOrDefault(p => p.LoadRuleId == loadRuleId);
+            return View(loadRule);
         }
     }
 }
