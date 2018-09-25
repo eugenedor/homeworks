@@ -18,7 +18,7 @@ namespace ToolsStore.UnitTests
         public void Index_Contains_All_LoadRules()
         {
             // Arrange - create the mock repository
-            Mock<IProductRepository> mock = new Mock<IProductRepository>();
+            Mock<IRuleRepository> mock = new Mock<IRuleRepository>();
             mock.Setup(m => m.LoadRules).Returns(new MT_LOAD_RULE[] {
                 new MT_LOAD_RULE {LoadRuleId = 1, FileName = "P1"},
                 new MT_LOAD_RULE {LoadRuleId = 2, FileName = "P2"},

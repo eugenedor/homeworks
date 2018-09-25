@@ -9,9 +9,9 @@ namespace ToolsStore.WebUI.Controllers
 {
     public class AdminController : Controller
     {
-        private IProductRepository repository;
+        private IRuleRepository repository;
 
-        public AdminController(IProductRepository repo)
+        public AdminController(IRuleRepository repo)
         {
             repository = repo;
         }
