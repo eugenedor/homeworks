@@ -74,5 +74,41 @@ namespace ToolsStore.UnitTests
             // Assert
             Assert.IsNull(result);
         }
+
+        [TestMethod]
+        public void Can_Save_Valid_Changes()
+        {
+            // Arrange - create mock repository
+            Mock<IRuleRepository> mock = new Mock<IRuleRepository>();
+            // Arrange - create the controller
+            AdminController target = new AdminController(mock.Object);
+            // Arrange - create a loadRule
+            MT_LOAD_RULE loadRule = new MT_LOAD_RULE { Code = "Test" };
+            // Act - try to save the loadRule
+            ActionResult result = target.Edit(loadRule);
+            // Assert - check that the repository was called
+            mock.Verify(m => m.SaveLoadRule(loadRule));
+            // Assert - check the method result type
+            Assert.IsNotInstanceOfType(result, typeof(ViewResult));
+        }
+
+        [TestMethod]
+        public void Cannot_Save_Invalid_Changes()
+        {
+            // Arrange - create mock repository
+            Mock<IRuleRepository> mock = new Mock<IRuleRepository>();
+            // Arrange - create the controller
+            AdminController target = new AdminController(mock.Object);
+            // Arrange - create a loadRule
+            MT_LOAD_RULE loadRule = new MT_LOAD_RULE { Code = "Test" };
+            // Arrange - add an error to the model state
+            target.ModelState.AddModelError("error", "error");
+            // Act - try to save the loadRule
+            ActionResult result = target.Edit(loadRule);
+            // Assert - check that the repository was not called
+            mock.Verify(m => m.SaveLoadRule(It.IsAny<MT_LOAD_RULE>()), Times.Never());
+            // Assert - check the method result type
+            Assert.IsInstanceOfType(result, typeof(ViewResult));
+        }
     }
 }

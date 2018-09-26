@@ -27,5 +27,22 @@ namespace ToolsStore.WebUI.Controllers
             MT_LOAD_RULE loadRule = repository.LoadRules.Where(p => p.LoadRuleId == loadRuleId).FirstOrDefault(); //.FirstOrDefault(p => p.LoadRuleId == loadRuleId);
             return View(loadRule);
         }
+
+        [HttpPost]
+        public ActionResult Edit(MT_LOAD_RULE loadRule)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveLoadRule(loadRule);
+                TempData["message"] = string.Format("{0} сохранено", loadRule.Code);
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                // что-то не так с значениями данных (there is something wrong with the data values)
+                return View(loadRule);
+            }
+        }
+
     }
 }

@@ -13,33 +13,35 @@ namespace ToolsStore.Domain.Entities
         [HiddenInput(DisplayValue = false)]
         public long LoadRuleId { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "¬ведите код правила загрузки")]
         [StringLength(50)]
         public string Code { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "¬ведите наименование файла")]
         [StringLength(100)]
         public string FileName { get; set; }
 
+        [Required(ErrorMessage = "”кажите признак активности")]
         public bool IsActive { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "¬ведите метод загрузки")]
         [StringLength(100)]
         public string MethodLoad { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "”кажите путь к xsd-файлу")]
         [StringLength(250)]
         public string PathToXsd { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "¬ведите наименование xsd-файла")]
         [StringLength(100)]
         public string XsdName { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "¬ведите описание")]
         [StringLength(250)]
         [DataType(DataType.MultilineText)]
         public string Descr { get; set; }
 
+        [Required(ErrorMessage = "”кажите пор€док")]
         public int Ord { get; set; }
     }
 }

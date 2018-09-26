@@ -8,5 +8,7 @@ namespace ToolsStore.Domain.Abstract
     public interface IRuleRepository
     {
         IQueryable<MT_LOAD_RULE> LoadRules { get; }
+
+        void SaveLoadRule(MT_LOAD_RULE loadRule);
     }
 }
