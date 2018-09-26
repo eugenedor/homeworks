@@ -110,5 +110,26 @@ namespace ToolsStore.UnitTests
             // Assert - check the method result type
             Assert.IsInstanceOfType(result, typeof(ViewResult));
         }
+
+        [TestMethod]
+        public void Can_Delete_Valid_LoadRules()
+        {
+            // Arrange - create a Product
+            MT_LOAD_RULE loadRule = new MT_LOAD_RULE { LoadRuleId = 2, Code = "Test" };
+            // Arrange - create the mock repository
+            Mock<IRuleRepository> mock = new Mock<IRuleRepository>();
+            mock.Setup(m => m.LoadRules).Returns(new MT_LOAD_RULE[] {
+                new MT_LOAD_RULE {LoadRuleId = 1, Code = "LR1"},
+                loadRule,
+                new MT_LOAD_RULE {LoadRuleId = 3, Code = "LR3"},
+            }.AsQueryable());
+            // Arrange - create the controller
+            AdminController target = new AdminController(mock.Object);
+            // Act - delete the product
+            target.Delete(loadRule.LoadRuleId);
+            // Assert - ensure that the repository delete method was
+            // called with the correct Product
+            mock.Verify(m => m.DeleteLoadRule(loadRule.LoadRuleId));
+        }
     }
 }

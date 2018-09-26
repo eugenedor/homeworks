@@ -10,5 +10,7 @@ namespace ToolsStore.Domain.Abstract
         IQueryable<MT_LOAD_RULE> LoadRules { get; }
 
         void SaveLoadRule(MT_LOAD_RULE loadRule);
+
+        MT_LOAD_RULE DeleteLoadRule(long LoadRuleId);
     }
 }

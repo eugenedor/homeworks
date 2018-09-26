@@ -44,5 +44,20 @@ namespace ToolsStore.WebUI.Controllers
             }
         }
 
+        public ViewResult Create()
+        {
+            return View("Edit", new MT_LOAD_RULE());
+        }
+
+        [HttpPost]
+        public ActionResult Delete(long LoadRuleId)
+        {
+            MT_LOAD_RULE deletedLoadRule = repository.DeleteLoadRule(LoadRuleId);
+            if (deletedLoadRule != null)
+            {
+                TempData["message"] = string.Format("{0} был удален", deletedLoadRule.Code);
+            }
+            return RedirectToAction("Index");
+        }
     }
 }
