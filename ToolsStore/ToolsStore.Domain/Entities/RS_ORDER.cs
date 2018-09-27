@@ -59,6 +59,7 @@ namespace ToolsStore.Domain.Entities
 
         public bool GiftWrap { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy hh:mm:ss}")]
         public DateTime? DateOrder { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.RS_ORDER>
+
+@{
+    ViewBag.Title = "Заказы";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1> Заказы</h1>
+
+<table class="Grid">
+    <tr>
+        <th>Номер заказа</th>
+        <th>Фамилия</th>
+        <th>Имя </th>
+        <th>Дата заказа</th>
+        <th>Мобильный телефон:</th>
+        <th>Электронная почта:</th>
+        <th>Линия 1</th>
+        <th>Город</th>
+        <th>Область</th>
+        <th>Страна</th>
+        <th>Упаковка</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(item.OrderId.ToString(), "Content", new { item.OrderId })</td>    
+            <td>@item.Surname</td>              
+            <td>@item.Name</td>        
+            <td>@Html.DisplayFor(modelItem => item.DateOrder)</td>
+            <td>@item.Phone</td>
+            <td>@item.Email</td>
+            <td>@item.Line1</td>
+            <td>@item.City</td>
+            <td>@item.State</td>
+            <td>@item.Country</td>
+            <td>@Html.DisplayFor(modelItem => item.GiftWrap)</td>
+        </tr>
+    }
+</table>
