@@ -22,7 +22,7 @@ namespace ToolsStore.Domain.Concrete
             get { return context.RS_CART; }
         }
 
-        public IEnumerable<CartOrd> Carts
+        public IEnumerable<CartX> Carts
         {
             get
             {
@@ -32,7 +32,7 @@ namespace ToolsStore.Domain.Concrete
                              join prc1 in context.RS_PRICE on pr.ProductId equals prc1.ProductId into prc2
                              from prc in prc2.DefaultIfEmpty()
                              orderby crt.CartId, crt.OrderId
-                             select new CartOrd
+                             select new CartX
                              {
                                  CartId = crt.CartId,
                                  OrderId = crt.OrderId,
@@ -40,9 +40,9 @@ namespace ToolsStore.Domain.Concrete
                                  ProductName = pr.Name,
                                  EquipmentName = eq.Name,
                                  PriceId = prc.PriceId,
-                                 Price = (prc.PriceWithVat != null) ? prc.PriceWithVat : 0,
+                                 Price = (prc != null) ? prc.PriceWithVat : 0,
                                  Quantity = crt.Quantity,
-                                 Summ = ((prc.PriceWithVat != null) ? prc.PriceWithVat : 0) * crt.Quantity
+                                 Summ = ((prc != null) ? prc.PriceWithVat : 0) * crt.Quantity
                              }).ToList();
 
                 return carts;
