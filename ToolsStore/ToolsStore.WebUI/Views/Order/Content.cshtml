@@ -26,4 +26,5 @@
         </tr>
     }
 </table>
-@Html.ActionLink("Вернуться в список заказов", "Index")
+<h3>Итого: @Model.Sum(x => x.Summ)</h3>
+@Html.ActionLink("Вернуться к списку заказов", "Index")
