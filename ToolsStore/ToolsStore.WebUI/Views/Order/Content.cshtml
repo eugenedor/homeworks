@@ -1,0 +1,29 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.CartX>
+
+@{
+    ViewBag.Title = "Содержание заказа";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Содержание заказа</h2>
+
+<table class="Grid">
+    <tr>
+        <th>Наименование</th>
+        <th>Тип оборудование</th>
+        <th>Цена</th>
+        <th>Количество</th>
+        <th>Сумма</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ProductName</td>
+            <td>@item.EquipmentName</td>
+            <td>@item.Price</td>
+            <td>@item.Quantity</td>
+            <td>@item.Summ</td>
+        </tr>
+    }
+</table>
+@Html.ActionLink("Вернуться в список заказов", "Index")

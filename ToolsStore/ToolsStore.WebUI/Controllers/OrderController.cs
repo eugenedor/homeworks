@@ -22,5 +22,11 @@ namespace ToolsStore.WebUI.Controllers
         {
             return View(repository.Orders.OrderByDescending(x => x.OrderId));
         }
+
+        public ViewResult Content(long orderId)
+        {
+            IEnumerable<CartX> carts = repository.Carts.Where(x => x.OrderId == orderId);
+            return View(carts);
+        }
     }
 }

@@ -35,6 +35,13 @@
             <td>@item.State</td>
             <td>@item.Country</td>
             <td>@Html.DisplayFor(modelItem => item.GiftWrap)</td>
+            <td>
+                @using (Html.BeginForm("Content", "Order"))
+                {
+                    @Html.Hidden("OrderId", item.OrderId)
+                    <input type="submit" value="просмотр" />
+                }
+            </td>
         </tr>
     }
 </table>
