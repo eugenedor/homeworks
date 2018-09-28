@@ -18,6 +18,8 @@ namespace ToolsStore.Domain.Entities
 
         public string EquipmentName { get; set; }
 
+        public string CategoryName { get; set; }
+
         public long? PriceId { get; set; }
 
         public decimal? Price { get; set; }

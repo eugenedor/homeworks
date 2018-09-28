@@ -27,10 +27,17 @@ namespace ToolsStore.Domain.Concrete
             get
             {
                 var carts = (from crt in context.RS_CART
+
                              join pr in context.RS_PRODUCT on crt.ProductId equals pr.ProductId
+
                              join eq in context.SK_EQUIPMENT on pr.EquipmentId equals eq.EquipmentId
+
+                             join ct1 in context.CT_CATEGORY on eq.CategoryId equals ct1.CategoryId into ct2
+                             from ct in ct2.DefaultIfEmpty()
+
                              join prc1 in context.RS_PRICE on pr.ProductId equals prc1.ProductId into prc2
                              from prc in prc2.DefaultIfEmpty()
+
                              orderby crt.CartId, crt.OrderId
                              select new CartX
                              {
@@ -39,7 +46,8 @@ namespace ToolsStore.Domain.Concrete
                                  ProductId = crt.ProductId,
                                  ProductName = pr.Name,
                                  EquipmentName = eq.Name,
-                                 PriceId = prc.PriceId,
+                                 CategoryName = (ct != null) ? ct.Name : string.Empty,
+                                 PriceId = (prc != null) ? prc.PriceId : -1,
                                  Price = (prc != null) ? prc.PriceWithVat : 0,
                                  Quantity = crt.Quantity,
                                  Summ = ((prc != null) ? prc.PriceWithVat : 0) * crt.Quantity
