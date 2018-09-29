@@ -1,16 +1,15 @@
 ﻿@model ToolsStore.Domain.Entities.MT_LOAD_RULE
 
 @{
-    ViewBag.Title = "Администрирование: редактирование " + @Model.Code;
+    ViewBag.Title = "Редактирование правил загрузки" + @Model.Code;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
 <h2>Редактирование @Model.Code</h2>
 
-@using (Html.BeginForm("Edit", "Admin"))
+@using (Html.BeginForm("Edit", "Rule"))
 {
     @Html.EditorForModel()
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Index")
 }
-

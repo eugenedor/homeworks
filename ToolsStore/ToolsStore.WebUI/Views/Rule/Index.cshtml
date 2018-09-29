@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<ToolsStore.Domain.Entities.MT_LOAD_RULE>
 
 @{
-    ViewBag.Title = "Администрирование: правила загрузки";
+    ViewBag.Title = "Правила загрузки";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -20,7 +20,8 @@
         <th>Порядок</th>
         <th>Действие</th>
     </tr>
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>@item.LoadRuleId</td>
             <td>@Html.ActionLink(item.Code, "Edit", new { item.LoadRuleId })</td>
@@ -32,7 +33,7 @@
             <td>@item.Descr</td>
             <td>@item.Ord</td>
             <td>
-                @using (Html.BeginForm("Delete", "Admin"))
+                @using (Html.BeginForm("Delete", "Rule"))
                 {
                     @Html.Hidden("LoadRuleId", item.LoadRuleId)
                     <input type="submit" value="удалить" />

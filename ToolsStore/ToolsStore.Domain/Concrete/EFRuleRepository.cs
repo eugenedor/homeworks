@@ -35,6 +35,7 @@ namespace ToolsStore.Domain.Concrete
                     dbEntry.PathToXsd = loadRule.PathToXsd;
                     dbEntry.XsdName = loadRule.XsdName;
                     dbEntry.Descr = loadRule.Descr;
+                    dbEntry.Ord = loadRule.Ord;
                 }
             }
             context.SaveChanges();

@@ -8,11 +8,11 @@ using ToolsStore.Domain.Entities;
 
 namespace ToolsStore.WebUI.Controllers
 {
-    public class AdminController : Controller
+    public class RuleController : Controller
     {
         private IRuleRepository repository;
 
-        public AdminController(IRuleRepository repo)
+        public RuleController(IRuleRepository repo)
         {
             repository = repo;
         }

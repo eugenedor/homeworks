@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="AdminTests.cs" />
     <Compile Include="CartTests.cs" />
+    <Compile Include="RuleTests.cs" />
     <Compile Include="UnitTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
