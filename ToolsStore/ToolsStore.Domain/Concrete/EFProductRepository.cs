@@ -120,5 +120,37 @@ namespace ToolsStore.Domain.Concrete
                 return products;
             }
         }
+
+        public void SaveCategory(CT_CATEGORY category)
+        {
+            category.DateLoad = DateTime.Now;
+            if (category.CategoryId == 0)
+            {
+                context.CT_CATEGORY.Add(category);
+            }
+            else
+            {
+                CT_CATEGORY dbEntry = context.CT_CATEGORY.Where(x => x.CategoryId == category.CategoryId).Single(); //.Find(loadRule.LoadRuleId);
+                if (dbEntry != null)
+                {
+                    dbEntry.Code = category.Code;
+                    dbEntry.Name = category.Name;
+                    dbEntry.Ord = category.Ord;
+                    dbEntry.DateLoad = category.DateLoad;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public CT_CATEGORY DeleteCategory(long categoryId)
+        {
+            CT_CATEGORY dbEntry = context.CT_CATEGORY.Where(x => x.CategoryId == categoryId).Single(); //.Find(LoadRuleId);
+            if (dbEntry != null)
+            {
+                context.CT_CATEGORY.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

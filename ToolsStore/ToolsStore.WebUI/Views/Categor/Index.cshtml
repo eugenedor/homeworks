@@ -25,9 +25,9 @@
             <td>@item.Ord</td>
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             <td>
-                @using (Html.BeginForm("Delete", "Сategory"))
+                @using (Html.BeginForm("Delete", "Categor"))
                 {
-                    @Html.Hidden("CategoryId", item.CategoryId)
+                    @Html.Hidden("categoryId", item.CategoryId)
                     <input type="submit" value="удалить" />
                 }
             </td>

@@ -41,9 +41,9 @@ namespace ToolsStore.Domain.Concrete
             context.SaveChanges();
         }
 
-        public MT_LOAD_RULE DeleteLoadRule(long LoadRuleId)
+        public MT_LOAD_RULE DeleteLoadRule(long loadRuleId)
         {
-            MT_LOAD_RULE dbEntry = context.MT_LOAD_RULE.Where(x => x.LoadRuleId == LoadRuleId).Single(); //.Find(LoadRuleId);
+            MT_LOAD_RULE dbEntry = context.MT_LOAD_RULE.Where(x => x.LoadRuleId == loadRuleId).Single(); //.Find(loadRuleId);
             if (dbEntry != null)
             {
                 context.MT_LOAD_RULE.Remove(dbEntry);

@@ -35,7 +35,7 @@
             <td>
                 @using (Html.BeginForm("Delete", "Rule"))
                 {
-                    @Html.Hidden("LoadRuleId", item.LoadRuleId)
+                    @Html.Hidden("loadRuleId", item.LoadRuleId)
                     <input type="submit" value="удалить" />
                 }
             </td>

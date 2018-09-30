@@ -285,6 +285,7 @@
     <Content Include="Views\Rule\Index.cshtml" />
     <Content Include="Views\Rule\Edit.cshtml" />
     <Content Include="Views\Categor\Index.cshtml" />
+    <Content Include="Views\Categor\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

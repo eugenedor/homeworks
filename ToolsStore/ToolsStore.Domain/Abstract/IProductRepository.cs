@@ -23,5 +23,9 @@ namespace ToolsStore.Domain.Abstract
         IQueryable<CT_VAT> Vats { get; }       
 
         IEnumerable<Product> Products { get; }
+
+        void SaveCategory(CT_CATEGORY category);
+
+        CT_CATEGORY DeleteCategory(long categoryId);
     }
 }

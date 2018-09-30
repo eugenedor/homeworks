@@ -50,9 +50,9 @@ namespace ToolsStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(long LoadRuleId)
+        public ActionResult Delete(long loadRuleId)
         {
-            MT_LOAD_RULE deletedLoadRule = repository.DeleteLoadRule(LoadRuleId);
+            MT_LOAD_RULE deletedLoadRule = repository.DeleteLoadRule(loadRuleId);
             if (deletedLoadRule != null)
             {
                 TempData["message"] = string.Format("{0} был удален", deletedLoadRule.Code);

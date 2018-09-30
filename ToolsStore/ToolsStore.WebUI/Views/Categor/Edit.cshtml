@@ -1,0 +1,20 @@
+﻿@model ToolsStore.Domain.Entities.CT_CATEGORY
+
+@{
+    ViewBag.Title = "Редактирование категорий" + @Model.Code;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактирование @Model.Code</h2>
+
+@using (Html.BeginForm("Edit", "Categor"))
+{
+    <div>@Html.HiddenFor(x => x.CategoryId)</div>
+    <div>Код: @Html.EditorFor(x => x.Code)</div>
+    <div>Наименование: @Html.EditorFor(x => x.Name)</div>
+    <div>Порядок: @Html.EditorFor(x => x.Ord)</div>
+    <div>@Html.HiddenFor(x => x.DateLoad)</div>
+    <div></div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Index")
+}
