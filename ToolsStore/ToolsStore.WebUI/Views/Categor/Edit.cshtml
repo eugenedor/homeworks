@@ -10,11 +10,16 @@
 @using (Html.BeginForm("Edit", "Categor"))
 {
     <div>@Html.HiddenFor(x => x.CategoryId)</div>
-    <div>Код: @Html.EditorFor(x => x.Code)</div>
-    <div>Наименование: @Html.EditorFor(x => x.Name)</div>
-    <div>Порядок: @Html.EditorFor(x => x.Ord)</div>
+    <div style="font-weight:bold">Код категории:</div>
+    <div>@Html.EditorFor(x => x.Code)</div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">Наименование:</div>
+    <div>@Html.EditorFor(x => x.Name)</div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">Порядок:</div>
+    <div>@Html.EditorFor(x => x.Ord)</div>
+    <div>&nbsp;</div>
     <div>@Html.HiddenFor(x => x.DateLoad)</div>
-    <div></div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Index")
 }
