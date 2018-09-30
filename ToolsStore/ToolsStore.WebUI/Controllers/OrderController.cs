@@ -12,7 +12,7 @@ namespace ToolsStore.WebUI.Controllers
     public class OrderController : Controller
     {
         private IOrderRepository repository;
-        // GET: Order
+
         public OrderController(IOrderRepository repo)
         {
             repository = repo;

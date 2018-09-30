@@ -217,6 +217,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Binders\CartModelBinder.cs" />
     <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\CategorController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -283,6 +284,7 @@
     <Content Include="Views\Order\Content.cshtml" />
     <Content Include="Views\Rule\Index.cshtml" />
     <Content Include="Views\Rule\Edit.cshtml" />
+    <Content Include="Views\Categor\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

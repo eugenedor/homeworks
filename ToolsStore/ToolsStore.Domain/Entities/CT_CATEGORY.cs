@@ -27,6 +27,7 @@ namespace ToolsStore.Domain.Entities
 
         public int? Ord { get; set; }
 
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy hh:mm:ss}")]
         public DateTime? DateLoad { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

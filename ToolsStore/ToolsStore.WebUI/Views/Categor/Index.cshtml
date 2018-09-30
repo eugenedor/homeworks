@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.CT_CATEGORY>
+
+@{
+    ViewBag.Title = "Категории";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Категории</h1>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Код</th>
+        <th>Наименование</th>
+        <th>Порядок</th>
+        <th>Дата загрузки</th>
+        <th>Действие</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@Html.ActionLink(item.Code, "Edit", new { item.CategoryId })</td>
+            <td>@item.Name</td>
+            <td>@item.Ord</td>
+            <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
+            <td>
+                @using (Html.BeginForm("Delete", "Сategory"))
+                {
+                    @Html.Hidden("CategoryId", item.CategoryId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("+ Добавить категорию", "Create")
+</p>
