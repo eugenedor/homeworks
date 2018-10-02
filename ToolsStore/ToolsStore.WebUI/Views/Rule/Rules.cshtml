@@ -24,7 +24,7 @@
     {
         <tr>
             <td>@item.LoadRuleId</td>
-            <td>@Html.ActionLink(item.Code, "Edit", new { item.LoadRuleId })</td>
+            <td>@Html.ActionLink(item.Code, "RuleEdit", new { item.LoadRuleId })</td>
             <td>@item.FileName</td>
             <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
             <td>@item.MethodLoad</td>
@@ -33,7 +33,7 @@
             <td>@item.Descr</td>
             <td>@item.Ord</td>
             <td>
-                @using (Html.BeginForm("Delete", "Rule"))
+                @using (Html.BeginForm("RuleDelete", "Rule"))
                 {
                     @Html.Hidden("loadRuleId", item.LoadRuleId)
                     <input type="submit" value="удалить" />
@@ -44,5 +44,5 @@
 </table>
 
 <p>
-    @Html.ActionLink("+ Добавить правило загрузки", "Create")
+    @Html.ActionLink("+ Добавить правило загрузки", "RuleCreate")
 </p>

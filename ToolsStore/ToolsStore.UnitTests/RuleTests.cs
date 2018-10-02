@@ -30,7 +30,7 @@ namespace ToolsStore.UnitTests
             // Arrange - create a controller
             RuleController target = new RuleController(mock.Object);
             // Action
-            MT_LOAD_RULE[] result = ((IEnumerable<MT_LOAD_RULE>)target.Index().ViewData.Model).ToArray();
+            MT_LOAD_RULE[] result = ((IEnumerable<MT_LOAD_RULE>)target.Rules().ViewData.Model).ToArray();
             // Assert
             Assert.AreEqual(result.Length, 3);
             Assert.AreEqual("LR1", result[0].Code);
@@ -51,9 +51,9 @@ namespace ToolsStore.UnitTests
             // Arrange - create the controller
             RuleController target = new RuleController(mock.Object);
             // Act
-            MT_LOAD_RULE p1 = target.Edit(1).ViewData.Model as MT_LOAD_RULE;
-            MT_LOAD_RULE p2 = target.Edit(2).ViewData.Model as MT_LOAD_RULE;
-            MT_LOAD_RULE p3 = target.Edit(3).ViewData.Model as MT_LOAD_RULE;
+            MT_LOAD_RULE p1 = target.RuleEdit(1).ViewData.Model as MT_LOAD_RULE;
+            MT_LOAD_RULE p2 = target.RuleEdit(2).ViewData.Model as MT_LOAD_RULE;
+            MT_LOAD_RULE p3 = target.RuleEdit(3).ViewData.Model as MT_LOAD_RULE;
             // Assert
             Assert.AreEqual(1, p1.LoadRuleId);
             Assert.AreEqual(2, p2.LoadRuleId);
@@ -73,7 +73,7 @@ namespace ToolsStore.UnitTests
             // Arrange - create the controller
             RuleController target = new RuleController(mock.Object);
             // Act
-            MT_LOAD_RULE result = (MT_LOAD_RULE)target.Edit(4).ViewData.Model;
+            MT_LOAD_RULE result = (MT_LOAD_RULE)target.RuleEdit(4).ViewData.Model;
             // Assert
             Assert.IsNull(result);
         }
@@ -88,7 +88,7 @@ namespace ToolsStore.UnitTests
             // Arrange - create a loadRule
             MT_LOAD_RULE loadRule = new MT_LOAD_RULE { Code = "Test" };
             // Act - try to save the loadRule
-            ActionResult result = target.Edit(loadRule);
+            ActionResult result = target.RuleEdit(loadRule);
             // Assert - check that the repository was called
             mock.Verify(m => m.SaveLoadRule(loadRule));
             // Assert - check the method result type
@@ -107,7 +107,7 @@ namespace ToolsStore.UnitTests
             // Arrange - add an error to the model state
             target.ModelState.AddModelError("error", "error");
             // Act - try to save the loadRule
-            ActionResult result = target.Edit(loadRule);
+            ActionResult result = target.RuleEdit(loadRule);
             // Assert - check that the repository was not called
             mock.Verify(m => m.SaveLoadRule(It.IsAny<MT_LOAD_RULE>()), Times.Never());
             // Assert - check the method result type
@@ -129,7 +129,7 @@ namespace ToolsStore.UnitTests
             // Arrange - create the controller
             RuleController target = new RuleController(mock.Object);
             // Act - delete the product
-            target.Delete(loadRule.LoadRuleId);
+            target.RuleDelete(loadRule.LoadRuleId);
             // Assert - ensure that the repository delete method was
             // called with the correct Product
             mock.Verify(m => m.DeleteLoadRule(loadRule.LoadRuleId));

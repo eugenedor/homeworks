@@ -17,25 +17,25 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Index()
+        public ViewResult Rules()
         {
             return View(repository.LoadRules);
         }
 
-        public ViewResult Edit(int loadRuleId)
+        public ViewResult RuleEdit(int loadRuleId)
         {
             MT_LOAD_RULE loadRule = repository.LoadRules.Where(p => p.LoadRuleId == loadRuleId).FirstOrDefault(); //.FirstOrDefault(p => p.LoadRuleId == loadRuleId);
             return View(loadRule);
         }
 
         [HttpPost]
-        public ActionResult Edit(MT_LOAD_RULE loadRule)
+        public ActionResult RuleEdit(MT_LOAD_RULE loadRule)
         {
             if (ModelState.IsValid)
             {
                 repository.SaveLoadRule(loadRule);
                 TempData["message"] = string.Format("{0} сохранено", loadRule.Code);
-                return RedirectToAction("Index");
+                return RedirectToAction("Rules");
             }
             else
             {
@@ -44,20 +44,20 @@ namespace ToolsStore.WebUI.Controllers
             }
         }
 
-        public ViewResult Create()
+        public ViewResult RuleCreate()
         {
-            return View("Edit", new MT_LOAD_RULE());
+            return View("RuleEdit", new MT_LOAD_RULE());
         }
 
         [HttpPost]
-        public ActionResult Delete(long loadRuleId)
+        public ActionResult RuleDelete(long loadRuleId)
         {
             MT_LOAD_RULE deletedLoadRule = repository.DeleteLoadRule(loadRuleId);
             if (deletedLoadRule != null)
             {
                 TempData["message"] = string.Format("{0} был удален", deletedLoadRule.Code);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Rules");
         }
     }
 }

@@ -7,9 +7,9 @@
 
 <h2>Редактирование @Model.Code</h2>
 
-@using (Html.BeginForm("Edit", "Rule"))
+@using (Html.BeginForm("RuleEdit", "Rule"))
 {
     @Html.EditorForModel()
     <input type="submit" value="Сохранить" />
-    @Html.ActionLink("Отменить и вернуться к списку", "Index")
+    @Html.ActionLink("Отменить и вернуться к списку", "Rules")
 }
