@@ -24,9 +24,9 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.ActionLink(item.OrderId.ToString(), "Content", new { item.OrderId })</td>    
-            <td>@item.Surname</td>              
-            <td>@item.Name</td>        
+            <td>@Html.ActionLink(item.OrderId.ToString(), "OrderContent", new { item.OrderId })</td>
+            <td>@item.Surname</td>
+            <td>@item.Name</td>
             <td>@Html.DisplayFor(modelItem => item.DateOrder)</td>
             <td>@item.Phone</td>
             <td>@item.Email</td>
@@ -36,7 +36,7 @@
             <td>@item.Country</td>
             <td>@Html.DisplayFor(modelItem => item.GiftWrap)</td>
             <td>
-                @using (Html.BeginForm("Content", "Order"))
+                @using (Html.BeginForm("OrderContent", "Order"))
                 {
                     @Html.Hidden("OrderId", item.OrderId)
                     <input type="submit" value="просмотр" />
@@ -45,3 +45,4 @@
         </tr>
     }
 </table>
+

@@ -18,12 +18,12 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Index()
+        public ViewResult Orders()
         {
             return View(repository.Orders.OrderByDescending(x => x.OrderId));
         }
 
-        public ViewResult Content(long orderId)
+        public ViewResult OrderContent(long orderId)
         {
             IEnumerable<CartX> carts = repository.Carts.Where(x => x.OrderId == orderId);
             return View(carts);
