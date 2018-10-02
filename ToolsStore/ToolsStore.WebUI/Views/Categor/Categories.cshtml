@@ -20,12 +20,12 @@
     {
         <tr>
             <td>@item.CategoryId</td>
-            <td>@Html.ActionLink(item.Code, "Edit", new { item.CategoryId })</td>
+            <td>@Html.ActionLink(item.Code, "CategoryEdit", new { item.CategoryId })</td>
             <td>@item.Name</td>
             <td>@item.Ord</td>
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             <td>
-                @using (Html.BeginForm("Delete", "Categor"))
+                @using (Html.BeginForm("CategoryDelete", "Categor"))
                 {
                     @Html.Hidden("categoryId", item.CategoryId)
                     <input type="submit" value="удалить" />
@@ -36,5 +36,5 @@
 </table>
 
 <p>
-    @Html.ActionLink("+ Добавить категорию", "Create")
+    @Html.ActionLink("+ Добавить категорию", "CategoryCreate")
 </p>

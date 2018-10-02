@@ -17,25 +17,25 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Index()
+        public ViewResult Categories()
         {
             return View(repository.Categories);
         }
 
-        public ViewResult Edit(long categoryId)
+        public ViewResult CategoryEdit(long categoryId)
         {
             CT_CATEGORY category = repository.Categories.Where(p => p.CategoryId == categoryId).FirstOrDefault();
             return View(category);
         }
 
         [HttpPost]
-        public ActionResult Edit(CT_CATEGORY category)
+        public ActionResult CategoryEdit(CT_CATEGORY category)
         {
             if (ModelState.IsValid)
             {
                 repository.SaveCategory(category);
                 TempData["message"] = string.Format("{0} сохранено", category.Code);
-                return RedirectToAction("Index");
+                return RedirectToAction("Categories");
             }
             else
             {
@@ -44,20 +44,20 @@ namespace ToolsStore.WebUI.Controllers
             }
         }
 
-        public ViewResult Create()
+        public ViewResult CategoryCreate()
         {
-            return View("Edit", new CT_CATEGORY());
+            return View("CategoryEdit", new CT_CATEGORY());
         }
 
         [HttpPost]
-        public ActionResult Delete(long categoryId)
+        public ActionResult CategoryDelete(long categoryId)
         {
             CT_CATEGORY deletedCategory = repository.DeleteCategory(categoryId);
             if (deletedCategory != null)
             {
                 TempData["message"] = string.Format("{0} был удален", deletedCategory.Code);
             }
-            return RedirectToAction("Index");
+            return RedirectToAction("Categories");
         }
     }
 }
