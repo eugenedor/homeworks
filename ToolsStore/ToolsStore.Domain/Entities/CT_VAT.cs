@@ -17,7 +17,7 @@ namespace ToolsStore.Domain.Entities
         [Key]
         public long VatId { get; set; }
 
-        public long Vat { get; set; }
+        public int Code { get; set; }
 
         [Required]
         [StringLength(100)]

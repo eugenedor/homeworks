@@ -68,8 +68,6 @@ namespace ToolsStore.Domain.Entities
 
         public DateTime? DateEnd { get; set; }
 
-        public long? Vat { get; set; }
-
         public string VatName { get; set; }
 
         public bool? VatRem { get; set; }

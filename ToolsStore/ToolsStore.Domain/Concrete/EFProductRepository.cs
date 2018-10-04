@@ -112,7 +112,6 @@ namespace ToolsStore.Domain.Concrete
                                     PriceWithoutVat = prc.PriceWithoutVat,
                                     DateBegin = prc.DateBegin,
                                     DateEnd = prc.DateEnd,
-                                    Vat = v.Vat,
                                     VatName = v.Name,
                                     VatRem = v.Rem
                                 }).ToList();

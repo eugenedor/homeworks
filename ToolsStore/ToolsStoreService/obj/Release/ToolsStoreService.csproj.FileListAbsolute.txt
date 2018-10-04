@@ -10,3 +10,4 @@ E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.csproj.Ge
 E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.exe
 E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.pdb
 E:\projects\ToolsStore\ToolsStoreService\bin\Release\xsd\Vat.xsd
+E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.csprojResolveAssemblyReference.cache

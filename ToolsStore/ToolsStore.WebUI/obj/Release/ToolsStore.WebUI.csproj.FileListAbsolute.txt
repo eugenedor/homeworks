@@ -79,3 +79,17 @@ E:\projects\ToolsStore\ToolsStore.WebUI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\projects\ToolsStore\ToolsStore.WebUI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\projects\ToolsStore\ToolsStore.WebUI\obj\Release\ToolsStore.WebUI.dll
 E:\projects\ToolsStore\ToolsStore.WebUI\obj\Release\ToolsStore.WebUI.pdb
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\Castle.Core.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\Moq.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\Ninject.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\System.Threading.Tasks.Extensions.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\System.ValueTuple.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\ToolsStore.Domain.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\ToolsStore.Domain.pdb
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\Castle.Core.xml
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\Moq.pdb
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\Moq.xml
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\Ninject.xml
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\System.Threading.Tasks.Extensions.xml
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\System.ValueTuple.xml
+E:\projects\ToolsStore\ToolsStore.WebUI\obj\Release\ToolsStore.WebUI.csprojResolveAssemblyReference.cache
