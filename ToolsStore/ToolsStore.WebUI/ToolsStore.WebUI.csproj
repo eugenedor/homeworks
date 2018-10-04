@@ -288,6 +288,7 @@
     <Content Include="Views\Categor\Categories.cshtml" />
     <Content Include="Views\Categor\CategoryEdit.cshtml" />
     <Content Include="Views\Vat\Vats.cshtml" />
+    <Content Include="Views\Vat\VatEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

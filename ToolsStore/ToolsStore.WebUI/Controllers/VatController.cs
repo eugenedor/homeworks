@@ -21,5 +21,43 @@ namespace ToolsStore.WebUI.Controllers
         {
             return View(repository.Vats);
         }
+
+        public ViewResult VatEdit(long vatId)
+        {
+            CT_VAT vat = repository.Vats.Where(p => p.VatId == vatId).FirstOrDefault();
+            return View(vat);
+        }
+
+        [HttpPost]
+        public ActionResult VatEdit(CT_VAT vat)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveVat(vat);
+                TempData["message"] = string.Format("{0} сохранено", vat.Code.ToString());
+                return RedirectToAction("Vats");
+            }
+            else
+            {
+                // что-то не так с значениями данных (there is something wrong with the data values)
+                return View(vat);
+            }
+        }
+
+        public ViewResult VatCreate()
+        {
+            return View("VatEdit", new CT_VAT());
+        }
+
+        [HttpPost]
+        public ActionResult VatDelete(long vatId)
+        {
+            CT_VAT deletedVat = repository.DeleteVat(vatId);
+            if (deletedVat != null)
+            {
+                TempData["message"] = string.Format("{0} был удален", deletedVat.Code.ToString());
+            }
+            return RedirectToAction("Vats");
+        }
     }
 }

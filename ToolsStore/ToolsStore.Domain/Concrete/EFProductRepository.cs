@@ -151,5 +151,37 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+
+        public void SaveVat(CT_VAT vat)
+        {
+            vat.DateLoad = DateTime.Now;
+            if (vat.VatId == 0)
+            {
+                context.CT_VAT.Add(vat);
+            }
+            else
+            {
+                CT_VAT dbEntry = context.CT_VAT.Where(x => x.VatId == vat.VatId).Single();
+                if (dbEntry != null)
+                {
+                    dbEntry.Code = vat.Code;
+                    dbEntry.Name = vat.Name;
+                    dbEntry.Rem = vat.Rem;
+                    dbEntry.DateLoad = vat.DateLoad;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public CT_VAT DeleteVat(long vatId)
+        {
+            CT_VAT dbEntry = context.CT_VAT.Where(x => x.VatId == vatId).Single();
+            if (dbEntry != null)
+            {
+                context.CT_VAT.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

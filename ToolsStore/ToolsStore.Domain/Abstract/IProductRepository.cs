@@ -27,5 +27,9 @@ namespace ToolsStore.Domain.Abstract
         void SaveCategory(CT_CATEGORY category);
 
         CT_CATEGORY DeleteCategory(long categoryId);
+
+        void SaveVat(CT_VAT vat);
+
+        CT_VAT DeleteVat(long vatId);
     }
 }
