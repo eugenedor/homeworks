@@ -222,6 +222,7 @@
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RuleController.cs" />
+    <Compile Include="Controllers\VatController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -286,6 +287,7 @@
     <Content Include="Views\Order\OrderContent.cshtml" />
     <Content Include="Views\Categor\Categories.cshtml" />
     <Content Include="Views\Categor\CategoryEdit.cshtml" />
+    <Content Include="Views\Vat\Vats.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

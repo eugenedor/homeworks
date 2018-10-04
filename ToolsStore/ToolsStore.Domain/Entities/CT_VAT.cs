@@ -25,6 +25,8 @@ namespace ToolsStore.Domain.Entities
 
         public bool Rem { get; set; }
 
+        [Display(Name = "Дата загрузки")]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm:ss}")]
         public DateTime? DateLoad { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

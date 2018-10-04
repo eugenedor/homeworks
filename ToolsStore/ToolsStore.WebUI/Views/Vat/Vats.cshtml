@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.CT_VAT>
+
+@{
+    ViewBag.Title = "НДС";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>НДС</h1>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Код</th>
+        <th>Наименование</th>
+        <th>Признак удаления</th>
+        <th>Дата загрузки</th>
+        <th>Действие</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.VatId</td>
+            <td>@Html.ActionLink(item.Code.ToString(), "VatEdit", new { item.VatId })</td>
+            <td>@item.Name</td>
+            <td>@Html.DisplayFor(modelItem => item.Rem)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
+            <td>
+                @using (Html.BeginForm("VatDelete", "Vat"))
+                {
+                    @Html.Hidden("vatId", item.VatId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>
+
+<p>
+    @Html.ActionLink("+ Добавить НДС", "VatCreate")
+</p>
