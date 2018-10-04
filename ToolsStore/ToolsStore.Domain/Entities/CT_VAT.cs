@@ -1,11 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+using System.Web.Mvc;
+
 namespace ToolsStore.Domain.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     public partial class CT_VAT
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -15,14 +16,19 @@ namespace ToolsStore.Domain.Entities
         }
 
         [Key]
+        [HiddenInput(DisplayValue = false)]
         public long VatId { get; set; }
 
+        [Display(Name = "Код НДС")]
+        [Required(ErrorMessage = "Введите код категории")]
         public int Code { get; set; }
 
-        [Required]
         [StringLength(100)]
+        [Display(Name = "Наименование")]
+        [Required(ErrorMessage = "Введите наименование")]
         public string Name { get; set; }
 
+        [Display(Name = "Признак удаления")]
         public bool Rem { get; set; }
 
         [Display(Name = "Дата загрузки")]
