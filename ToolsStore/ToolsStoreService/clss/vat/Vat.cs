@@ -3,6 +3,7 @@
 namespace ToolsStoreService.clss.vat
 {
 
+
     /// <remarks/>
     [System.CodeDom.Compiler.GeneratedCodeAttribute("xsd", "4.6.1055.0")]
     [System.SerializableAttribute()]
@@ -109,22 +110,22 @@ namespace ToolsStoreService.clss.vat
     public partial class packetRec
     {
 
-        private long vatField;
+        private int codeField;
 
         private string nameField;
 
         private bool remField;
 
         /// <remarks/>
-        public long Vat
+        public int Code
         {
             get
             {
-                return this.vatField;
+                return this.codeField;
             }
             set
             {
-                this.vatField = value;
+                this.codeField = value;
             }
         }
 

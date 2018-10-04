@@ -36,7 +36,7 @@ namespace ToolsStoreService.mngr
                         return false;
                     }
 
-                    if (!DataBaseManager.LoadVat(rec.Vat, rec.Name, rec.Rem))
+                    if (!DataBaseManager.LoadVat(rec.Code, rec.Name, rec.Rem))
                         return false;
                 }
                 return true;

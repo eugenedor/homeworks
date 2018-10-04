@@ -108,7 +108,7 @@ namespace ToolsStoreService.db
             }                          
         }
 
-        public static bool LoadVat(long vat, string name, bool rem)
+        public static bool LoadVat(int code, string name, bool rem)
         {
             string conn;
             conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
@@ -119,11 +119,11 @@ namespace ToolsStoreService.db
 
             try
             {
-                cmd.Parameters.Add("@vat", SqlDbType.BigInt);
+                cmd.Parameters.Add("@code", SqlDbType.Int);
                 cmd.Parameters.Add("@name", SqlDbType.NVarChar, 100);
                 cmd.Parameters.Add("@rem", SqlDbType.Bit);
 
-                cmd.Parameters["@vat"].Value = vat;
+                cmd.Parameters["@code"].Value = code;
                 cmd.Parameters["@name"].Value = name;
                 cmd.Parameters["@rem"].Value = rem;
 

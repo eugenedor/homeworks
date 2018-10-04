@@ -103,19 +103,19 @@ public partial class packetHdr {
 [System.Xml.Serialization.XmlTypeAttribute(AnonymousType=true)]
 public partial class packetRec {
     
-    private long vatField;
+    private int codeField;
     
     private string nameField;
     
     private bool remField;
     
     /// <remarks/>
-    public long Vat {
+    public int Code {
         get {
-            return this.vatField;
+            return this.codeField;
         }
         set {
-            this.vatField = value;
+            this.codeField = value;
         }
     }
     

@@ -6,22 +6,22 @@
     <date>2018.07.25</date>
   </hdr>
   <rec>
-    <Vat>0</Vat>
+    <Code>0</Code>
     <Name>0%</Name>
     <Rem>0</Rem>
   </rec>
   <rec>
-    <Vat>10</Vat>
+    <Code>10</Code>
     <Name>10%</Name>
     <Rem>0</Rem>
   </rec>
   <rec>
-    <Vat>18</Vat>
+    <Code>18</Code>
     <Name>18%</Name>
     <Rem>0</Rem>
   </rec>
   <rec>
-    <Vat>20</Vat>
+    <Code>20</Code>
     <Name>20%</Name>
     <Rem>0</Rem>
   </rec>  

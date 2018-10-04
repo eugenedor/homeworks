@@ -15,14 +15,14 @@
         <xs:element maxOccurs="unbounded" name="rec">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Vat" type="xs:long" />
+              <xs:element name="Code" type="xs:int" />
               <xs:element name="Name">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100"/>
                   </xs:restriction>
                 </xs:simpleType>
-              </xs:element>
+              </xs:element>              
               <xs:element name="Rem" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
