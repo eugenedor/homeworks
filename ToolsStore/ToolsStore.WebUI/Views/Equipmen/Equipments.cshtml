@@ -1,0 +1,43 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.SK_EQUIPMENT>
+
+@{
+    ViewBag.Title = "Тип оборудования";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Тип оборудования</h1>
+
+@*<p>
+    @Html.ActionLink("+ Добавить тип оборудования", "EquipmentCreate")
+</p>*@
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Код</th>
+        <th>Наименование</th>
+        <th>Наименование (добавочное)</th>
+        <th>Категория</th>
+        <th>Порядок</th>
+        @*<th>Действие</th>*@
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.EquipmentId</td>
+            <td>@item.Code</td>
+            @*<td>@Html.ActionLink(item.Code, "EquipmentEdit", new { item.EquipmentId })</td>*@
+            <td>@item.Name</td>
+            <td>@item.NameExtra</td>
+            <td>@Html.DisplayFor(modelItem => item.CT_CATEGORY.Name)</td>
+            <td>@item.Ord</td>
+            @*<td>
+                @using (Html.BeginForm("EquipmentDelete", "Equipmen"))
+                {
+                    @Html.Hidden("equipmentId", item.EquipmentId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>*@
+        </tr>
+    }
+</table>

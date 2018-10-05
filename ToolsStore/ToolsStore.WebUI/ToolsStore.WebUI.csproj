@@ -218,6 +218,7 @@
     <Compile Include="Binders\CartModelBinder.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategorController.cs" />
+    <Compile Include="Controllers\EquipmenController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -289,6 +290,7 @@
     <Content Include="Views\Categor\CategoryEdit.cshtml" />
     <Content Include="Views\Vat\Vats.cshtml" />
     <Content Include="Views\Vat\VatEdit.cshtml" />
+    <Content Include="Views\Equipmen\Equipments.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
