@@ -31,5 +31,9 @@ namespace ToolsStore.Domain.Abstract
         void SaveVat(CT_VAT vat);
 
         CT_VAT DeleteVat(long vatId);
+
+        void SaveEquipment(SK_EQUIPMENT equipment);
+
+        SK_EQUIPMENT DeleteEquipment(long equipmentId);
     }
 }

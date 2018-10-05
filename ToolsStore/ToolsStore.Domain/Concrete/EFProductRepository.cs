@@ -183,5 +183,38 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+
+        public void SaveEquipment(SK_EQUIPMENT equipment)
+        {
+            if (equipment.EquipmentId == 0)
+            {
+                context.SK_EQUIPMENT.Add(equipment);
+            }
+            else
+            {
+                SK_EQUIPMENT dbEntry = context.SK_EQUIPMENT.Where(x => x.EquipmentId == equipment.EquipmentId).Single();
+                if (dbEntry != null)
+                {
+                    dbEntry.CategoryId = equipment.CategoryId;
+                    dbEntry.Code = equipment.Code;
+                    dbEntry.Name = equipment.Name;
+                    dbEntry.NameExtra = equipment.NameExtra;
+                    dbEntry.Ord = equipment.Ord;
+                    dbEntry.CT_CATEGORY = equipment.CT_CATEGORY;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public SK_EQUIPMENT DeleteEquipment(long equipmentId)
+        {
+            SK_EQUIPMENT dbEntry = context.SK_EQUIPMENT.Where(x => x.EquipmentId == equipmentId).Single();
+            if (dbEntry != null)
+            {
+                context.SK_EQUIPMENT.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }
