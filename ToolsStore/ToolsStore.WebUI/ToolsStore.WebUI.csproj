@@ -291,6 +291,7 @@
     <Content Include="Views\Vat\Vats.cshtml" />
     <Content Include="Views\Vat\VatEdit.cshtml" />
     <Content Include="Views\Equipmen\Equipments.cshtml" />
+    <Content Include="Views\Equipmen\EquipmentEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

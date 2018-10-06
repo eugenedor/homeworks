@@ -22,5 +22,27 @@ namespace ToolsStore.WebUI.Controllers
         {
             return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments).Include("CT_CATEGORY"));
         }
+
+        public ViewResult EquipmentEdit(long equipmentId)
+        {
+            SK_EQUIPMENT equipment = repository.Equipments.Where(p => p.EquipmentId == equipmentId).FirstOrDefault();
+            return View(equipment);
+        }
+
+        [HttpPost]
+        public ActionResult EquipmentEdit(SK_EQUIPMENT equipment)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveEquipment(equipment);
+                TempData["message"] = string.Format("{0} сохранено", equipment.Code);
+                return RedirectToAction("Equipments");
+            }
+            else
+            {
+                // что-то не так с значениями данных (there is something wrong with the data values)
+                return View(equipment);
+            }
+        }
     }
 }

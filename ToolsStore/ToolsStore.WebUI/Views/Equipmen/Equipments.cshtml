@@ -25,8 +25,7 @@
     {
         <tr>
             <td>@item.EquipmentId</td>
-            <td>@item.Code</td>
-            @*<td>@Html.ActionLink(item.Code, "EquipmentEdit", new { item.EquipmentId })</td>*@
+            <td>@Html.ActionLink(item.Code, "EquipmentEdit", new { item.EquipmentId })</td>
             <td>@item.Name</td>
             <td>@item.NameExtra</td>
             <td>@Html.DisplayFor(modelItem => item.CT_CATEGORY.Name)</td>

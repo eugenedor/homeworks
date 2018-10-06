@@ -10,27 +10,32 @@
 @using (Html.BeginForm("VatEdit", "Vat"))
 {
     <div>
-        @Html.HiddenFor(x => x.VatId)</div>
+        @Html.HiddenFor(x => x.VatId)
+    </div>
     <div style="font-weight:bold">
-        Код НДС:</div>
+        Код НДС:
+    </div>
     <div>
-        @Html.EditorFor(x => x.Code)</div>
-    <div>
-        &nbsp;</div>
+        @Html.EditorFor(x => x.Code)
+    </div>
+    <div>&nbsp;</div>
     <div style="font-weight:bold">
-        Наименование:</div>
+        Наименование:
+    </div>
     <div>
-        @Html.EditorFor(x => x.Name)</div>
-    <div>
-        &nbsp;</div>
+        @Html.EditorFor(x => x.Name)
+    </div>
+    <div>&nbsp;</div>
     <div style="font-weight:bold">
-        Признак удаления:</div>
+        Признак удаления:
+    </div>
     <div>
-        @Html.EditorFor(x => x.Rem)</div>
+        @Html.EditorFor(x => x.Rem)
+    </div>
+    <div>&nbsp;</div>
     <div>
-        &nbsp;</div>
-    <div>
-        @Html.HiddenFor(x => x.DateLoad)</div>
+        @Html.HiddenFor(x => x.DateLoad)
+    </div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Vats")
 }
