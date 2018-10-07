@@ -1,50 +1,51 @@
-﻿@model ToolsStore.Domain.Entities.SK_EQUIPMENT
+﻿@model ToolsStore.WebUI.Models.EquipmentViewModel
 
 @{
-    ViewBag.Title = "Редактирование типа оборудования" + Model.Code;
+    ViewBag.Title = "Редактирование типа оборудования" + Model.Equipment.Code;
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Редактирование @Model.Code</h2>
+<h2>Редактирование @Model.Equipment.Code</h2>
 
 @using (Html.BeginForm("EquipmentEdit", "Equipmen"))
 {
     <div>
-        @Html.HiddenFor(x => x.EquipmentId)
+        @Html.HiddenFor(x => x.Equipment.EquipmentId)
     </div>
     <div style="font-weight:bold">
         Код типа оборудования:
     </div>
     <div>
-        @Html.EditorFor(x => x.Code)
+        @Html.EditorFor(x => x.Equipment.Code)
     </div>
     <div>&nbsp;</div>
     <div style="font-weight:bold">
         Категория:
     </div>
     <div>
-        @Html.EditorFor(x => x.CategoryId)
+        @Html.DropDownListFor(m => m.Equipment.CategoryId, new SelectList(Model.Categories, "CategoryId", "Name"), new { style = "width:338px" })
     </div>
     <div>&nbsp;</div>
     <div style="font-weight:bold">
-        Наименование:</div>
-    <div>
-        @Html.EditorFor(x => x.Name)
-    </div>
-    <div>&nbsp;</div>
-    <div style="font-weight:bold">
-        Наименование (добавочное):
+        Наименование:
     </div>
     <div>
-        @Html.EditorFor(x => x.NameExtra)
+        @Html.EditorFor(x => x.Equipment.Name)
     </div>
-    <div>&nbsp;</div>
-    <div style="font-weight:bold">
-        Порядок:
-    </div>
-    <div>
-        @Html.EditorFor(x => x.Ord)
-    </div>
-    <input type="submit" value="Сохранить" />
-    @Html.ActionLink("Отменить и вернуться к списку", "Equipments")
+        <div>&nbsp;</div>
+        <div style="font-weight:bold">
+            Наименование (добавочное):
+        </div>
+        <div>
+            @Html.EditorFor(x => x.Equipment.NameExtra)
+        </div>
+        <div>&nbsp;</div>
+        <div style="font-weight:bold">
+            Порядок:
+        </div>
+        <div>
+            @Html.EditorFor(x => x.Equipment.Ord)
+        </div>
+        <input type="submit" value="Сохранить" />
+        @Html.ActionLink("Отменить и вернуться к списку", "Equipments")
 }
