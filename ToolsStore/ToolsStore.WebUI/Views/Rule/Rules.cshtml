@@ -7,6 +7,14 @@
 
 <h1>Правила загрузки</h1>
 
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index", "Admin")
+</p>
+
+<p>
+    @Html.ActionLink("+ Добавить правило загрузки", "RuleCreate")
+</p>
+
 <table class="Grid">
     <tr>
         <th>ID</th>
@@ -42,7 +50,3 @@
         </tr>
     }
 </table>
-
-<p>
-    @Html.ActionLink("+ Добавить правило загрузки", "RuleCreate")
-</p>

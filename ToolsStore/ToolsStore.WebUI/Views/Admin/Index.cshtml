@@ -1,0 +1,38 @@
+﻿
+@{
+    ViewBag.Title = "Администирование";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Администирование</h2>
+<hr align="left" width="100%" size="3" />
+
+<h3>Справочники</h3>
+<div>
+    @Html.ActionLink("Категории", "Categories", "Categor")
+</div>
+</br>
+<div>
+    @Html.ActionLink("Тип оборудования", "Equipments", "Equipmen")
+</div>
+</br>
+<div>
+    @Html.ActionLink("НДС", "Vats", "Vat")
+</div>
+<hr align="left" width="100%" size="3" />
+
+<h3>Сервис загрузки</h3>
+<div>
+    @Html.ActionLink("Правила загрузки", "Rules", "Rule")
+</div>
+<hr align="left" width="100%" size="3" />
+
+<h3>Магазин</h3>
+<div>
+    @Html.ActionLink("Магазин инструментов", "List", "Product")
+</div>
+</br>
+<div>
+    @Html.ActionLink("Заказы", "Orders", "Order")
+</div>
+<hr align="left" width="100%" size="3" />

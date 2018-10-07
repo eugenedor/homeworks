@@ -7,6 +7,14 @@
 
 <h1>Категории</h1>
 
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index", "Admin")
+</p>
+
+<p>
+    @Html.ActionLink("+ Добавить категорию", "CategoryCreate")
+</p>
+
 <table class="Grid">
     <tr>
         <th>ID</th>
@@ -34,7 +42,3 @@
         </tr>
     }
 </table>
-
-<p>
-    @Html.ActionLink("+ Добавить категорию", "CategoryCreate")
-</p>
