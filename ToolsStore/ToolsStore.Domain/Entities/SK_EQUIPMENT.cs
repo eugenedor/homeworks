@@ -17,7 +17,7 @@ namespace ToolsStore.Domain.Entities
         [Key]
         public long EquipmentId { get; set; }
 
-        public long? CategoryId { get; set; }
+        public long CategoryId { get; set; }
 
         [Required]
         [StringLength(50)]

@@ -20,7 +20,7 @@ namespace ToolsStore.WebUI.Controllers
         public PartialViewResult MenuEquipment(long category = -1, long equipment = -1)
         {            
             if (category == -1 && equipment >= 0)
-                category = repository.Equipments.Where(x => x.EquipmentId == equipment).First().CategoryId ?? -1;
+                category = repository.Equipments.Where(x => x.EquipmentId == equipment).First().CategoryId;
 
             ViewBag.SelectedEquipments = equipment;
             IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments.Where(x => x.CategoryId == category);
@@ -30,7 +30,7 @@ namespace ToolsStore.WebUI.Controllers
         public PartialViewResult MenuCategory(long category = -1, long equipment = -1)
         {
             if (category == -1 && equipment >= 0)
-                category = repository.Equipments.Where(x => x.EquipmentId == equipment).First().CategoryId ?? -1;
+                category = repository.Equipments.Where(x => x.EquipmentId == equipment).First().CategoryId;
 
             ViewBag.SelectedCategories = category;
             IEnumerable<CT_CATEGORY> categories = repository.Categories;
