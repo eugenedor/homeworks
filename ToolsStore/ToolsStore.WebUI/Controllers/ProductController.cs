@@ -15,9 +15,9 @@ namespace ToolsStore.WebUI.Controllers
 
         public int PageSize = 4;
 
-        public ProductController(IProductRepository productRepository)
+        public ProductController(IProductRepository repo)
         {
-            this.repository = productRepository;
+            this.repository = repo;
         }
 
         public int GetTotalItems(long category, long equipment)
@@ -66,6 +66,11 @@ namespace ToolsStore.WebUI.Controllers
             };
 
             return View(model);
+        }
+
+        public ViewResult Products()
+        {
+            return View(repository.Products);
         }
     }
 }

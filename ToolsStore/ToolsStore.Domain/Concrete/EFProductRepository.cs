@@ -60,9 +60,7 @@ namespace ToolsStore.Domain.Concrete
                 DateTime curDate = DateTime.Today;
                 var products = (from pr in context.RS_PRODUCT
                                 join eq in context.SK_EQUIPMENT on pr.EquipmentId equals eq.EquipmentId
-
-                                join ct1 in context.CT_CATEGORY on eq.CategoryId equals ct1.CategoryId into ct2
-                                from ct in ct2.DefaultIfEmpty()
+                                join ct in context.CT_CATEGORY on eq.CategoryId equals ct.CategoryId
 
                                 join br in context.CT_BRAND on pr.BrandId equals br.BrandId
                                 join md in context.SK_MODEL on pr.ModelId equals md.ModelId
