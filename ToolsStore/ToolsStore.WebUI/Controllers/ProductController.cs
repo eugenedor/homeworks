@@ -72,5 +72,25 @@ namespace ToolsStore.WebUI.Controllers
         {
             return View(repository.Products);
         }
+
+        public ViewResult ProductEdit(long productId)
+        {
+            RS_PRODUCT product = repository.Prdcts.Where(p => p.ProductId == productId).FirstOrDefault();
+            IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
+            IEnumerable<CT_BRAND> brands = repository.Brands;
+            IEnumerable<SK_MODEL> models = repository.Models;
+
+            CT_IMAGE image = repository.Images.Where(i => i.ImageId == product.ImageId).FirstOrDefault();
+
+            ProductViewModel productVM = new ProductViewModel
+            {
+                Product = product,
+                Equipments = equipments,
+                Brands = brands,
+                Image = image
+            };
+
+            return View(productVM);
+        }
     }
 }

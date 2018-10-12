@@ -8,7 +8,7 @@ namespace ToolsStore.WebUI.Models
 {
     public class ProductViewModel
     {
-        public RS_PRODUCT product { get; set; }
+        public RS_PRODUCT Product { get; set; }
 
         public CT_IMAGE Image { get; set; }
 

@@ -29,41 +29,41 @@ namespace ToolsStore.WebUI.Controllers
             SK_EQUIPMENT equipment = repository.Equipments.Where(p => p.EquipmentId == equipmentId).FirstOrDefault();
             IEnumerable<CT_CATEGORY> categories = repository.Categories;
 
-            EquipmentViewModel model = new EquipmentViewModel
+            EquipmentViewModel equipmentVM = new EquipmentViewModel
             {
                 Equipment = equipment,
                 Categories = categories
             };
 
-            return View(model);
+            return View(equipmentVM);
         }
 
         [HttpPost]
-        public ActionResult EquipmentEdit(EquipmentViewModel model)
+        public ActionResult EquipmentEdit(EquipmentViewModel equipmentVM)
         {
             if (ModelState.IsValid)
             {
-                repository.SaveEquipment(model.Equipment);
-                TempData["message"] = string.Format("{0} сохранено", model.Equipment.Code);
+                repository.SaveEquipment(equipmentVM.Equipment);
+                TempData["message"] = string.Format("{0} сохранено", equipmentVM.Equipment.Code);
                 return RedirectToAction("Equipments");
             }
             else
             {
                 // что-то не так с значениями данных (there is something wrong with the data values)
-                return View(model);
+                return View(equipmentVM);
             }
         }
 
         public ViewResult EquipmentCreate()
         {
             IEnumerable<CT_CATEGORY> categories = repository.Categories;
-            EquipmentViewModel model = new EquipmentViewModel
+            EquipmentViewModel equipmentVM = new EquipmentViewModel
             {
                 Equipment = new SK_EQUIPMENT(),
                 Categories = categories
             };
 
-            return View("EquipmentEdit", model);
+            return View("EquipmentEdit", equipmentVM);
         }
 
         [HttpPost]
