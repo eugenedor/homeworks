@@ -34,7 +34,7 @@
             <td>@item.EquipmentName</td>
             <td>@item.BrandName</td>
             <td>@item.ModelName</td>
-            <td>@item.Name</td>
+            <td>@Html.ActionLink(item.Name, "ProductEdit", new { item.ProductId })</td>
             <td>@item.Descr</td>
             <td>@item.Mass</td>
             <td>@item.Length</td>

@@ -214,5 +214,52 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+
+        //
+        public void SaveProduct(RS_PRODUCT product)
+        {
+            if (product.ProductId == 0)
+            {
+                context.RS_PRODUCT.Add(product);
+            }
+            else
+            {
+                RS_PRODUCT dbEntry = context.RS_PRODUCT.Where(x => x.ProductId == product.ProductId).Single();
+                if (dbEntry != null)
+                {
+                    dbEntry.EquipmentId = product.EquipmentId;
+                    dbEntry.BrandId = product.BrandId;
+                    dbEntry.ModelId = product.ModelId;
+                    dbEntry.ImageId = product.ImageId;
+
+                    dbEntry.Name = product.Name;
+                    dbEntry.Descr = product.Descr;
+                    dbEntry.Mass = product.Mass;
+                    dbEntry.Length = product.Length;
+                    dbEntry.Width = product.Width;
+                    dbEntry.Height = product.Height;
+                    dbEntry.Color = product.Color;
+                    dbEntry.Power = product.Power;
+                    dbEntry.Kit = product.Kit;
+
+                    dbEntry.SK_EQUIPMENT = product.SK_EQUIPMENT;
+                    dbEntry.CT_BRAND = product.CT_BRAND;
+                    dbEntry.SK_MODEL = product.SK_MODEL;
+                    dbEntry.CT_IMAGE = product.CT_IMAGE;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public RS_PRODUCT DeleteProduct(long productId)
+        {
+            RS_PRODUCT dbEntry = context.RS_PRODUCT.Where(x => x.ProductId == productId).Single();
+            if (dbEntry != null)
+            {
+                context.RS_PRODUCT.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

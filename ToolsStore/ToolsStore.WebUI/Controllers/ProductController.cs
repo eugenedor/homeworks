@@ -87,10 +87,27 @@ namespace ToolsStore.WebUI.Controllers
                 Product = product,
                 Equipments = equipments,
                 Brands = brands,
+                Models = models,
                 Image = image
             };
 
             return View(productVM);
+        }
+
+        [HttpPost]
+        public ActionResult ProductEdit(ProductViewModel productVM)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SaveProduct(productVM.Product);
+                TempData["message"] = string.Format("{0} сохранено", productVM.Product.Name);
+                return RedirectToAction("Products");
+            }
+            else
+            {
+                // что-то не так с значениями данных (there is something wrong with the data values)
+                return View(productVM);
+            }
         }
     }
 }

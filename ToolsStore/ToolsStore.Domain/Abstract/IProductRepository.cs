@@ -35,5 +35,9 @@ namespace ToolsStore.Domain.Abstract
         void SaveEquipment(SK_EQUIPMENT equipment);
 
         SK_EQUIPMENT DeleteEquipment(long equipmentId);
+
+        void SaveProduct(RS_PRODUCT product);
+
+        RS_PRODUCT DeleteProduct(long productId);
     }
 }

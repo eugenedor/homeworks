@@ -1,0 +1,101 @@
+﻿@model ToolsStore.WebUI.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Редактирование товара";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактирование</h2>
+
+@using (Html.BeginForm("ProductEdit", "Product"))
+{
+    <div>
+        @Html.HiddenFor(x => x.Product.ProductId)
+    </div>
+    <div style="font-weight:bold">
+        Наименование:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Name)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Тип оборудования:
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.Product.EquipmentId, new SelectList(Model.Equipments, "EquipmentId", "Name"), new { style = "width:338px" })
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Брэнд:
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.Product.BrandId, new SelectList(Model.Brands, "BrandId", "Name"), new { style = "width:338px" })
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Модель:
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.Product.ModelId, new SelectList(Model.Models, "ModelId", "Name"), new { style = "width:338px" })
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Описание:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Descr)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Масса:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Mass)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Длина:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Length)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Ширина:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Width)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Высота:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Height)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Цвет:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Color)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Мощность:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Power)
+    </div>
+    <div>&nbsp;</div>
+
+    <div style="font-weight:bold">
+        Комплект:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.Kit)
+    </div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Products")
+}
