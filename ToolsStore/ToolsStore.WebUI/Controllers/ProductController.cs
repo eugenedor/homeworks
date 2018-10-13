@@ -109,5 +109,35 @@ namespace ToolsStore.WebUI.Controllers
                 return View(productVM);
             }
         }
+
+        public ViewResult ProductCreate()
+        {
+            IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
+            IEnumerable<CT_BRAND> brands = repository.Brands;
+            IEnumerable<SK_MODEL> models = repository.Models;
+            CT_IMAGE image = null;
+
+            ProductViewModel productVM = new ProductViewModel
+            {
+                Product = new RS_PRODUCT(),
+                Equipments = equipments,
+                Brands = brands,
+                Models = models,
+                Image = image
+            };
+
+            return View("ProductEdit", productVM);
+        }
+
+        [HttpPost]
+        public ActionResult ProductDelete(long productId)
+        {
+            RS_PRODUCT deletedProduct = repository.DeleteProduct(productId);
+            if (deletedProduct != null)
+            {
+                TempData["message"] = string.Format("{0} был удален", deletedProduct.Name);
+            }
+            return RedirectToAction("Products");
+        }
     }
 }
