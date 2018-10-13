@@ -34,7 +34,7 @@ namespace ToolsStore.Domain.Entities
 
         public string Color { get; set; }
 
-        public long? Power { get; set; }
+        public int? Power { get; set; }
 
         public string Kit { get; set; }
 
