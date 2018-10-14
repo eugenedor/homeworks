@@ -1,6 +1,12 @@
 ﻿@model ToolsStore.Domain.Entities.Product
 
 <div class="item">
+    @if (Model.Data != null)
+    {
+        <div style="float: left; margin-right: 20px">
+            <img width="150" height="125" src="@Url.Action("GetImage", "Product", new {Model.ImageId })" />
+        </div>
+    }
     <h2>@Model.Name</h2>
     @using (Html.BeginForm("AddToCart", "Cart"))
     {

@@ -100,7 +100,7 @@
     <div>
         @Html.EditorFor(x => x.Product.Kit)
     </div>
-    <div class="editor-label">Image</div>
+    <div class="editor-label">Изображение</div>
     <div class="editor-field">
         @if (Model.Product.CT_IMAGE == null || Model.Product.CT_IMAGE.Data == null)
         {
@@ -111,7 +111,7 @@
             <img width="150" height="150" src="@Url.Action("GetImage", "Product", new {Model.Product.ImageId })" />
         }
         <div>
-            Upload new image:
+            Загрузить новое изображение:
             <input type="file" name="Image" />
         </div>
     </div>
