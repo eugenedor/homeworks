@@ -7,10 +7,14 @@
 
 <h2>Редактирование</h2>
 
-@using (Html.BeginForm("ProductEdit", "Product"))
+@using (Html.BeginForm("ProductEdit", "Product",
+        FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
         @Html.HiddenFor(x => x.Product.ProductId)
+    </div>
+    <div>
+        @Html.HiddenFor(x => x.Product.ImageId)
     </div>
     <div style="font-weight:bold">
         Наименование:
@@ -95,6 +99,21 @@
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Kit)
+    </div>
+    <div class="editor-label">Image</div>
+    <div class="editor-field">
+        @if (Model.Product.CT_IMAGE == null || Model.Product.CT_IMAGE.Data == null)
+        {
+            @:None
+        }
+        else
+        {
+            <img width="150" height="150" src="@Url.Action("GetImage", "Product", new {Model.Product.ImageId })" />
+        }
+        <div>
+            Upload new image:
+            <input type="file" name="Image" />
+        </div>
     </div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Products")

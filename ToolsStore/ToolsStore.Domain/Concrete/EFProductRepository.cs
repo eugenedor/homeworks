@@ -215,9 +215,42 @@ namespace ToolsStore.Domain.Concrete
             return dbEntry;
         }
 
-        //
         public void SaveProduct(RS_PRODUCT product)
         {
+            //image
+            long? imgId = null;
+            CT_IMAGE img = null;
+                    
+            if (product.ProductId != 0 
+                && product.ImageId != null)
+            {
+                img = context.CT_IMAGE.Where(x => x.ImageId == product.ImageId).Single();
+                if (img != null)
+                {
+                    img.Data = product.CT_IMAGE.Data;
+                    img.MimeType = product.CT_IMAGE.MimeType;
+                    img.Name = product.CT_IMAGE.Name;
+                }
+            }
+            else
+            {
+                if (product.CT_IMAGE.Data != null)
+                {
+                    img = new CT_IMAGE();
+                    img.Data = product.CT_IMAGE.Data;
+                    img.MimeType = product.CT_IMAGE.MimeType;
+                    img.Name = product.CT_IMAGE.Name;
+                    context.CT_IMAGE.Add(img);
+                }
+            }
+            context.SaveChanges();
+            if (img != null)
+                imgId = img.ImageId;
+
+            //product
+            product.ImageId = imgId;
+            product.CT_IMAGE = img;
+
             if (product.ProductId == 0)
             {
                 context.RS_PRODUCT.Add(product);

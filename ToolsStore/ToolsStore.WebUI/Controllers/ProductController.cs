@@ -79,7 +79,6 @@ namespace ToolsStore.WebUI.Controllers
             IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
             IEnumerable<CT_BRAND> brands = repository.Brands;
             IEnumerable<SK_MODEL> models = repository.Models;
-
             CT_IMAGE image = repository.Images.Where(i => i.ImageId == product.ImageId).FirstOrDefault();
 
             ProductViewModel productVM = new ProductViewModel
@@ -87,18 +86,29 @@ namespace ToolsStore.WebUI.Controllers
                 Product = product,
                 Equipments = equipments,
                 Brands = brands,
-                Models = models,
-                Image = image
+                Models = models
             };
+            productVM.Product.CT_IMAGE = image;
 
             return View(productVM);
         }
 
         [HttpPost]
-        public ActionResult ProductEdit(ProductViewModel productVM)
+        public ActionResult ProductEdit(ProductViewModel productVM, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
+                if (productVM.Product.CT_IMAGE == null)
+                    productVM.Product.CT_IMAGE = new CT_IMAGE();
+
+                if (image != null)
+                {
+                    productVM.Product.CT_IMAGE.MimeType = image.ContentType;
+                    productVM.Product.CT_IMAGE.Data = new byte[image.ContentLength];
+                    productVM.Product.CT_IMAGE.Name = image.FileName;
+                    image.InputStream.Read(productVM.Product.CT_IMAGE.Data, 0, image.ContentLength);
+                }
+
                 repository.SaveProduct(productVM.Product);
                 TempData["message"] = string.Format("{0} сохранено", productVM.Product.Name);
                 return RedirectToAction("Products");
@@ -115,15 +125,13 @@ namespace ToolsStore.WebUI.Controllers
             IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
             IEnumerable<CT_BRAND> brands = repository.Brands;
             IEnumerable<SK_MODEL> models = repository.Models;
-            CT_IMAGE image = null;
 
             ProductViewModel productVM = new ProductViewModel
             {
                 Product = new RS_PRODUCT(),
                 Equipments = equipments,
                 Brands = brands,
-                Models = models,
-                Image = image
+                Models = models
             };
 
             return View("ProductEdit", productVM);
@@ -138,6 +146,19 @@ namespace ToolsStore.WebUI.Controllers
                 TempData["message"] = string.Format("{0} был удален", deletedProduct.Name);
             }
             return RedirectToAction("Products");
+        }
+
+        public FileContentResult GetImage(long imageId)
+        {
+            CT_IMAGE image = repository.Images.FirstOrDefault(i => i.ImageId == imageId);  //repository.Images.Where(i => i.ImageId == imageId).FirstOrDefault()
+            if (image != null)
+            {
+                return File(image.Data, image.MimeType);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }

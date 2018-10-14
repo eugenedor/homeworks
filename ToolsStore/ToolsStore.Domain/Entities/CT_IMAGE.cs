@@ -17,7 +17,6 @@ namespace ToolsStore.Domain.Entities
         [Key]
         public long ImageId { get; set; }
 
-        [Required]
         public byte[] Data { get; set; }
 
         [StringLength(50)]
