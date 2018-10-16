@@ -29,7 +29,7 @@ BEGIN TRAN
 
   --pricewithoutvat and dateend--
   UPDATE dbo.RS_PRICE
-  SET PriceWithoutVat = CAST(ROUND(PriceWithVat*100/(100 + (SELECT DISTINCT cast(v.Code as decimal(17,2)) FROM CT_VAT v WHERE v.VatId = dbo.RS_PRICE.VatId)), 2) as decimal(17,2)),
+  SET PriceWithoutVat = CAST(ROUND(PriceWithVat*100/(100 + (SELECT DISTINCT CAST(v.Code AS DECIMAL(17,2)) FROM CT_VAT v WHERE v.VatId = dbo.RS_PRICE.VatId)), 2) AS DECIMAL(17,2)),
       DateEnd = DATEADD(dd, 1, DATEADD(ms, -3, DateEnd))
   WHERE PriceId IN (SELECT i.PriceId FROM INSERTED i);
 
