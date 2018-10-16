@@ -27,10 +27,11 @@ BEGIN TRAN
   DECLARE @error NVARCHAR(100);
   DECLARE @maxDate DATETIME = CAST('9999-12-31 23:59:59.997' AS DATETIME);
 
-  --dateend--
+  --pricewithoutvat and dateend--
   UPDATE dbo.RS_PRICE
-  SET DateEnd = DATEADD(dd, 1, DATEADD(ms, -3, DateEnd))
-  WHERE PriceId = (SELECT i.PriceId FROM INSERTED i);
+  SET PriceWithoutVat = CAST(ROUND(PriceWithVat*100/(100 + (SELECT DISTINCT cast(v.Code as decimal(17,2)) FROM CT_VAT v WHERE v.VatId = dbo.RS_PRICE.VatId)), 2) as decimal(17,2)),
+      DateEnd = DATEADD(dd, 1, DATEADD(ms, -3, DateEnd))
+  WHERE PriceId IN (SELECT i.PriceId FROM INSERTED i);
 
   --check--
   IF (EXISTS(SELECT prc.PriceId
