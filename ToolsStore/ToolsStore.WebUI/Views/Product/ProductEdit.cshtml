@@ -86,7 +86,6 @@
         @Html.EditorFor(x => x.Product.Power)
     </div>
     <div>&nbsp;</div>
-
     <div style="font-weight:bold">
         Комплект:
     </div>
@@ -108,6 +107,11 @@
             <input type="file" name="Image" />
         </div>
     </div>
+    <div>&nbsp;</div>
+    <div>
+        @Html.ActionLink("Выгрузить изображение", "DownLoadFile", new { Model.Product.ProductId })
+    </div>
+    <div>&nbsp;</div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Products")
 }

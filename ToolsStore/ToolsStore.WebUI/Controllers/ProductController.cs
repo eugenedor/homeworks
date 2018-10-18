@@ -156,5 +156,32 @@ namespace ToolsStore.WebUI.Controllers
                 return null;
             }
         }
+
+        [HttpGet]
+        public ActionResult DownLoadFile(long productId)
+        {
+            RS_PRODUCT product = repository.Prdcts.Where(p => p.ProductId == productId).FirstOrDefault();
+            IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
+            IEnumerable<SK_MODEL> models = repository.Models;
+            CT_IMAGE image = repository.Images.Where(i => i.ImageId == product.ImageId).FirstOrDefault();
+
+            ProductViewModel productVM = new ProductViewModel
+            {
+                Product = product,
+                Equipments = equipments,
+                Models = models
+            };
+            productVM.Product.CT_IMAGE = image;
+        
+            if (image != null)
+            {
+                if (image.Data != null && image.MimeType != null)
+                {
+                    return File(image.Data, image.MimeType, image.Name);
+                }
+            }
+
+            return View("ProductEdit", productVM);
+        }
     }
 }
