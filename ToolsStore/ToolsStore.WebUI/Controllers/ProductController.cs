@@ -77,7 +77,6 @@ namespace ToolsStore.WebUI.Controllers
         {
             RS_PRODUCT product = repository.Prdcts.Where(p => p.ProductId == productId).FirstOrDefault();
             IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
-            IEnumerable<CT_BRAND> brands = repository.Brands;
             IEnumerable<SK_MODEL> models = repository.Models;
             CT_IMAGE image = repository.Images.Where(i => i.ImageId == product.ImageId).FirstOrDefault();
 
@@ -85,7 +84,6 @@ namespace ToolsStore.WebUI.Controllers
             {
                 Product = product,
                 Equipments = equipments,
-                Brands = brands,
                 Models = models
             };
             productVM.Product.CT_IMAGE = image;
@@ -123,14 +121,12 @@ namespace ToolsStore.WebUI.Controllers
         public ViewResult ProductCreate()
         {
             IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
-            IEnumerable<CT_BRAND> brands = repository.Brands;
             IEnumerable<SK_MODEL> models = repository.Models;
 
             ProductViewModel productVM = new ProductViewModel
             {
                 Product = new RS_PRODUCT(),
                 Equipments = equipments,
-                Brands = brands,
                 Models = models
             };
 
