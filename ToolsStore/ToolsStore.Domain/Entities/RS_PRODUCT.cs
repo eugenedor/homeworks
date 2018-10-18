@@ -20,8 +20,6 @@ namespace ToolsStore.Domain.Entities
 
         public long EquipmentId { get; set; }
 
-        public long BrandId { get; set; }
-
         public long ModelId { get; set; }
 
         public long? ImageId { get; set; }
@@ -48,8 +46,6 @@ namespace ToolsStore.Domain.Entities
 
         [StringLength(250)]
         public string Kit { get; set; }
-
-        public virtual CT_BRAND CT_BRAND { get; set; }
 
         public virtual CT_IMAGE CT_IMAGE { get; set; }
 

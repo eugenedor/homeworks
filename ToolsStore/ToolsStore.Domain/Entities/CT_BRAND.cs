@@ -11,7 +11,6 @@ namespace ToolsStore.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CT_BRAND()
         {
-            RS_PRODUCT = new HashSet<RS_PRODUCT>();
             SK_MODEL = new HashSet<SK_MODEL>();
         }
 
@@ -25,9 +24,6 @@ namespace ToolsStore.Domain.Entities
         [Required]
         [StringLength(500)]
         public string Name { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RS_PRODUCT> RS_PRODUCT { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SK_MODEL> SK_MODEL { get; set; }

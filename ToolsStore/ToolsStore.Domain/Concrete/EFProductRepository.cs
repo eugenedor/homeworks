@@ -60,10 +60,9 @@ namespace ToolsStore.Domain.Concrete
                 DateTime curDate = DateTime.Today;
                 var products = (from pr in context.RS_PRODUCT
                                 join eq in context.SK_EQUIPMENT on pr.EquipmentId equals eq.EquipmentId
-                                join ct in context.CT_CATEGORY on eq.CategoryId equals ct.CategoryId
-
-                                join br in context.CT_BRAND on pr.BrandId equals br.BrandId
+                                join ct in context.CT_CATEGORY on eq.CategoryId equals ct.CategoryId                               
                                 join md in context.SK_MODEL on pr.ModelId equals md.ModelId
+                                join br in context.CT_BRAND on md.BrandId equals br.BrandId
 
                                 join im1 in context.CT_IMAGE on pr.ImageId equals im1.ImageId into im2
                                 from im in im2.DefaultIfEmpty()
@@ -82,9 +81,9 @@ namespace ToolsStore.Domain.Concrete
                                 {
                                     ProductId = pr.ProductId,
                                     EquipmentId = pr.EquipmentId,
-                                    CategoryId = eq.CategoryId,
-                                    BrandId = pr.BrandId,
+                                    CategoryId = eq.CategoryId,                                    
                                     ModelId = pr.ModelId,
+                                    BrandId = md.BrandId,
                                     ImageId = pr.ImageId,
                                     Name = pr.Name,
                                     Descr = pr.Descr,
@@ -261,7 +260,6 @@ namespace ToolsStore.Domain.Concrete
                 if (dbEntry != null)
                 {
                     dbEntry.EquipmentId = product.EquipmentId;
-                    dbEntry.BrandId = product.BrandId;
                     dbEntry.ModelId = product.ModelId;
                     dbEntry.ImageId = product.ImageId;
 
@@ -276,7 +274,6 @@ namespace ToolsStore.Domain.Concrete
                     dbEntry.Kit = product.Kit;
 
                     dbEntry.SK_EQUIPMENT = product.SK_EQUIPMENT;
-                    dbEntry.CT_BRAND = product.CT_BRAND;
                     dbEntry.SK_MODEL = product.SK_MODEL;
                     dbEntry.CT_IMAGE = product.CT_IMAGE;
                 }

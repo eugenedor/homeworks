@@ -30,13 +30,13 @@ namespace ToolsStore.Domain.Entities
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CT_BRAND>()
-                .HasMany(e => e.RS_PRODUCT)
+                .HasMany(e => e.SK_MODEL)
                 .WithRequired(e => e.CT_BRAND)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CT_BRAND>()
-                .HasMany(e => e.SK_MODEL)
-                .WithRequired(e => e.CT_BRAND)
+            modelBuilder.Entity<CT_CATEGORY>()
+                .HasMany(e => e.SK_EQUIPMENT)
+                .WithRequired(e => e.CT_CATEGORY)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<CT_IMAGE>()
