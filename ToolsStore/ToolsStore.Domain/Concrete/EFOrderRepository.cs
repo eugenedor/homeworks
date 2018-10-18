@@ -32,10 +32,9 @@ namespace ToolsStore.Domain.Concrete
 
                              join eq in context.SK_EQUIPMENT on pr.EquipmentId equals eq.EquipmentId
 
-                             join ct1 in context.CT_CATEGORY on eq.CategoryId equals ct1.CategoryId into ct2
-                             from ct in ct2.DefaultIfEmpty()
+                             join ct in context.CT_CATEGORY on eq.CategoryId equals ct.CategoryId
 
-                             join prc1 in context.RS_PRICE on pr.ProductId equals prc1.ProductId into prc2
+                             join prc1 in context.RS_PRICE on crt.PriceId equals prc1.PriceId into prc2
                              from prc in prc2.DefaultIfEmpty()
 
                              orderby crt.CartId, crt.OrderId
