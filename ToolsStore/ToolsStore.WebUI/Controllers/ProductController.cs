@@ -184,9 +184,10 @@ namespace ToolsStore.WebUI.Controllers
             return View("ProductEdit", productVM);
         }
 
-        public ViewResult ProductInfo(long productId)
+        public ViewResult ProductInfo(long productId, string returnUrl)
         {
-            Product product = repository.Products.Where(p => p.ProductId == productId).FirstOrDefault();                
+            Product product = repository.Products.Where(p => p.ProductId == productId).FirstOrDefault();
+            ViewBag.ReturnUrl = returnUrl;
             return View(product);
         }
     }

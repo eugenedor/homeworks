@@ -5,8 +5,8 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<p>
-    @Html.ActionLink("Вернуться", "List", "Product")
+<p class="actionButtons">
+    <a href="@ViewBag.ReturnUrl">Вернуться</a>
 </p>
 
 @using (Html.BeginForm()) 

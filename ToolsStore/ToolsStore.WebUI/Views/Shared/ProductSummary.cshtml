@@ -10,7 +10,7 @@
     @using (Html.BeginForm("ProductInfo", "Product"))
     {
         @Html.HiddenFor(x => x.ProductId)
-        @Html.Hidden("productId", Model.ProductId)
+        @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
         <input type="submit" value="Просмотр" />
     }
     <h2>@Model.Name</h2>
