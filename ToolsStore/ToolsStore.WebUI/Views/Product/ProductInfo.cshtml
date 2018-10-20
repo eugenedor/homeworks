@@ -1,0 +1,98 @@
+﻿@model ToolsStore.Domain.Entities.Product
+
+@{
+    ViewBag.Title = "ProductInfo";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Вернуться", "List", "Product")
+</p>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    <div style="font-size: xx-large">
+        <b>@Model.Name</b>
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div style="float: left; font-size: large;">
+        Цена товара:&nbsp;
+    </div>
+    <div style="font-size: large">
+        <b>@Model.PriceWithVat</b>
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        @if (Model.Data != null)
+        {
+            <div style="float: left; margin-right: 20px">
+                <img width="350" height="350" src="@Url.Action("GetImage", "Product", new {Model.ImageId })" />
+            </div>
+        }
+    </div>
+    <div>
+        &nbsp;
+    </div>
+    <div>
+        <table width="100%">            
+            <tr>
+                <th align="left">Характеристики</th>
+                <th align="left">Описание</th>
+            </tr>
+            <tr>
+                <td>Тип оборудования</td>
+                <td>@Model.EquipmentName</td>
+            </tr>
+            <tr>
+                <td>Категория</td>
+                <td>@Model.CategoryName</td>
+            </tr>
+            <tr>
+                <td>Модель</td>
+                <td>@Model.ModelName</td>
+            </tr>
+            <tr>
+                <td>Брэнд</td>
+                <td>@Model.BrandName</td>
+            </tr>
+
+            <tr>
+                <td>Описание</td>
+                <td>@Model.Descr</td>
+            </tr>
+            <tr>
+                <td>Масса</td>
+                <td>@Model.Mass</td>
+            </tr>
+            <tr>
+                <td>Длина</td>
+                <td>@Model.Length</td>
+            </tr>
+            <tr>
+                <td>Ширина</td>
+                <td>@Model.Width</td>
+            </tr>
+            <tr>
+                <td>Высота</td>
+                <td>@Model.Height</td>
+            </tr>
+            <tr>
+                <td>Цвет</td>
+                <td>@Model.Color</td>
+            </tr>
+            <tr>
+                <td>Мощность</td>
+                <td>@Model.Power</td>
+            </tr>
+            <tr>
+                <td>Комплект</td>
+                <td>@Model.Kit</td>
+            </tr>
+        </table>
+    </div>
+}

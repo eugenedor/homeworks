@@ -7,6 +7,12 @@
             <img width="150" height="125" src="@Url.Action("GetImage", "Product", new {Model.ImageId })" />
         </div>
     }
+    @using (Html.BeginForm("ProductInfo", "Product"))
+    {
+        @Html.HiddenFor(x => x.ProductId)
+        @Html.Hidden("productId", Model.ProductId)
+        <input type="submit" value="Просмотр" />
+    }
     <h2>@Model.Name</h2>
     @using (Html.BeginForm("AddToCart", "Cart"))
     {
