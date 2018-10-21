@@ -117,6 +117,7 @@ namespace ToolsStore.Domain.Concrete
             }
         }
 
+        #region Category - Категории
         public void SaveCategory(CT_CATEGORY category)
         {
             category.DateLoad = DateTime.Now;
@@ -148,7 +149,9 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+        #endregion
 
+        #region Vat - НДС
         public void SaveVat(CT_VAT vat)
         {
             vat.DateLoad = DateTime.Now;
@@ -180,7 +183,9 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+        #endregion
 
+        #region Equipment - Тип оборудования
         public void SaveEquipment(SK_EQUIPMENT equipment)
         {
             if (equipment.EquipmentId == 0)
@@ -213,13 +218,15 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+        #endregion
 
         public void SaveProduct(RS_PRODUCT product)
         {
             //image
             long? imgId = null;
             CT_IMAGE img = null;
-                    
+            DateTime dateLoad = DateTime.Now;
+
             if (product.ProductId != 0 
                 && product.ImageId != null)
             {
@@ -229,6 +236,7 @@ namespace ToolsStore.Domain.Concrete
                     img.Data = product.CT_IMAGE.Data;
                     img.MimeType = product.CT_IMAGE.MimeType;
                     img.Name = product.CT_IMAGE.Name;
+                    img.DateLoad = dateLoad;
                 }
             }
             else
@@ -239,6 +247,7 @@ namespace ToolsStore.Domain.Concrete
                     img.Data = product.CT_IMAGE.Data;
                     img.MimeType = product.CT_IMAGE.MimeType;
                     img.Name = product.CT_IMAGE.Name;
+                    img.DateLoad = dateLoad;
                     context.CT_IMAGE.Add(img);
                 }
             }

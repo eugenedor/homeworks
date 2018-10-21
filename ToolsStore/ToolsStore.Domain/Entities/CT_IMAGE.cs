@@ -25,6 +25,8 @@ namespace ToolsStore.Domain.Entities
         [StringLength(300)]
         public string Name { get; set; }
 
+        public DateTime DateLoad { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_PRODUCT> RS_PRODUCT { get; set; }
     }
