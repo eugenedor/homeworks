@@ -1,0 +1,44 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.MT_SETTING>
+
+@{
+    ViewBag.Title = "Настройки";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Настройки</h1>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index", "Admin")
+</p>
+
+<p>
+    @Html.ActionLink("+ Добавить настройку", "SettingCreate")
+</p>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Код</th>
+        <th>Значение</th>
+        <th>Описание</th>
+        <th>Активность</th>
+        <th>Действие</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.SettingId</td>
+            <td>@Html.ActionLink(item.Code, "SettingEdit", new { item.SettingId })</td>
+            <td>@item.Value</td>
+            <td>@item.Descr</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>            
+            <td>
+                @using (Html.BeginForm("SettingDelete", "Setting"))
+                {
+                    @Html.Hidden("settingId", item.SettingId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>
