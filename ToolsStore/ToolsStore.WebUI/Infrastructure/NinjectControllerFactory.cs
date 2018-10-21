@@ -40,6 +40,7 @@ namespace ToolsStore.WebUI.Infrastructure
             ninjectKernel.Bind<IProductRepository>().To<EFProductRepository>();
             ninjectKernel.Bind<IRuleRepository>().To<EFRuleRepository>();
             ninjectKernel.Bind<IOrderRepository>().To<EFOrderRepository>();
+            ninjectKernel.Bind<ISettingRepository>().To<EFSettingRepository>();
 
             EmailSettings emailSettings = new EmailSettings
             {

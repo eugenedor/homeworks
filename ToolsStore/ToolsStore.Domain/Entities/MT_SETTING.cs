@@ -21,8 +21,8 @@ namespace ToolsStore.Domain.Entities
 
         [Required]
         [StringLength(250)]
-        public string Description { get; set; }
+        public string Descr { get; set; }
 
-        public bool Enabled { get; set; }
+        public bool IsActive { get; set; }
     }
 }

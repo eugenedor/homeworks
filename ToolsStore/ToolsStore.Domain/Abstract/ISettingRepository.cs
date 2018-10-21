@@ -7,12 +7,12 @@ using ToolsStore.Domain.Entities;
 
 namespace ToolsStore.Domain.Abstract
 {
-    public interface IOrderRepository
+    public interface ISettingRepository
     {
-        IQueryable<RS_ORDER> Orders { get; }
+        IQueryable<MT_SETTING> Settings { get; }
 
-        IQueryable<RS_CART> Crts { get; }
+        void SaveSetting(MT_SETTING setting);
 
-        IEnumerable<CartX> Carts { get; }
+        MT_SETTING DeleteSetting(long settingId);
     }
 }
