@@ -22,7 +22,7 @@ namespace ToolsStore.WebUI.Controllers
             return View(repository.LoadRules);
         }
 
-        public ViewResult RuleEdit(int loadRuleId)
+        public ViewResult RuleEdit(long loadRuleId)
         {
             MT_LOAD_RULE loadRule = repository.LoadRules.Where(p => p.LoadRuleId == loadRuleId).FirstOrDefault(); //.FirstOrDefault(p => p.LoadRuleId == loadRuleId);
             return View(loadRule);

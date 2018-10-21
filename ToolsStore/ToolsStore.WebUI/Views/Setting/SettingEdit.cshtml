@@ -1,0 +1,15 @@
+﻿@model ToolsStore.Domain.Entities.MT_SETTING
+
+@{
+    ViewBag.Title = "Редактирование настройки";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактирование @Model.Code</h2>
+
+@using (Html.BeginForm("SettingEdit", "Setting"))
+{
+    @Html.EditorForModel()
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Settingы")
+}
