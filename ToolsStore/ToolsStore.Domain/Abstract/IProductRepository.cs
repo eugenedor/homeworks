@@ -39,5 +39,9 @@ namespace ToolsStore.Domain.Abstract
         void SaveProduct(RS_PRODUCT product);
 
         RS_PRODUCT DeleteProduct(long productId);
+
+        void SaveBrand(CT_BRAND brand);
+
+        CT_BRAND DeleteBrand(long brandId);
     }
 }

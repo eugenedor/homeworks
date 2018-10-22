@@ -1,0 +1,40 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.CT_BRAND>
+
+@{
+    ViewBag.Title = "Бренд";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Бренд</h1>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index", "Admin")
+</p>
+
+<p>
+    @Html.ActionLink("+ Добавить бренд", "BrandCreate")
+</p>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Код</th>
+        <th>Наименование</th>
+        <th>Действие</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.BrandId</td>
+            <td>@Html.ActionLink(item.Code, "BrandEdit", new { item.BrandId })</td>
+            <td>@item.Name</td>
+            <td>
+                @using (Html.BeginForm("BrandDelete", "Brand"))
+                {
+                    @Html.Hidden("brandId", item.BrandId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>

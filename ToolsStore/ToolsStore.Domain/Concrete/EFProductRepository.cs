@@ -220,6 +220,7 @@ namespace ToolsStore.Domain.Concrete
         }
         #endregion
 
+        #region Product - Товар
         public void SaveProduct(RS_PRODUCT product)
         {
             //image
@@ -300,5 +301,37 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+        #endregion
+
+        #region Brand - Бренд
+        public void SaveBrand(CT_BRAND brand)
+        {
+            if (brand.BrandId == 0)
+            {
+                context.CT_BRAND.Add(brand);
+            }
+            else
+            {
+                CT_BRAND dbEntry = context.CT_BRAND.Where(x => x.BrandId == brand.BrandId).Single();
+                if (dbEntry != null)
+                {
+                    dbEntry.Code = brand.Code;
+                    dbEntry.Name = brand.Name;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public CT_BRAND DeleteBrand(long brandId)
+        {
+            CT_BRAND dbEntry = context.CT_BRAND.Where(x => x.BrandId == brandId).Single();
+            if (dbEntry != null)
+            {
+                context.CT_BRAND.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
+        #endregion
     }
 }

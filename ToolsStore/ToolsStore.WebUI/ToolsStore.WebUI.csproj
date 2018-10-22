@@ -217,6 +217,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Binders\CartModelBinder.cs" />
     <Compile Include="Controllers\AdminController.cs" />
+    <Compile Include="Controllers\BrandController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategorController.cs" />
     <Compile Include="Controllers\EquipmenController.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Views\Product\ProductInfo.cshtml" />
     <Content Include="Views\Setting\Settings.cshtml" />
     <Content Include="Views\Setting\SettingEdit.cshtml" />
+    <Content Include="Views\Brand\Brands.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

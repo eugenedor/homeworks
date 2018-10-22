@@ -1,11 +1,12 @@
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Data.Entity.Spatial;
+using System.Web.Mvc;
+
 namespace ToolsStore.Domain.Entities
 {
-    using System;
-    using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
-    using System.Data.Entity.Spatial;
-
     public partial class CT_BRAND
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -15,6 +16,7 @@ namespace ToolsStore.Domain.Entities
         }
 
         [Key]
+        [HiddenInput(DisplayValue = false)]
         public long BrandId { get; set; }
 
         [Required]
