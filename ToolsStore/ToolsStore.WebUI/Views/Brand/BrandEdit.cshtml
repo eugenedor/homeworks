@@ -1,0 +1,30 @@
+﻿@model ToolsStore.Domain.Entities.CT_BRAND
+
+@{
+    ViewBag.Title = "Редактирование бренда" + @Model.Code; ;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактирование @Model.Code</h2>
+
+@using (Html.BeginForm("BrandEdit", "Brand"))
+{
+    <div>
+        @Html.HiddenFor(x => x.BrandId)
+    </div>
+    <div style="font-weight:bold">
+        Код бренда:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Code)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Наименование:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Name)
+    </div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Brands")
+}

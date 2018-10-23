@@ -19,12 +19,14 @@ namespace ToolsStore.Domain.Entities
         [HiddenInput(DisplayValue = false)]
         public long BrandId { get; set; }
 
-        [Required]
+        [Display(Name = "Код бренда")]
+        [Required(ErrorMessage = "Введите код бренда")]
         [StringLength(100)]
         public string Code { get; set; }
 
-        [Required]
         [StringLength(500)]
+        [Display(Name = "Наименование")]
+        [Required(ErrorMessage = "Введите наименование")]
         public string Name { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
