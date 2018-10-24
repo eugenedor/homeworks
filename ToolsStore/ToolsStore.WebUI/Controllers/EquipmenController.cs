@@ -21,7 +21,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Equipments()
         {
-            return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments).Include("CT_CATEGORY"));
+            return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments).Include("CT_CATEGORY").OrderByDescending(x => x.EquipmentId));
         }
 
         public ViewResult EquipmentEdit(long equipmentId)

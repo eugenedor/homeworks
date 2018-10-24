@@ -21,7 +21,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Mdls()
         {
-            return View(((DbQuery<SK_MODEL>)repository.Models).Include("CT_BRAND"));
+            return View(((DbQuery<SK_MODEL>)repository.Models).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
         }
 
         public ViewResult MdlEdit(long modelId)

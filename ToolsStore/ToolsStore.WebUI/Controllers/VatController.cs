@@ -19,7 +19,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Vats()
         {
-            return View(repository.Vats);
+            return View(repository.Vats.OrderByDescending(x => x.VatId));
         }
 
         public ViewResult VatEdit(long vatId)

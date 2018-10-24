@@ -19,7 +19,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Brands()
         {
-            return View(repository.Brands);
+            return View(repository.Brands.OrderByDescending(x => x.BrandId));
         }
 
         public ViewResult BrandEdit(long brandId)

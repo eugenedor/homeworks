@@ -19,7 +19,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Categories()
         {
-            return View(repository.Categories);
+            return View(repository.Categories.OrderByDescending(x => x.CategoryId));
         }
 
         public ViewResult CategoryEdit(long categoryId)

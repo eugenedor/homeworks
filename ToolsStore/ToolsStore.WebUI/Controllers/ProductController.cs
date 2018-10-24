@@ -70,7 +70,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Products()
         {
-            return View(repository.Products);
+            return View(repository.Products.OrderByDescending(x => x.ProductId));
         }
 
         public ViewResult ProductEdit(long productId)
