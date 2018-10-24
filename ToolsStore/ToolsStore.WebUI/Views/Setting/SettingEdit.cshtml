@@ -6,10 +6,11 @@
 }
 
 <h2>Редактирование @Model.Code</h2>
+<h3>Идентификатор: @Model.SettingId</h3>
 
 @using (Html.BeginForm("SettingEdit", "Setting"))
 {
     @Html.EditorForModel()
     <input type="submit" value="Сохранить" />
-    @Html.ActionLink("Отменить и вернуться к списку", "Settingы")
+    @Html.ActionLink("Отменить и вернуться к списку", "Settings")
 }
