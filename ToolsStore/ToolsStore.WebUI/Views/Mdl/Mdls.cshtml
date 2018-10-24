@@ -12,7 +12,7 @@
 </p>
 
 <p>
-    @Html.ActionLink("+ Добавить тип оборудования", "ModelCreate")
+    @Html.ActionLink("+ Добавить модель", "MdlCreate")
 </p>
 
 <table class="Grid">
@@ -27,11 +27,11 @@
     {
         <tr>
             <td>@item.ModelId</td>
-            <td>@Html.ActionLink(item.Code.ToString(), "ModelEdit", new { item.ModelId })</td>
+            <td>@Html.ActionLink(item.Code.ToString(), "MdlEdit", new { item.ModelId })</td>
             <td>@item.Name</td>
             <td>@Html.DisplayFor(modelItem => item.CT_BRAND.Name)</td>
             <td>
-                @using (Html.BeginForm("ModelDelete", "Mdl"))
+                @using (Html.BeginForm("MdlDelete", "Mdl"))
                 {
                     @Html.Hidden("modelId", item.ModelId)
                     <input type="submit" value="удалить" />

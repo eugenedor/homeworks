@@ -307,7 +307,8 @@
     <Content Include="Views\Setting\SettingEdit.cshtml" />
     <Content Include="Views\Brand\Brands.cshtml" />
     <Content Include="Views\Brand\BrandEdit.cshtml" />
-    <Content Include="Views\Mdl\Models.cshtml" />
+    <Content Include="Views\Mdl\MdlEdit.cshtml" />
+    <Content Include="Views\Mdl\Mdls.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

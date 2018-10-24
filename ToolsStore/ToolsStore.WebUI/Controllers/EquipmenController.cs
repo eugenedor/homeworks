@@ -29,7 +29,7 @@ namespace ToolsStore.WebUI.Controllers
             SK_EQUIPMENT equipment = repository.Equipments.Where(p => p.EquipmentId == equipmentId).FirstOrDefault();
             IEnumerable<CT_CATEGORY> categories = repository.Categories;
 
-            EquipmentViewModel equipmentVM = new EquipmentViewModel
+            var equipmentVM = new EquipmentViewModel
             {
                 Equipment = equipment,
                 Categories = categories
@@ -57,7 +57,8 @@ namespace ToolsStore.WebUI.Controllers
         public ViewResult EquipmentCreate()
         {
             IEnumerable<CT_CATEGORY> categories = repository.Categories;
-            EquipmentViewModel equipmentVM = new EquipmentViewModel
+
+            var equipmentVM = new EquipmentViewModel
             {
                 Equipment = new SK_EQUIPMENT(),
                 Categories = categories

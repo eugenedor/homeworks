@@ -333,5 +333,38 @@ namespace ToolsStore.Domain.Concrete
             return dbEntry;
         }
         #endregion
+
+        #region Model - Модель
+        public void SaveModel(SK_MODEL mdl)
+        {
+            if (mdl.ModelId == 0)
+            {
+                context.SK_MODEL.Add(mdl);
+            }
+            else
+            {
+                SK_MODEL dbEntry = context.SK_MODEL.Where(x => x.ModelId == mdl.ModelId).Single();
+                if (dbEntry != null)
+                {
+                    dbEntry.BrandId = mdl.BrandId;
+                    dbEntry.Code = mdl.Code;
+                    dbEntry.Name = mdl.Name;
+                    dbEntry.CT_BRAND = mdl.CT_BRAND;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public SK_MODEL DeleteModel(long modelId)
+        {
+            SK_MODEL dbEntry = context.SK_MODEL.Where(x => x.ModelId == modelId).Single();
+            if (dbEntry != null)
+            {
+                context.SK_MODEL.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
+        #endregion
     }
 }

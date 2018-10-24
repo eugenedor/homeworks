@@ -10,6 +10,6 @@ namespace ToolsStore.WebUI.Models
     {
         public SK_MODEL Mdl { get; set; }
 
-        public IEnumerable<CT_BRAND> Brand { get; set; }
+        public IEnumerable<CT_BRAND> Brands { get; set; }
     }
 }

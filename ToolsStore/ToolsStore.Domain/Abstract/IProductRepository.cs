@@ -43,5 +43,9 @@ namespace ToolsStore.Domain.Abstract
         void SaveBrand(CT_BRAND brand);
 
         CT_BRAND DeleteBrand(long brandId);
+
+        void SaveModel(SK_MODEL mdl);
+
+        SK_MODEL DeleteModel(long modelId);
     }
 }

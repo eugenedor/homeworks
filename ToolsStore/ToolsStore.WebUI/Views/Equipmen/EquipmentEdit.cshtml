@@ -32,20 +32,20 @@
     <div>
         @Html.EditorFor(x => x.Equipment.Name)
     </div>
-        <div>&nbsp;</div>
-        <div style="font-weight:bold">
-            Наименование (добавочное):
-        </div>
-        <div>
-            @Html.EditorFor(x => x.Equipment.NameExtra)
-        </div>
-        <div>&nbsp;</div>
-        <div style="font-weight:bold">
-            Порядок:
-        </div>
-        <div>
-            @Html.EditorFor(x => x.Equipment.Ord)
-        </div>
-        <input type="submit" value="Сохранить" />
-        @Html.ActionLink("Отменить и вернуться к списку", "Equipments")
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Наименование (добавочное):
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Equipment.NameExtra)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Порядок:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Equipment.Ord)
+    </div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Equipments")
 }

@@ -1,0 +1,39 @@
+﻿@model ToolsStore.WebUI.Models.MdlViewModel
+
+@{
+    ViewBag.Title = "Редактирование модели" + Model.Mdl.Code;
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактирование @Model.Mdl.Code</h2>
+<h3>Идентификатор: @Model.Mdl.ModelId</h3>
+
+@using (Html.BeginForm("MdlEdit", "Mdl"))
+{
+    <div>
+        @Html.HiddenFor(x => x.Mdl.ModelId)
+    </div>
+    <div style="font-weight:bold">
+        Код модели:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Mdl.Code)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Бренд:
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.Mdl.BrandId, new SelectList(Model.Brands, "BrandId", "Name"), new { style = "width:338px" })
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Наименование:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Mdl.Name)
+    </div>
+    <div>&nbsp;</div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Mdls")
+}
