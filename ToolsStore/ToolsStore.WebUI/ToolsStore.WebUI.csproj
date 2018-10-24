@@ -221,6 +221,7 @@
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\CategorController.cs" />
     <Compile Include="Controllers\EquipmenController.cs" />
+    <Compile Include="Controllers\MdlController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
@@ -234,6 +235,7 @@
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
     <Compile Include="Models\EquipmentViewModel.cs" />
+    <Compile Include="Models\MdlViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
@@ -305,6 +307,7 @@
     <Content Include="Views\Setting\SettingEdit.cshtml" />
     <Content Include="Views\Brand\Brands.cshtml" />
     <Content Include="Views\Brand\BrandEdit.cshtml" />
+    <Content Include="Views\Mdl\Models.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.SK_MODEL>
+
+@{
+    ViewBag.Title = "Модель";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Модель</h1>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index", "Admin")
+</p>
+
+<p>
+    @Html.ActionLink("+ Добавить тип оборудования", "ModelCreate")
+</p>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Код</th>
+        <th>Наименование</th>
+        <th>Бренд</th>
+        <th>Действие</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.ModelId</td>
+            <td>@Html.ActionLink(item.Code.ToString(), "ModelEdit", new { item.ModelId })</td>
+            <td>@item.Name</td>
+            <td>@Html.DisplayFor(modelItem => item.CT_BRAND.Name)</td>
+            <td>
+                @using (Html.BeginForm("ModelDelete", "Mdl"))
+                {
+                    @Html.Hidden("modelId", item.ModelId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>
