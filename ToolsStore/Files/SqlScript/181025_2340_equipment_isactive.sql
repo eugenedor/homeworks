@@ -37,11 +37,11 @@ FROM SK_EQUIPMENT eq
      LEFT JOIN (SELECT DISTINCT p.EquipmentId 
 	            FROM RS_PRODUCT p) pr
 	   ON eq.EquipmentId = pr.EquipmentId
-WHERE pr.EquipmentId IS NULL;
+WHERE pr.EquipmentId IS NOT NULL;
 
 SELECT eq.*
 FROM dbo.SK_EQUIPMENT eq
-WHERE eq.IsActive = 0;
+WHERE eq.IsActive = 1;
 
 
 SELECT DISTINCT eq.CategoryId
@@ -67,13 +67,13 @@ FROM dbo.CT_CATEGORY ct
 	            FROM dbo.SK_EQUIPMENT e
 				WHERE e.IsActive = 1) eq
 	   ON ct.CategoryId = eq.CategoryId
-WHERE eq.CategoryId IS NULL;
+WHERE eq.CategoryId IS NOT NULL;
 
 
 --
--- procedure sp_upd_equipment_isactive
+-- procedure sp_refresh_equipment_isactive
 --
-CREATE PROCEDURE dbo.SP_UPD_EQUIPMENT_ISACTIVE
+CREATE PROCEDURE dbo.SP_RFR_EQUIPMENT_ISACTIVE
 AS
 BEGIN
 	UPDATE eq
@@ -83,4 +83,16 @@ BEGIN
 					FROM dbo.RS_PRODUCT p) pr
 		   ON eq.EquipmentId = pr.EquipmentId;
 
+END
+
+
+--
+-- procedure sp_refresh_equipment_isactive
+--
+CREATE PROCEDURE dbo.SP_SET_EQUIPMENT_ISACTIVE
+	@isactive bit
+AS
+BEGIN
+	UPDATE dbo.SK_EQUIPMENT
+	SET IsActive = @isactive;
 END
