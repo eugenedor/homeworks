@@ -5,6 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using ToolsStore.Domain.Abstract;
 using ToolsStore.Domain.Entities;
+using System.Data;
+using System.Data.SqlClient;
+using System.Configuration;
 
 
 namespace ToolsStore.Domain.Concrete
@@ -218,6 +221,26 @@ namespace ToolsStore.Domain.Concrete
                 context.SaveChanges();
             }
             return dbEntry;
+        }
+
+        public void RefreshEquipmentIsActive()
+        {
+            var conn = new SqlConnection();
+            var connStr = System.Configuration.ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+            conn.ConnectionString = connStr;
+
+            using (SqlCommand cmd = new SqlCommand())
+            {
+                cmd.Connection = conn;
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.CommandText = "dbo.SP_RFR_EQUIPMENT_ISACTIVE";
+
+                if (conn.State != ConnectionState.Closed)
+                    conn.Close();
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            }                       
         }
         #endregion
 

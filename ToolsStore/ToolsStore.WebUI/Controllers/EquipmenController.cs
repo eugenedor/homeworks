@@ -77,5 +77,11 @@ namespace ToolsStore.WebUI.Controllers
             }
             return RedirectToAction("Equipments");
         }
+
+        public ActionResult EquipmentRefreshActive()
+        {
+            repository.RefreshEquipmentIsActive();
+            return RedirectToAction("Equipments");
+        }
     }
 }
