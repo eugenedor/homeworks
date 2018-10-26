@@ -32,6 +32,8 @@ namespace ToolsStore.Domain.Entities
 
         public int? Ord { get; set; }
 
+        public bool IsActive { get; set; }
+
         public virtual CT_CATEGORY CT_CATEGORY { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

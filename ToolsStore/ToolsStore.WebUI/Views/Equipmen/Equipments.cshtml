@@ -23,6 +23,7 @@
         <th>Наименование (добавочное)</th>
         <th>Категория</th>
         <th>Порядок</th>
+        <th>Активность</th>
         <th>Действие</th>
     </tr>
     @foreach (var item in Model)
@@ -34,6 +35,7 @@
             <td>@item.NameExtra</td>
             <td>@Html.DisplayFor(modelItem => item.CT_CATEGORY.Name)</td>
             <td>@item.Ord</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
             <td>
                 @using (Html.BeginForm("EquipmentDelete", "Equipmen"))
                 {

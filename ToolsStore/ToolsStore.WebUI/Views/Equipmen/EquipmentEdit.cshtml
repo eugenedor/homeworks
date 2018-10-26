@@ -47,6 +47,13 @@
     <div>
         @Html.EditorFor(x => x.Equipment.Ord)
     </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Признак активности:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Equipment.IsActive)
+    </div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Equipments")
 }

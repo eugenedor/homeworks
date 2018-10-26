@@ -202,6 +202,7 @@ namespace ToolsStore.Domain.Concrete
                     dbEntry.Name = equipment.Name;
                     dbEntry.NameExtra = equipment.NameExtra;
                     dbEntry.Ord = equipment.Ord;
+                    dbEntry.IsActive = equipment.IsActive;
                     dbEntry.CT_CATEGORY = equipment.CT_CATEGORY;
                 }
             }
