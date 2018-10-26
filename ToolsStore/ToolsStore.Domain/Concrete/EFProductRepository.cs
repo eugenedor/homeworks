@@ -229,18 +229,45 @@ namespace ToolsStore.Domain.Concrete
             var connStr = System.Configuration.ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
             conn.ConnectionString = connStr;
 
-            using (SqlCommand cmd = new SqlCommand())
+            using (var cmd = new SqlCommand())
             {
                 cmd.Connection = conn;
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.CommandText = "dbo.SP_RFR_EQUIPMENT_ISACTIVE";
+                cmd.CommandText = "SP_RFR_EQUIPMENT_ISACTIVE";
 
+                if (conn.State != ConnectionState.Open)
+                    conn.Open();
+                cmd.ExecuteNonQuery();
                 if (conn.State != ConnectionState.Closed)
                     conn.Close();
-                conn.Open();
-                cmd.ExecuteNonQuery();
-                conn.Close();
             }                       
+        }
+
+        public void SetEquipmentIsActive(bool isActive)
+        {
+            var conn = new SqlConnection();
+            var connStr = System.Configuration.ConfigurationManager.ConnectionStrings["EFDbContext"].ConnectionString;
+            conn.ConnectionString = connStr;
+
+            using (var da = new SqlDataAdapter())
+            {
+                da.UpdateCommand = new SqlCommand();
+                da.UpdateCommand.Connection = conn;
+                da.UpdateCommand.CommandType = CommandType.StoredProcedure;
+                da.UpdateCommand.CommandText = "SP_SET_EQUIPMENT_ISACTIVE";
+                
+                da.UpdateCommand.CommandTimeout = 1800;
+
+                da.UpdateCommand.Parameters.AddWithValue("@isactive", isActive);
+
+                if (da.UpdateCommand.Connection.State != ConnectionState.Open)
+                    da.UpdateCommand.Connection.Open();
+
+                da.UpdateCommand.ExecuteNonQuery();
+
+                if (da.UpdateCommand.Connection.State != ConnectionState.Closed)
+                    da.UpdateCommand.Connection.Close();                
+            }
         }
         #endregion
 

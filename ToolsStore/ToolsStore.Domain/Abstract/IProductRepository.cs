@@ -49,5 +49,7 @@ namespace ToolsStore.Domain.Abstract
         SK_MODEL DeleteModel(long modelId);
 
         void RefreshEquipmentIsActive();
+
+        void SetEquipmentIsActive(bool isActive);
     }
 }
