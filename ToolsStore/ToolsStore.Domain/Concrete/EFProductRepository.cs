@@ -17,7 +17,7 @@ namespace ToolsStore.Domain.Concrete
         private EFDbContext context = new EFDbContext();
 
         #region Reference books - справочники
-        public IQueryable<RS_PRODUCT> Prdcts
+        public IQueryable<RS_PRODUCT> Productts
         {
             get { return context.RS_PRODUCT; }
         }

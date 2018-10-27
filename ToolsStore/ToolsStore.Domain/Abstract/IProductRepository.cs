@@ -6,7 +6,7 @@ namespace ToolsStore.Domain.Abstract
 {
     public interface IProductRepository
     {
-        IQueryable<RS_PRODUCT> Prdcts { get; }
+        IQueryable<RS_PRODUCT> Productts { get; }
 
         IQueryable<SK_EQUIPMENT> Equipments { get; }
 

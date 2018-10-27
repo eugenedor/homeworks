@@ -75,7 +75,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult ProductEdit(long productId)
         {
-            RS_PRODUCT product = repository.Prdcts.Where(p => p.ProductId == productId).FirstOrDefault();
+            RS_PRODUCT product = repository.Productts.Where(p => p.ProductId == productId).FirstOrDefault();
             IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
             IEnumerable<SK_MODEL> models = repository.Models;
             CT_IMAGE image = repository.Images.Where(i => i.ImageId == product.ImageId).FirstOrDefault();
@@ -160,7 +160,7 @@ namespace ToolsStore.WebUI.Controllers
         [HttpGet]
         public ActionResult DownLoadFile(long productId)
         {
-            RS_PRODUCT product = repository.Prdcts.Where(p => p.ProductId == productId).FirstOrDefault();
+            RS_PRODUCT product = repository.Productts.Where(p => p.ProductId == productId).FirstOrDefault();
             IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
             IEnumerable<SK_MODEL> models = repository.Models;
             CT_IMAGE image = repository.Images.Where(i => i.ImageId == product.ImageId).FirstOrDefault();
