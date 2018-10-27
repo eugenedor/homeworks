@@ -39,9 +39,11 @@ FROM SK_EQUIPMENT eq
 	   ON eq.EquipmentId = pr.EquipmentId
 WHERE pr.EquipmentId IS NOT NULL;
 
+--2!!!--
 SELECT eq.*
 FROM dbo.SK_EQUIPMENT eq
-WHERE eq.IsActive = 1;
+WHERE eq.IsActive = 1
+order by eq.EquipmentId;
 
 
 SELECT DISTINCT eq.CategoryId
@@ -61,13 +63,15 @@ FROM dbo.CT_CATEGORY ct
 	   ON ct.CategoryId = eq.CategoryId
 
 
+--1!!!--
 SELECT ct.*  
 FROM dbo.CT_CATEGORY ct
      LEFT JOIN (SELECT DISTINCT e.CategoryId 
 	            FROM dbo.SK_EQUIPMENT e
 				WHERE e.IsActive = 1) eq
 	   ON ct.CategoryId = eq.CategoryId
-WHERE eq.CategoryId IS NOT NULL;
+WHERE eq.CategoryId IS NOT NULL
+ORDER BY ct.CategoryId;
 
 
 --

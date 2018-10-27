@@ -16,6 +16,7 @@ namespace ToolsStore.Domain.Concrete
     {
         private EFDbContext context = new EFDbContext();
 
+        #region Reference books - справочники
         public IQueryable<RS_PRODUCT> Prdcts
         {
             get { return context.RS_PRODUCT; }
@@ -55,7 +56,9 @@ namespace ToolsStore.Domain.Concrete
         {
             get { return context.CT_VAT; }
         }
+        #endregion
 
+        #region Product - Продукция. Запрос или вьюха? Вот в чем вопрос.
         public IEnumerable<Product> Products
         {
             get
@@ -119,6 +122,43 @@ namespace ToolsStore.Domain.Concrete
                 return products;
             }
         }
+        #endregion
+
+        #region For Navigation
+
+        public IQueryable<CT_CATEGORY> NavCategories
+        {
+            get
+            {
+                int cntAll = context.SK_EQUIPMENT.Count();
+                int cntActive = context.SK_EQUIPMENT.Where(x => x.IsActive).Count();
+
+                IQueryable<CT_CATEGORY> categories;
+                if (cntActive != cntAll)
+                {
+                    var categoryIds = context.SK_EQUIPMENT.Where(x => x.IsActive).Select(x => x.CategoryId).Distinct().ToList();
+                    categories = (from ct in context.CT_CATEGORY
+                                  join ctId in categoryIds on ct.CategoryId equals ctId
+                                  select ct);
+                }
+                else
+                {
+                    categories = context.CT_CATEGORY;
+                }
+                return categories;
+            }
+        }
+
+        public IQueryable<SK_EQUIPMENT> NavEquipments
+        {
+            get
+            {
+                IQueryable<SK_EQUIPMENT> equipments = context.SK_EQUIPMENT.Where(x => x.IsActive);
+                return equipments;
+            }
+        }
+
+        #endregion
 
         #region Category - Категории
         public void SaveCategory(CT_CATEGORY category)

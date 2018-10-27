@@ -20,7 +20,11 @@ namespace ToolsStore.Domain.Abstract
 
         IQueryable<RS_PRICE> Prices { get; }
 
-        IQueryable<CT_VAT> Vats { get; }       
+        IQueryable<CT_VAT> Vats { get; }
+
+        IQueryable<CT_CATEGORY> NavCategories { get; }
+
+        IQueryable<SK_EQUIPMENT> NavEquipments { get; }
 
         IEnumerable<Product> Products { get; }
 
