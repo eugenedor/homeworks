@@ -17,16 +17,6 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public PartialViewResult MenuEquipment(long category = -1, long equipment = -1)
-        {            
-            if (category == -1 && equipment >= 0)
-                category = repository.NavEquipments.Where(x => x.EquipmentId == equipment).First().CategoryId;
-
-            ViewBag.SelectedEquipments = equipment;
-            IEnumerable<SK_EQUIPMENT> equipments = repository.NavEquipments.Where(x => x.CategoryId == category);
-            return PartialView(equipments);
-        }
-
         public PartialViewResult MenuCategory(long category = -1, long equipment = -1)
         {
             if (category == -1 && equipment >= 0)
@@ -35,6 +25,16 @@ namespace ToolsStore.WebUI.Controllers
             ViewBag.SelectedCategories = category;
             IEnumerable<CT_CATEGORY> categories = repository.NavCategories;
             return PartialView(categories);
+        }
+
+        public PartialViewResult MenuEquipment(long category = -1, long equipment = -1)
+        {            
+            if (category == -1 && equipment >= 0)
+                category = repository.NavEquipments.Where(x => x.EquipmentId == equipment).First().CategoryId;
+
+            ViewBag.SelectedEquipments = equipment;
+            IEnumerable<SK_EQUIPMENT> equipments = repository.NavEquipments.Where(x => x.CategoryId == category);
+            return PartialView(equipments);
         }
     }
 }
