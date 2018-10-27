@@ -19,6 +19,7 @@
     <tr>
         <th>ID</th>
         <th>Тип оборудования</th>
+        <th>Категория</th>
         <th>Бренд</th>
         <th>Модель</th>
         <th>Наименование</th>
@@ -37,6 +38,7 @@
         <tr>
             <td>@item.ProductId</td>
             <td>@item.EquipmentName</td>
+            <td>@item.CategoryName</td>
             <td>@item.BrandName</td>
             <td>@item.ModelName</td>
             <td>@Html.ActionLink(item.Name, "ProductEdit", new { item.ProductId })</td>
