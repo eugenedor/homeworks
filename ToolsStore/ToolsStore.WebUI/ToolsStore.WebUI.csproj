@@ -224,6 +224,7 @@
     <Compile Include="Controllers\MdlController.cs" />
     <Compile Include="Controllers\NavController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\PriceController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RuleController.cs" />
     <Compile Include="Controllers\SettingController.cs" />
@@ -309,6 +310,7 @@
     <Content Include="Views\Brand\BrandEdit.cshtml" />
     <Content Include="Views\Mdl\MdlEdit.cshtml" />
     <Content Include="Views\Mdl\Mdls.cshtml" />
+    <Content Include="Views\Price\Prices.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

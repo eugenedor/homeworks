@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ToolsStore.Domain.Entities.RS_PRICE>
+
+@{
+    ViewBag.Title = "Цены";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>Цены</h1>
+
+<p>
+    @Html.ActionLink("Вернуться к списку", "Index", "Admin")
+</p>
+
+<p>
+    @Html.ActionLink("+ Добавить цену", "PriceCreate")
+</p>
+
+<table class="Grid">
+    <tr>
+        <th>ID</th>
+        <th>Продукт</th>
+        <th>Цена с НДС</th>
+        <th>Цена без НДС</th>
+        <th>НДС</th>
+        <th>Дата начала</th>
+        <th>Дата окончания</th>
+        <th>Действие</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.ActionLink(item.PriceId.ToString(), "PriceEdit", new { item.PriceId })</td>
+            <td>@Html.DisplayFor(modelItem => item.RS_PRODUCT.Name)</td>            
+            <td>@item.PriceWithVat</td>
+            <td>@item.PriceWithoutVat</td>
+            <td>@Html.DisplayFor(modelItem => item.CT_VAT.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateBegin)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateEnd)</td>
+            <td>
+                @using (Html.BeginForm("PriceDelete", "Price"))
+                {
+                    @Html.Hidden("priceId", item.PriceId)
+                    <input type="submit" value="удалить" />
+                }
+            </td>
+        </tr>
+    }
+</table>
