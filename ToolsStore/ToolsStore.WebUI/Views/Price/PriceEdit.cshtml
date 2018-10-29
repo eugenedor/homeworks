@@ -1,0 +1,52 @@
+﻿@model ToolsStore.WebUI.Models.PriceViewModel
+
+@{
+    ViewBag.Title = "Редактирование цены";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Редактирование</h2>
+<h3>Идентификатор: @Model.Price.PriceId</h3>
+
+@using (Html.BeginForm("PriceEdit", "Price"))
+{
+    <div>
+        @Html.HiddenFor(x => x.Price.PriceId)
+    </div>
+    <div style="font-weight:bold">
+        Продукт:
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.Price.ProductId, new SelectList(Model.Products, "ProductId", "Name"), new { style = "width:338px" })
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Продукт:
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.Price.VatId, new SelectList(Model.Vats, "VatId", "Name"), new { style = "width:338px" })
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Цена (с НДС):
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Price.PriceWithVat)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Дата начала:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Price.DateBegin)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Дата окончания:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Price.DateEnd)
+    </div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "Prices")
+}

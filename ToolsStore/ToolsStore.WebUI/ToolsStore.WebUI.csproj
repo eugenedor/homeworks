@@ -238,6 +238,7 @@
     <Compile Include="Models\EquipmentViewModel.cs" />
     <Compile Include="Models\MdlViewModel.cs" />
     <Compile Include="Models\PagingInfo.cs" />
+    <Compile Include="Models\PriceViewModel.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Views\Mdl\MdlEdit.cshtml" />
     <Content Include="Views\Mdl\Mdls.cshtml" />
     <Content Include="Views\Price\Prices.cshtml" />
+    <Content Include="Views\Price\PriceEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

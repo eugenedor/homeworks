@@ -27,7 +27,7 @@
                     {
                         @Html.Hidden("ProductId", line.Product.ProductId)
                         @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="actionButtons" type="submit" value="+ Добавить" />
+                        <input class="actionButtons" type="submit" value="+" />
                     }
                 </td>
                 <td>
@@ -35,7 +35,7 @@
                     {
                         @Html.Hidden("ProductId", line.Product.ProductId)
                         @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="actionButtons" type="submit" value="- Удалить" />
+                        <input class="actionButtons" type="submit" value="-" />
                     }
                 </td>
                 <td>
@@ -43,7 +43,7 @@
                     {
                         @Html.Hidden("ProductId", line.Product.ProductId)
                         @Html.HiddenFor(x => x.ReturnUrl)
-                        <input class="actionButtons" type="submit" value="- Удалить ВСЕ" />
+                        <input class="actionButtons" type="submit" value="Очистить" />
                     }
                 </td>
             </tr>

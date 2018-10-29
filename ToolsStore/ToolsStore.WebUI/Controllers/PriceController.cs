@@ -23,5 +23,21 @@ namespace ToolsStore.WebUI.Controllers
         {
             return View(((DbQuery<RS_PRICE>)repository.Prices).Include("RS_PRODUCT").Include("CT_VAT").OrderByDescending(x => x.PriceId));
         }
+
+        public ViewResult PriceEdit(long priceId)
+        {
+            RS_PRICE price = repository.Prices.Where(x => x.PriceId == priceId).FirstOrDefault();
+            IEnumerable<RS_PRODUCT> products = repository.Productts;
+            IEnumerable<CT_VAT> vats = repository.Vats;
+
+            var priceVM = new PriceViewModel
+            {
+                Price = price,
+                Products = products,
+                Vats = vats
+            };
+
+            return View(priceVM);
+        }
     }
 }
