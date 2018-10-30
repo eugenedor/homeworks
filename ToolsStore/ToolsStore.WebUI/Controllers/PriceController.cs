@@ -55,5 +55,31 @@ namespace ToolsStore.WebUI.Controllers
                 return View(priceVM);
             }
         }
+
+        public ViewResult PriceCreate()
+        {
+            IEnumerable<RS_PRODUCT> products = repository.Productts;
+            IEnumerable<CT_VAT> vats = repository.Vats;
+
+            var priceVM = new PriceViewModel
+            {
+                Price = new RS_PRICE(),
+                Products = products,
+                Vats = vats
+            };
+
+            return View("PriceEdit", priceVM);
+        }
+
+        [HttpPost]
+        public ActionResult PriceDelete(long priceId)
+        {
+            RS_PRICE deletedPrice = repository.DeletePrice(priceId);
+            if (deletedPrice != null)
+            {
+                TempData["message"] = string.Format("{0} был удален", deletedPrice.PriceId.ToString());
+            }
+            return RedirectToAction("Prices");
+        }
     }
 }
