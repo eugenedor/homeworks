@@ -39,5 +39,21 @@ namespace ToolsStore.WebUI.Controllers
 
             return View(priceVM);
         }
+
+        [HttpPost]
+        public ActionResult PriceEdit(PriceViewModel priceVM)
+        {
+            if (ModelState.IsValid)
+            {
+                repository.SavePrice(priceVM.Price);
+                TempData["message"] = string.Format("{0} сохранено", priceVM.Price.PriceId.ToString());
+                return RedirectToAction("Prices");
+            }
+            else
+            {
+                // что-то не так с значениями данных (there is something wrong with the data values)
+                return View(priceVM);
+            }
+        }
     }
 }

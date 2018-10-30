@@ -25,10 +25,12 @@ namespace ToolsStore.Domain.Entities
 
         public decimal? PriceWithoutVat { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm:ss}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime DateBegin { get; set; }
 
-        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm:ss}")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime? DateEnd { get; set; }
 
         public virtual CT_VAT CT_VAT { get; set; }

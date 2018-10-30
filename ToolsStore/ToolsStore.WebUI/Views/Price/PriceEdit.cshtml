@@ -38,14 +38,14 @@
         Дата начала:
     </div>
     <div>
-        @Html.EditorFor(x => x.Price.DateBegin)
+        @Html.TextBoxFor(x => x.Price.DateBegin, "{0:yyyy.MM.dd}", new { style = "width:338px" })
     </div>
     <div>&nbsp;</div>
     <div style="font-weight:bold">
         Дата окончания:
     </div>
     <div>
-        @Html.EditorFor(x => x.Price.DateEnd)
+        @Html.TextBoxFor(x => x.Price.DateEnd, "{0:yyyy.MM.dd}", new { style = "width:338px" })
     </div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Prices")

@@ -457,5 +457,44 @@ namespace ToolsStore.Domain.Concrete
             return dbEntry;
         }
         #endregion
+
+        #region Price - Цена
+        public void SavePrice(RS_PRICE price)
+        {
+            price.PriceWithoutVat = 0;                               //change trigger database
+            price.DateEnd = price.DateEnd ?? DateTime.MaxValue.Date;
+            if (price.PriceId == 0)
+            {
+                context.RS_PRICE.Add(price);
+            }
+            else
+            {
+                RS_PRICE dbEntry = context.RS_PRICE.Where(x => x.PriceId == price.PriceId).Single();
+                if (dbEntry != null)
+                {
+                    dbEntry.ProductId = price.ProductId;
+                    dbEntry.VatId = price.VatId;
+                    dbEntry.PriceWithVat = price.PriceWithVat;
+                    dbEntry.PriceWithoutVat = price.PriceWithoutVat;
+                    dbEntry.DateBegin = price.DateBegin;
+                    dbEntry.DateEnd = price.DateEnd;
+                    dbEntry.RS_PRODUCT = price.RS_PRODUCT;
+                    dbEntry.CT_VAT = price.CT_VAT;
+                }
+            }
+            context.SaveChanges();
+        }
+
+        public RS_PRICE DeletePrice(long priceId)
+        {
+            RS_PRICE dbEntry = context.RS_PRICE.Where(x => x.PriceId == priceId).Single();
+            if (dbEntry != null)
+            {
+                context.RS_PRICE.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
+        #endregion
     }
 }

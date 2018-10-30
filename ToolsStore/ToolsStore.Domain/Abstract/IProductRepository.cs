@@ -55,5 +55,9 @@ namespace ToolsStore.Domain.Abstract
         void RefreshEquipmentIsActive();
 
         void SetEquipmentIsActive(bool isActive);
+
+        void SavePrice(RS_PRICE price);
+
+        RS_PRICE DeletePrice(long priceId);
     }
 }
