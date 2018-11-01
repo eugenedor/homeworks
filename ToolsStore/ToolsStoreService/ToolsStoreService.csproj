@@ -50,7 +50,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clss\category\Category.cs" />
+    <Compile Include="clss\category\CategoryExtra.cs" />
     <Compile Include="clss\vat\Vat.cs" />
+    <Compile Include="clss\vat\VatExtra.cs" />
     <Compile Include="db\DataBaseManager.cs" />
     <Compile Include="ds\dsLoadRule.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -68,8 +70,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="log\Log.cs" />
-    <Compile Include="mngr\CategoryManager.cs" />
-    <Compile Include="mngr\VatManager.cs" />
     <Compile Include="ProjectInstaller.cs">
       <SubType>Component</SubType>
     </Compile>

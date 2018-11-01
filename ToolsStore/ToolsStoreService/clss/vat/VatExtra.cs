@@ -3,40 +3,33 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using ToolsStoreService.clss.vat;
 using ToolsStoreService.file;
 using ToolsStoreService.log;
 using ToolsStoreService.db;
 
-namespace ToolsStoreService.mngr
+namespace ToolsStoreService.clss.vat
 {
-    class VatManager
+    public partial class packet
     {
-        public static bool Load(packet pck)
+        public bool Load()
         {
             try
             {
-                if (pck == null)
-                {
-                    Log.write("Ошибка. Пакет xml-файла не удалось инициализировать.");
-                    return false;
-                }
-
-                if (pck.rec == null)
+                if (rec == null)
                 {
                     Log.write("Ошибка. Массив записей в пакете xml-файла не удалось инициализировать.");
                     return false;
                 }
 
-                foreach (packetRec rec in pck.rec)
+                foreach (packetRec pcktRec in rec)
                 {
-                    if (rec == null)
+                    if (pcktRec == null)
                     {
                         Log.write("Ошибка. Запись в пакете xml-файла не удалось инициализировать.");
                         return false;
                     }
 
-                    if (!DataBaseManager.LoadVat(rec.Code, rec.Name, rec.Rem))
+                    if (!DataBaseManager.LoadVat(pcktRec.Code, pcktRec.Name, pcktRec.Rem))
                         return false;
                 }
                 return true;

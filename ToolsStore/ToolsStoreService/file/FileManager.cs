@@ -11,7 +11,6 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using ToolsStoreService.log;
-using ToolsStoreService.mngr;
 
 namespace ToolsStoreService.file
 {
@@ -500,7 +499,7 @@ namespace ToolsStoreService.file
 
                 if (pck != null)
                 {
-                    if (!CategoryManager.Load(pck))
+                    if (!pck.Load())
                         return false;
 
                     return true;
@@ -597,7 +596,7 @@ namespace ToolsStoreService.file
 
                 if (pck != null)
                 {
-                    if (!VatManager.Load(pck))
+                    if (!pck.Load())
                         return false;
 
                     return true;
