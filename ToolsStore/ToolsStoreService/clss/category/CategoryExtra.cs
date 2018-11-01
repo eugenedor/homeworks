@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 using ToolsStoreService.file;
 using ToolsStoreService.log;
 using ToolsStoreService.db;
+using ToolsStoreService.abstr;
 
 namespace ToolsStoreService.clss.category
 {
-    public partial class packet
+    public partial class packet : ILoadManager
     {
         public bool Load()
         {

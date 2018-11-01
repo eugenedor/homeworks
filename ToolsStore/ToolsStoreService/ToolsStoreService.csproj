@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="abstr\ILoadManager.cs" />
     <Compile Include="clss\category\Category.cs" />
     <Compile Include="clss\category\CategoryExtra.cs" />
     <Compile Include="clss\vat\Vat.cs" />

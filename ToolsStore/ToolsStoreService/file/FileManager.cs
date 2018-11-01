@@ -11,6 +11,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 using ToolsStoreService.log;
+using ToolsStoreService.abstr;
 
 namespace ToolsStoreService.file
 {
@@ -480,12 +481,16 @@ namespace ToolsStoreService.file
                     return false;
 
                 //xmlserializer - deserialize
-                clss.category.packet pck;
                 XmlSerializer ser = new XmlSerializer(typeof(clss.category.packet), xRoot);
                 TextReader srr = new StringReader(xmlStr);
                 try
                 {
-                    pck = ser.Deserialize(srr) as clss.category.packet;
+                    ILoadManager ilmngr = ser.Deserialize(srr) as clss.category.packet;
+                    if (ilmngr == null)
+                        return false;
+                    if (!ilmngr.Load())
+                        return false;
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -495,18 +500,6 @@ namespace ToolsStoreService.file
                 finally
                 {
                     srr.Close();
-                }
-
-                if (pck != null)
-                {
-                    if (!pck.Load())
-                        return false;
-
-                    return true;
-                }
-                else
-                {
-                    return false;
                 }
             }
             catch (Exception ex)
@@ -577,12 +570,16 @@ namespace ToolsStoreService.file
                     return false;
 
                 //xmlserializer - deserialize
-                clss.vat.packet pck;
                 XmlSerializer ser = new XmlSerializer(typeof(clss.vat.packet), xRoot);
                 TextReader srr = new StringReader(xmlStr);
                 try
                 {
-                    pck = ser.Deserialize(srr) as clss.vat.packet;
+                    ILoadManager ilmngr = ser.Deserialize(srr) as clss.vat.packet;
+                    if (ilmngr == null)
+                        return false;
+                    if (!ilmngr.Load())
+                        return false;
+                    return true;
                 }
                 catch (Exception ex)
                 {
@@ -592,18 +589,6 @@ namespace ToolsStoreService.file
                 finally
                 {
                     srr.Close();
-                }
-
-                if (pck != null)
-                {
-                    if (!pck.Load())
-                        return false;
-
-                    return true;
-                }
-                else
-                {
-                    return false;
                 }
             }
             catch (Exception ex)
