@@ -33,7 +33,7 @@ namespace ToolsStoreService.log
             try
             {
                 //
-                nameFile = DateTime.Now.ToShortDateString() + "_" + nameFile;
+                nameFile = DateTime.Now.ToString("yyyyMMdd") + "_" + nameFile;
                 FileInfo fi = new FileInfo(path + nameFile);
                 StreamWriter sw = fi.AppendText();
                 if (!String.IsNullOrEmpty(msg))
