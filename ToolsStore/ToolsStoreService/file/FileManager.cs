@@ -437,21 +437,29 @@ namespace ToolsStoreService.file
             if (!CheckValidXml(fwp)) //проверка валидации файла
                 return false;
 
-            bool loaded = false;
-            //варианты загрузок
-            switch (fwp.MethodLoad.ToLower())
+            try
             {
-                case "loadcategory":
-                    loaded = LoadCategory(fwp);
-                    break;
-                case "loadvat":
-                    loaded = LoadVat(fwp);
-                    break;
-                default:
-                    loaded = LoadError(fwp);
-                    break;
+                bool loaded = false;
+                //варианты загрузок
+                switch (fwp.MethodLoad.ToLower())
+                {
+                    case "loadcategory":
+                        loaded = LoadCategory(fwp);
+                        break;
+                    case "loadvat":
+                        loaded = LoadVat(fwp);
+                        break;
+                    default:
+                        loaded = LoadError(fwp);
+                        break;
+                }
+                return loaded;
             }
-            return loaded;
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
         }
 
         /// <summary>
@@ -464,53 +472,7 @@ namespace ToolsStoreService.file
         }
 
         /// <summary>
-        /// Загрузка категории
-        /// </summary>
-        private static bool LoadCategory(FileWithParam fwp)
-        {
-            XmlRootAttribute xRoot;
-            string xmlStr;
-            try
-            {
-                //xml-узел, xml-строка
-                if (!Load(fwp, "packet", out xRoot, out xmlStr))
-                    return false;
-
-                //проверка xml-строки
-                if (!CheckXmlString(xmlStr))
-                    return false;
-
-                //xmlserializer - deserialize
-                XmlSerializer ser = new XmlSerializer(typeof(clss.category.packet), xRoot);
-                TextReader srr = new StringReader(xmlStr);
-                try
-                {
-                    ILoadManager ilmngr = ser.Deserialize(srr) as clss.category.packet;
-                    if (ilmngr == null)
-                        return false;
-                    if (!ilmngr.Load())
-                        return false;
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    Log.write(ex.Message);
-                    return false;
-                }
-                finally
-                {
-                    srr.Close();
-                }
-            }
-            catch (Exception ex)
-            {
-                Log.write(ex.Message);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Загрузка (общая часть)
+        /// Загрузка. Получение xml-строки и корневого узла
         /// </summary>
         private static bool Load(FileWithParam fwp, string xAttr, out XmlRootAttribute xRoot, out string xmlStr)
         {
@@ -520,7 +482,7 @@ namespace ToolsStoreService.file
             {
                 //xml-документ
                 XmlDocument xDoc = new XmlDocument();
-                StreamReader sr = new StreamReader(fwp.FullName, System.Text.Encoding.GetEncoding(fwp.Encoding.HeaderName));
+                StreamReader sr = new StreamReader(fwp.FullName, Encoding.GetEncoding(fwp.Encoding.HeaderName));
                 try
                 {
                     xDoc.Load(sr);
@@ -553,49 +515,88 @@ namespace ToolsStoreService.file
         }
 
         /// <summary>
-        /// Загрузка НДС
+        /// Загузка. XmlSerializer и TextReader
         /// </summary>
-        private static bool LoadVat(FileWithParam fwp)
+        private static bool Load(FileWithParam fwp, string xAttr, Type type, out XmlSerializer xSer, out TextReader reader)
         {
             XmlRootAttribute xRoot;
             string xmlStr;
+            xSer = null;
+            reader = null;
+
+            //xml-узел, xml-строка
+            if (!Load(fwp, xAttr, out xRoot, out xmlStr))
+                return false;
+
+            //проверка xml-строки
+            if (!CheckXmlString(xmlStr))
+                return false;
+
+            xSer = new XmlSerializer(type, xRoot);
+            reader = new StringReader(xmlStr);
+            return true;
+        }
+
+        /// <summary>
+        /// Загрузка объекта
+        /// </summary>
+        private static bool Load(ILoadManager ilmngr)
+        {
+            if (ilmngr == null)
+                return false;
+
+            return ilmngr.Load();
+        }
+
+        /// <summary>
+        /// Загрузка категории
+        /// </summary>
+        private static bool LoadCategory(FileWithParam fwp)
+        {
+            XmlSerializer xSer;
+            TextReader reader;
+            if (!Load(fwp, "packet", typeof(clss.category.packet), out xSer, out reader))
+                return false;
             try
             {
-                //xml-узел, xml-строка
-                if (!Load(fwp, "packet", out xRoot, out xmlStr))
-                    return false;
-
-                //проверка xml-строки
-                if (!CheckXmlString(xmlStr))
-                    return false;
-
-                //xmlserializer - deserialize
-                XmlSerializer ser = new XmlSerializer(typeof(clss.vat.packet), xRoot);
-                TextReader srr = new StringReader(xmlStr);
-                try
-                {
-                    ILoadManager ilmngr = ser.Deserialize(srr) as clss.vat.packet;
-                    if (ilmngr == null)
-                        return false;
-                    if (!ilmngr.Load())
-                        return false;
-                    return true;
-                }
-                catch (Exception ex)
-                {
-                    Log.write(ex.Message);
-                    return false;
-                }
-                finally
-                {
-                    srr.Close();
-                }
+                ILoadManager ilmngr = xSer.Deserialize(reader) as clss.category.packet;
+                return Load(ilmngr);
             }
             catch (Exception ex)
             {
                 Log.write(ex.Message);
                 return false;
             }
+            finally
+            {
+                reader.Close();
+            }
         }
+
+        /// <summary>
+        /// Загрузка НДС
+        /// </summary>
+        private static bool LoadVat(FileWithParam fwp)
+        {
+            XmlSerializer xSer;
+            TextReader reader;
+            if (!Load(fwp, "packet", typeof(clss.vat.packet), out xSer, out reader))
+                return false;
+            try
+            {
+                ILoadManager ilmngr = xSer.Deserialize(reader) as clss.vat.packet;
+                return Load(ilmngr);
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }
+
     }
 }

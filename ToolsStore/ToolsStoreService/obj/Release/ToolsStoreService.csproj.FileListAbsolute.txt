@@ -1,7 +1,8 @@
-E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe.config
 E:\projects\ToolsStore\ToolsStoreService\bin\Release\xsd\Category.xsd
+E:\projects\ToolsStore\ToolsStoreService\bin\Release\xsd\Vat.xsd
 E:\projects\ToolsStore\ToolsStoreService\bin\Release\_installWinService.bat
 E:\projects\ToolsStore\ToolsStoreService\bin\Release\_unistallWinService.bat
+E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe.config
 E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.exe
 E:\projects\ToolsStore\ToolsStoreService\bin\Release\ToolsStoreService.pdb
 E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.ProjectInstaller.resources
@@ -9,4 +10,3 @@ E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.ToolsStor
 E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.csproj.GenerateResource.Cache
 E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.exe
 E:\projects\ToolsStore\ToolsStoreService\obj\Release\ToolsStoreService.pdb
-E:\projects\ToolsStore\ToolsStoreService\bin\Release\xsd\Vat.xsd
