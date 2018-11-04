@@ -82,6 +82,7 @@ namespace ToolsStore.Domain.Concrete
                                             where !vat.Rem
                                             select vat) on prc.VatId equals v1.VatId into v2
                                 from v in v2.DefaultIfEmpty()
+                                where pr.IsActive
                                 orderby pr.ProductId
                                 select new Product
                                 {
