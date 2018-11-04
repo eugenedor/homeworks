@@ -47,6 +47,8 @@ namespace ToolsStore.Domain.Entities
         [StringLength(250)]
         public string Kit { get; set; }
 
+        public bool IsActive { get; set; }
+
         public virtual CT_IMAGE CT_IMAGE { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity.Infrastructure;
 using ToolsStore.Domain.Abstract;
 using ToolsStore.Domain.Entities;
 using ToolsStore.WebUI.Models;
@@ -70,7 +71,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Products()
         {
-            return View(repository.Products.OrderByDescending(x => x.ProductId));
+            return View(((DbQuery<RS_PRODUCT>)repository.Productts).Include("SK_EQUIPMENT").Include("SK_MODEL").OrderByDescending(x => x.ProductId));
         }
 
         public ViewResult ProductEdit(long productId)

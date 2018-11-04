@@ -1,7 +1,7 @@
-﻿@model IEnumerable<ToolsStore.Domain.Entities.Product>
+﻿@model IEnumerable<ToolsStore.Domain.Entities.RS_PRODUCT>
 
 @{
-    ViewBag.Title = "Товары";
+    ViewBag.Title = "Products";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
@@ -19,8 +19,6 @@
     <tr>
         <th>ID</th>
         <th>Тип оборудования</th>
-        <th>Категория</th>
-        <th>Бренд</th>
         <th>Модель</th>
         <th>Наименование</th>
         <th>Описание</th>
@@ -31,16 +29,15 @@
         <th>Цвет</th>
         <th>Мощность</th>
         <th>Комплект</th>
+        <th>Активность</th>
         <th>Действие</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
             <td>@item.ProductId</td>
-            <td>@item.EquipmentName</td>
-            <td>@item.CategoryName</td>
-            <td>@item.BrandName</td>
-            <td>@item.ModelName</td>
+            <td>@Html.DisplayFor(modelItem => item.SK_EQUIPMENT.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.SK_MODEL.Name)</td>
             <td>@Html.ActionLink(item.Name, "ProductEdit", new { item.ProductId })</td>
             <td>@item.Descr</td>
             <td>@item.Mass</td>
@@ -50,6 +47,7 @@
             <td>@item.Color</td>
             <td>@item.Power</td>
             <td>@item.Kit</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
             <td>
                 @using (Html.BeginForm("ProductDelete", "Product"))
                 {

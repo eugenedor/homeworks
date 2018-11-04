@@ -38,6 +38,8 @@ namespace ToolsStore.Domain.Entities
 
         public string Kit { get; set; }
 
+        public bool IsActive { get; set; }
+
         public string EquipmentName { get; set; }
 
         public string EquipmentNameExtra { get; set; }
