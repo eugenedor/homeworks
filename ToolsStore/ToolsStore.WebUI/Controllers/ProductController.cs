@@ -174,14 +174,11 @@ namespace ToolsStore.WebUI.Controllers
             };
             productVM.Product.CT_IMAGE = image;
         
-            if (image != null)
+            if (image != null && image.Data != null && image.MimeType != null)
             {
-                if (image.Data != null && image.MimeType != null)
-                {
-                    return File(image.Data, image.MimeType, image.Name);
-                }
+                return File(image.Data, image.MimeType, image.Name);
             }
-
+        
             return View("ProductEdit", productVM);
         }
 
@@ -194,20 +191,9 @@ namespace ToolsStore.WebUI.Controllers
 
         public ActionResult ClearImage(long productId)
         {
-            RS_PRODUCT product = repository.Productts.Where(p => p.ProductId == productId).FirstOrDefault();
-            IEnumerable<SK_EQUIPMENT> equipments = repository.Equipments;
-            IEnumerable<SK_MODEL> models = repository.Models;
-
-            ProductViewModel productVM = new ProductViewModel
-            {
-                Product = product,
-                Equipments = equipments,
-                Models = models
-            };
-
             repository.ClearImage(productId);
-
-            return View("ProductEdit", productVM);
+            TempData["message"] = string.Format("Изображение очищено");
+            return RedirectToAction("Products");
         }
     }
 }

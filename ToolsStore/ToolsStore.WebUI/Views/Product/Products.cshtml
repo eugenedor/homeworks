@@ -31,6 +31,7 @@
         <th>Комплект</th>
         <th>Активность</th>
         <th>Действие</th>
+        <th>Изображение</th>
     </tr>
     @foreach (var item in Model)
     {
@@ -53,6 +54,13 @@
                 {
                     @Html.Hidden("productId", item.ProductId)
                     <input type="submit" value="удалить" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("ClearImage", "Product"))
+                {
+                    @Html.Hidden("productId", item.ProductId)
+                    <input type="submit" value="очистить" />
                 }
             </td>
         </tr>
