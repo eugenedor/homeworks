@@ -324,7 +324,8 @@ namespace ToolsStore.Domain.Concrete
                 && product.ImageId != null)
             {
                 img = context.CT_IMAGE.Where(x => x.ImageId == product.ImageId).Single();
-                if (img != null)
+                if (img != null
+                    && product.CT_IMAGE.Data != null)
                 {
                     img.Data = product.CT_IMAGE.Data;
                     img.MimeType = product.CT_IMAGE.MimeType;
@@ -393,6 +394,25 @@ namespace ToolsStore.Domain.Concrete
                 context.SaveChanges();
             }
             return dbEntry;
+        }
+
+        public void ClearImage(long productId)
+        {
+            DateTime dateLoad = DateTime.Now;
+            CT_IMAGE img = null;
+            long? imageId = context.RS_PRODUCT.Where(x => x.ProductId == productId).SingleOrDefault().ImageId;
+            if (imageId != null)
+            {
+                img = context.CT_IMAGE.Where(x => x.ImageId == imageId).Single();
+                if (img != null)
+                {
+                    img.Data = null;
+                    img.MimeType = null;
+                    img.Name = null;
+                    img.DateLoad = dateLoad;
+                    context.SaveChanges();
+                }
+            }
         }
         #endregion
 

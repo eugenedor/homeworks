@@ -59,5 +59,7 @@ namespace ToolsStore.Domain.Abstract
         void SavePrice(RS_PRICE price);
 
         RS_PRICE DeletePrice(long priceId);
+
+        void ClearImage(long productId);
     }
 }
