@@ -23,75 +23,71 @@
     <div>
         @Html.EditorFor(x => x.Product.Name)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Тип оборудования:
     </div>
     <div>
         @Html.DropDownListFor(m => m.Product.EquipmentId, new SelectList(Model.Equipments, "EquipmentId", "Name"), new { style = "width:338px" })
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Модель:
     </div>
     <div>
         @Html.DropDownListFor(m => m.Product.ModelId, new SelectList(Model.Models, "ModelId", "Name"), new { style = "width:338px" })
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Описание:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Descr)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Масса:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Mass)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Длина:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Length)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Ширина:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Width)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Высота:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Height)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Цвет:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Color)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Мощность:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Power)
     </div>
-    <div>&nbsp;</div>
     <div style="font-weight:bold">
         Комплект:
     </div>
     <div>
         @Html.EditorFor(x => x.Product.Kit)
+    </div>
+    <div style="font-weight:bold">
+        Признак активности:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.Product.IsActive)
     </div>
     <div class="editor-label">Изображение</div>
     <div class="editor-field">
@@ -108,7 +104,6 @@
             <input type="file" name="Image" />
         </div>
     </div>
-    <div>&nbsp;</div>
     <div>
         @Html.ActionLink("Выгрузить изображение", "DownLoadFile", new { Model.Product.ProductId })
     </div>

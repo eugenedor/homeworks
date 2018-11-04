@@ -373,6 +373,7 @@ namespace ToolsStore.Domain.Concrete
                     dbEntry.Color = product.Color;
                     dbEntry.Power = product.Power;
                     dbEntry.Kit = product.Kit;
+                    dbEntry.IsActive = product.IsActive;
 
                     dbEntry.SK_EQUIPMENT = product.SK_EQUIPMENT;
                     dbEntry.SK_MODEL = product.SK_MODEL;
