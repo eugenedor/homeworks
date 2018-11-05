@@ -398,18 +398,24 @@ namespace ToolsStore.Domain.Concrete
 
         public void ClearImage(long productId)
         {
-            DateTime dateLoad = DateTime.Now;
             CT_IMAGE img = null;
             long? imageId = context.RS_PRODUCT.Where(x => x.ProductId == productId).SingleOrDefault().ImageId;
             if (imageId != null)
             {
-                img = context.CT_IMAGE.Where(x => x.ImageId == imageId).Single();
-                if (img != null)
+                RS_PRODUCT dbEntryPrd = context.RS_PRODUCT.Where(x => x.ProductId == productId).Single();
+                if (dbEntryPrd != null)
                 {
-                    img.Data = null;
-                    img.MimeType = null;
-                    img.Name = null;
-                    img.DateLoad = dateLoad;
+                    dbEntryPrd.ImageId = null;
+                    dbEntryPrd.CT_IMAGE = null;
+                    context.SaveChanges();
+                }
+
+                img = context.CT_IMAGE.Where(x => x.ImageId == imageId).Single();
+
+                CT_IMAGE dbEntryImg = context.CT_IMAGE.Where(x => x.ImageId == imageId).Single();
+                if (dbEntryImg != null)
+                {
+                    context.CT_IMAGE.Remove(dbEntryImg);
                     context.SaveChanges();
                 }
             }
