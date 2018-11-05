@@ -130,6 +130,7 @@ namespace ToolsStore.WebUI.Controllers
                 Equipments = equipments,
                 Models = models
             };
+            productVM.Product.IsActive = true; //default
 
             return View("ProductEdit", productVM);
         }

@@ -398,7 +398,6 @@ namespace ToolsStore.Domain.Concrete
 
         public void ClearImage(long productId)
         {
-            CT_IMAGE img = null;
             long? imageId = context.RS_PRODUCT.Where(x => x.ProductId == productId).SingleOrDefault().ImageId;
             if (imageId != null)
             {
@@ -409,8 +408,6 @@ namespace ToolsStore.Domain.Concrete
                     dbEntryPrd.CT_IMAGE = null;
                     context.SaveChanges();
                 }
-
-                img = context.CT_IMAGE.Where(x => x.ImageId == imageId).Single();
 
                 CT_IMAGE dbEntryImg = context.CT_IMAGE.Where(x => x.ImageId == imageId).Single();
                 if (dbEntryImg != null)
