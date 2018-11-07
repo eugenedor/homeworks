@@ -322,7 +322,7 @@ namespace ToolsStore.Domain.Concrete
 
             if (product.CT_IMAGE.Data != null)
             {
-                if (product.ProductId > 0 && product.ImageId != null)
+                if (product.ImageId != null)
                 {
                     img = context.CT_IMAGE.Where(x => x.ImageId == product.ImageId).Single();
                     img.Data = product.CT_IMAGE.Data;
