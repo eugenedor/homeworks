@@ -29,7 +29,8 @@ SELECT DISTINCT o.id,
 FROM sysobjects o
 	 JOIN syscomments c ON o.id = c.id
 WHERE o.type in ('P', 'FN', 'TF', 'TR', 'V', 'U')
-	  AND lower(c.text) LIKE '%rem%'
+      AND (lower(c.text) LIKE '%rem%' 
+	       OR lower(c.text) LIKE '%isactive%')	 
 ORDER BY ObjectName;
 
 
@@ -38,5 +39,20 @@ SELECT o.object_id, o.name, o.type, o.type_desc, c.text
 FROM sys.objects o JOIN
 	 syscomments c ON o.object_id = c.id
 WHERE o.type in ('P', 'FN', 'TF', 'TR', 'V', 'U')
-	  AND lower(c.text) LIKE '%rem%'
+      AND (lower(c.text) LIKE '%rem%' 
+	       OR lower(c.text) LIKE '%isactive%')	 
 ORDER BY o.name;
+
+
+--clmn--
+SELECT o.name ObjectsName, 
+       c.name ColumnName,
+	   o.*,
+	   c.*
+FROM sys.columns c 
+     JOIN sys.objects o 
+	   ON o.object_id = c.object_id 
+WHERE o.type = 'U' 
+      AND (lower(c.name) LIKE '%rem%' 
+	       OR lower(c.name) LIKE '%isactive%')	   
+ORDER BY o.name, c.name
