@@ -316,7 +316,6 @@ namespace ToolsStore.Domain.Concrete
         public void SaveProduct(RS_PRODUCT product)
         {
             //image
-            long? imgId = null;
             CT_IMAGE img = null;
             DateTime dateLoad = DateTime.Now;
 
@@ -347,11 +346,8 @@ namespace ToolsStore.Domain.Concrete
                     img = context.CT_IMAGE.Where(x => x.ImageId == product.ImageId).Single();
             }
 
-            if (img != null)
-                imgId = img.ImageId;
-
             //product
-            product.ImageId = imgId;
+            product.ImageId = img != null ? img.ImageId : (long?)null;
             product.CT_IMAGE = img;
 
             if (product.ProductId == 0)
