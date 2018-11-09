@@ -1,3 +1,6 @@
+USE ToolsStore
+GO
+
 --
 --sysobjects + syscomments
 --
@@ -25,7 +28,12 @@ SELECT DISTINCT o.id,
 					WHEN 'X' THEN 'Extended stored procedure'
 					ELSE o.xtype
 				END AS ObjectType,
-				c.text
+				c.text,
+				CASE WHEN lower(c.text) LIKE '%rem%' and lower(c.text) LIKE '%isactive%' THEN 'REM_ISACTIVE'
+				     WHEN lower(c.text) LIKE '%rem%' and NOT (lower(c.text) LIKE '%isactive%') THEN 'REM'
+				     WHEN NOT (lower(c.text) LIKE '%rem%') and lower(c.text) LIKE '%isactive%' THEN 'ISACTIVE'
+					 ELSE ''
+				END Variant
 FROM sysobjects o
 	 JOIN syscomments c ON o.id = c.id
 WHERE o.type in ('P', 'FN', 'TF', 'TR', 'V', 'U')
@@ -35,7 +43,12 @@ ORDER BY ObjectName;
 
 
 --kurd--
-SELECT o.object_id, o.name, o.type, o.type_desc, c.text	
+SELECT  o.object_id, o.name, o.type, o.type_desc, c.text,
+		CASE WHEN lower(c.text) LIKE '%rem%' and lower(c.text) LIKE '%isactive%' THEN 'REM_ISACTIVE'
+				WHEN lower(c.text) LIKE '%rem%' and (lower(c.text) NOT LIKE '%isactive%') THEN 'REM'
+				WHEN (lower(c.text) NOT LIKE '%rem%') and lower(c.text) LIKE '%isactive%' THEN 'ISACTIVE'
+				ELSE ''
+		END Variant
 FROM sys.objects o JOIN
 	 syscomments c ON o.object_id = c.id
 WHERE o.type in ('P', 'FN', 'TF', 'TR', 'V', 'U')
