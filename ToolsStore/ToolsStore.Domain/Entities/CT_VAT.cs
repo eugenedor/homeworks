@@ -29,7 +29,7 @@ namespace ToolsStore.Domain.Entities
         public string Name { get; set; }
 
         [Display(Name = "Признак удаления")]
-        public bool Rem { get; set; }
+        public bool IsActive { get; set; }
 
         [Display(Name = "Дата загрузки")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm:ss}")]

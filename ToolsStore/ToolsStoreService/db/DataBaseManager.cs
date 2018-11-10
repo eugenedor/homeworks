@@ -108,7 +108,7 @@ namespace ToolsStoreService.db
             }                          
         }
 
-        public static bool LoadVat(int code, string name, bool rem)
+        public static bool LoadVat(int code, string name, bool isactive)
         {
             string conn;
             conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
@@ -121,11 +121,11 @@ namespace ToolsStoreService.db
             {
                 cmd.Parameters.Add("@code", SqlDbType.Int);
                 cmd.Parameters.Add("@name", SqlDbType.NVarChar, 100);
-                cmd.Parameters.Add("@rem", SqlDbType.Bit);
+                cmd.Parameters.Add("@isactive", SqlDbType.Bit);
 
                 cmd.Parameters["@code"].Value = code;
                 cmd.Parameters["@name"].Value = name;
-                cmd.Parameters["@rem"].Value = rem;
+                cmd.Parameters["@isactive"].Value = isactive;
 
                 if (cmd.Connection.State != ConnectionState.Closed)
                     cmd.Connection.Close();

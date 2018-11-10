@@ -72,6 +72,6 @@ namespace ToolsStore.Domain.Entities
 
         public string VatName { get; set; }
 
-        public bool? VatRem { get; set; }
+        public bool? VatIsActive { get; set; }
     }
 }

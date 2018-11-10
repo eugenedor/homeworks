@@ -46,7 +46,8 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult VatCreate()
         {
-            return View("VatEdit", new CT_VAT());
+            var vat = new CT_VAT() { IsActive = true };
+            return View("VatEdit", vat);
         }
 
         [HttpPost]

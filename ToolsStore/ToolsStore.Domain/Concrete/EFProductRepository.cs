@@ -79,7 +79,7 @@ namespace ToolsStore.Domain.Concrete
                                 from prc in prc2.DefaultIfEmpty()
 
                                 join v1 in (from vat in context.CT_VAT
-                                            where !vat.Rem
+                                            where vat.IsActive
                                             select vat) on prc.VatId equals v1.VatId into v2
                                 from v in v2.DefaultIfEmpty()
                                 where pr.IsActive
@@ -117,7 +117,7 @@ namespace ToolsStore.Domain.Concrete
                                     DateBegin = prc.DateBegin,
                                     DateEnd = prc.DateEnd,
                                     VatName = v.Name,
-                                    VatRem = v.Rem
+                                    VatIsActive = v.IsActive
                                 }).ToList();
 
                 return products;
@@ -210,7 +210,7 @@ namespace ToolsStore.Domain.Concrete
                 {
                     dbEntry.Code = vat.Code;
                     dbEntry.Name = vat.Name;
-                    dbEntry.Rem = vat.Rem;
+                    dbEntry.IsActive = vat.IsActive;
                     dbEntry.DateLoad = vat.DateLoad;
                 }
             }
