@@ -107,7 +107,7 @@ public partial class packetRec {
     
     private string nameField;
     
-    private bool remField;
+    private bool isActiveField;
     
     /// <remarks/>
     public int Code {
@@ -130,12 +130,12 @@ public partial class packetRec {
     }
     
     /// <remarks/>
-    public bool Rem {
+    public bool IsActive {
         get {
-            return this.remField;
+            return this.isActiveField;
         }
         set {
-            this.remField = value;
+            this.isActiveField = value;
         }
     }
 }

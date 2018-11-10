@@ -30,7 +30,7 @@ namespace ToolsStoreService.clss.vat
                         return false;
                     }
 
-                    if (!DataBaseManager.LoadVat(pcktRec.Code, pcktRec.Name, pcktRec.Rem))
+                    if (!DataBaseManager.LoadVat(pcktRec.Code, pcktRec.Name, pcktRec.IsActive))
                         return false;
                 }
                 return true;

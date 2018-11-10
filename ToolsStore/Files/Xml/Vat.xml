@@ -8,21 +8,21 @@
   <rec>
     <Code>0</Code>
     <Name>0%</Name>
-    <Rem>0</Rem>
+    <IsActive>1</IsActive>
   </rec>
   <rec>
     <Code>10</Code>
     <Name>10%</Name>
-    <Rem>0</Rem>
+    <IsActive>1</IsActive>
   </rec>
   <rec>
     <Code>18</Code>
     <Name>18%</Name>
-    <Rem>0</Rem>
+    <IsActive>1</IsActive>
   </rec>
   <rec>
     <Code>20</Code>
     <Name>20%</Name>
-    <Rem>0</Rem>
+    <IsActive>1</IsActive>
   </rec>  
 </packet>

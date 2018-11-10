@@ -17,13 +17,13 @@
             <xs:sequence>
               <xs:element name="Code" type="xs:int" />
               <xs:element name="Name">
-                <xs:simpleType>
+				<xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100"/>
                   </xs:restriction>
                 </xs:simpleType>
-              </xs:element>              
-              <xs:element name="Rem" type="xs:boolean" />
+			  </xs:element>			  
+              <xs:element name="IsActive" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
