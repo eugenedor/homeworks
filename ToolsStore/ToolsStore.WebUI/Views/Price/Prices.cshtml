@@ -11,6 +11,14 @@
     @Html.ActionLink("Вернуться к списку", "Index", "Admin")
 </p>
 
+@using (Html.BeginForm())
+{
+    <p>
+        Продукт:  @Html.TextBox("SearchProduct")
+        <input type="submit" value="Поиск" />
+    </p>
+}
+
 <p>
     @Html.ActionLink("+ Добавить цену", "PriceCreate")
 </p>

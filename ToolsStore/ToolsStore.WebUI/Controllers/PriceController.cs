@@ -19,9 +19,12 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Prices()
+        public ViewResult Prices(string searchProduct = null)
         {
-            return View(((DbQuery<RS_PRICE>)repository.Prices).Include("RS_PRODUCT").Include("CT_VAT").OrderByDescending(x => x.PriceId));
+            if (!string.IsNullOrEmpty(searchProduct))
+                return View(((DbQuery<RS_PRICE>)repository.Prices.Where(x => x.RS_PRODUCT.Name.Contains(searchProduct))).Include("RS_PRODUCT").Include("CT_VAT").OrderByDescending(x => x.PriceId));
+            else
+                return View(((DbQuery<RS_PRICE>)repository.Prices).Include("RS_PRODUCT").Include("CT_VAT").OrderByDescending(x => x.PriceId));
         }
 
         public ViewResult PriceEdit(long priceId)
