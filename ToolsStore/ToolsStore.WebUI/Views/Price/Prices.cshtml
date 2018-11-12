@@ -38,7 +38,7 @@
     {
         <tr>
             <td>@Html.ActionLink(item.PriceId.ToString(), "PriceEdit", new { item.PriceId })</td>
-            <td>@Html.DisplayFor(modelItem => item.RS_PRODUCT.Name)</td>            
+            <td>@Html.ActionLink(item.RS_PRODUCT.Name, "ProductInfo", "Product", new { productId = item.RS_PRODUCT.ProductId, returnUrl = Request.Url.PathAndQuery }, null)</td>            
             <td>@item.PriceWithVat</td>
             <td>@item.PriceWithoutVat</td>
             <td>@Html.DisplayFor(modelItem => item.CT_VAT.Name)</td>
@@ -50,7 +50,7 @@
                     @Html.Hidden("priceId", item.PriceId)
                     <input type="submit" value="удалить" />
                 }
-            </td>
+            </td>            
         </tr>
     }
 </table>
