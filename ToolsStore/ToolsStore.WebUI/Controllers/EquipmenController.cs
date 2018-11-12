@@ -19,9 +19,13 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Equipments()
+        public ViewResult Equipments(long? searchCategory = null)
         {
-            return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments).Include("CT_CATEGORY").OrderByDescending(x => x.EquipmentId));
+            ViewBag.SearchCategory = new SelectList(repository.Categories, "CategoryId", "Name");
+            if (searchCategory != null)
+                return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments.Where(x => x.CategoryId == (long)searchCategory)).Include("CT_CATEGORY").OrderByDescending(x => x.EquipmentId));
+            else
+                return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments).Include("CT_CATEGORY").OrderByDescending(x => x.EquipmentId));
         }
 
         public ViewResult EquipmentEdit(long equipmentId)

@@ -11,6 +11,14 @@
     @Html.ActionLink("Вернуться к списку", "Index", "Admin")
 </p>
 
+@using (Html.BeginForm("Equipments", "Equipmen"))
+{
+    <p>
+        Категория: @Html.DropDownList("SearchCategory", null, "Все категории", htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Поиск" />
+    </p>
+}
+
 <p>
     @Html.ActionLink("+ Добавить тип оборудования", "EquipmentCreate")
 </p>
