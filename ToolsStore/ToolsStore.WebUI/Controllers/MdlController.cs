@@ -19,9 +19,13 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Mdls()
+        public ViewResult Mdls(long? searchBrand = null)
         {
-            return View(((DbQuery<SK_MODEL>)repository.Models).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
+            ViewBag.SearchBrand = new SelectList(repository.Brands, "BrandId", "Name");
+            if (searchBrand != null)
+                return View(((DbQuery<SK_MODEL>)repository.Models.Where(x => x.BrandId == (long)searchBrand)).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
+            else
+                return View(((DbQuery<SK_MODEL>)repository.Models).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
         }
 
         public ViewResult MdlEdit(long modelId)

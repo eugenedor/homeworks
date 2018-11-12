@@ -11,6 +11,14 @@
     @Html.ActionLink("Вернуться к списку", "Index", "Admin")
 </p>
 
+@using (Html.BeginForm("Mdls", "Mdl"))
+{
+    <p>
+        Категория: @Html.DropDownList("SearchBrand", null, "Все бренды", htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Поиск" />
+    </p>
+}
+
 <p>
     @Html.ActionLink("+ Добавить модель", "MdlCreate")
 </p>
