@@ -22,10 +22,12 @@ namespace ToolsStore.WebUI.Controllers
         public ViewResult Equipments(long? searchCategory = null)
         {
             ViewBag.SearchCategory = new SelectList(repository.Categories, "CategoryId", "Name");
+            DbQuery<SK_EQUIPMENT> equipments;
             if (searchCategory != null)
-                return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments.Where(x => x.CategoryId == (long)searchCategory)).Include("CT_CATEGORY").OrderByDescending(x => x.EquipmentId));
+                equipments = (DbQuery<SK_EQUIPMENT>)repository.Equipments.Where(x => x.CategoryId == searchCategory);
             else
-                return View(((DbQuery<SK_EQUIPMENT>)repository.Equipments).Include("CT_CATEGORY").OrderByDescending(x => x.EquipmentId));
+                equipments = (DbQuery<SK_EQUIPMENT>)repository.Equipments;              
+            return View(equipments.Include("CT_CATEGORY").OrderByDescending(x => x.EquipmentId));
         }
 
         public ViewResult EquipmentEdit(long equipmentId)
@@ -88,15 +90,9 @@ namespace ToolsStore.WebUI.Controllers
             return RedirectToAction("Equipments");
         }
 
-        public ActionResult EquipmentSetActive0()
+        public ActionResult SetEquipmentIsActive(bool equipmentIsActive = false)
         {
-            repository.SetEquipmentIsActive(false);
-            return RedirectToAction("Equipments");
-        }
-
-        public ActionResult EquipmentSetActive1()
-        {
-            repository.SetEquipmentIsActive(true);
+            repository.SetEquipmentIsActive(equipmentIsActive);
             return RedirectToAction("Equipments");
         }
     }

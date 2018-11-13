@@ -11,6 +11,10 @@
     @Html.ActionLink("Вернуться к списку", "Index", "Admin")
 </p>
 
+<p>
+    @Html.ActionLink("+ Добавить тип оборудования", "EquipmentCreate")
+</p>
+
 @using (Html.BeginForm("Equipments", "Equipmen"))
 {
     <p>
@@ -19,15 +23,20 @@
     </p>
 }
 
-<p>
-    @Html.ActionLink("+ Добавить тип оборудования", "EquipmentCreate")
-</p>
+@using (Html.BeginForm("SetEquipmentIsActive", "Equipmen"))
+{
+    <p>
+        @Html.CheckBox("EquipmentIsActive", htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Установить активность" />
+    </p>
+}
 
-<p>
-    @Html.ActionLink("Обновить активность", "EquipmentRefreshActive") &nbsp;
-    @Html.ActionLink("Сбросить активность", "EquipmentSetActive0") &nbsp;
-    @Html.ActionLink("Уставновить активность", "EquipmentSetActive1")
-</p>
+@using (Html.BeginForm("EquipmentRefreshActive", "Equipmen"))
+{
+    <input type="submit" value="Обновить активность" style="width: 184px;"/>
+}
+
+<div>&nbsp;</div>
 
 <table class="Grid">
     <tr>
