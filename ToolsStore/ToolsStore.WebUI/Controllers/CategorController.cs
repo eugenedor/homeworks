@@ -17,9 +17,12 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Categories()
+        public ViewResult Categories(bool orderCategories = false)
         {
-            return View(repository.Categories.OrderByDescending(x => x.CategoryId));
+            if (orderCategories)
+                return View(repository.Categories.OrderBy(x => x.CategoryId));
+            else
+                return View(repository.Categories.OrderByDescending(x => x.CategoryId));
         }
 
         public ViewResult CategoryEdit(long categoryId)

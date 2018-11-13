@@ -15,6 +15,14 @@
     @Html.ActionLink("+ Добавить категорию", "CategoryCreate")
 </p>
 
+@using (Html.BeginForm("Categories", "Categor"))
+{
+    <p>
+        @Html.CheckBox("OrderCategories", htmlAttributes: new { @class = "form-control" })
+        <input type="submit" value="Упорядочить по возрастанию" />
+    </p>
+}
+
 <table class="Grid">
     <tr>
         <th>ID</th>
