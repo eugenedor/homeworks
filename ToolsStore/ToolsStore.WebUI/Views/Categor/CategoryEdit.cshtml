@@ -31,7 +31,7 @@
         Порядок:
     </div>
     <div>
-        @Html.EditorFor(x => x.Ord)
+        @Html.EditorFor(x => x.Ord, new { htmlAttributes = new { min = 0, max = 1000 } })
     </div>
     <div>&nbsp;</div>
     <div>

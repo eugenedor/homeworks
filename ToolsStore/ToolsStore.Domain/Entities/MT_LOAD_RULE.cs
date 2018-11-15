@@ -50,6 +50,7 @@ namespace ToolsStore.Domain.Entities
 
         [Display(Name = "Порядок")]
         [Required(ErrorMessage = "Укажите порядок")]
+        [Range(1, 1000)]
         public int Ord { get; set; }
     }
 }
