@@ -14,9 +14,12 @@
 @using (Html.BeginForm())
 {
     <p>
-        Продукт:  @Html.TextBox("SearchProduct")
-        <input type="submit" value="Поиск" />
+        Продукт:  @Html.TextBox("SearchProduct")                
     </p>
+    <p>
+        Упорядочить по возрастанию: @Html.CheckBox("OrderPrices", htmlAttributes: new { @class = "form-control" })
+    </p>
+    <input type="submit" value="Обновить" />
 }
 
 <p>

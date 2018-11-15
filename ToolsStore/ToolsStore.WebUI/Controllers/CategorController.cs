@@ -21,8 +21,8 @@ namespace ToolsStore.WebUI.Controllers
         {
             if (orderCategories)
                 return View(repository.Categories.OrderBy(x => x.CategoryId));
-            else
-                return View(repository.Categories.OrderByDescending(x => x.CategoryId));
+
+            return View(repository.Categories.OrderByDescending(x => x.CategoryId));
         }
 
         public ViewResult CategoryEdit(long categoryId)
