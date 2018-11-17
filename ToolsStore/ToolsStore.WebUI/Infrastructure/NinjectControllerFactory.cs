@@ -10,6 +10,8 @@ using ToolsStore.Domain.Abstract;
 using Moq;
 using ToolsStore.Domain.Concrete;
 using System.Configuration;
+using ToolsStore.WebUI.Infrastructure.Abstract;
+using ToolsStore.WebUI.Infrastructure.Concrete;
 
 namespace ToolsStore.WebUI.Infrastructure
 {
@@ -48,6 +50,7 @@ namespace ToolsStore.WebUI.Infrastructure
             };
 
             ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
+            ninjectKernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
 
             //EmailSettings emailSettings = new EmailSettings
             //{
