@@ -103,6 +103,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AdminSecurityTests.cs" />
     <Compile Include="AdminTests.cs" />
     <Compile Include="CartTests.cs" />
     <Compile Include="RuleTests.cs" />
