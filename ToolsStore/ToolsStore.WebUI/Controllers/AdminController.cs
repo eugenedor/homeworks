@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace ToolsStore.WebUI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AdminController : Controller
     {
         // GET: Admin

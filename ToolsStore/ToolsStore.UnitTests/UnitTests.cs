@@ -119,10 +119,10 @@ namespace ToolsStore.UnitTests
             // Arrange
             // - create the mock repository
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Equipments).Returns(new SK_EQUIPMENT[] {
-                                                  new SK_EQUIPMENT {EquipmentId = 1, CategoryId = 1, Name = "P1"},
-                                                  new SK_EQUIPMENT {EquipmentId = 2, CategoryId = 2, Name = "P2"},
-                                                  new SK_EQUIPMENT {EquipmentId = 3, CategoryId = 3, Name = "P3"}
+            mock.Setup(m => m.NavEquipments).Returns(new SK_EQUIPMENT[] {
+                                                     new SK_EQUIPMENT {EquipmentId = 1, CategoryId = 1, Name = "P1"},
+                                                     new SK_EQUIPMENT {EquipmentId = 2, CategoryId = 2, Name = "P2"},
+                                                     new SK_EQUIPMENT {EquipmentId = 3, CategoryId = 3, Name = "P3"}
             }.AsQueryable());
 
             // Arrange - create the controller
@@ -140,9 +140,9 @@ namespace ToolsStore.UnitTests
             // Arrange
             // - create the mock repository
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Equipments).Returns(new SK_EQUIPMENT[] {
-                                                  new SK_EQUIPMENT {EquipmentId = 1, Name = "P1"},
-                                                  new SK_EQUIPMENT {EquipmentId = 2, Name = "P2"},
+            mock.Setup(m => m.NavEquipments).Returns(new SK_EQUIPMENT[] {
+                                                     new SK_EQUIPMENT {EquipmentId = 1, Name = "P1"},
+                                                     new SK_EQUIPMENT {EquipmentId = 2, Name = "P2"},
             }.AsQueryable());
             // Arrange - create the controller
             NavController target = new NavController(mock.Object);
