@@ -1,23 +1,23 @@
 USE master;  
 GO 
  
-IF DB_ID (N'ToolsStore2') IS NOT NULL
-	DROP DATABASE ToolsStore2;
+IF DB_ID (N'ToolsStore') IS NOT NULL
+	DROP DATABASE ToolsStore;
 GO
 
 
-PRINT '<<< CREATE DATABASE ToolsStore2 >>>'
+PRINT '<<< CREATE DATABASE ToolsStore >>>'
 GO
-CREATE DATABASE ToolsStore2
+CREATE DATABASE ToolsStore
 ON 
-( NAME = ToolsStore2,
-    FILENAME = 'E:\databases\ToolsStore2.mdf',
+( NAME = ToolsStore,
+    FILENAME = 'E:\databases\ToolsStore.mdf',
     SIZE = 10,
     MAXSIZE = 50,
     FILEGROWTH = 5 )
 LOG ON
 ( NAME = ToolsStore2_log,
-    FILENAME = 'E:\databases\ToolsStore2.ldf',
+    FILENAME = 'E:\databases\ToolsStore.ldf',
     SIZE = 5MB,
     MAXSIZE = 25MB,
     FILEGROWTH = 5MB ) ;
@@ -27,5 +27,5 @@ GO
 -- Verify the database files and sizes  
 SELECT name, size, size*1.0/128 AS [Size in MBs]   
 FROM sys.master_files  
-WHERE name = N'ToolsStore2';  
+WHERE name = N'ToolsStore';  
 GO
