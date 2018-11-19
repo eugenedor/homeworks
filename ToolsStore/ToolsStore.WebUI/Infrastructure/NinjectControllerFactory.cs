@@ -52,14 +52,6 @@ namespace ToolsStore.WebUI.Infrastructure
             ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
             ninjectKernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
 
-            //EmailSettings emailSettings = new EmailSettings
-            //{
-            //    WriteAsFile = bool.Parse(ConfigurationManager.AppSettings["Email.WriteAsFile"] ?? "false")
-            //};
-
-            //ninjectKernel.Bind<IOrderProcessor>().To<EmailOrderProcessor>().WithConstructorArgument("settings", emailSettings);
-            //ninjectKernel.Bind<IAuthProvider>().To<FormsAuthProvider>();
-
             //Mock<IProductRepository> mock = new Mock<IProductRepository>();
             //mock.Setup(m => m.Products).Returns(new List<RS_PRODUCT>
             //{
