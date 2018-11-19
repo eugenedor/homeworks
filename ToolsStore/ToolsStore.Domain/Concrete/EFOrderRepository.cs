@@ -17,42 +17,42 @@ namespace ToolsStore.Domain.Concrete
             get { return context.RS_ORDER; }
         }
 
-        public IQueryable<RS_CART> Crts
+        public IQueryable<RS_CART> Carts
         {
             get { return context.RS_CART; }
         }
 
-        public IEnumerable<CartX> Carts
+        public IEnumerable<OrderContent> OrderContents
         {
             get
             {
-                var carts = (from crt in context.RS_CART
+                var orderContent = ( from crt in context.RS_CART
 
-                             join pr in context.RS_PRODUCT on crt.ProductId equals pr.ProductId
+                                     join pr in context.RS_PRODUCT on crt.ProductId equals pr.ProductId
 
-                             join eq in context.SK_EQUIPMENT on pr.EquipmentId equals eq.EquipmentId
+                                     join eq in context.SK_EQUIPMENT on pr.EquipmentId equals eq.EquipmentId
 
-                             join ct in context.CT_CATEGORY on eq.CategoryId equals ct.CategoryId
+                                     join ct in context.CT_CATEGORY on eq.CategoryId equals ct.CategoryId
 
-                             join prc1 in context.RS_PRICE on crt.PriceId equals prc1.PriceId into prc2
-                             from prc in prc2.DefaultIfEmpty()
+                                     join prc1 in context.RS_PRICE on crt.PriceId equals prc1.PriceId into prc2
+                                     from prc in prc2.DefaultIfEmpty()
 
-                             orderby crt.CartId, crt.OrderId
-                             select new CartX
-                             {
-                                 CartId = crt.CartId,
-                                 OrderId = crt.OrderId,
-                                 ProductId = crt.ProductId,
-                                 ProductName = pr.Name,
-                                 EquipmentName = eq.Name,
-                                 CategoryName = (ct != null) ? ct.Name : string.Empty,
-                                 PriceId = (prc != null) ? prc.PriceId : -1,
-                                 Price = (prc != null) ? prc.PriceWithVat : 0,
-                                 Quantity = crt.Quantity,
-                                 Summ = ((prc != null) ? prc.PriceWithVat : 0) * crt.Quantity
-                             }).ToList();
+                                     orderby crt.CartId, crt.OrderId
+                                     select new OrderContent
+                                     {
+                                         CartId = crt.CartId,
+                                         OrderId = crt.OrderId,
+                                         ProductId = crt.ProductId,
+                                         ProductName = pr.Name,
+                                         EquipmentName = eq.Name,
+                                         CategoryName = (ct != null) ? ct.Name : string.Empty,
+                                         PriceId = (prc != null) ? prc.PriceId : -1,
+                                         Price = (prc != null) ? prc.PriceWithVat : 0,
+                                         Quantity = crt.Quantity,
+                                         Summ = ((prc != null) ? prc.PriceWithVat : 0) * crt.Quantity
+                                     }).ToList();
 
-                return carts;
+                return orderContent;
             }
         }
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToolsStore.Domain.Entities
 {
-    public class CartX
+    public class OrderContent
     {
         public long CartId { get; set; }
 
