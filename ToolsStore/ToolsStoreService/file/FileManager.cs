@@ -17,6 +17,8 @@ namespace ToolsStoreService.file
 {
     public class FileManager
     {
+        private delegate bool LoadDelegate (FileWithParam f);        
+
         /// <summary>
         /// Загрузка файлов
         /// </summary>
@@ -440,19 +442,32 @@ namespace ToolsStoreService.file
             try
             {
                 bool loaded = false;
-                //варианты загрузок
-                switch (fwp.MethodLoad.ToLower())
+                
+                //словарь вариантов загрузок: ключ и значение (цель делегата)
+                Dictionary<string, LoadDelegate> oper = new Dictionary<string, LoadDelegate>
                 {
-                    case "loadcategory":
-                        loaded = LoadCategory(fwp);
-                        break;
-                    case "loadvat":
-                        loaded = LoadVat(fwp);
-                        break;
-                    default:
-                        loaded = LoadError(fwp);
-                        break;
-                }
+                    { "loadcategory", LoadCategory },
+                    { "loadvat", LoadVat },
+                };
+
+                if (!oper.ContainsKey(fwp.MethodLoad.ToLower()))
+                    loaded = LoadError(fwp);
+
+                loaded = oper[fwp.MethodLoad.ToLower()](fwp);
+
+                //switch (fwp.MethodLoad.ToLower())
+                //{
+                //    case "loadcategory":
+                //        loaded = LoadCategory(fwp);
+                //        break;
+                //    case "loadvat":
+                //        loaded = LoadVat(fwp);
+                //        break;
+                //    default:
+                //        loaded = LoadError(fwp);
+                //        break;
+                //}
+
                 return loaded;
             }
             catch (Exception ex)
