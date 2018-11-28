@@ -10,6 +10,34 @@ namespace MsnrAndCnbl
     {
         static void Main(string[] args)
         {
+            int msnr, cnbl;  //missionaries - миссионеры, cannibals - каннибалы
+            string rb, rbTxt;     //river bank - берег реки
+
+            Console.WriteLine("Миссионеры и каннибалы");
+            Console.WriteLine("Введите количество миссионеров, каннибалов, берег {L, R}");
+            try
+            {
+                msnr = Convert.ToInt32(Console.ReadLine());
+                cnbl = Convert.ToInt32(Console.ReadLine());
+                rb = Console.ReadLine();
+
+                if (msnr < 0 || msnr > 3 || 
+                    cnbl < 0 || cnbl > 3 || 
+                    rb.ToUpper() != "L" && rb.ToUpper() != "R")
+                {
+                    rbTxt = (rb.ToUpper() != "L" && rb.ToUpper() != "R") ? "неопределен" : rb.ToUpper() == "L" ? "левый" : "правый";
+
+                    Console.WriteLine("Ошибка ввода данных! Миссионеров {0}, каннибалов {1}, берег реки {2}", msnr.ToString(), cnbl.ToString(), rbTxt);
+                    Console.ReadLine();
+                    return;
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                Console.ReadLine();
+                return;
+            }
         }
     }
 }
