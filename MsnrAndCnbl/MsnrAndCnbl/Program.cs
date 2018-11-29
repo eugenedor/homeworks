@@ -10,8 +10,8 @@ namespace MsnrAndCnbl
     {
         static void Main(string[] args)
         {
-            int msnr, cnbl;  //missionaries - миссионеры, cannibals - каннибалы
-            string rb, rbTxt;     //river bank - берег реки
+            int msnr, cnbl;    //missionaries - миссионеры, cannibals - каннибалы
+            string rb, rbTxt;  //river bank   - берег реки
 
             Console.WriteLine("Миссионеры и каннибалы");
             Console.WriteLine("Введите количество миссионеров, каннибалов, берег {L, R}");
@@ -38,6 +38,22 @@ namespace MsnrAndCnbl
                 Console.ReadLine();
                 return;
             }
+
+            RiverBank riverBank;
+            if (rb.ToUpper() == "L")
+            {
+                riverBank = RiverBank.Left;
+            }
+            else
+            {
+                riverBank = RiverBank.Right;
+            }
+            Console.WriteLine("");
+
+            Situation situation1 = new Situation(msnr, cnbl, riverBank);
+            Console.WriteLine("Поиск в глубину (Depth-first search, DFS)");
+            Console.WriteLine("");
+
         }
     }
 }
