@@ -65,7 +65,7 @@ namespace MsnrAndCnbl
 
         private RiverBank rvrBnk;
         /// <summary>
-        /// Признак лодки на левом берегу: true - левый берег, false - правый.
+        /// Признак лодки на левом берегу: Left 0 - левый берег, Right 1 - правый.
         /// </summary>
         public RiverBank RvrBnk
         {
