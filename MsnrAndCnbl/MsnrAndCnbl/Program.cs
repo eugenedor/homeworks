@@ -53,6 +53,9 @@ namespace MsnrAndCnbl
             Situation situation1 = new Situation(msnr, cnbl, riverBank);
             Console.WriteLine("Поиск в глубину (Depth-first search, DFS)");
             Console.WriteLine("");
+            //DepthFirstSearch.FindSolution(situation1);
+            Console.WriteLine("");
+            Console.WriteLine("");
 
         }
     }

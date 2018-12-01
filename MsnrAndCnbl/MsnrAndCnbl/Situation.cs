@@ -35,17 +35,15 @@ namespace MsnrAndCnbl
             RvrBnk = rb;
             msnrOpposite = MSNRALL - msn;   // Количество миссионеров на противоположном берегу.
             cnblOpposite = CNBLALL - cnb;   // Количество каннибалов на противоположном берегу.
-            //isDeadLock = isDLck;            // Признак тупика - по умолчанию = false, повторная ситуация  - тупиковая  = true.
-            //Depth = dpth;                   // Глубина залегания вершины.
+            IsDeadLock = isDLck;            // Признак тупика - по умолчанию = false, повторная ситуация  - тупиковая  = true.
+            Depth = dpth;                   // Глубина залегания вершины.
         }
 
-        private int msnr, msnrOpposite;
-        private int cnbl, cnblOpposite;
-        private RiverBank rvrBnk;
-        //private bool isDLck;
-
+        private int msnrOpposite;
+        private int cnblOpposite;
         //protected Action casualAction = new Action();
 
+        private int msnr;
         /// <summary>
         /// Количество миссионеров.
         /// </summary>
@@ -55,6 +53,7 @@ namespace MsnrAndCnbl
             set { msnr = value; }
         }
 
+        private int cnbl;
         /// <summary>
         /// Количество каннибалов.
         /// </summary>
@@ -64,6 +63,7 @@ namespace MsnrAndCnbl
             set { cnbl = value; }
         }
 
+        private RiverBank rvrBnk;
         /// <summary>
         /// Признак лодки на левом берегу: true - левый берег, false - правый.
         /// </summary>
@@ -71,6 +71,25 @@ namespace MsnrAndCnbl
         {
             get { return rvrBnk; }
             set { rvrBnk = value; }
+        }
+
+        private bool isDeadLock;
+        /// <summary>
+        /// Признак тупика: true - ситуация тупиковая, false - нет.
+        /// </summary>
+        public bool IsDeadLock
+        {
+            get
+            {
+                //!(хорошо)
+                return !((msnr >= cnbl || msnr == 0) &&
+                         (msnrOpposite >= cnblOpposite || msnrOpposite == 0) &&
+                         !isDeadLock);
+            }
+            set
+            {
+                isDeadLock = value;
+            }
         }
 
         /// <summary>
@@ -82,6 +101,21 @@ namespace MsnrAndCnbl
             {
                 return (msnr == 0 && cnbl == 0 && (rvrBnk == RiverBank.Right));
             }
+        }
+
+        /// <summary>
+        /// Глубина залегания вершины.
+        /// </summary>
+        public int Depth
+        { get; private set; }
+
+
+        /// <summary>
+        /// Отображение
+        /// </summary>
+        public void DisplayStats()
+        {
+            Console.WriteLine("Situation ({0}, {1}, {2}, {3}, {4}, {5})", Msnr, Cnbl, RvrBnk, IsDeadLock, isEnd, Depth);
         }
     }
 }
