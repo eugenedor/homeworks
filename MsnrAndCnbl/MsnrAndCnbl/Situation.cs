@@ -28,6 +28,8 @@ namespace MsnrAndCnbl
 
         public Situation(int msn, int cnb, RiverBank rb) : this(msn, cnb, rb, false, 1) { }
 
+        public Situation(int msn, int cnb, RiverBank rb, int depth) : this(msn, cnb, rb, false, depth) { }
+
         public Situation(int msn, int cnb, RiverBank rb, bool isDLck, int dpth)
         {
             Msnr = msn;
@@ -116,6 +118,23 @@ namespace MsnrAndCnbl
         public void DisplayStats()
         {
             Console.WriteLine("Situation ({0}, {1}, {2}, {3}, {4}, {5})", Msnr, Cnbl, RvrBnk, IsDeadLock, isEnd, Depth);
+        }
+
+        public static Situation operator *(Situation situation, Action action)
+        {
+            //RiverBank riverBank;        
+            //riverBank = (situation.RvrBnk == RiverBank.Left) ? RiverBank.Right : RiverBank.Left;
+
+            if (action.toRvrBnk == toRiverBank.toLeft)
+            {
+                // Движение к левому берегу, люди прибавляются с правого берега.
+                return new Situation(situation.Msnr + action.Msnr, situation.Cnbl + action.Cnbl, RiverBank.Left, situation.Depth + 1);
+            }
+            else
+            {
+                // Движение к правому берегу, люди убавляются с левого берега.
+                return new Situation(situation.Msnr - action.Msnr, situation.Cnbl - action.Cnbl, RiverBank.Right, situation.Depth + 1);
+            }
         }
     }
 }

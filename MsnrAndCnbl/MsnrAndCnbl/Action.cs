@@ -21,8 +21,8 @@ namespace MsnrAndCnbl
         public Action() { }
         public Action(int m, int c, toRiverBank toRB)
         {
-            Msn = m;
-            Cnb = c;
+            Msnr = m;
+            Cnbl = c;
             toRvrBnk = toRB;
         }
 
@@ -31,13 +31,13 @@ namespace MsnrAndCnbl
         /// <summary>
         /// Количество миссионеров в действии.
         /// </summary>
-        public int Msn
+        public int Msnr
         { get; set; }
 
         /// <summary>
         /// Количество каннибалов в действии.
         /// </summary>
-        public int Cnb
+        public int Cnbl
         { get; set; }
 
         /// <summary>
