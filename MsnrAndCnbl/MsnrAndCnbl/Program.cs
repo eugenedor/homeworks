@@ -55,8 +55,14 @@ namespace MsnrAndCnbl
             Console.WriteLine("");
             DepthFirstSearch.FindSolution(situation1);
             Console.WriteLine("");
-            Console.ReadKey();
             Console.WriteLine("");
+
+            Situation situation2 = new Situation(msnr, cnbl, riverBank);
+            Console.WriteLine("Поиск в ширину (Breadth-first search, BFS)");
+            Console.WriteLine("");
+            BreadthFirstSearch.FindSolution(situation2);
+            Console.WriteLine("");
+            Console.ReadLine();
         }
     }
 }
