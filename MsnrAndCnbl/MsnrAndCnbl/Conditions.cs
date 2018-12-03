@@ -9,7 +9,7 @@ namespace MsnrAndCnbl
     /// <summary>
     /// Характеристики поиска.
     /// </summary>
-    class Conditions
+    public class Conditions
     {
         public Conditions()
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MsnrAndCnbl
 {
-    enum toRiverBank
+    public enum toRiverBank
     {
         toLeft,
         toRight
@@ -15,7 +15,7 @@ namespace MsnrAndCnbl
     /// <summary>
     /// Класс действий.
     /// </summary>
-    class Action
+    public class Action
     {
         // Действия производимые над ситуациями.
         public Action() { }

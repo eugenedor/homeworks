@@ -9,7 +9,7 @@ namespace MsnrAndCnbl
     /// <summary>
     /// Берег реки
     /// </summary>
-    enum RiverBank
+    public enum RiverBank
     {
         Left = 0,
         Right = 1
@@ -18,7 +18,7 @@ namespace MsnrAndCnbl
     /// <summary>
     /// Класс ситуаций. Ситуации относительно одного берега реки (левого).
     /// </summary>
-    class Situation
+    public class Situation
     {
         public const int MSNRALL = 3;
         public const int CNBLALL = 3;

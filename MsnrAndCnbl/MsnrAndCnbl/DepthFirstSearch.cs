@@ -51,28 +51,22 @@ namespace MsnrAndCnbl
 
         public static void FindSolution(Situation situation)
         {
+            Utils.DisplayPreview(situation);
+
             var listInSituation = new List<Situation>();
             var listOutSituation = new List<Situation>();
             var conditions = new Conditions();
             conditions.StartTimeCounter();
-            Console.WriteLine("Начальная ситуация: \n - кол-во миссионеров; \n - кол-во каннибалов; \n - признак лодки на левом берегу; \n - тупиковость ситуации; \n - признак конечной ситуации; \n - глубина залегания вершины.");
-            situation.DisplayStats();
-            Console.WriteLine("");
-            Console.WriteLine("Пройденный путь в дереве ситуаций");
-            DFS(situation, listInSituation, out listOutSituation);
-            foreach (var sit in listOutSituation)
-            {
-                sit.DisplayStats();
-            }
-            Console.WriteLine("");
-            conditions.StopTimeCounter();
 
-            conditions.SearchDepth = (from s in listOutSituation where s.isEnd || s.IsDeadLock select s.Depth).Min();   // Глубина поиска.
-            conditions.PathLength = (from s in listOutSituation where s.isEnd || s.IsDeadLock select s.Depth).Max();    // Длина пути решения.
-            conditions.TotalCountApex = (from s in listOutSituation select s).Count<Situation>();                       // Общее число порожденных вершин.
-            Console.WriteLine("глубина поиска D = {0}; \nдлина пути решения L = {1}; \nобщее число порожденных вершин N = {2}; \nразветвленность поиска R = {3}; \nнаправленность поиска W = {4};", conditions.SearchDepth, conditions.PathLength, conditions.TotalCountApex, conditions.SearchBranching, conditions.SearchDirecivity);
-            Console.WriteLine("эффективность просмотра вершин tc = " + conditions.ShowEffectivenes.ToString() + ";");
-            Console.WriteLine("эффективная глубина поиска D/T = {0}; \nэффективная длина пути решения L/T = {1}.", conditions.EffectiveSearchDepth, conditions.EffectivePathLength);
+            DFS(situation, listInSituation, out listOutSituation);
+
+            foreach (var sit in listOutSituation)
+                sit.DisplayStats();
+
+            conditions.StopTimeCounter();
+            Console.WriteLine("");            
+
+            Utils.DisplayResults(conditions, listOutSituation);
         }
     }
 }
