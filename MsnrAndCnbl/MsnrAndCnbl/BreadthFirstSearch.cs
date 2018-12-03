@@ -10,7 +10,6 @@ namespace MsnrAndCnbl
     {
         public static void BFS(Situation situation, out List<Situation> listOutSituation)
         {
-            //var needcontinue = true;
             List<Situation> listSituation = new List<Situation>();  // Рабочий список - список с добавлением в конец дочерних вершин узла.
             listOutSituation = new List<Situation>();               // Список пройденных ситуаций.
             listSituation.Add(situation);
