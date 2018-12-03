@@ -18,31 +18,28 @@ namespace MsnrAndCnbl
             for (var index = 0; index < listSituation.Count; index++)
             {
                 listOutSituation.Add(listSituation[index]);
-                if (!listSituation[index].isEnd)
-                {
-                    if (!listSituation[index].IsDeadLock)
-                    {
-                        List<Action> listaction = Action.GenerationAction(listSituation[index]); // Генерация действий.
-                        foreach (var act in listaction)
-                        {
-                            var newSituation = listSituation[index] * act;
-                            int numb = (from s in listSituation
-                                        where s.Msnr == newSituation.Msnr 
-                                              && s.Cnbl == newSituation.Cnbl 
-                                              && s.RvrBnk == newSituation.RvrBnk
-                                        select s).Count<Situation>(); // Кол-во предыдущих ситуаций совпадающих с текущей дочерней.
 
-                            if (numb > 0)           // Если кол-во больше 0, значит такая ситуация уже была, текущая дочерняя является тупиковой.
-                                newSituation.IsDeadLock = true;
-
-                            listSituation.Add(newSituation);
-                        }
-                    }
-                }
-                else
-                {
+                if (listSituation[index].isEnd)
                     break;
-                }
+
+                if (listSituation[index].IsDeadLock)
+                    continue;
+
+                List<Action> listaction = Action.GenerationAction(listSituation[index]); // Генерация действий.
+                foreach (var act in listaction)
+                {
+                    var newSituation = listSituation[index] * act;
+                    int numb = (from s in listSituation
+                                where s.Msnr == newSituation.Msnr 
+                                        && s.Cnbl == newSituation.Cnbl 
+                                        && s.RvrBnk == newSituation.RvrBnk
+                                select s).Count<Situation>(); // Кол-во предыдущих ситуаций совпадающих с текущей дочерней.
+
+                    if (numb > 0)           // Если кол-во больше 0, значит такая ситуация уже была, текущая дочерняя является тупиковой.
+                        newSituation.IsDeadLock = true;
+
+                    listSituation.Add(newSituation);
+                }                                
             }
         }
 
