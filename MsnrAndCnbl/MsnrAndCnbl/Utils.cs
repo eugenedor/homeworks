@@ -10,10 +10,15 @@ namespace MsnrAndCnbl
     {
         public static void DisplayPreview(Situation situation)
         {
-            Console.WriteLine("Начальная ситуация: \n - кол-во миссионеров; \n - кол-во каннибалов; \n - признак лодки на левом берегу; \n - тупиковость ситуации; \n - признак конечной ситуации; \n - глубина залегания вершины.");
+            string msg;
+            msg = "Начальная ситуация: \nкол-во миссионеров; \nкол-во каннибалов; \nпризнак лодки на левом берегу; \nтупиковость ситуации; \nпризнак конечной ситуации; \nглубина залегания вершины.";
+            Console.WriteLine(msg);
+            Log.write(msg);
             situation.DisplayStats();
             Console.WriteLine("");
-            Console.WriteLine("Пройденный путь в дереве ситуаций");
+            msg = "Пройденный путь в дереве ситуаций";
+            Console.WriteLine(msg);
+            Log.write(msg);
         }
 
         public static void DisplayResults(Conditions conditions, List<Situation> situations)
@@ -29,18 +34,25 @@ namespace MsnrAndCnbl
             conditions.TotalCountApex = (from s in situations
                                          select s).Count<Situation>();                       // Общее число порожденных вершин
 
-            Console.WriteLine("глубина поиска D = {0}; \nдлина пути решения L = {1}; \nобщее число порожденных вершин N = {2}; \nразветвленность поиска R = {3}; \nнаправленность поиска W = {4};", 
-                              conditions.SearchDepth, 
-                              conditions.PathLength, 
-                              conditions.TotalCountApex, 
-                              conditions.SearchBranching, 
-                              conditions.SearchDirecivity);
+            string msg;
+            msg = string.Format("глубина поиска D = {0}; \nдлина пути решения L = {1}; \nобщее число порожденных вершин N = {2}; \nразветвленность поиска R = {3}; \nнаправленность поиска W = {4};",
+                                conditions.SearchDepth,
+                                conditions.PathLength,
+                                conditions.TotalCountApex,
+                                conditions.SearchBranching,
+                                conditions.SearchDirecivity);
+            Console.WriteLine(msg);
+            Log.write(msg);
 
-            Console.WriteLine("эффективность просмотра вершин tc = " + conditions.ShowEffectivenes.ToString() + ";");
+            msg = string.Format("эффективность просмотра вершин tc = " + conditions.ShowEffectivenes.ToString() + ";");
+            Console.WriteLine(msg);
+            Log.write(msg);
 
-            Console.WriteLine("эффективная глубина поиска D/T = {0}; \nэффективная длина пути решения L/T = {1}.", 
-                              conditions.EffectiveSearchDepth, 
-                              conditions.EffectivePathLength);
+            msg = string.Format("эффективная глубина поиска D/T = {0}; \nэффективная длина пути решения L/T = {1}.",
+                                conditions.EffectiveSearchDepth,
+                                conditions.EffectivePathLength);
+            Console.WriteLine(msg);
+            Log.write(msg);
         }
     }
 }

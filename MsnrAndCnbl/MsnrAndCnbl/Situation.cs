@@ -118,7 +118,9 @@ namespace MsnrAndCnbl
         /// </summary>
         public void DisplayStats()
         {
-            Console.WriteLine("Situation ({0}, {1}, {2}, {3}, {4}, {5})", Msnr, Cnbl, RvrBnk, IsDeadLock, isEnd, Depth);
+            string msg = string.Format("Situation ({0}, {1}, {2}, {3}, {4}, {5})", Msnr, Cnbl, RvrBnk, IsDeadLock, isEnd, Depth);
+            Console.WriteLine(msg);
+            Log.write(msg);
         }
 
         public static Situation operator *(Situation situation, Action action)

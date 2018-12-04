@@ -12,8 +12,11 @@ namespace MsnrAndCnbl
         {
             int msnr, cnbl;    //missionaries - миссионеры, cannibals - каннибалы
             string rb, rbTxt;  //river bank   - берег реки
-
-            Console.WriteLine("Миссионеры и каннибалы");
+            string msg;
+            msg = "Миссионеры и каннибалы";
+            Console.WriteLine(msg);
+            Log.write(msg);
+            Log.write(string.Empty);
             Console.WriteLine("Введите количество миссионеров, каннибалов, берег {L, R}");
             try
             {
@@ -44,22 +47,32 @@ namespace MsnrAndCnbl
                 Console.WriteLine("");
 
                 Situation situation1 = new Situation(msnr, cnbl, riverBank);
-                Console.WriteLine("Поиск в глубину (Depth-first search, DFS)");
+                msg = "Поиск в глубину (Depth-first search, DFS)";
+                Console.WriteLine(msg);
+                Log.write(msg);
                 Console.WriteLine("");
+                Log.write("");
                 DepthFirstSearch.FindSolution(situation1);
                 Console.WriteLine("");
+                Log.write("");
                 Console.WriteLine("");
+                Log.write("");
 
                 Situation situation2 = new Situation(msnr, cnbl, riverBank);
-                Console.WriteLine("Поиск в ширину (Breadth-first search, BFS)");
+                msg = "Поиск в ширину (Breadth-first search, BFS)";
+                Console.WriteLine(msg);
+                Log.write(msg);
                 Console.WriteLine("");
+                Log.write("");
                 BreadthFirstSearch.FindSolution(situation2);
                 Console.WriteLine("");
+                Log.write("");
                 Console.ReadLine();
             }
             catch (System.Exception ex)
             {
                 Console.WriteLine(ex.Message);
+                Log.write(ex.Message);
                 Console.ReadLine();
                 return;
             }
