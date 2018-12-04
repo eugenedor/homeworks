@@ -31,38 +31,38 @@ namespace MsnrAndCnbl
                     Console.ReadLine();
                     return;
                 }
+
+                RiverBank riverBank;
+                if (rb.ToUpper() == "L")
+                {
+                    riverBank = RiverBank.Left;
+                }
+                else
+                {
+                    riverBank = RiverBank.Right;
+                }
+                Console.WriteLine("");
+
+                Situation situation1 = new Situation(msnr, cnbl, riverBank);
+                Console.WriteLine("Поиск в глубину (Depth-first search, DFS)");
+                Console.WriteLine("");
+                DepthFirstSearch.FindSolution(situation1);
+                Console.WriteLine("");
+                Console.WriteLine("");
+
+                Situation situation2 = new Situation(msnr, cnbl, riverBank);
+                Console.WriteLine("Поиск в ширину (Breadth-first search, BFS)");
+                Console.WriteLine("");
+                BreadthFirstSearch.FindSolution(situation2);
+                Console.WriteLine("");
+                Console.ReadLine();
             }
             catch (System.Exception ex)
             {
-                Console.WriteLine(ex.ToString());
+                Console.WriteLine(ex.Message);
                 Console.ReadLine();
                 return;
             }
-
-            RiverBank riverBank;
-            if (rb.ToUpper() == "L")
-            {
-                riverBank = RiverBank.Left;
-            }
-            else
-            {
-                riverBank = RiverBank.Right;
-            }
-            Console.WriteLine("");
-
-            Situation situation1 = new Situation(msnr, cnbl, riverBank);
-            Console.WriteLine("Поиск в глубину (Depth-first search, DFS)");
-            Console.WriteLine("");
-            DepthFirstSearch.FindSolution(situation1);
-            Console.WriteLine("");
-            Console.WriteLine("");
-
-            Situation situation2 = new Situation(msnr, cnbl, riverBank);
-            Console.WriteLine("Поиск в ширину (Breadth-first search, BFS)");
-            Console.WriteLine("");
-            BreadthFirstSearch.FindSolution(situation2);
-            Console.WriteLine("");
-            Console.ReadLine();
         }
     }
 }

@@ -39,6 +39,7 @@ namespace MsnrAndCnbl
             cnblOpposite = CNBLALL - cnb;   // Количество каннибалов на противоположном берегу.
             IsDeadLock = isDLck;            // Признак тупика - по умолчанию = false, повторная ситуация  - тупиковая  = true.
             Depth = dpth;                   // Глубина залегания вершины.
+            CheckSituation();
         }
 
         private int msnrOpposite;
@@ -135,6 +136,15 @@ namespace MsnrAndCnbl
                 // Движение к правому берегу, люди убавляются с левого берега.
                 return new Situation(situation.Msnr - action.Msnr, situation.Cnbl - action.Cnbl, RiverBank.Right, situation.Depth + 1);
             }
+        }
+
+        private void CheckSituation()
+        {
+            if (msnr == 0 && cnbl == 0 && (rvrBnk == RiverBank.Left))
+                throw new Exception("Недопустимая ситуация. Лодка пришвартовна на левом берегу, а участники сплава отсутствуют.");
+
+            if (msnrOpposite == 0 && cnblOpposite == 0 && (rvrBnk == RiverBank.Right))
+                throw new Exception("Недопустимая ситуация. Лодка пришвартовна на правом берегу, а участники сплава отсутствуют.");
         }
     }
 }
