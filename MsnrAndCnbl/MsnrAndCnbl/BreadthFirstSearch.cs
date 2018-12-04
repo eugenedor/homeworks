@@ -56,7 +56,7 @@ namespace MsnrAndCnbl
                 sit.DisplayStats();
 
             conditions.StopTimeCounter();
-            Console.WriteLine("");
+            Console.WriteLine(string.Empty);
 
             Utils.DisplayResults(conditions, listOutSituation);
         }

@@ -13,12 +13,12 @@ namespace MsnrAndCnbl
             string msg;
             msg = "Начальная ситуация: \nкол-во миссионеров; \nкол-во каннибалов; \nпризнак лодки на левом берегу; \nтупиковость ситуации; \nпризнак конечной ситуации; \nглубина залегания вершины.";
             Console.WriteLine(msg);
-            Log.write(msg);
+            Log.WriteLog(msg);
             situation.DisplayStats();
             Console.WriteLine("");
             msg = "Пройденный путь в дереве ситуаций";
             Console.WriteLine(msg);
-            Log.write(msg);
+            Log.WriteLog(msg);
         }
 
         public static void DisplayResults(Conditions conditions, List<Situation> situations)
@@ -42,17 +42,17 @@ namespace MsnrAndCnbl
                                 conditions.SearchBranching,
                                 conditions.SearchDirecivity);
             Console.WriteLine(msg);
-            Log.write(msg);
+            Log.WriteLog(msg);
 
             msg = string.Format("эффективность просмотра вершин tc = " + conditions.ShowEffectivenes.ToString() + ";");
             Console.WriteLine(msg);
-            Log.write(msg);
+            Log.WriteLog(msg);
 
             msg = string.Format("эффективная глубина поиска D/T = {0}; \nэффективная длина пути решения L/T = {1}.",
                                 conditions.EffectiveSearchDepth,
                                 conditions.EffectivePathLength);
             Console.WriteLine(msg);
-            Log.write(msg);
+            Log.WriteLog(msg);
         }
     }
 }

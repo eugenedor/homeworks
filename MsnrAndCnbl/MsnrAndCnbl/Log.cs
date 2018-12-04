@@ -11,14 +11,14 @@ namespace MsnrAndCnbl
     /// <summary>
     /// Summary description for writeLod
     /// </summary>
-    class Log
+    public static class Log
     {
         /// <summary>
         /// Запись в лог (Данный метод записывает только сообщение)
         /// </summary>
         /// <param name="msg"></param>
         /// <returns></returns>
-        public static bool write(string msg)
+        public static bool WriteLog(string msg)
         {
             string nameFile = "log.txt";
             string path;
@@ -42,7 +42,7 @@ namespace MsnrAndCnbl
                 }
                 else
                 {
-                    sw.WriteLine("");
+                    sw.WriteLine(string.Empty);
                 }
                 sw.Close();
                 sw.Dispose();

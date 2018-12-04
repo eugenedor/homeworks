@@ -15,8 +15,8 @@ namespace MsnrAndCnbl
             string msg;
             msg = "Миссионеры и каннибалы";
             Console.WriteLine(msg);
-            Log.write(msg);
-            Log.write(string.Empty);
+            Log.WriteLog(msg);
+            Log.WriteLog(string.Empty);
             Console.WriteLine("Введите количество миссионеров, каннибалов, берег {L, R}");
             try
             {
@@ -44,35 +44,35 @@ namespace MsnrAndCnbl
                 {
                     riverBank = RiverBank.Right;
                 }
-                Console.WriteLine("");
+                Console.WriteLine(string.Empty);
 
                 Situation situation1 = new Situation(msnr, cnbl, riverBank);
                 msg = "Поиск в глубину (Depth-first search, DFS)";
                 Console.WriteLine(msg);
-                Log.write(msg);
-                Console.WriteLine("");
-                Log.write("");
+                Log.WriteLog(msg);
+                Console.WriteLine(string.Empty);
+                Log.WriteLog(string.Empty);
                 DepthFirstSearch.FindSolution(situation1);
-                Console.WriteLine("");
-                Log.write("");
-                Console.WriteLine("");
-                Log.write("");
+                Console.WriteLine(string.Empty);
+                Log.WriteLog(string.Empty);
+                Console.WriteLine(string.Empty);
+                Log.WriteLog(string.Empty);
 
                 Situation situation2 = new Situation(msnr, cnbl, riverBank);
                 msg = "Поиск в ширину (Breadth-first search, BFS)";
                 Console.WriteLine(msg);
-                Log.write(msg);
-                Console.WriteLine("");
-                Log.write("");
+                Log.WriteLog(msg);
+                Console.WriteLine(string.Empty);
+                Log.WriteLog(string.Empty);
                 BreadthFirstSearch.FindSolution(situation2);
-                Console.WriteLine("");
-                Log.write("");
+                Console.WriteLine(string.Empty);
+                Log.WriteLog(string.Empty);
                 Console.ReadLine();
             }
             catch (System.Exception ex)
             {
                 Console.WriteLine(ex.Message);
-                Log.write(ex.Message);
+                Log.WriteLog(ex.Message);
                 Console.ReadLine();
                 return;
             }
