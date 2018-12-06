@@ -54,8 +54,12 @@ namespace MsnrAndCnbl
 
             BFS(situation, listSituation);
 
+            int i = 0;
             foreach (var sit in listSituation)
-                sit.DisplayStats();
+            {
+                i++;
+                sit.DisplayStats(i);
+            }                
 
             conditions.StopTimeCounter();
             Console.WriteLine(string.Empty);

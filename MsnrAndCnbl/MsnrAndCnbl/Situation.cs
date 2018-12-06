@@ -115,9 +115,9 @@ namespace MsnrAndCnbl
         /// <summary>
         /// Отображение
         /// </summary>
-        public void DisplayStats()
+        public void DisplayStats(int num)
         {
-            string msg = string.Format("Situation ({0}, {1}, {2}, {3}, {4}, {5})", Msnr, Cnbl, RvrBnk, IsDeadLock, isEnd, Depth);
+            string msg = string.Format("{6}. Situation ({0}, {1}, {2}, {3}, {4}, {5})", Msnr, Cnbl, RvrBnk, IsDeadLock, isEnd, Depth, num.ToString());
             Console.WriteLine(msg);
             Log.WriteLog(msg);
         }

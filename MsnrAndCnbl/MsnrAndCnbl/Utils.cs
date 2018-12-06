@@ -14,7 +14,7 @@ namespace MsnrAndCnbl
             msg = "Начальная ситуация: \nкол-во миссионеров; \nкол-во каннибалов; \nпризнак лодки на левом берегу; \nтупиковость ситуации; \nпризнак конечной ситуации; \nглубина залегания вершины.";
             Console.WriteLine(msg);
             Log.WriteLog(msg);
-            situation.DisplayStats();
+            situation.DisplayStats(0);
             Console.WriteLine("");
             msg = "Пройденный путь в дереве ситуаций";
             Console.WriteLine(msg);
