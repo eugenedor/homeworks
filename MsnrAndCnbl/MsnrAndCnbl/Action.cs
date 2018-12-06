@@ -26,7 +26,7 @@ namespace MsnrAndCnbl
             toRvrBnk = toRB;
         }
 
-        private const int BoatCapacity = 2; // Вместимость лодки.
+        private const int BOATCAPACITY = 2; // Вместимость лодки.
 
         /// <summary>
         /// Количество миссионеров в действии.
@@ -41,7 +41,7 @@ namespace MsnrAndCnbl
         { get; set; }
 
         /// <summary>
-        /// Направление к берегу: true -  курс на левый берег, false - курс на правый.
+        /// Направление к берегу: toLeft -  курс на левый берег, toRight - курс на правый.
         /// </summary>
         public toRiverBank toRvrBnk
         { get; set; }
@@ -73,9 +73,9 @@ namespace MsnrAndCnbl
 
             // Цикл по количеству миссионеров в лодке: изменяется от 0 до минимального значения (количество миссионеров, количество мест в лодке)
             // Цикл по количеству каннибалов в лодке:  изменяется от 0 до минимального значения (количество каннибалов, количество мест в лодке - количество миссионеров)
-            for (int m = 0; m <= Math.Min(mis, BoatCapacity); m++)
+            for (int m = 0; m <= Math.Min(mis, BOATCAPACITY); m++)
             {
-                for (int c = 0; c <= Math.Min(can, BoatCapacity - m); c++)
+                for (int c = 0; c <= Math.Min(can, BOATCAPACITY - m); c++)
                 {
                     if (m == 0 && c == 0)
                         continue;

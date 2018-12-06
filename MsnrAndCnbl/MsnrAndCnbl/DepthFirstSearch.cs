@@ -8,10 +8,12 @@ namespace MsnrAndCnbl
 {
     class DepthFirstSearch
     {
-        public static bool DFS(Situation situation, List<Situation> listInSituation, out List<Situation> listOutSituation)
+        /// <summary>
+        /// Поиск в глубину (Depth-first search, DFS)
+        /// </summary>
+        public static bool DFS(Situation situation, List<Situation> listInSituation)
         {
-            listInSituation.Add(situation);                                 // Список пройденных ситуаций.
-            listOutSituation = new List<Situation>(listInSituation);        // Возврат списка пройденных ситуаций.             
+            listInSituation.Add(situation);                                 // Список пройденных ситуаций.           
 
             if (situation.isEnd)
                 return true;
@@ -42,7 +44,7 @@ namespace MsnrAndCnbl
             // либо будет происходить перебор всех вершин, до последнего тупика.
             foreach (var st in situations)
             {
-                term = DFS(st, listInSituation, out listOutSituation); // Спуск
+                term = DFS(st, listInSituation); // Спуск
                 if (term)
                     break;
             }
@@ -54,19 +56,18 @@ namespace MsnrAndCnbl
             Utils.DisplayPreview(situation);
 
             var listInSituation = new List<Situation>();
-            var listOutSituation = new List<Situation>();
             var conditions = new Conditions();
             conditions.StartTimeCounter();
 
-            DFS(situation, listInSituation, out listOutSituation);
+            DFS(situation, listInSituation);
 
-            foreach (var sit in listOutSituation)
+            foreach (var sit in listInSituation)
                 sit.DisplayStats();
 
             conditions.StopTimeCounter();
             Console.WriteLine(string.Empty);            
 
-            Utils.DisplayResults(conditions, listOutSituation);
+            Utils.DisplayResults(conditions, listInSituation);
         }
     }
 }

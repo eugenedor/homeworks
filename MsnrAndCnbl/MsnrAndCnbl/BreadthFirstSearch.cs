@@ -8,6 +8,9 @@ namespace MsnrAndCnbl
 {
     class BreadthFirstSearch
     {
+        /// <summary>
+        /// Поиск в ширину (Breadth-first search, BFS)
+        /// </summary>
         public static void BFS(Situation situation, out List<Situation> listOutSituation)
         {
             List<Situation> listSituation = new List<Situation>();  // Рабочий список - список с добавлением в конец дочерних вершин узла.

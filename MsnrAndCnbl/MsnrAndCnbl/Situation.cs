@@ -44,7 +44,6 @@ namespace MsnrAndCnbl
 
         private int msnrOpposite;
         private int cnblOpposite;
-        //protected Action casualAction = new Action();
 
         private int msnr;
         /// <summary>
@@ -125,27 +124,22 @@ namespace MsnrAndCnbl
 
         public static Situation operator *(Situation situation, Action action)
         {
-            //RiverBank riverBank;        
-            //riverBank = (situation.RvrBnk == RiverBank.Left) ? RiverBank.Right : RiverBank.Left;
-
             if (action.toRvrBnk == toRiverBank.toLeft)
-            {
-                // Движение к левому берегу, люди прибавляются с правого берега.
-                return new Situation(situation.Msnr + action.Msnr, situation.Cnbl + action.Cnbl, RiverBank.Left, situation.Depth + 1);
-            }
+                return new Situation(situation.Msnr + action.Msnr, situation.Cnbl + action.Cnbl, RiverBank.Left, situation.Depth + 1); // Движение к левому берегу, люди прибавляются с правого берега.
             else
-            {
-                // Движение к правому берегу, люди убавляются с левого берега.
-                return new Situation(situation.Msnr - action.Msnr, situation.Cnbl - action.Cnbl, RiverBank.Right, situation.Depth + 1);
-            }
+                return new Situation(situation.Msnr - action.Msnr, situation.Cnbl - action.Cnbl, RiverBank.Right, situation.Depth + 1); // Движение к правому берегу, люди убавляются с левого берега.
         }
 
         private void CheckSituation()
         {
-            if (msnr == 0 && cnbl == 0 && (rvrBnk == RiverBank.Left))
+            if (msnr == 0 && 
+                cnbl == 0 && 
+                rvrBnk == RiverBank.Left)
                 throw new Exception("Недопустимая ситуация. Лодка пришвартовна на левом берегу, а участники сплава отсутствуют.");
 
-            if (msnrOpposite == 0 && cnblOpposite == 0 && (rvrBnk == RiverBank.Right))
+            if (msnrOpposite == 0 && 
+                cnblOpposite == 0 && 
+                rvrBnk == RiverBank.Right)
                 throw new Exception("Недопустимая ситуация. Лодка пришвартовна на правом берегу, а участники сплава отсутствуют.");
         }
     }
