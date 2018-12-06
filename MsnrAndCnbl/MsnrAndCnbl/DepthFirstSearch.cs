@@ -11,9 +11,9 @@ namespace MsnrAndCnbl
         /// <summary>
         /// Поиск в глубину (Depth-first search, DFS)
         /// </summary>
-        public static bool DFS(Situation situation, List<Situation> listInSituation)
+        public static bool DFS(Situation situation, List<Situation> listSituation)
         {
-            listInSituation.Add(situation);                                 // Список пройденных ситуаций.           
+            listSituation.Add(situation);                                 // Список пройденных ситуаций.           
 
             if (situation.isEnd)
                 return true;
@@ -28,7 +28,7 @@ namespace MsnrAndCnbl
             {
                 var newSituation = situation * act;
 
-                int numb = (from s in listInSituation
+                int numb = (from s in listSituation
                             where s.Msnr == newSituation.Msnr
                                     && s.Cnbl == newSituation.Cnbl
                                     && s.RvrBnk == newSituation.RvrBnk
@@ -44,7 +44,7 @@ namespace MsnrAndCnbl
             // либо будет происходить перебор всех вершин, до последнего тупика.
             foreach (var st in situations)
             {
-                term = DFS(st, listInSituation); // Спуск
+                term = DFS(st, listSituation); // Спуск
                 if (term)
                     break;
             }
@@ -55,19 +55,19 @@ namespace MsnrAndCnbl
         {
             Utils.DisplayPreview(situation);
 
-            var listInSituation = new List<Situation>();
+            var listSituation = new List<Situation>();
             var conditions = new Conditions();
             conditions.StartTimeCounter();
 
-            DFS(situation, listInSituation);
+            DFS(situation, listSituation);
 
-            foreach (var sit in listInSituation)
+            foreach (var sit in listSituation)
                 sit.DisplayStats();
 
             conditions.StopTimeCounter();
             Console.WriteLine(string.Empty);            
 
-            Utils.DisplayResults(conditions, listInSituation);
+            Utils.DisplayResults(conditions, listSituation);
         }
     }
 }

@@ -11,27 +11,26 @@ namespace MsnrAndCnbl
         /// <summary>
         /// Поиск в ширину (Breadth-first search, BFS)
         /// </summary>
-        public static void BFS(Situation situation, out List<Situation> listOutSituation)
+        public static void BFS(Situation situation, List<Situation> listSituation)
         {
-            List<Situation> listSituation = new List<Situation>();  // Рабочий список - список с добавлением в конец дочерних вершин узла.
-            listOutSituation = new List<Situation>();               // Список пройденных ситуаций.
-            listSituation.Add(situation);
+            List<Situation> situations = new List<Situation>();  // Рабочий список - список с добавлением в конец дочерних вершин узла.
+            situations.Add(situation);
 
-            for (var index = 0; index < listSituation.Count; index++)
+            for (var index = 0; index < situations.Count; index++)
             {
-                listOutSituation.Add(listSituation[index]);
+                listSituation.Add(situations[index]);
 
-                if (listSituation[index].isEnd)
+                if (situations[index].isEnd)
                     break;
 
-                if (listSituation[index].IsDeadLock)
+                if (situations[index].IsDeadLock)
                     continue;
 
-                List<Action> listaction = Action.GenerationAction(listSituation[index]); // Генерация действий.
+                List<Action> listaction = Action.GenerationAction(situations[index]); // Генерация действий.
                 foreach (var act in listaction)
                 {
-                    var newSituation = listSituation[index] * act;
-                    int numb = (from s in listSituation
+                    var newSituation = situations[index] * act;
+                    int numb = (from s in situations
                                 where s.Msnr == newSituation.Msnr 
                                         && s.Cnbl == newSituation.Cnbl 
                                         && s.RvrBnk == newSituation.RvrBnk
@@ -40,7 +39,7 @@ namespace MsnrAndCnbl
                     if (numb > 0)           // Если кол-во больше 0, значит такая ситуация уже была, текущая дочерняя является тупиковой.
                         newSituation.IsDeadLock = true;
 
-                    listSituation.Add(newSituation);
+                    situations.Add(newSituation);
                 }                                
             }
         }
@@ -49,19 +48,19 @@ namespace MsnrAndCnbl
         {
             Utils.DisplayPreview(situation);
 
-            var listOutSituation = new List<Situation>();
+            var listSituation = new List<Situation>();
             var conditions = new Conditions();
             conditions.StartTimeCounter();
 
-            BFS(situation, out listOutSituation);
+            BFS(situation, listSituation);
 
-            foreach (var sit in listOutSituation)
+            foreach (var sit in listSituation)
                 sit.DisplayStats();
 
             conditions.StopTimeCounter();
             Console.WriteLine(string.Empty);
 
-            Utils.DisplayResults(conditions, listOutSituation);
+            Utils.DisplayResults(conditions, listSituation);
         }
     }
 }
