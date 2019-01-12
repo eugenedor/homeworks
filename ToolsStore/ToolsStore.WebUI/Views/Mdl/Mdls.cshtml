@@ -14,9 +14,11 @@
 @using (Html.BeginForm("Mdls", "Mdl"))
 {
     <p>
-        Бренд: @Html.DropDownList("SearchBrand", null, "Все бренды", htmlAttributes: new { @class = "form-control" })
-        <input type="submit" value="Поиск" />
-    </p>
+        Бренд: @Html.DropDownList("SearchBrand", null, "Все бренды", htmlAttributes: new { @class = "form-control" })</p>
+    <p>
+        Упорядочить по возрастанию: @Html.CheckBox("OrderMdls", htmlAttributes: new { @class = "form-control" })</p>
+    <p>
+        <input type="submit" value="Применить фильтры" /></p>
 }
 
 <p>

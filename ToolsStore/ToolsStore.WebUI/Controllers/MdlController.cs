@@ -19,7 +19,7 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Mdls(long? searchBrand = null)
+        public ViewResult Mdls(long? searchBrand = null, bool orderMdls = false)
         {
             ViewBag.SearchBrand = new SelectList(repository.Brands, "BrandId", "Name");
 
@@ -27,7 +27,9 @@ namespace ToolsStore.WebUI.Controllers
             if (searchBrand != null)
                 mdl = mdl.Where(x => x.BrandId == (long)searchBrand);
 
-            return View(((DbQuery<SK_MODEL>)mdl).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
+            mdl = (orderMdls) ? mdl.OrderBy(x => x.ModelId) : mdl.OrderByDescending(x => x.ModelId);
+
+            return View(((DbQuery<SK_MODEL>)mdl).Include("CT_BRAND"));
         }
 
         public ViewResult MdlEdit(long modelId)
