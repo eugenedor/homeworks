@@ -22,10 +22,12 @@ namespace ToolsStore.WebUI.Controllers
         public ViewResult Mdls(long? searchBrand = null)
         {
             ViewBag.SearchBrand = new SelectList(repository.Brands, "BrandId", "Name");
+
+            IQueryable<SK_MODEL> mdl = repository.Models;        
             if (searchBrand != null)
-                return View(((DbQuery<SK_MODEL>)repository.Models.Where(x => x.BrandId == (long)searchBrand)).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
-            else
-                return View(((DbQuery<SK_MODEL>)repository.Models).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
+                mdl = mdl.Where(x => x.BrandId == (long)searchBrand);
+
+            return View(((DbQuery<SK_MODEL>)mdl).Include("CT_BRAND").OrderByDescending(x => x.ModelId));
         }
 
         public ViewResult MdlEdit(long modelId)
