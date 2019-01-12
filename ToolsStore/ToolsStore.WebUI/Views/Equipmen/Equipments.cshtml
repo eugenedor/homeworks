@@ -18,9 +18,12 @@
 @using (Html.BeginForm("Equipments", "Equipmen"))
 {
     <p>
-        Категория: @Html.DropDownList("SearchCategory", null, "Все категории", htmlAttributes: new { @class = "form-control" })
-        <input type="submit" value="Поиск" />
+        Категория: @Html.DropDownList("SearchCategory", null, "Все категории", htmlAttributes: new { @class = "form-control" })     
     </p>
+    <p>
+        Упорядочить по возрастанию: @Html.CheckBox("OrderCategory", htmlAttributes: new { @class = "form-control" })
+    </p>
+    <input type="submit" value="Обновить" />
 }
 
 @using (Html.BeginForm("SetEquipmentIsActive", "Equipmen"))
