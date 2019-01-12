@@ -239,6 +239,7 @@
     <Compile Include="Infrastructure\Concrete\FormsAuthProvider.cs" />
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Models\CartIndexViewModel.cs" />
+    <Compile Include="Models\Category\Category.cs" />
     <Compile Include="Models\DbfFile.cs" />
     <Compile Include="Models\EquipmentViewModel.cs" />
     <Compile Include="Models\LoginViewModel.cs" />

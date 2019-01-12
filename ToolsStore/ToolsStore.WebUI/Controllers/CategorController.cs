@@ -8,6 +8,7 @@ using ToolsStore.Domain.Entities;
 using System.Data;
 using System.IO;
 using ToolsStore.WebUI.Models;
+using System.Xml.Serialization;
 
 namespace ToolsStore.WebUI.Controllers
 {
@@ -90,11 +91,9 @@ namespace ToolsStore.WebUI.Controllers
                 foreach (var category in categories)
                 {
                     DataRow row = dtCategory.NewRow();
-
                     row.SetField<string>("CODE", category.Code);
                     row.SetField<string>("NAME", category.Name);
                     row.SetField<int>("ORD", category.Ord);
-
                     dtCategory.Rows.Add(row);
                 }
 
@@ -105,6 +104,49 @@ namespace ToolsStore.WebUI.Controllers
                 {
                     Stream = ms,
                     FileName = "CATEGORY.DBF"
+                };
+
+                return File(stream.Stream.ToArray(), System.Net.Mime.MediaTypeNames.Application.Soap, stream.FileName);
+            }
+            catch
+            {
+                return RedirectToAction("Categories");
+            }
+        }
+
+        public ActionResult DownloadCategoryXML()
+        {
+            try
+            {
+                var obj = new Models.Category.packet();
+                obj.hdr = new Models.Category.packetHdr();
+                obj.hdr.type = "Category";
+                obj.hdr.version = 1.1m;
+                obj.hdr.date = DateTime.Now.Date.ToString("yyyy.MM.dd");
+
+                obj.rec = new Models.Category.packetRec[repository.Categories.Count()];
+                int i = 0;
+                foreach (var item in repository.Categories.OrderBy(x => x.CategoryId))
+                {
+                    obj.rec[i] = new Models.Category.packetRec();
+                    obj.rec[i].Code = item.Code;
+                    obj.rec[i].Name = item.Name;
+                    obj.rec[i].Ord = item.Ord ?? int.MaxValue;
+                    i++;
+                }
+
+                XmlSerializer xs = new XmlSerializer(typeof(Models.Category.packet));
+                MemoryStream ms = new MemoryStream();
+                StreamWriter sw = new StreamWriter(ms, System.Text.Encoding.UTF8);
+                XmlSerializerNamespaces xn = new XmlSerializerNamespaces();
+                xn.Add("", "");
+                xs.Serialize(sw, obj, xn);
+                sw.Close();
+
+                var stream = new StreamWithName()
+                {
+                    Stream = ms,
+                    FileName = "CATEGORY.XML"
                 };
 
                 return File(stream.Stream.ToArray(), System.Net.Mime.MediaTypeNames.Application.Soap, stream.FileName);
