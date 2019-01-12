@@ -21,16 +21,13 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Prices(string searchProduct = null, bool orderPrices = false)
         {
-            DbQuery<RS_PRICE> prices;
+            IQueryable<RS_PRICE> prices = repository.Prices;
             if (!string.IsNullOrEmpty(searchProduct))
-                prices = (DbQuery<RS_PRICE>)repository.Prices.Where(x => x.RS_PRODUCT.Name.Contains(searchProduct));
-            else
-                prices = (DbQuery<RS_PRICE>)repository.Prices;
+                prices = prices.Where(x => x.RS_PRODUCT.Name.Contains(searchProduct));
 
-            if (orderPrices)
-                return View(prices.Include("RS_PRODUCT").Include("CT_VAT").OrderBy(x => x.PriceId));
-
-            return View(prices.Include("RS_PRODUCT").Include("CT_VAT").OrderByDescending(x => x.PriceId));
+            prices = (orderPrices) ? prices.OrderBy(x => x.PriceId) : prices.OrderByDescending(x => x.PriceId);
+            
+            return View(((DbQuery<RS_PRICE>)prices).Include("RS_PRODUCT").Include("CT_VAT"));
         }
 
         public ViewResult PriceEdit(long priceId)

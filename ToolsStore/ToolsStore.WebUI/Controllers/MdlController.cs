@@ -23,7 +23,7 @@ namespace ToolsStore.WebUI.Controllers
         {
             ViewBag.SearchBrand = new SelectList(repository.Brands, "BrandId", "Name");
 
-            IQueryable<SK_MODEL> mdl = repository.Models;        
+            IQueryable<SK_MODEL> mdl = repository.Models;     
             if (searchBrand != null)
                 mdl = mdl.Where(x => x.BrandId == (long)searchBrand);
 
