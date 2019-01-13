@@ -20,6 +20,8 @@ namespace ToolsStore.WebUI.Controllers
     {
         private IProductRepository repository;
 
+        private delegate ActionResult CategoryDownloadDelegate();
+
         public CategorController(IProductRepository repo)
         {
             repository = repo;
@@ -27,6 +29,9 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Categories(bool orderCategories = false)
         {
+            List<string> formats = new List<string>{ "dbf", "xml", "xls" };
+            ViewBag.CategoryFormat = new SelectList(formats);
+
             if (orderCategories)
                 return View(repository.Categories.OrderBy(x => x.CategoryId));
 
@@ -198,6 +203,29 @@ namespace ToolsStore.WebUI.Controllers
                 };
 
                 return File(stream.Stream.ToArray(), System.Net.Mime.MediaTypeNames.Application.Soap, stream.FileName);
+            }
+            catch
+            {
+                return RedirectToAction("Categories");
+            }
+        }
+
+        public ActionResult CategoryDownload(string categoryFormat = "")
+        {
+            try
+            {
+                //словарь вариантов загрузок: ключ и значение (цель делегата)
+                Dictionary<string, CategoryDownloadDelegate> dwnlCategory = new Dictionary<string, CategoryDownloadDelegate>
+                {
+                    { "dbf", DownloadCategoryDbf },
+                    { "xml", DownloadCategoryXml },
+                    { "xls", DownloadCategoryXls },
+                };
+
+                if (!dwnlCategory.ContainsKey(categoryFormat))
+                    throw new Exception();
+
+                return dwnlCategory[categoryFormat]();
             }
             catch
             {

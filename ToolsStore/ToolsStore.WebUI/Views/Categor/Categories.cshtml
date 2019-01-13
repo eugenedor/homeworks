@@ -15,11 +15,13 @@
     @Html.ActionLink("+ Добавить категорию", "CategoryCreate")
 </p>
 
-<p>
-    @Html.ActionLink("Выгрузить категорию (dbf)", "DownloadCategoryDbf") &nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("Выгрузить категорию (xml)", "DownloadCategoryXml") &nbsp;&nbsp;&nbsp;
-    @Html.ActionLink("Выгрузить категорию (xls)", "DownloadCategoryXls")
-</p>
+@using (Html.BeginForm("CategoryDownload", "Categor"))
+{
+    <p>
+        Выгрузить категорию в формате: @Html.DropDownList("CategoryFormat")
+        <input type="submit" value="сохранить" />
+    </p>
+}
 
 @using (Html.BeginForm("Categories", "Categor"))
 {
