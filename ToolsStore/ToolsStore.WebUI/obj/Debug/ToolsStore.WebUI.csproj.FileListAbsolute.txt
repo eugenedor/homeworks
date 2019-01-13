@@ -93,3 +93,8 @@ E:\projects\ToolsStore\ToolsStore.WebUI\bin\Microsoft.Owin.Security.Twitter.xml
 E:\projects\ToolsStore\ToolsStore.WebUI\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 E:\projects\ToolsStore\ToolsStore.WebUI\obj\Debug\ToolsStore.WebUI.dll
 E:\projects\ToolsStore\ToolsStore.WebUI\obj\Debug\ToolsStore.WebUI.pdb
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\ICSharpCode.SharpZipLib.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.OOXML.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.OpenXml4Net.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.OpenXmlFormats.dll

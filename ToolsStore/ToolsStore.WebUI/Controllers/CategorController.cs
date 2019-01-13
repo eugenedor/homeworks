@@ -9,6 +9,10 @@ using System.Data;
 using System.IO;
 using ToolsStore.WebUI.Models;
 using System.Xml.Serialization;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.HSSF.Model;
+using NPOI.SS.Util;
 
 namespace ToolsStore.WebUI.Controllers
 {
@@ -67,7 +71,7 @@ namespace ToolsStore.WebUI.Controllers
             return RedirectToAction("Categories");
         }
 
-        public ActionResult DownloadCategoryDBF()
+        public ActionResult DownloadCategoryDbf()
         {
             try
             {
@@ -97,13 +101,13 @@ namespace ToolsStore.WebUI.Controllers
                     dtCategory.Rows.Add(row);
                 }
 
-                MemoryStream ms = new MemoryStream();
+                var ms = new MemoryStream();
                 DbfFile.DataTableToDbf(dtCategory, ms);
 
                 var stream = new StreamWithName()
                 {
                     Stream = ms,
-                    FileName = "CATEGORY.DBF"
+                    FileName = "Category.dbf"
                 };
 
                 return File(stream.Stream.ToArray(), System.Net.Mime.MediaTypeNames.Application.Soap, stream.FileName);
@@ -114,7 +118,7 @@ namespace ToolsStore.WebUI.Controllers
             }
         }
 
-        public ActionResult DownloadCategoryXML()
+        public ActionResult DownloadCategoryXml()
         {
             try
             {
@@ -125,20 +129,20 @@ namespace ToolsStore.WebUI.Controllers
                 obj.hdr.date = DateTime.Now.Date.ToString("yyyy.MM.dd");
 
                 obj.rec = new Models.Category.packetRec[repository.Categories.Count()];
-                int i = 0;
+                var rowIndex = 0;
                 foreach (var item in repository.Categories.OrderBy(x => x.CategoryId))
                 {
-                    obj.rec[i] = new Models.Category.packetRec();
-                    obj.rec[i].Code = item.Code;
-                    obj.rec[i].Name = item.Name;
-                    obj.rec[i].Ord = item.Ord ?? int.MaxValue;
-                    i++;
+                    obj.rec[rowIndex] = new Models.Category.packetRec();
+                    obj.rec[rowIndex].Code = item.Code;
+                    obj.rec[rowIndex].Name = item.Name;
+                    obj.rec[rowIndex].Ord = item.Ord ?? int.MaxValue;
+                    rowIndex++;
                 }
 
-                XmlSerializer xs = new XmlSerializer(typeof(Models.Category.packet));
-                MemoryStream ms = new MemoryStream();
-                StreamWriter sw = new StreamWriter(ms, System.Text.Encoding.UTF8);
-                XmlSerializerNamespaces xn = new XmlSerializerNamespaces();
+                var xs = new XmlSerializer(typeof(Models.Category.packet));
+                var ms = new MemoryStream();
+                var sw = new StreamWriter(ms, System.Text.Encoding.UTF8);
+                var xn = new XmlSerializerNamespaces();
                 xn.Add("", "");
                 xs.Serialize(sw, obj, xn);
                 sw.Close();
@@ -146,7 +150,51 @@ namespace ToolsStore.WebUI.Controllers
                 var stream = new StreamWithName()
                 {
                     Stream = ms,
-                    FileName = "CATEGORY.XML"
+                    FileName = "Category.xml"
+                };
+
+                return File(stream.Stream.ToArray(), System.Net.Mime.MediaTypeNames.Application.Soap, stream.FileName);
+            }
+            catch
+            {
+                return RedirectToAction("Categories");
+            }
+        }
+
+        public ActionResult DownloadCategoryXls()
+        {
+            try
+            {
+                var workbook = new HSSFWorkbook();
+                var sheetInfo = workbook.CreateSheet("Лист");
+
+                // Заголовки
+                var rowIndex = 0;
+                var row = sheetInfo.CreateRow(rowIndex);
+                row.CreateCell(0).SetCellValue("CODE");
+                row.CreateCell(1).SetCellValue("NAME");
+                row.CreateCell(2).SetCellValue("ORD");
+
+                rowIndex++;
+                var format = workbook.CreateDataFormat();
+
+                // Данные
+                foreach (var item in repository.Categories.OrderBy(x => x.CategoryId))
+                {
+                    row = sheetInfo.CreateRow(rowIndex);
+                    row.CreateCell(0).SetCellValue(item.Code);
+                    row.CreateCell(1).SetCellValue(item.Name);
+                    row.CreateCell(2).SetCellValue((item.Ord ?? int.MaxValue).ToString());
+                    rowIndex++;
+                }
+
+                var ms = new MemoryStream();
+                workbook.Write(ms);
+
+                var stream = new StreamWithName()
+                {
+                    Stream = ms,
+                    FileName = "Category.xls"
                 };
 
                 return File(stream.Stream.ToArray(), System.Net.Mime.MediaTypeNames.Application.Soap, stream.FileName);
