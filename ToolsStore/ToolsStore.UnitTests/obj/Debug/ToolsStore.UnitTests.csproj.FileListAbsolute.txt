@@ -52,3 +52,5 @@ E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\Microsoft.Owin.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\System.Web.Optimization.xml
 E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.dll
 E:\projects\ToolsStore\ToolsStore.UnitTests\obj\Debug\ToolsStore.UnitTests.pdb
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\NPOI.dll
+E:\projects\ToolsStore\ToolsStore.UnitTests\bin\Debug\ICSharpCode.SharpZipLib.dll
