@@ -13,6 +13,7 @@ using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.HSSF.Model;
 using NPOI.SS.Util;
+using System.Text;
 
 namespace ToolsStore.WebUI.Controllers
 {
@@ -29,7 +30,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Categories(bool orderCategories = false)
         {
-            List<string> formats = new List<string>{ "dbf", "xml", "xls" };
+            List<string> formats = new List<string>{ "dbf", "xml", "xls", "csv" };
             ViewBag.CategoryFormat = new SelectList(formats);
 
             if (orderCategories)
@@ -210,6 +211,40 @@ namespace ToolsStore.WebUI.Controllers
             }
         }
 
+        public ActionResult DownloadCategoryCsv()
+        {
+            try
+            {
+                StringWriter sw = new StringWriter();
+
+                sw.WriteLine("\"Code\",\"Name\",\"Ord\"");
+
+                Response.ClearContent();
+                Encoding encoding = Encoding.UTF8;
+                Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.csv", "Category"));
+                Response.Charset = encoding.EncodingName;
+                Response.ContentType = "application/text";
+
+                foreach (var item in repository.Categories.OrderBy(x => x.CategoryId))
+                {
+                    sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\"",
+
+                    item.Code,
+                    item.Name,
+                    item.Ord ?? int.MaxValue
+                    ));
+                }
+                Response.Write(sw.ToString());
+                Response.End();
+
+                return File(Response.OutputStream, "application/csv");
+            }
+            catch
+            {
+                return RedirectToAction("Categories");
+            }
+        }
+
         public ActionResult CategoryDownload(string categoryFormat = "")
         {
             try
@@ -220,6 +255,7 @@ namespace ToolsStore.WebUI.Controllers
                     { "dbf", DownloadCategoryDbf },
                     { "xml", DownloadCategoryXml },
                     { "xls", DownloadCategoryXls },
+                    { "csv", DownloadCategoryCsv }               
                 };
 
                 if (!dwnlCategory.ContainsKey(categoryFormat))
