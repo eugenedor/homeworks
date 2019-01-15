@@ -217,18 +217,18 @@ namespace ToolsStore.WebUI.Controllers
             {
                 StringWriter sw = new StringWriter();
 
-                sw.WriteLine("\"Code\",\"Name\",\"Ord\"");
+                sw.WriteLine("\"Code\";\"Name\";\"Ord\"");
 
                 Response.ClearContent();
-                Encoding encoding = Encoding.UTF8;
+                Encoding encoding = Encoding.GetEncoding(1251);
                 Response.AddHeader("content-disposition", string.Format("attachment;filename={0}.csv", "Category"));
                 Response.Charset = encoding.EncodingName;
+                Response.ContentEncoding = encoding;
                 Response.ContentType = "application/text";
 
                 foreach (var item in repository.Categories.OrderBy(x => x.CategoryId))
                 {
-                    sw.WriteLine(string.Format("\"{0}\",\"{1}\",\"{2}\"",
-
+                    sw.WriteLine(string.Format("\"{0}\";\"{1}\";\"{2}\"",
                     item.Code,
                     item.Name,
                     item.Ord ?? int.MaxValue
