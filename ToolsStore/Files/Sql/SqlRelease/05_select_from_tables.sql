@@ -10,7 +10,7 @@ DECLARE @name NVARCHAR(128),
         @string NVARCHAR(MAX)
 
 DECLARE @Table TABLE (id BIGINT IDENTITY(1,1), nameEntity NVARCHAR(250));
-DECLARE @TableRes TABLE (id BIGINT IDENTITY(1,1), nameEntity NVARCHAR(250), cntRecord int);
+DECLARE @TableRes TABLE (id BIGINT IDENTITY(1,1), nameEntity NVARCHAR(250), cntRecord int, isEmpty int);
 
 DECLARE _cur1 CURSOR LOCAL FOR
 	SELECT table_name 
@@ -20,7 +20,7 @@ open _cur1
 	fetch next from _cur1 INTO @name
 	while @@fetch_status  = 0
 	BEGIN
-		SET @string = 'IF ((SELECT COUNT(*) FROM dbo.[' + @name +']) > 0) ' + 
+		SET @string = /*'IF ((SELECT COUNT(*) FROM dbo.[' + @name +']) > 0) ' + */
 		                'BEGIN SELECT ''' +@name + ''' END'
 		INSERT INTO @Table (nameEntity)
 		EXECUTE sp_executesql @string
@@ -39,8 +39,8 @@ open _cur2
 	fetch next from _cur2 INTO @name
 	while @@fetch_status  = 0
 	BEGIN	    
-		SET @string = 'SELECT ''' + @name +''' as nameEntity, count(*) as cntRecord FROM dbo.[' + @name +']'
-		INSERT INTO @TableRes (nameEntity, cntRecord)
+		SET @string = 'SELECT ''' + @name +''' as nameEntity, count(*) as cntRecord, case when count(*) = 0 then 1 else 0 end isEmpty FROM dbo.[' + @name +']'
+		INSERT INTO @TableRes (nameEntity, cntRecord, isEmpty)
 		EXECUTE sp_executesql @string
 		PRINT @string
 		fetch next from _cur2 into @name
@@ -50,4 +50,4 @@ deallocate _cur2
 
 SELECT t.id, t.nameEntity, t.cntRecord 
 FROM @TableRes AS t
-ORDER BY t.id;
+ORDER BY t.isEmpty, t.id;
