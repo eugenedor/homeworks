@@ -1,0 +1,36 @@
+--
+-- Создать таблицу [dbo].[MT_LOAD_RULE_SPEC]
+--
+CREATE TABLE [dbo].[MT_LOAD_RULE_SPEC] (
+  [LoadRuleSpecId] [bigint] IDENTITY,
+  [LoadRuleId] [bigint] NOT NULL,
+  [Data] [varbinary](max) NULL,
+  [MimeType] [varchar](50) NULL,
+  [Name] [varchar](300) NULL,
+  [DateLoad] [datetime] NOT NULL,
+  CONSTRAINT [PK_MT_LOAD_RULE_SPEC] PRIMARY KEY CLUSTERED ([LoadRuleSpecId])
+)
+ON [PRIMARY]
+TEXTIMAGE_ON [PRIMARY]
+GO
+--IF @@ERROR<>0 OR @@TRANCOUNT=0 BEGIN IF @@TRANCOUNT>0 ROLLBACK SET NOEXEC ON END
+--GO
+
+--
+-- Создать индекс [FK_MT_LOAD_RULE_SPEC_MT_LOAD_RULE] для объекта типа таблица [dbo].[MT_LOAD_RULE_SPEC]
+--
+CREATE INDEX [FK_MT_LOAD_RULE_SPEC_MT_LOAD_RULE]
+  ON [dbo].[MT_LOAD_RULE_SPEC] ([LoadRuleId])
+  ON [PRIMARY]
+GO
+--IF @@ERROR<>0 OR @@TRANCOUNT=0 BEGIN IF @@TRANCOUNT>0 ROLLBACK SET NOEXEC ON END
+--GO
+
+--
+-- Создать внешний ключ [FK_MT_LOAD_RULE_SPEC_MT_LOAD_RULE] для объекта типа таблица [dbo].[MT_LOAD_RULE_SPEC]
+--
+ALTER TABLE [dbo].MT_LOAD_RULE_SPEC
+  ADD CONSTRAINT [FK_MT_LOAD_RULE_SPEC_MT_LOAD_RULE] FOREIGN KEY ([LoadRuleId]) REFERENCES [dbo].MT_LOAD_RULE ([LoadRuleId])
+GO
+--IF @@ERROR<>0 OR @@TRANCOUNT=0 BEGIN IF @@TRANCOUNT>0 ROLLBACK SET NOEXEC ON END
+--GO
