@@ -99,6 +99,7 @@
     <Compile Include="Entities\CT_VAT.cs" />
     <Compile Include="Concrete\EFDbContext.cs" />
     <Compile Include="Entities\MT_LOAD_RULE.cs" />
+    <Compile Include="Entities\MT_LOAD_RULE_SPEC.cs" />
     <Compile Include="Entities\MT_SETTING.cs" />
     <Compile Include="Entities\OrderContent.cs" />
     <Compile Include="Entities\Product.cs" />

@@ -9,6 +9,12 @@ namespace ToolsStore.Domain.Entities
 {
     public partial class MT_LOAD_RULE
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public MT_LOAD_RULE()
+        {
+            MT_LOAD_RULE_SPEC = new HashSet<MT_LOAD_RULE_SPEC>();
+        }
+
         [Key]
         [HiddenInput(DisplayValue = false)]
         public long LoadRuleId { get; set; }
@@ -52,5 +58,8 @@ namespace ToolsStore.Domain.Entities
         [Required(ErrorMessage = "Укажите порядок")]
         [Range(1, 1000)]
         public int Ord { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MT_LOAD_RULE_SPEC> MT_LOAD_RULE_SPEC { get; set; }
     }
 }

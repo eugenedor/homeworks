@@ -19,6 +19,7 @@ namespace ToolsStore.Domain.Entities
         public virtual DbSet<CT_IMAGE> CT_IMAGE { get; set; }
         public virtual DbSet<CT_VAT> CT_VAT { get; set; }
         public virtual DbSet<MT_LOAD_RULE> MT_LOAD_RULE { get; set; }
+        public virtual DbSet<MT_LOAD_RULE_SPEC> MT_LOAD_RULE_SPEC { get; set; }
         public virtual DbSet<MT_SETTING> MT_SETTING { get; set; }
         public virtual DbSet<RS_CART> RS_CART { get; set; }
         public virtual DbSet<RS_ORDER> RS_ORDER { get; set; }
@@ -51,6 +52,19 @@ namespace ToolsStore.Domain.Entities
                 .HasMany(e => e.RS_PRICE)
                 .WithRequired(e => e.CT_VAT)
                 .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<MT_LOAD_RULE>()
+                            .HasMany(e => e.MT_LOAD_RULE_SPEC)
+                            .WithRequired(e => e.MT_LOAD_RULE)
+                            .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<MT_LOAD_RULE_SPEC>()
+                .Property(e => e.MimeType)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<MT_LOAD_RULE_SPEC>()
+                .Property(e => e.Name)
+                .IsUnicode(false);
 
             modelBuilder.Entity<RS_ORDER>()
                 .HasMany(e => e.RS_CART)
