@@ -17,6 +17,11 @@ namespace ToolsStore.Domain.Concrete
             get { return context.MT_LOAD_RULE; }
         }
 
+        public IQueryable<MT_LOAD_RULE_SPEC> LoadRulesSpec
+        {
+            get { return context.MT_LOAD_RULE_SPEC; }
+        }
+
         public void SaveLoadRule(MT_LOAD_RULE loadRule)
         {
             if (loadRule.LoadRuleId == 0)

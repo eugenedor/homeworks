@@ -9,6 +9,8 @@ namespace ToolsStore.Domain.Abstract
     {
         IQueryable<MT_LOAD_RULE> LoadRules { get; }
 
+        IQueryable<MT_LOAD_RULE_SPEC> LoadRulesSpec { get; }
+
         void SaveLoadRule(MT_LOAD_RULE loadRule);
 
         MT_LOAD_RULE DeleteLoadRule(long loadRuleId);
