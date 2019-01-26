@@ -18,6 +18,8 @@
 <table class="Grid">
     <tr>
         <th>ID</th>
+        <th>Код загрузки</th>
+        <th>Правило загрузки</th>
         <th>Тип пантомимы</th>
         <th>Наименование</th>
         <th>Дата загрузки</th>
@@ -26,6 +28,8 @@
     {
         <tr>
             <td>@item.LoadRuleSpecId</td>
+            <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Code)</td>
+            <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Descr)</td>
             <td>@item.MimeType</td>
             <td>@item.Name</td>
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>

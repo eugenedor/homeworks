@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Data.Entity.Infrastructure;
 using ToolsStore.Domain.Abstract;
 using ToolsStore.Domain.Entities;
+using ToolsStore.WebUI.Models;
 
 namespace ToolsStore.WebUI.Controllers
 {
@@ -19,7 +21,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult RulesSpec()
         {
-            return View(repository.LoadRulesSpec);
+            return View(((DbQuery<MT_LOAD_RULE_SPEC>)repository.LoadRulesSpec).Include("MT_LOAD_RULE"));
         }
     }
 }
