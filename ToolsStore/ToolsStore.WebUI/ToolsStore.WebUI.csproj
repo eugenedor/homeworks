@@ -269,6 +269,7 @@
     <Compile Include="Models\PriceViewModel.cs" />
     <Compile Include="Models\ProductsListViewModel.cs" />
     <Compile Include="Models\ProductViewModel.cs" />
+    <Compile Include="Models\RuleSpecViewModel.cs" />
     <Compile Include="Models\StreamWithName.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

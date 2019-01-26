@@ -23,5 +23,32 @@ namespace ToolsStore.WebUI.Controllers
         {
             return View(((DbQuery<MT_LOAD_RULE_SPEC>)repository.LoadRulesSpec).Include("MT_LOAD_RULE"));
         }
+
+        public ViewResult RuleSpecEdit(long loadRuleSpecId)
+        {
+            MT_LOAD_RULE_SPEC loadRuleSpec = repository.LoadRulesSpec.Where(x => x.LoadRuleSpecId == loadRuleSpecId).FirstOrDefault();
+            IEnumerable<MT_LOAD_RULE> loadRules = repository.LoadRules;
+
+            var ruleSpecVM = new RuleSpecViewModel
+            {
+                LoadRuleSpec = loadRuleSpec,
+                LoadRules = loadRules
+            };
+
+            return View(ruleSpecVM);
+        }
+
+        public ViewResult RuleSpecCreate()
+        {
+            IEnumerable<MT_LOAD_RULE> loadRules = repository.LoadRules;
+
+            var ruleSpecVM = new RuleSpecViewModel
+            {
+                LoadRuleSpec = new MT_LOAD_RULE_SPEC(),
+                LoadRules = loadRules
+            };
+
+            return View("RuleSpecEdit", ruleSpecVM);
+        }
     }
 }
