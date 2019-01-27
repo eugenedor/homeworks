@@ -1,0 +1,38 @@
+﻿@model ToolsStore.WebUI.Models.RuleSpecViewModel
+
+@{
+    ViewBag.Title = "Редактирование правили (загрузка специальных параметров - файлов)";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Идентификатор: @Model.LoadRuleSpec.LoadRuleSpecId</h2>
+
+@using (Html.BeginForm("RuleSpecEdit", "RuleSpec"))
+{
+    <div>
+        @Html.HiddenFor(x => x.LoadRuleSpec.LoadRuleSpecId)
+    </div>
+    <div style="font-weight:bold">
+        Правило загрузки:
+    </div>
+    <div>
+        @Html.DropDownListFor(m => m.LoadRuleSpec.LoadRuleId, new SelectList(Model.LoadRules, "LoadRuleId", "Code"), new { style = "width:338px" })
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Тип пантомимы:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.LoadRuleSpec.MimeType)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Наименование файла:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.LoadRuleSpec.Name)
+    </div>
+    <div>&nbsp;</div>
+    <input type="submit" value="Сохранить" />
+    @Html.ActionLink("Отменить и вернуться к списку", "RulesSpec")
+}

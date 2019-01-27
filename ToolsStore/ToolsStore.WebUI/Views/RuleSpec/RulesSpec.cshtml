@@ -11,9 +11,9 @@
     @Html.ActionLink("Вернуться к списку", "Index", "Admin")
 </p>
 
-@*<p>
+<p>
     @Html.ActionLink("+ Добавить правило загрузки (специальное)", "RuleSpecCreate")
-</p>*@
+</p>
 
 <table class="Grid">
     <tr>
@@ -21,13 +21,13 @@
         <th>Код загрузки</th>
         <th>Правило загрузки</th>
         <th>Тип пантомимы</th>
-        <th>Наименование</th>
+        <th>Наименование файла</th>
         <th>Дата загрузки</th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.LoadRuleSpecId</td>
+            <td>@Html.ActionLink(item.LoadRuleSpecId.ToString(), "RuleSpecEdit", new { item.LoadRuleSpecId })</td>
             <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Code)</td>
             <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Descr)</td>
             <td>@item.MimeType</td>

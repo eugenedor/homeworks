@@ -345,6 +345,7 @@
     <Content Include="Views\Price\PriceEdit.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\RuleSpec\RulesSpec.cshtml" />
+    <Content Include="Views\RuleSpec\RuleSpecEdit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
