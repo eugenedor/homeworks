@@ -44,6 +44,7 @@ namespace ToolsStore.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
+                ruleSpecVM.LoadRules = repository.LoadRules;
                 if (file != null)
                 {
 
@@ -52,6 +53,12 @@ namespace ToolsStore.WebUI.Controllers
                     ruleSpecVM.LoadRuleSpec.Name = file.FileName;
                     file.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, file.ContentLength);
                 }
+
+                if (ruleSpecVM.LoadRuleSpec.Data == null)
+                {
+                    TempData["message"] = string.Format("Отсутствуют данные файла. Выберите файл.");
+                    return View(ruleSpecVM);
+                }                    
 
                 repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
                 TempData["message"] = string.Format("{0} сохранено", ruleSpecVM.LoadRuleSpec.LoadRuleSpecId.ToString());
