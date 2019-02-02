@@ -16,9 +16,11 @@ namespace ToolsStore.Domain.Entities
 
         public byte[] Data { get; set; }
 
+        [Editable(false)]
         [StringLength(50)]
         public string MimeType { get; set; }
 
+        [Editable(false)]
         [StringLength(300)]
         public string Name { get; set; }
 

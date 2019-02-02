@@ -38,6 +38,31 @@ namespace ToolsStore.WebUI.Controllers
             return View(ruleSpecVM);
         }
 
+        [HttpPost]
+        public ActionResult RuleSpecEdit(RuleSpecViewModel ruleSpecVM, HttpPostedFileBase image = null)
+        {
+            if (ModelState.IsValid)
+            {
+                if (image != null)
+                {
+
+                    ruleSpecVM.LoadRuleSpec.MimeType = image.ContentType;
+                    ruleSpecVM.LoadRuleSpec.Data = new byte[image.ContentLength];
+                    ruleSpecVM.LoadRuleSpec.Name = image.FileName;
+                    image.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, image.ContentLength);
+                }
+
+                //repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
+                TempData["message"] = string.Format("{0} сохранено", ruleSpecVM.LoadRuleSpec.LoadRuleSpecId.ToString());
+                return RedirectToAction("RulesSpec");
+            }
+            else
+            {
+                // что-то не так с значениями данных (there is something wrong with the data values)
+                return View(ruleSpecVM);
+            }
+        }
+
         public ViewResult RuleSpecCreate()
         {
             IEnumerable<MT_LOAD_RULE> loadRules = repository.LoadRules;

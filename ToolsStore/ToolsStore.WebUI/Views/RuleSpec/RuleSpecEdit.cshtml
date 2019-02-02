@@ -7,7 +7,8 @@
 
 <h2>Идентификатор: @Model.LoadRuleSpec.LoadRuleSpecId</h2>
 
-@using (Html.BeginForm("RuleSpecEdit", "RuleSpec"))
+@using (Html.BeginForm("RuleSpecEdit", "RuleSpec",
+                    FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div>
         @Html.HiddenFor(x => x.LoadRuleSpec.LoadRuleSpecId)
@@ -23,14 +24,21 @@
         Тип пантомимы:
     </div>
     <div>
-        @Html.EditorFor(x => x.LoadRuleSpec.MimeType)
+        @Html.TextBoxFor(x => x.LoadRuleSpec.MimeType)
     </div>
     <div>&nbsp;</div>
     <div style="font-weight:bold">
         Наименование файла:
     </div>
     <div>
-        @Html.EditorFor(x => x.LoadRuleSpec.Name)
+        @Html.TextBoxFor(x => x.LoadRuleSpec.Name)
+    </div>
+    <div class="editor-label">Файл</div>
+    <div class="editor-field">
+        <div>
+            Загрузить новый файл:
+            <input type="file" name="Image" />
+        </div>
     </div>
     <div>&nbsp;</div>
     <input type="submit" value="Сохранить" />

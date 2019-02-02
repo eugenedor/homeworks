@@ -33,6 +33,13 @@
             <td>@item.MimeType</td>
             <td>@item.Name</td>
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
+            <td>
+                @using (Html.BeginForm("RuleSpecEdit", "RuleSpec"))
+                {
+                    @Html.Hidden("LoadRuleSpecId", item.LoadRuleSpecId)
+                    <input type="submit" value="просмотр" />
+                }
+            </td>
         </tr>
     }
 </table>
