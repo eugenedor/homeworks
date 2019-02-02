@@ -24,6 +24,7 @@ namespace ToolsStore.WebUI.Controllers
             return View(((DbQuery<MT_LOAD_RULE_SPEC>)repository.LoadRulesSpec).Include("MT_LOAD_RULE"));
         }
 
+        [HttpGet]
         public ViewResult RuleSpecEdit(long loadRuleSpecId)
         {
             MT_LOAD_RULE_SPEC loadRuleSpec = repository.LoadRulesSpec.Where(x => x.LoadRuleSpecId == loadRuleSpecId).FirstOrDefault();
@@ -52,7 +53,7 @@ namespace ToolsStore.WebUI.Controllers
                     file.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, file.ContentLength);
                 }
 
-                //repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
+                repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
                 TempData["message"] = string.Format("{0} сохранено", ruleSpecVM.LoadRuleSpec.LoadRuleSpecId.ToString());
                 return RedirectToAction("RulesSpec");
             }

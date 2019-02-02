@@ -56,5 +56,27 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+
+        public void SaveLoadRuleSpec(MT_LOAD_RULE_SPEC loadRuleSpec)
+        {
+            loadRuleSpec.DateLoad = DateTime.Now;
+            if (loadRuleSpec.LoadRuleSpecId == 0)
+            {
+                context.MT_LOAD_RULE_SPEC.Add(loadRuleSpec);
+            }
+            else
+            {
+                MT_LOAD_RULE_SPEC dbEntry = context.MT_LOAD_RULE_SPEC.Where(x => x.LoadRuleSpecId == loadRuleSpec.LoadRuleSpecId).Single();
+                if (dbEntry != null)
+                {                    
+                    dbEntry.LoadRuleId = loadRuleSpec.LoadRuleId;
+                    dbEntry.Data = loadRuleSpec.Data;
+                    dbEntry.MimeType = loadRuleSpec.MimeType;
+                    dbEntry.Name = loadRuleSpec.Name;                   
+                    dbEntry.DateLoad = loadRuleSpec.DateLoad;                    
+                }
+            }
+            context.SaveChanges();
+        }
     }
 }

@@ -34,7 +34,7 @@
             <td>@item.Name</td>
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             <td>
-                @using (Html.BeginForm("RuleSpecEdit", "RuleSpec"))
+                @using (Html.BeginForm("RuleSpecEdit", "RuleSpec", FormMethod.Get))
                 {
                     @Html.Hidden("LoadRuleSpecId", item.LoadRuleSpecId)
                     <input type="submit" value="просмотр" />
