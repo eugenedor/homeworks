@@ -39,17 +39,17 @@ namespace ToolsStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public ActionResult RuleSpecEdit(RuleSpecViewModel ruleSpecVM, HttpPostedFileBase image = null)
+        public ActionResult RuleSpecEdit(RuleSpecViewModel ruleSpecVM, HttpPostedFileBase file = null)
         {
             if (ModelState.IsValid)
             {
-                if (image != null)
+                if (file != null)
                 {
 
-                    ruleSpecVM.LoadRuleSpec.MimeType = image.ContentType;
-                    ruleSpecVM.LoadRuleSpec.Data = new byte[image.ContentLength];
-                    ruleSpecVM.LoadRuleSpec.Name = image.FileName;
-                    image.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, image.ContentLength);
+                    ruleSpecVM.LoadRuleSpec.MimeType = file.ContentType;
+                    ruleSpecVM.LoadRuleSpec.Data = new byte[file.ContentLength];
+                    ruleSpecVM.LoadRuleSpec.Name = file.FileName;
+                    file.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, file.ContentLength);
                 }
 
                 //repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
