@@ -16,5 +16,7 @@ namespace ToolsStore.Domain.Abstract
         MT_LOAD_RULE DeleteLoadRule(long loadRuleId);
 
         void SaveLoadRuleSpec(MT_LOAD_RULE_SPEC loadRuleSpec);
+
+        MT_LOAD_RULE_SPEC DeleteLoadRuleSpec(long loadRuleSpecId);
     }
 }

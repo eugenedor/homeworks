@@ -78,5 +78,16 @@ namespace ToolsStore.Domain.Concrete
             }
             context.SaveChanges();
         }
+
+        public MT_LOAD_RULE_SPEC DeleteLoadRuleSpec(long loadRuleSpecId)
+        {
+            MT_LOAD_RULE_SPEC dbEntry = context.MT_LOAD_RULE_SPEC.Where(x => x.LoadRuleSpecId == loadRuleSpecId).Single();
+            if (dbEntry != null)
+            {
+                context.MT_LOAD_RULE_SPEC.Remove(dbEntry);
+                context.SaveChanges();
+            }
+            return dbEntry;
+        }
     }
 }

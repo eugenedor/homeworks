@@ -12,7 +12,7 @@
 </p>
 
 <p>
-    @Html.ActionLink("+ Добавить правило загрузки (специальное)", "RuleSpecCreate")
+    @Html.ActionLink("+ добавить", "RuleSpecCreate")
 </p>
 
 <table class="Grid">
@@ -23,6 +23,8 @@
         <th>Тип пантомимы</th>
         <th>Наименование файла</th>
         <th>Дата загрузки</th>
+        <th></th>
+        <th></th>
     </tr>
     @foreach (var item in Model)
     {
@@ -37,7 +39,14 @@
                 @using (Html.BeginForm("RuleSpecEdit", "RuleSpec", FormMethod.Get))
                 {
                     @Html.Hidden("LoadRuleSpecId", item.LoadRuleSpecId)
-                    <input type="submit" value="просмотр" />
+                    <input type="submit" value="* редактировать" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("RuleSpecDelete", "RuleSpec", FormMethod.Post))
+                {
+                    @Html.Hidden("LoadRuleSpecId", item.LoadRuleSpecId)
+                    <input type="submit" value="- удалить" />
                 }
             </td>
         </tr>

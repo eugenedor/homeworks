@@ -83,5 +83,16 @@ namespace ToolsStore.WebUI.Controllers
 
             return View("RuleSpecEdit", ruleSpecVM);
         }
+        
+        [HttpPost]
+        public ActionResult RuleSpecDelete(long loadRuleSpecId)
+        {
+            MT_LOAD_RULE_SPEC deletedRuleSpec = repository.DeleteLoadRuleSpec(loadRuleSpecId);
+            if (deletedRuleSpec != null)
+            {
+                TempData["message"] = string.Format("{0} был удален", deletedRuleSpec.LoadRuleSpecId);
+            }
+            return RedirectToAction("RulesSpec");
+        }
     }
 }
