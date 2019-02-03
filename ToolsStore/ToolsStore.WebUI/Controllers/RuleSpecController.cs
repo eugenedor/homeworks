@@ -19,9 +19,13 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult RulesSpec()
+        public ViewResult RulesSpec(long? loadRuleId = null)
         {
-            return View(((DbQuery<MT_LOAD_RULE_SPEC>)repository.LoadRulesSpec).Include("MT_LOAD_RULE"));
+            IQueryable<MT_LOAD_RULE_SPEC> loadRulesSpec = repository.LoadRulesSpec;
+            if (loadRuleId != null)
+                loadRulesSpec = loadRulesSpec.Where(x => x.LoadRuleId == loadRuleId);
+
+            return View(((DbQuery<MT_LOAD_RULE_SPEC>)loadRulesSpec).Include("MT_LOAD_RULE"));
         }
 
         [HttpGet]

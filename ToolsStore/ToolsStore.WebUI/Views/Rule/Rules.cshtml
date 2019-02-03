@@ -41,6 +41,13 @@
             <td>@item.Descr</td>
             <td>@item.Ord</td>
             <td>
+                @using (Html.BeginForm("RulesSpec", "RuleSpec"))
+                {
+                    @Html.Hidden("loadRuleId", item.LoadRuleId)
+                    <input type="submit" value="к файлам" />
+                }
+            </td>
+            <td>
                 @using (Html.BeginForm("RuleDelete", "Rule"))
                 {
                     @Html.Hidden("loadRuleId", item.LoadRuleId)
