@@ -94,5 +94,28 @@ namespace ToolsStore.WebUI.Controllers
             }
             return RedirectToAction("RulesSpec");
         }
+
+        [HttpGet]
+        public ActionResult DownLoadFile(long loadRuleSpecId)
+        {
+            MT_LOAD_RULE_SPEC loadRuleSpec = repository.LoadRulesSpec.Where(x => x.LoadRuleSpecId == loadRuleSpecId).FirstOrDefault();
+            IEnumerable<MT_LOAD_RULE> loadRules = repository.LoadRules;
+
+            var ruleSpecVM = new RuleSpecViewModel
+            {
+                LoadRuleSpec = loadRuleSpec,
+                LoadRules = loadRules
+            };
+
+            if (ruleSpecVM != null
+                && ruleSpecVM.LoadRuleSpec != null
+                && ruleSpecVM.LoadRuleSpec.Data != null
+                && ruleSpecVM.LoadRuleSpec.MimeType != null)
+            {
+                return File(ruleSpecVM.LoadRuleSpec.Data, ruleSpecVM.LoadRuleSpec.MimeType, ruleSpecVM.LoadRuleSpec.Name);
+            }
+
+            return View("RuleSpecEdit", ruleSpecVM);
+        }
     }
 }

@@ -40,6 +40,9 @@
             <input type="file" name="File" />
         </div>
     </div>
+    <div>
+        @Html.ActionLink("Выгрузить", "DownLoadFile", new { Model.LoadRuleSpec.LoadRuleSpecId })
+    </div>
     <div>&nbsp;</div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "RulesSpec")
