@@ -7,8 +7,8 @@
 
 <h1>Правила загрузки (специальные)</h1>
 
-<p>
-    @Html.ActionLink("Вернуться к списку", "Index", "Admin")
+<p class="actionButtons">
+    <a href="@ViewBag.ReturnUrl">Вернуться к списку</a>
 </p>
 
 @if (!((bool)@ViewBag.Hidden))

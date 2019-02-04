@@ -45,6 +45,7 @@
                 {
                     @Html.Hidden("isHidden", true)
                     @Html.Hidden("loadRuleId", item.LoadRuleId)
+                    @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
                     <input type="submit" value="к файлам" />
                 }
             </td>
