@@ -22,6 +22,8 @@ namespace ToolsStore.Domain.Entities
         [StringLength(300)]
         public string Name { get; set; }
 
+        public int? Size { get; set; }
+
         [Display(Name = "Дата загрузки")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm:ss}")]
         public DateTime DateLoad { get; set; }

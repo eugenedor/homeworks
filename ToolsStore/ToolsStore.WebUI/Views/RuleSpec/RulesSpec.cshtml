@@ -23,6 +23,7 @@
         <th>Правило загрузки</th>
         <th>Тип пантомимы</th>
         <th>Наименование файла</th>
+        <th>Размер, КБ</th>
         <th>Дата загрузки</th>
         @if (!((bool)@ViewBag.Hidden))
         {
@@ -38,6 +39,7 @@
             <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Descr)</td>
             <td>@item.MimeType</td>
             <td>@item.Name</td>
+            <td>@(@Math.Round((decimal)item.Size / 1024, 2))</td>
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             @if (!((bool)@ViewBag.Hidden))
             {

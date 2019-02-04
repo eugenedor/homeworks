@@ -33,6 +33,13 @@
     <div>
         @Html.TextBoxFor(x => x.LoadRuleSpec.Name, new { @readonly = "readonly" })
     </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Размер (в байтах):
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.LoadRuleSpec.Size, new { @readonly = "readonly" })
+    </div>
     <div class="editor-label">Файл</div>
     <div class="editor-field">
         <div>

@@ -72,7 +72,8 @@ namespace ToolsStore.Domain.Concrete
                     dbEntry.LoadRuleId = loadRuleSpec.LoadRuleId;
                     dbEntry.Data = loadRuleSpec.Data;
                     dbEntry.MimeType = loadRuleSpec.MimeType;
-                    dbEntry.Name = loadRuleSpec.Name;                   
+                    dbEntry.Name = loadRuleSpec.Name;
+                    dbEntry.Size = loadRuleSpec.Size;
                     dbEntry.DateLoad = loadRuleSpec.DateLoad;                    
                 }
             }
