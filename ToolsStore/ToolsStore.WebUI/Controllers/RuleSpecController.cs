@@ -19,8 +19,9 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult RulesSpec(long? loadRuleId = null)
+        public ViewResult RulesSpec(bool isHidden = false, long? loadRuleId = null)
         {
+            ViewBag.Hidden = isHidden;
             IQueryable<MT_LOAD_RULE_SPEC> loadRulesSpec = repository.LoadRulesSpec;
             if (loadRuleId != null)
                 loadRulesSpec = loadRulesSpec.Where(x => x.LoadRuleId == loadRuleId);

@@ -43,6 +43,7 @@
             <td>
                 @using (Html.BeginForm("RulesSpec", "RuleSpec"))
                 {
+                    @Html.Hidden("isHidden", true)
                     @Html.Hidden("loadRuleId", item.LoadRuleId)
                     <input type="submit" value="к файлам" />
                 }
