@@ -57,7 +57,7 @@ namespace ToolsStore.WebUI.Controllers
 
                     ruleSpecVM.LoadRuleSpec.MimeType = file.ContentType;
                     ruleSpecVM.LoadRuleSpec.Data = new byte[file.ContentLength];
-                    ruleSpecVM.LoadRuleSpec.Name = file.FileName;
+                    ruleSpecVM.LoadRuleSpec.FileName = file.FileName;
                     ruleSpecVM.LoadRuleSpec.Size = file.ContentLength;
                     file.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, file.ContentLength);
                 }
@@ -120,7 +120,7 @@ namespace ToolsStore.WebUI.Controllers
                 && ruleSpecVM.LoadRuleSpec.Data != null
                 && ruleSpecVM.LoadRuleSpec.MimeType != null)
             {
-                return File(ruleSpecVM.LoadRuleSpec.Data, ruleSpecVM.LoadRuleSpec.MimeType, ruleSpecVM.LoadRuleSpec.Name);
+                return File(ruleSpecVM.LoadRuleSpec.Data, ruleSpecVM.LoadRuleSpec.MimeType, ruleSpecVM.LoadRuleSpec.FileName);
             }
 
             return View("RuleSpecEdit", ruleSpecVM);

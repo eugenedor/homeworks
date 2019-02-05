@@ -63,7 +63,7 @@ namespace ToolsStore.Domain.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<MT_LOAD_RULE_SPEC>()
-                .Property(e => e.Name)
+                .Property(e => e.FileName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<RS_ORDER>()

@@ -38,7 +38,7 @@
             <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Code)</td>
             <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Descr)</td>
             <td>@item.MimeType</td>
-            <td>@item.Name</td>
+            <td>@item.FileName</td>
             <td>@(@Math.Round((decimal)item.Size / 1024, 2))</td>
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             @if (!((bool)@ViewBag.Hidden))
