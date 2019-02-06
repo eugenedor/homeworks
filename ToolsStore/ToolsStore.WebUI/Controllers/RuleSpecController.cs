@@ -41,7 +41,6 @@ namespace ToolsStore.WebUI.Controllers
                 LoadRuleSpec = loadRuleSpec,
                 LoadRules = loadRules
             };
-            ruleSpecVM.LoadRuleSpec.Size = ruleSpecVM.LoadRuleSpec.Size ?? 0;
 
             return View(ruleSpecVM);
         }
@@ -85,7 +84,7 @@ namespace ToolsStore.WebUI.Controllers
 
             var ruleSpecVM = new RuleSpecViewModel
             {
-                LoadRuleSpec = new MT_LOAD_RULE_SPEC() { Size = 0 },
+                LoadRuleSpec = new MT_LOAD_RULE_SPEC(),
                 LoadRules = loadRules
             };
 
