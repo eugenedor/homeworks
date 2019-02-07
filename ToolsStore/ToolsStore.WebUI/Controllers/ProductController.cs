@@ -105,6 +105,7 @@ namespace ToolsStore.WebUI.Controllers
                     productVM.Product.CT_IMAGE.MimeType = image.ContentType;
                     productVM.Product.CT_IMAGE.Data = new byte[image.ContentLength];
                     productVM.Product.CT_IMAGE.Name = image.FileName;
+                    productVM.Product.CT_IMAGE.Size = image.ContentLength;
                     image.InputStream.Read(productVM.Product.CT_IMAGE.Data, 0, image.ContentLength);
                 }
 

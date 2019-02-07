@@ -111,6 +111,7 @@ namespace ToolsStore.Domain.Concrete
                                     Data = im.Data,
                                     MimeType = im.MimeType,
                                     ImageName = im.Name,
+                                    ImageSize = im.Size,
                                     PriceId = prc.PriceId,
                                     PriceWithVat = prc.PriceWithVat,
                                     PriceWithoutVat = prc.PriceWithoutVat,
@@ -327,6 +328,7 @@ namespace ToolsStore.Domain.Concrete
                     img.Data = product.CT_IMAGE.Data;
                     img.MimeType = product.CT_IMAGE.MimeType;
                     img.Name = product.CT_IMAGE.Name;
+                    img.Size = product.CT_IMAGE.Size;
                     img.DateLoad = dateLoad;
                 }
                 else
@@ -335,6 +337,7 @@ namespace ToolsStore.Domain.Concrete
                     img.Data = product.CT_IMAGE.Data;
                     img.MimeType = product.CT_IMAGE.MimeType;
                     img.Name = product.CT_IMAGE.Name;
+                    img.Size = product.CT_IMAGE.Size;
                     img.DateLoad = dateLoad;
                     context.CT_IMAGE.Add(img);
                 }
