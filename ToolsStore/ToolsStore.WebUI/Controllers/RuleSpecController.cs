@@ -65,6 +65,12 @@ namespace ToolsStore.WebUI.Controllers
                 {
                     TempData["message"] = string.Format("Отсутствуют данные файла. Выберите файл.");
                     return View(ruleSpecVM);
+                }
+
+                if (!ruleSpecVM.LoadRuleSpec.MimeType.Contains("xml"))
+                {
+                    TempData["message"] = string.Format("Тип содержимого MIME файла ({0}) не является xml.", ruleSpecVM.LoadRuleSpec.MimeType);
+                    return View(ruleSpecVM);
                 }                    
 
                 repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
