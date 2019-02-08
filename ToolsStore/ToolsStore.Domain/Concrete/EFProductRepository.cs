@@ -110,7 +110,7 @@ namespace ToolsStore.Domain.Concrete
                                     ModelName = md.Name,
                                     Data = im.Data,
                                     MimeType = im.MimeType,
-                                    ImageName = im.Name,
+                                    ImageName = im.FileName,
                                     ImageSize = im.Size,
                                     PriceId = prc.PriceId,
                                     PriceWithVat = prc.PriceWithVat,
@@ -327,7 +327,7 @@ namespace ToolsStore.Domain.Concrete
                     img = context.CT_IMAGE.Where(x => x.ImageId == product.ImageId).Single();
                     img.Data = product.CT_IMAGE.Data;
                     img.MimeType = product.CT_IMAGE.MimeType;
-                    img.Name = product.CT_IMAGE.Name;
+                    img.FileName = product.CT_IMAGE.FileName;
                     img.Size = product.CT_IMAGE.Size;
                     img.DateLoad = dateLoad;
                 }
@@ -336,7 +336,7 @@ namespace ToolsStore.Domain.Concrete
                     img = new CT_IMAGE();
                     img.Data = product.CT_IMAGE.Data;
                     img.MimeType = product.CT_IMAGE.MimeType;
-                    img.Name = product.CT_IMAGE.Name;
+                    img.FileName = product.CT_IMAGE.FileName;
                     img.Size = product.CT_IMAGE.Size;
                     img.DateLoad = dateLoad;
                     context.CT_IMAGE.Add(img);

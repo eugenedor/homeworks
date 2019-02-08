@@ -23,7 +23,7 @@ namespace ToolsStore.Domain.Entities
         public string MimeType { get; set; }
 
         [StringLength(300)]
-        public string Name { get; set; }
+        public string FileName { get; set; }
 
         public int? Size { get; set; }
 

@@ -104,7 +104,7 @@ namespace ToolsStore.WebUI.Controllers
                 {
                     productVM.Product.CT_IMAGE.MimeType = image.ContentType;
                     productVM.Product.CT_IMAGE.Data = new byte[image.ContentLength];
-                    productVM.Product.CT_IMAGE.Name = image.FileName;
+                    productVM.Product.CT_IMAGE.FileName = image.FileName;
                     productVM.Product.CT_IMAGE.Size = image.ContentLength;
                     image.InputStream.Read(productVM.Product.CT_IMAGE.Data, 0, image.ContentLength);
                 }
@@ -178,7 +178,7 @@ namespace ToolsStore.WebUI.Controllers
         
             if (image != null && image.Data != null && image.MimeType != null)
             {
-                return File(image.Data, image.MimeType, image.Name);
+                return File(image.Data, image.MimeType, image.FileName);
             }
         
             return View("ProductEdit", productVM);

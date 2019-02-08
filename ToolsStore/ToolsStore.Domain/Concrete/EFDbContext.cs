@@ -45,7 +45,7 @@ namespace ToolsStore.Domain.Entities
                 .IsUnicode(false);
 
             modelBuilder.Entity<CT_IMAGE>()
-                .Property(e => e.Name)
+                .Property(e => e.FileName)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CT_VAT>()
