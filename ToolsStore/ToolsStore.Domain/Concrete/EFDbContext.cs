@@ -40,31 +40,15 @@ namespace ToolsStore.Domain.Entities
                 .WithRequired(e => e.CT_CATEGORY)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<CT_IMAGE>()
-                .Property(e => e.MimeType)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<CT_IMAGE>()
-                .Property(e => e.FileName)
-                .IsUnicode(false);
-
             modelBuilder.Entity<CT_VAT>()
                 .HasMany(e => e.RS_PRICE)
                 .WithRequired(e => e.CT_VAT)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<MT_LOAD_RULE>()
-                            .HasMany(e => e.MT_LOAD_RULE_SPEC)
-                            .WithRequired(e => e.MT_LOAD_RULE)
-                            .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<MT_LOAD_RULE_SPEC>()
-                .Property(e => e.MimeType)
-                .IsUnicode(false);
-
-            modelBuilder.Entity<MT_LOAD_RULE_SPEC>()
-                .Property(e => e.FileName)
-                .IsUnicode(false);
+                .HasMany(e => e.MT_LOAD_RULE_SPEC)
+                .WithRequired(e => e.MT_LOAD_RULE)
+                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RS_ORDER>()
                 .HasMany(e => e.RS_CART)
