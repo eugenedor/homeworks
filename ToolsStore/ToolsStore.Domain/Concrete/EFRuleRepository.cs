@@ -34,12 +34,10 @@ namespace ToolsStore.Domain.Concrete
                 if (dbEntry != null)
                 {
                     dbEntry.Code = loadRule.Code;
-                    dbEntry.FileName = loadRule.FileName;
-                    dbEntry.IsActive = loadRule.IsActive;
-                    dbEntry.MethodLoad = loadRule.MethodLoad;
-                    dbEntry.PathToXsd = loadRule.PathToXsd;
-                    dbEntry.XsdName = loadRule.XsdName;
+                    dbEntry.Pattern = loadRule.Pattern;
+                    dbEntry.Method = loadRule.Method;
                     dbEntry.Descr = loadRule.Descr;
+                    dbEntry.IsActive = loadRule.IsActive;                                       
                     dbEntry.Ord = loadRule.Ord;
                 }
             }
@@ -73,7 +71,9 @@ namespace ToolsStore.Domain.Concrete
                     dbEntry.Data = loadRuleSpec.Data;
                     dbEntry.MimeType = loadRuleSpec.MimeType;
                     dbEntry.FileName = loadRuleSpec.FileName;
+                    dbEntry.PathToFile = loadRuleSpec.PathToFile;
                     dbEntry.Size = loadRuleSpec.Size;
+                    dbEntry.IsActive = loadRuleSpec.IsActive;
                     dbEntry.DateLoad = loadRuleSpec.DateLoad;                    
                 }
             }
