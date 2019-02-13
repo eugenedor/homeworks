@@ -40,6 +40,20 @@
     <div>
         @Html.TextBoxFor(x => x.LoadRuleSpec.Size, new { @readonly = "readonly" })
     </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Путь:
+    </div>
+    <div>
+        @Html.TextBoxFor(x => x.LoadRuleSpec.PathToFile)
+    </div>
+    <div>&nbsp;</div>
+    <div style="font-weight:bold">
+        Признак активности:
+    </div>
+    <div>
+        @Html.EditorFor(x => x.LoadRuleSpec.IsActive)
+    </div>
     <div class="editor-label">Файл</div>
     <div class="editor-field">
         <div>
