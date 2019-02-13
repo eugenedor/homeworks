@@ -19,13 +19,11 @@
     <tr>
         <th>ID</th>
         <th>Код</th>
-        <th>Наименование файла </th>
-        <th>Активность</th>
-        <th>Метод загрузки</th>
-        <th>Путь к XSD-файлу</th>
-        <th>Наименование XSD-файла</th>
+        <th>Шаблон</th>
+        <th>Метод</th>
         <th>Описание</th>
-        <th>Порядок</th>
+        <th>Активность</th>
+        <th>Порядок</th>                    
         <th>Действие</th>
     </tr>
     @foreach (var item in Model)
@@ -33,13 +31,11 @@
         <tr>
             <td>@item.LoadRuleId</td>
             <td>@Html.ActionLink(item.Code, "RuleEdit", new { item.LoadRuleId })</td>
-            <td>@item.FileName</td>
-            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
-            <td>@item.MethodLoad</td>
-            <td>@item.PathToXsd</td>
-            <td>@item.XsdName</td>
+            <td>@item.Pattern</td>
+            <td>@item.Method</td>
             <td>@item.Descr</td>
-            <td>@item.Ord</td>
+            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>
+            <td>@item.Ord</td>                         
             <td>
                 @using (Html.BeginForm("RulesSpec", "RuleSpec"))
                 {
