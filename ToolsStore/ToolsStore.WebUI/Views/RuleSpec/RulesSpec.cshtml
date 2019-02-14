@@ -23,8 +23,8 @@
         <th>Правило загрузки</th>
         <th>Тип пантомимы</th>
         <th>Наименование файла</th>
-        <th>Путь</th>
         <th>Размер, КБ</th>
+        <th>Путь</th>        
         <th>Активность</th>
         <th>Дата загрузки</th>                                        
         @if (!((bool)@ViewBag.Hidden))
@@ -36,13 +36,20 @@
     @foreach (var item in Model)
     {
         <tr>
-            <td>@Html.ActionLink(item.LoadRuleSpecId.ToString(), "RuleSpecEdit", new { item.LoadRuleSpecId })</td>
+            @if (!((bool)@ViewBag.Hidden))
+            {
+                <td>@Html.ActionLink(item.LoadRuleSpecId.ToString(), "RuleSpecEdit", new { item.LoadRuleSpecId })</td>
+            }
+            else
+            {
+                <td>@item.LoadRuleSpecId</td>
+            }
             <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Code)</td>
             <td>@Html.DisplayFor(modelItem => item.MT_LOAD_RULE.Descr)</td>
             <td>@item.MimeType</td>
-            <td>@item.FileName</td>
-            <td>@item.PathToFile</td>
+            <td>@item.FileName</td>            
             <td>@(@Math.Round((decimal)(item.Size ?? 0) / 1024, 2))</td>
+            <td>@item.PathToFile</td>
             <td>@Html.DisplayFor(modelItem => item.IsActive)</td>                                           
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             @if (!((bool)@ViewBag.Hidden))

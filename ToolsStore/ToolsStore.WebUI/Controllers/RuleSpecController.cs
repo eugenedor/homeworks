@@ -54,8 +54,8 @@ namespace ToolsStore.WebUI.Controllers
                 if (file != null)
                 {
 
-                    ruleSpecVM.LoadRuleSpec.MimeType = file.ContentType;
                     ruleSpecVM.LoadRuleSpec.Data = new byte[file.ContentLength];
+                    ruleSpecVM.LoadRuleSpec.MimeType = file.ContentType;                    
                     ruleSpecVM.LoadRuleSpec.FileName = file.FileName;
                     ruleSpecVM.LoadRuleSpec.Size = file.ContentLength;
                     file.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, file.ContentLength);
