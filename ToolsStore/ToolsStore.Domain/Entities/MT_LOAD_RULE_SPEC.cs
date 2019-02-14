@@ -14,24 +14,21 @@ namespace ToolsStore.Domain.Entities
 
         public long LoadRuleId { get; set; }
 
-        [Required]
         public byte[] Data { get; set; }
 
-        [Required]
         [StringLength(50)]
         public string MimeType { get; set; }
 
         [Display(Name = "Наименование xsd-файла")]
-        [Required(ErrorMessage = "Введите наименование xsd-файла")]
         [StringLength(100)]
         public string FileName { get; set; }
+
+        public int? Size { get; set; }
 
         [Display(Name = "Путь к xsd-файлу")]
         [Required(ErrorMessage = "Укажите путь к xsd-файлу")]
         [StringLength(250)]
-        public string PathToFile { get; set; }
-
-        public int? Size { get; set; }
+        public string PathToFile { get; set; }        
 
         public bool IsActive { get; set; }
 
