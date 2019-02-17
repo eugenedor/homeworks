@@ -1,0 +1,8 @@
+WITH t (dBeg)
+AS
+(
+	SELECT DATEADD(DD, -DAY(GETDATE())+1, CAST(CAST(GETDATE() AS NVARCHAR(12)) AS DATETIME)) AS dBeg
+)
+SELECT t.dBeg,
+       DATEADD(dd, -1, DATEADD(mm, 1, t.dbeg)) dEnd
+FROM t;
