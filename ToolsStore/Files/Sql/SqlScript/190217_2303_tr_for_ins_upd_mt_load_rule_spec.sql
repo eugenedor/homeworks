@@ -21,7 +21,17 @@ BEGIN TRAN
 			 FROM INSERTED i
 			 WHERE NULLIF(i.Data, 0x00) IS NULL))
   BEGIN
-	SET @error = 'Нет данных.';
+	SET @error = 'Отсутствуют данные.';
+    RAISERROR(@error, 16, 1)
+	ROLLBACK TRAN    
+  END
+
+  --check mimetype--
+  IF (EXISTS(SELECT i.LoadRuleSpecId
+			 FROM INSERTED i
+			 WHERE ISNULL(LOWER(i.MimeType), '') NOT LIKE '%xml%'))
+  BEGIN
+	SET @error = 'Тип содержимого MIME файла не является xml.';
     RAISERROR(@error, 16, 1)
 	ROLLBACK TRAN    
   END

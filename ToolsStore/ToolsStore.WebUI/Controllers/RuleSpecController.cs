@@ -61,17 +61,17 @@ namespace ToolsStore.WebUI.Controllers
                     file.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, file.ContentLength);
                 }
 
-                if (ruleSpecVM.LoadRuleSpec.Data == null)
-                {
-                    TempData["message"] = string.Format("Отсутствуют данные файла. Выберите файл.");
-                    return View(ruleSpecVM);
-                }
+                //if (ruleSpecVM.LoadRuleSpec.Data == null)
+                //{
+                //    TempData["message"] = string.Format("Отсутствуют данные файла. Выберите файл.");
+                //    return View(ruleSpecVM);
+                //}
 
-                if (!ruleSpecVM.LoadRuleSpec.MimeType.Contains("xml"))
-                {
-                    TempData["message"] = string.Format("Тип содержимого MIME файла ({0}) не является xml.", ruleSpecVM.LoadRuleSpec.MimeType);
-                    return View(ruleSpecVM);
-                }                    
+                //if (!ruleSpecVM.LoadRuleSpec.MimeType.Contains("xml"))
+                //{
+                //    TempData["message"] = string.Format("Тип содержимого MIME файла ({0}) не является xml.", ruleSpecVM.LoadRuleSpec.MimeType);
+                //    return View(ruleSpecVM);
+                //}                    
 
                 repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
                 TempData["message"] = string.Format("{0} сохранено", ruleSpecVM.LoadRuleSpec.LoadRuleSpecId.ToString());
