@@ -48,6 +48,7 @@ namespace ToolsStore.WebUI.Controllers
         [HttpPost]
         public ActionResult RuleSpecEdit(RuleSpecViewModel ruleSpecVM, HttpPostedFileBase file = null)
         {
+            string err = string.Empty;
             if (ModelState.IsValid)
             {
                 ruleSpecVM.LoadRules = repository.LoadRules;
@@ -61,7 +62,14 @@ namespace ToolsStore.WebUI.Controllers
                     file.InputStream.Read(ruleSpecVM.LoadRuleSpec.Data, 0, file.ContentLength);
                 }                  
 
-                repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec);
+                repository.SaveLoadRuleSpec(ruleSpecVM.LoadRuleSpec, out err);
+
+                if (!string.IsNullOrEmpty(err))
+                {
+                    TempData["message"] = string.Format("Ошибка: {0}", err);
+                    return View(ruleSpecVM);
+                }
+
                 TempData["message"] = string.Format("{0} сохранено", ruleSpecVM.LoadRuleSpec.LoadRuleSpecId.ToString());
                 return RedirectToAction("RulesSpec");
             }

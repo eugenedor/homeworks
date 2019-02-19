@@ -55,34 +55,47 @@ namespace ToolsStore.Domain.Concrete
             return dbEntry;
         }
 
-        public void SaveLoadRuleSpec(MT_LOAD_RULE_SPEC loadRuleSpec)
+        public void SaveLoadRuleSpec(MT_LOAD_RULE_SPEC loadRuleSpec, out string err)
         {
-            loadRuleSpec.DateLoad = DateTime.Now;
-            if (loadRuleSpec.LoadRuleSpecId == 0)
+            err = string.Empty;
+            try
             {
-                context.MT_LOAD_RULE_SPEC.Add(loadRuleSpec);
-            }
-            else
-            {
-                MT_LOAD_RULE_SPEC dbEntry = context.MT_LOAD_RULE_SPEC.Where(x => x.LoadRuleSpecId == loadRuleSpec.LoadRuleSpecId).Single();
-                if (dbEntry != null)
+                loadRuleSpec.DateLoad = DateTime.Now;
+                if (loadRuleSpec.LoadRuleSpecId == 0)
                 {
-                    if (loadRuleSpec.Data != null
-                        && loadRuleSpec.MimeType != null
-                        && loadRuleSpec.FileName != null)
-                    {
-                        dbEntry.Data = loadRuleSpec.Data;
-                        dbEntry.MimeType = loadRuleSpec.MimeType;
-                        dbEntry.FileName = loadRuleSpec.FileName;
-                        dbEntry.Size = loadRuleSpec.Size;
-                    }                                        
-                    dbEntry.LoadRuleId = loadRuleSpec.LoadRuleId;
-                    dbEntry.PathToFile = loadRuleSpec.PathToFile;                    
-                    dbEntry.IsActive = loadRuleSpec.IsActive;
-                    dbEntry.DateLoad = loadRuleSpec.DateLoad;                    
+                    context.MT_LOAD_RULE_SPEC.Add(loadRuleSpec);
                 }
+                else
+                {
+                    MT_LOAD_RULE_SPEC dbEntry = context.MT_LOAD_RULE_SPEC.Where(x => x.LoadRuleSpecId == loadRuleSpec.LoadRuleSpecId).Single();
+                    if (dbEntry != null)
+                    {
+                        if (loadRuleSpec.Data != null
+                            && loadRuleSpec.MimeType != null
+                            && loadRuleSpec.FileName != null)
+                        {
+                            dbEntry.Data = loadRuleSpec.Data;
+                            dbEntry.MimeType = loadRuleSpec.MimeType;
+                            dbEntry.FileName = loadRuleSpec.FileName;
+                            dbEntry.Size = loadRuleSpec.Size;
+                        }
+                        dbEntry.LoadRuleId = loadRuleSpec.LoadRuleId;
+                        dbEntry.PathToFile = loadRuleSpec.PathToFile;
+                        dbEntry.IsActive = loadRuleSpec.IsActive;
+                        dbEntry.DateLoad = loadRuleSpec.DateLoad;
+                    }
+                }
+                context.SaveChanges();
             }
-            context.SaveChanges();
+            catch (Exception ex)
+            {
+                if (ex.InnerException != null && ex.InnerException.InnerException != null)
+                    err = ex.InnerException.InnerException.Message;
+                else if (ex.InnerException != null)
+                    err = ex.InnerException.Message;
+                else
+                    err = ex.Message;
+            }
         }
 
         public MT_LOAD_RULE_SPEC DeleteLoadRuleSpec(long loadRuleSpecId)
