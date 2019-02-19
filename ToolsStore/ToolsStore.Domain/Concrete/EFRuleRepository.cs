@@ -66,12 +66,17 @@ namespace ToolsStore.Domain.Concrete
             {
                 MT_LOAD_RULE_SPEC dbEntry = context.MT_LOAD_RULE_SPEC.Where(x => x.LoadRuleSpecId == loadRuleSpec.LoadRuleSpecId).Single();
                 if (dbEntry != null)
-                {                    
+                {
+                    if (loadRuleSpec.Data != null
+                        && loadRuleSpec.MimeType != null
+                        && loadRuleSpec.FileName != null)
+                    {
+                        dbEntry.Data = loadRuleSpec.Data;
+                        dbEntry.MimeType = loadRuleSpec.MimeType;
+                        dbEntry.FileName = loadRuleSpec.FileName;
+                        dbEntry.Size = loadRuleSpec.Size;
+                    }                                        
                     dbEntry.LoadRuleId = loadRuleSpec.LoadRuleId;
-                    dbEntry.Data = loadRuleSpec.Data;
-                    dbEntry.MimeType = loadRuleSpec.MimeType;
-                    dbEntry.FileName = loadRuleSpec.FileName;
-                    dbEntry.Size = loadRuleSpec.Size;
                     dbEntry.PathToFile = loadRuleSpec.PathToFile;                    
                     dbEntry.IsActive = loadRuleSpec.IsActive;
                     dbEntry.DateLoad = loadRuleSpec.DateLoad;                    
