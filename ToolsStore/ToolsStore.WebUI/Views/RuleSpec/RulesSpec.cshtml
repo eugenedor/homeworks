@@ -25,7 +25,7 @@
         <th>Наименование файла</th>
         <th>Размер, КБ</th>
         <th>Путь</th>        
-        <th>Активность</th>
+        <th>Главный (в правиле)</th>
         <th>Дата загрузки</th>                                        
         @if (!((bool)@ViewBag.Hidden))
         {
@@ -50,7 +50,7 @@
             <td>@item.FileName</td>            
             <td>@(@Math.Round((decimal)(item.Size ?? 0) / 1024, 2))</td>
             <td>@item.PathToFile</td>
-            <td>@Html.DisplayFor(modelItem => item.IsActive)</td>                                           
+            <td>@Html.DisplayFor(modelItem => item.IsMain)</td>                                           
             <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             @if (!((bool)@ViewBag.Hidden))
             {

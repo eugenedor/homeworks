@@ -81,7 +81,7 @@ namespace ToolsStore.Domain.Concrete
                         }
                         dbEntry.LoadRuleId = loadRuleSpec.LoadRuleId;
                         dbEntry.PathToFile = loadRuleSpec.PathToFile;
-                        dbEntry.IsActive = loadRuleSpec.IsActive;
+                        dbEntry.IsMain = loadRuleSpec.IsMain;
                         dbEntry.DateLoad = loadRuleSpec.DateLoad;
                     }
                 }

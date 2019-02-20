@@ -30,7 +30,7 @@ namespace ToolsStore.Domain.Entities
         [StringLength(250)]
         public string PathToFile { get; set; }        
 
-        public bool IsActive { get; set; }
+        public bool IsMain { get; set; }
 
         [Display(Name = "Дата загрузки")]
         [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy HH:mm:ss}")]
