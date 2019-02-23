@@ -16,7 +16,7 @@ ON
     MAXSIZE = 50,
     FILEGROWTH = 5 )
 LOG ON
-( NAME = ToolsStore2_log,
+( NAME = ToolsStore_log,
     FILENAME = 'E:\databases\ToolsStore.ldf',
     SIZE = 5MB,
     MAXSIZE = 25MB,
