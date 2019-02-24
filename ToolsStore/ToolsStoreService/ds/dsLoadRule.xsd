@@ -17,7 +17,7 @@
         <xs:element name="SP_GET_LOAD_RULE" msprop:Generator_TableClassName="SP_GET_LOAD_RULEDataTable" msprop:Generator_TableVarName="tableSP_GET_LOAD_RULE" msprop:Generator_TablePropName="SP_GET_LOAD_RULE" msprop:Generator_RowDeletingName="SP_GET_LOAD_RULERowDeleting" msprop:Generator_RowChangingName="SP_GET_LOAD_RULERowChanging" msprop:Generator_RowEvHandlerName="SP_GET_LOAD_RULERowChangeEventHandler" msprop:Generator_RowDeletedName="SP_GET_LOAD_RULERowDeleted" msprop:Generator_UserTableName="SP_GET_LOAD_RULE" msprop:Generator_RowChangedName="SP_GET_LOAD_RULERowChanged" msprop:Generator_RowEvArgName="SP_GET_LOAD_RULERowChangeEvent" msprop:Generator_RowClassName="SP_GET_LOAD_RULERow">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="LoadRuleId" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnLoadRuleId" msprop:Generator_ColumnPropNameInRow="LoadRuleId" msprop:Generator_ColumnPropNameInTable="LoadRuleIdColumn" msprop:Generator_UserColumnName="LoadRuleId" type="xs:long" />
+              <xs:element name="LoadRuleId" msprop:Generator_ColumnVarNameInTable="columnLoadRuleId" msprop:Generator_ColumnPropNameInRow="LoadRuleId" msprop:Generator_ColumnPropNameInTable="LoadRuleIdColumn" msprop:Generator_UserColumnName="LoadRuleId" type="xs:long" />
               <xs:element name="Code" msprop:Generator_ColumnVarNameInTable="columnCode" msprop:Generator_ColumnPropNameInRow="Code" msprop:Generator_ColumnPropNameInTable="CodeColumn" msprop:Generator_UserColumnName="Code">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
@@ -25,29 +25,14 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName">
+              <xs:element name="Pattern" msprop:Generator_ColumnVarNameInTable="columnPattern" msprop:Generator_ColumnPropNameInRow="Pattern" msprop:Generator_ColumnPropNameInTable="PatternColumn" msprop:Generator_UserColumnName="Pattern">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="IsActive" msprop:Generator_ColumnVarNameInTable="columnIsActive" msprop:Generator_ColumnPropNameInRow="IsActive" msprop:Generator_ColumnPropNameInTable="IsActiveColumn" msprop:Generator_UserColumnName="IsActive" type="xs:boolean" />
-              <xs:element name="MethodLoad" msprop:Generator_ColumnVarNameInTable="columnMethodLoad" msprop:Generator_ColumnPropNameInRow="MethodLoad" msprop:Generator_ColumnPropNameInTable="MethodLoadColumn" msprop:Generator_UserColumnName="MethodLoad">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="100" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PathToXsd" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnPathToXsd" msprop:Generator_ColumnPropNameInRow="PathToXsd" msprop:Generator_ColumnPropNameInTable="PathToXsdColumn" msprop:Generator_UserColumnName="PathToXsd" minOccurs="0">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="1250" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="XsdName" msprop:Generator_ColumnVarNameInTable="columnXsdName" msprop:Generator_ColumnPropNameInRow="XsdName" msprop:Generator_ColumnPropNameInTable="XsdNameColumn" msprop:Generator_UserColumnName="XsdName">
+              <xs:element name="Method" msprop:Generator_ColumnVarNameInTable="columnMethod" msprop:Generator_ColumnPropNameInRow="Method" msprop:Generator_ColumnPropNameInTable="MethodColumn" msprop:Generator_UserColumnName="Method">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="100" />
@@ -61,15 +46,35 @@
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="IsActive" msprop:Generator_ColumnVarNameInTable="columnIsActive" msprop:Generator_ColumnPropNameInRow="IsActive" msprop:Generator_ColumnPropNameInTable="IsActiveColumn" msprop:Generator_UserColumnName="IsActive" type="xs:boolean" />
               <xs:element name="Ord" msprop:Generator_ColumnVarNameInTable="columnOrd" msprop:Generator_ColumnPropNameInRow="Ord" msprop:Generator_ColumnPropNameInTable="OrdColumn" msprop:Generator_UserColumnName="Ord" type="xs:int" />
+              <xs:element name="LoadRuleSpecId" msprop:Generator_ColumnVarNameInTable="columnLoadRuleSpecId" msprop:Generator_ColumnPropNameInRow="LoadRuleSpecId" msprop:Generator_ColumnPropNameInTable="LoadRuleSpecIdColumn" msprop:Generator_UserColumnName="LoadRuleSpecId" type="xs:long" />
+              <xs:element name="FileName" msprop:Generator_ColumnVarNameInTable="columnFileName" msprop:Generator_ColumnPropNameInRow="FileName" msprop:Generator_ColumnPropNameInTable="FileNameColumn" msprop:Generator_UserColumnName="FileName" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PathToFile" msprop:Generator_ColumnVarNameInTable="columnPathToFile" msprop:Generator_ColumnPropNameInRow="PathToFile" msprop:Generator_ColumnPropNameInTable="PathToFileColumn" msprop:Generator_UserColumnName="PathToFile">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1252" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="PathName" msprop:Generator_ColumnVarNameInTable="columnPathName" msprop:Generator_ColumnPropNameInRow="PathName" msprop:Generator_ColumnPropNameInTable="PathNameColumn" msprop:Generator_UserColumnName="PathName">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="1352" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="IsMain" msprop:Generator_ColumnVarNameInTable="columnIsMain" msprop:Generator_ColumnPropNameInRow="IsMain" msprop:Generator_ColumnPropNameInTable="IsMainColumn" msprop:Generator_UserColumnName="IsMain" type="xs:boolean" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
       </xs:choice>
     </xs:complexType>
-    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
-      <xs:selector xpath=".//mstns:SP_GET_LOAD_RULE" />
-      <xs:field xpath="mstns:LoadRuleId" />
-    </xs:unique>
   </xs:element>
 </xs:schema>

@@ -30,13 +30,16 @@ namespace ToolsStoreService.db
                         new System.Data.Common.DataTableMapping("Table", "SP_GET_LOAD_RULE", new System.Data.Common.DataColumnMapping[] {
                         new System.Data.Common.DataColumnMapping("LoadRuleId", "LoadRuleId"),
                         new System.Data.Common.DataColumnMapping("Code", "Code"),
-                        new System.Data.Common.DataColumnMapping("FileName", "FileName"),
-                        new System.Data.Common.DataColumnMapping("IsActive", "IsActive"),
-                        new System.Data.Common.DataColumnMapping("MethodLoad", "MethodLoad"),
-                        new System.Data.Common.DataColumnMapping("PathToXsd", "PathToXsd"),
-                        new System.Data.Common.DataColumnMapping("XsdName", "XsdName"),
+                        new System.Data.Common.DataColumnMapping("Pattern", "Pattern"),
+                        new System.Data.Common.DataColumnMapping("Method", "Method"),
                         new System.Data.Common.DataColumnMapping("Descr", "Descr"),
-                        new System.Data.Common.DataColumnMapping("Ord", "Ord")})});
+                        new System.Data.Common.DataColumnMapping("IsActive", "IsActive"),
+                        new System.Data.Common.DataColumnMapping("Ord", "Ord"),
+                        new System.Data.Common.DataColumnMapping("LoadRuleSpecId", "LoadRuleSpecId"),
+                        new System.Data.Common.DataColumnMapping("FileName", "FileName"),
+                        new System.Data.Common.DataColumnMapping("PathToFile", "PathToFile"),
+                        new System.Data.Common.DataColumnMapping("PathName", "PathName"),
+                        new System.Data.Common.DataColumnMapping("IsMain", "IsMain")})});
 
                 var dsLoadRule = new dsLoadRule();
                 dsLoadRule.Clear();
@@ -47,11 +50,11 @@ namespace ToolsStoreService.db
                     var lr = new LoadRule();
 
                     lr.Code = row.Code;
-                    lr.FileName = row.FileName;
+                    //lr.FileName = row.Pattern;
                     lr.IsActive = row.IsActive;
-                    lr.MethodLoad = row.MethodLoad;
-                    lr.PathToXsd = row.PathToXsd;
-                    lr.XsdName = row.XsdName;
+                    //lr.MethodLoad = row.MethodLoad;
+                    //lr.PathToXsd = row.PathToXsd;
+                    //lr.XsdName = row.XsdName;
                     lr.Description = row.Descr;
                     lr.Order = row.Ord;
 

@@ -283,19 +283,25 @@ namespace ToolsStoreService.ds {
             
             private global::System.Data.DataColumn columnCode;
             
-            private global::System.Data.DataColumn columnFileName;
+            private global::System.Data.DataColumn columnPattern;
             
-            private global::System.Data.DataColumn columnIsActive;
-            
-            private global::System.Data.DataColumn columnMethodLoad;
-            
-            private global::System.Data.DataColumn columnPathToXsd;
-            
-            private global::System.Data.DataColumn columnXsdName;
+            private global::System.Data.DataColumn columnMethod;
             
             private global::System.Data.DataColumn columnDescr;
             
+            private global::System.Data.DataColumn columnIsActive;
+            
             private global::System.Data.DataColumn columnOrd;
+            
+            private global::System.Data.DataColumn columnLoadRuleSpecId;
+            
+            private global::System.Data.DataColumn columnFileName;
+            
+            private global::System.Data.DataColumn columnPathToFile;
+            
+            private global::System.Data.DataColumn columnPathName;
+            
+            private global::System.Data.DataColumn columnIsMain;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -348,41 +354,17 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn FileNameColumn {
+            public global::System.Data.DataColumn PatternColumn {
                 get {
-                    return this.columnFileName;
+                    return this.columnPattern;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn IsActiveColumn {
+            public global::System.Data.DataColumn MethodColumn {
                 get {
-                    return this.columnIsActive;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MethodLoadColumn {
-                get {
-                    return this.columnMethodLoad;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PathToXsdColumn {
-                get {
-                    return this.columnPathToXsd;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn XsdNameColumn {
-                get {
-                    return this.columnXsdName;
+                    return this.columnMethod;
                 }
             }
             
@@ -396,9 +378,57 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsActiveColumn {
+                get {
+                    return this.columnIsActive;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn OrdColumn {
                 get {
                     return this.columnOrd;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn LoadRuleSpecIdColumn {
+                get {
+                    return this.columnLoadRuleSpecId;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn FileNameColumn {
+                get {
+                    return this.columnFileName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PathToFileColumn {
+                get {
+                    return this.columnPathToFile;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PathNameColumn {
+                get {
+                    return this.columnPathName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn IsMainColumn {
+                get {
+                    return this.columnIsMain;
                 }
             }
             
@@ -439,28 +469,24 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SP_GET_LOAD_RULERow AddSP_GET_LOAD_RULERow(string Code, string FileName, bool IsActive, string MethodLoad, string PathToXsd, string XsdName, string Descr, int Ord) {
+            public SP_GET_LOAD_RULERow AddSP_GET_LOAD_RULERow(long LoadRuleId, string Code, string Pattern, string Method, string Descr, bool IsActive, int Ord, long LoadRuleSpecId, string FileName, string PathToFile, string PathName, bool IsMain) {
                 SP_GET_LOAD_RULERow rowSP_GET_LOAD_RULERow = ((SP_GET_LOAD_RULERow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        null,
+                        LoadRuleId,
                         Code,
-                        FileName,
-                        IsActive,
-                        MethodLoad,
-                        PathToXsd,
-                        XsdName,
+                        Pattern,
+                        Method,
                         Descr,
-                        Ord};
+                        IsActive,
+                        Ord,
+                        LoadRuleSpecId,
+                        FileName,
+                        PathToFile,
+                        PathName,
+                        IsMain};
                 rowSP_GET_LOAD_RULERow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_GET_LOAD_RULERow);
                 return rowSP_GET_LOAD_RULERow;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SP_GET_LOAD_RULERow FindByLoadRuleId(long LoadRuleId) {
-                return ((SP_GET_LOAD_RULERow)(this.Rows.Find(new object[] {
-                            LoadRuleId})));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -482,13 +508,16 @@ namespace ToolsStoreService.ds {
             internal void InitVars() {
                 this.columnLoadRuleId = base.Columns["LoadRuleId"];
                 this.columnCode = base.Columns["Code"];
-                this.columnFileName = base.Columns["FileName"];
-                this.columnIsActive = base.Columns["IsActive"];
-                this.columnMethodLoad = base.Columns["MethodLoad"];
-                this.columnPathToXsd = base.Columns["PathToXsd"];
-                this.columnXsdName = base.Columns["XsdName"];
+                this.columnPattern = base.Columns["Pattern"];
+                this.columnMethod = base.Columns["Method"];
                 this.columnDescr = base.Columns["Descr"];
+                this.columnIsActive = base.Columns["IsActive"];
                 this.columnOrd = base.Columns["Ord"];
+                this.columnLoadRuleSpecId = base.Columns["LoadRuleSpecId"];
+                this.columnFileName = base.Columns["FileName"];
+                this.columnPathToFile = base.Columns["PathToFile"];
+                this.columnPathName = base.Columns["PathName"];
+                this.columnIsMain = base.Columns["IsMain"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -498,42 +527,44 @@ namespace ToolsStoreService.ds {
                 base.Columns.Add(this.columnLoadRuleId);
                 this.columnCode = new global::System.Data.DataColumn("Code", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnCode);
-                this.columnFileName = new global::System.Data.DataColumn("FileName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnFileName);
-                this.columnIsActive = new global::System.Data.DataColumn("IsActive", typeof(bool), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnIsActive);
-                this.columnMethodLoad = new global::System.Data.DataColumn("MethodLoad", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMethodLoad);
-                this.columnPathToXsd = new global::System.Data.DataColumn("PathToXsd", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPathToXsd);
-                this.columnXsdName = new global::System.Data.DataColumn("XsdName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnXsdName);
+                this.columnPattern = new global::System.Data.DataColumn("Pattern", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPattern);
+                this.columnMethod = new global::System.Data.DataColumn("Method", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnMethod);
                 this.columnDescr = new global::System.Data.DataColumn("Descr", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnDescr);
+                this.columnIsActive = new global::System.Data.DataColumn("IsActive", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsActive);
                 this.columnOrd = new global::System.Data.DataColumn("Ord", typeof(int), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnOrd);
-                this.Constraints.Add(new global::System.Data.UniqueConstraint("Constraint1", new global::System.Data.DataColumn[] {
-                                this.columnLoadRuleId}, true));
-                this.columnLoadRuleId.AutoIncrement = true;
-                this.columnLoadRuleId.AutoIncrementSeed = -1;
-                this.columnLoadRuleId.AutoIncrementStep = -1;
+                this.columnLoadRuleSpecId = new global::System.Data.DataColumn("LoadRuleSpecId", typeof(long), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLoadRuleSpecId);
+                this.columnFileName = new global::System.Data.DataColumn("FileName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnFileName);
+                this.columnPathToFile = new global::System.Data.DataColumn("PathToFile", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPathToFile);
+                this.columnPathName = new global::System.Data.DataColumn("PathName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPathName);
+                this.columnIsMain = new global::System.Data.DataColumn("IsMain", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnIsMain);
                 this.columnLoadRuleId.AllowDBNull = false;
-                this.columnLoadRuleId.ReadOnly = true;
-                this.columnLoadRuleId.Unique = true;
                 this.columnCode.AllowDBNull = false;
                 this.columnCode.MaxLength = 50;
-                this.columnFileName.AllowDBNull = false;
-                this.columnFileName.MaxLength = 100;
-                this.columnIsActive.AllowDBNull = false;
-                this.columnMethodLoad.AllowDBNull = false;
-                this.columnMethodLoad.MaxLength = 100;
-                this.columnPathToXsd.ReadOnly = true;
-                this.columnPathToXsd.MaxLength = 1250;
-                this.columnXsdName.AllowDBNull = false;
-                this.columnXsdName.MaxLength = 100;
+                this.columnPattern.AllowDBNull = false;
+                this.columnPattern.MaxLength = 100;
+                this.columnMethod.AllowDBNull = false;
+                this.columnMethod.MaxLength = 100;
                 this.columnDescr.AllowDBNull = false;
                 this.columnDescr.MaxLength = 250;
+                this.columnIsActive.AllowDBNull = false;
                 this.columnOrd.AllowDBNull = false;
+                this.columnLoadRuleSpecId.AllowDBNull = false;
+                this.columnFileName.MaxLength = 100;
+                this.columnPathToFile.AllowDBNull = false;
+                this.columnPathToFile.MaxLength = 1252;
+                this.columnPathName.AllowDBNull = false;
+                this.columnPathName.MaxLength = 1352;
+                this.columnIsMain.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -698,61 +729,23 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string FileName {
+            public string Pattern {
                 get {
-                    return ((string)(this[this.tableSP_GET_LOAD_RULE.FileNameColumn]));
+                    return ((string)(this[this.tableSP_GET_LOAD_RULE.PatternColumn]));
                 }
                 set {
-                    this[this.tableSP_GET_LOAD_RULE.FileNameColumn] = value;
+                    this[this.tableSP_GET_LOAD_RULE.PatternColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsActive {
+            public string Method {
                 get {
-                    return ((bool)(this[this.tableSP_GET_LOAD_RULE.IsActiveColumn]));
+                    return ((string)(this[this.tableSP_GET_LOAD_RULE.MethodColumn]));
                 }
                 set {
-                    this[this.tableSP_GET_LOAD_RULE.IsActiveColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string MethodLoad {
-                get {
-                    return ((string)(this[this.tableSP_GET_LOAD_RULE.MethodLoadColumn]));
-                }
-                set {
-                    this[this.tableSP_GET_LOAD_RULE.MethodLoadColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PathToXsd {
-                get {
-                    try {
-                        return ((string)(this[this.tableSP_GET_LOAD_RULE.PathToXsdColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'PathToXsd\' in table \'SP_GET_LOAD_RULE\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableSP_GET_LOAD_RULE.PathToXsdColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string XsdName {
-                get {
-                    return ((string)(this[this.tableSP_GET_LOAD_RULE.XsdNameColumn]));
-                }
-                set {
-                    this[this.tableSP_GET_LOAD_RULE.XsdNameColumn] = value;
+                    this[this.tableSP_GET_LOAD_RULE.MethodColumn] = value;
                 }
             }
             
@@ -769,6 +762,17 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsActive {
+                get {
+                    return ((bool)(this[this.tableSP_GET_LOAD_RULE.IsActiveColumn]));
+                }
+                set {
+                    this[this.tableSP_GET_LOAD_RULE.IsActiveColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public int Ord {
                 get {
                     return ((int)(this[this.tableSP_GET_LOAD_RULE.OrdColumn]));
@@ -780,14 +784,74 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsPathToXsdNull() {
-                return this.IsNull(this.tableSP_GET_LOAD_RULE.PathToXsdColumn);
+            public long LoadRuleSpecId {
+                get {
+                    return ((long)(this[this.tableSP_GET_LOAD_RULE.LoadRuleSpecIdColumn]));
+                }
+                set {
+                    this[this.tableSP_GET_LOAD_RULE.LoadRuleSpecIdColumn] = value;
+                }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetPathToXsdNull() {
-                this[this.tableSP_GET_LOAD_RULE.PathToXsdColumn] = global::System.Convert.DBNull;
+            public string FileName {
+                get {
+                    try {
+                        return ((string)(this[this.tableSP_GET_LOAD_RULE.FileNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'FileName\' in table \'SP_GET_LOAD_RULE\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableSP_GET_LOAD_RULE.FileNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PathToFile {
+                get {
+                    return ((string)(this[this.tableSP_GET_LOAD_RULE.PathToFileColumn]));
+                }
+                set {
+                    this[this.tableSP_GET_LOAD_RULE.PathToFileColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string PathName {
+                get {
+                    return ((string)(this[this.tableSP_GET_LOAD_RULE.PathNameColumn]));
+                }
+                set {
+                    this[this.tableSP_GET_LOAD_RULE.PathNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsMain {
+                get {
+                    return ((bool)(this[this.tableSP_GET_LOAD_RULE.IsMainColumn]));
+                }
+                set {
+                    this[this.tableSP_GET_LOAD_RULE.IsMainColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsFileNameNull() {
+                return this.IsNull(this.tableSP_GET_LOAD_RULE.FileNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetFileNameNull() {
+                this[this.tableSP_GET_LOAD_RULE.FileNameColumn] = global::System.Convert.DBNull;
             }
         }
         
