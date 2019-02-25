@@ -132,7 +132,7 @@ namespace ToolsStoreService.file
                     Log.write("Список правил загрузок пустой!");
                     return fwps;
                 }
-                if (lrs.Where(x => x.IsActive && !(x.FileName == null || x.FileName.Equals(""))).Count() == 0)
+                if (lrs.Where(x => x.IsActive && !(x.Pattern == null || x.Pattern.Equals(""))).Count() == 0)
                 {
                     Log.write("Список правил загрузок некорректен!");
                     return fwps;
@@ -187,7 +187,7 @@ namespace ToolsStoreService.file
                                 fwp.SignValidData = true;
 
                                 string errMsg;
-                                string xsdPath = lr.PathName;
+                                string xsdPath = lr.Specs.Where(x => x.IsMain).Select(x => x.PathName).First();
                                 //валидация xml
                                 if (CheckValidate(xnldoc, xsdPath, out errMsg)) //успешная валдация - правило найдено - прекращение поиска правил
                                 {
@@ -201,7 +201,7 @@ namespace ToolsStoreService.file
                                 else
                                 {
                                     fwp.SignValidXml = false;
-                                    fwp.ErrorMsg = string.IsNullOrEmpty(fwp.ErrorMsg) ? string.Concat(lr.FileName, ": ", errMsg) : string.Concat(fwp.ErrorMsg, " ", string.Concat(lr.FileName, ": ", errMsg));
+                                    fwp.ErrorMsg = string.IsNullOrEmpty(fwp.ErrorMsg) ? string.Concat(lr.Pattern, ": ", errMsg) : string.Concat(fwp.ErrorMsg, " ", string.Concat(lr.Pattern, ": ", errMsg));
                                 }
                             }
                             catch (Exception ex)

@@ -13,9 +13,9 @@ namespace ToolsStoreService.db
 {
     class DataBaseManager
     {
-        public static bool GetLoadRule(string path, out List<LoadRule> lrs)
+        public static bool GetLoadRule(string path, out List<LoadRule> LoadRules)
         {
-            lrs = new List<LoadRule>();
+            LoadRules = new List<LoadRule>();
             try
             {
                 string conn;
@@ -47,22 +47,39 @@ namespace ToolsStoreService.db
 
                 foreach (var row in dsLoadRule.SP_GET_LOAD_RULE)
                 {
-                    var lr = new LoadRule();
-                    //LoadRule
-                    lr.LoadRuleId = row.LoadRuleId;
-                    lr.Code = row.Code;
-                    lr.Pattern = row.Pattern;
-                    lr.Method = row.Method;
-                    lr.Descr = row.Descr;
-                    lr.IsActive = row.IsActive;
-                    lr.Ord = row.Ord;
-                    //LoadRuleSpec
-                    lr.LoadRuleSpecId = row.LoadRuleSpecId;
-                    lr.FileName = row.FileName;
-                    lr.PathToFile = row.PathToFile;
-                    lr.PathName = row.PathName;
-                    lr.IsMain = row.IsMain;
-                    lrs.Add(lr);
+                    if (!LoadRules.Any(x => x.LoadRuleId == row.LoadRuleId))
+                    {
+                        var lr1 = new LoadRule();
+                        lr1.LoadRuleId = row.LoadRuleId;
+                        lr1.Code = row.Code;
+                        lr1.Pattern = row.Pattern;
+                        lr1.Method = row.Method;
+                        lr1.Descr = row.Descr;
+                        lr1.IsActive = row.IsActive;
+                        lr1.Ord = row.Ord;
+
+                        lr1.Specs = new List<LoadRuleSpec>();
+                        var lrs1 = new LoadRuleSpec();
+                        lrs1.LoadRuleSpecId = row.LoadRuleSpecId;
+                        lrs1.FileName = row.FileName;
+                        lrs1.PathToFile = row.PathToFile;
+                        lrs1.PathName = row.PathName;
+                        lrs1.IsMain = row.IsMain;
+
+                        lr1.Specs.Add(lrs1);
+                        LoadRules.Add(lr1);
+                    }
+                    else
+                    {
+                        var lr2 = LoadRules.Where(x => x.LoadRuleId == row.LoadRuleId).Single();
+                        var lrs2 = new LoadRuleSpec();
+                        lrs2.LoadRuleSpecId = row.LoadRuleSpecId;
+                        lrs2.FileName = row.FileName;
+                        lrs2.PathToFile = row.PathToFile;
+                        lrs2.PathName = row.PathName;
+                        lrs2.IsMain = row.IsMain;
+                        lr2.Specs.Add(lrs2);
+                    }
                 }
                                 
                 return true;
@@ -70,7 +87,7 @@ namespace ToolsStoreService.db
             catch (Exception ex)
             {
                 Log.write(ex.Message);
-                lrs = null;
+                LoadRules = null;
                 return false;
             }
         }
