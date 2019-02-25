@@ -12,9 +12,44 @@ namespace ToolsStoreService.file
     public class LoadRule
     {
         /// <summary>
+        /// Идентификатор правила загрузки
+        /// </summary>
+        public long LoadRuleId { get; set; }
+
+        /// <summary>
         /// Код
         /// </summary>
         public string Code { get; set; }
+
+        /// <summary>
+        /// Шаблон
+        /// </summary>
+        public string Pattern { get; set; }
+
+        /// <summary>
+        /// Метод загрузки
+        /// </summary>
+        public string Method { get; set; }
+
+        /// <summary>
+        /// Описание
+        /// </summary>
+        public string Descr { get; set; }
+
+        /// <summary>
+        /// Признак активности
+        /// </summary>
+        public bool IsActive { get; set; }
+
+        /// <summary>
+        /// Порядок
+        /// </summary>
+        public int Ord { get; set; }
+
+        /// <summary>
+        /// Идентификатор правила загрузки (специальный)
+        /// </summary>
+        public long LoadRuleSpecId { get; set; }
 
         /// <summary>
         /// Наименование файла
@@ -22,33 +57,18 @@ namespace ToolsStoreService.file
         public string FileName { get; set; }
 
         /// <summary>
-        /// Признак активности
+        /// Путь к файлам
         /// </summary>
-        public bool IsActive { get; set;}
+        public string PathToFile { get; set; }
 
         /// <summary>
-        /// Метод загрузки
+        /// Путь к файлам (расширенный)
         /// </summary>
-        public string MethodLoad { get; set; }
+        public string PathName { get; set; }
 
         /// <summary>
-        /// Путь к файлам xsd-схем
+        /// Основной из файлов правила загрузки
         /// </summary>
-        public string PathToXsd { get; set; }
-
-        /// <summary>
-        /// Наименование xsd-файла
-        /// </summary>
-        public string XsdName { get; set; }
-
-        /// <summary>
-        /// Описание
-        /// </summary>
-        public string Description { get; set; }
-
-        /// <summary>
-        /// Порядок
-        /// </summary>
-        public int Order { get; set; }
+        public bool IsMain { get; set; }
     }
 }

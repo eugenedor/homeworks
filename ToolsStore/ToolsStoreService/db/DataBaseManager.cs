@@ -48,16 +48,20 @@ namespace ToolsStoreService.db
                 foreach (var row in dsLoadRule.SP_GET_LOAD_RULE)
                 {
                     var lr = new LoadRule();
-
+                    //LoadRule
+                    lr.LoadRuleId = row.LoadRuleId;
                     lr.Code = row.Code;
-                    //lr.FileName = row.Pattern;
+                    lr.Pattern = row.Pattern;
+                    lr.Method = row.Method;
+                    lr.Descr = row.Descr;
                     lr.IsActive = row.IsActive;
-                    //lr.MethodLoad = row.MethodLoad;
-                    //lr.PathToXsd = row.PathToXsd;
-                    //lr.XsdName = row.XsdName;
-                    lr.Description = row.Descr;
-                    lr.Order = row.Ord;
-
+                    lr.Ord = row.Ord;
+                    //LoadRuleSpec
+                    lr.LoadRuleSpecId = row.LoadRuleSpecId;
+                    lr.FileName = row.FileName;
+                    lr.PathToFile = row.PathToFile;
+                    lr.PathName = row.PathName;
+                    lr.IsMain = row.IsMain;
                     lrs.Add(lr);
                 }
                                 

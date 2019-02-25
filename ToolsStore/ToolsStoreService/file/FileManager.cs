@@ -152,9 +152,9 @@ namespace ToolsStoreService.file
                     fwp.ErrorMsg = null;
 
                     cnt = 0;
-                    foreach (LoadRule lr in lrs.Where(x => x.IsActive && !(x.FileName == null || x.FileName.Equals(""))).OrderBy(x => x.Order))
+                    foreach (LoadRule lr in lrs.Where(x => x.IsActive && !(x.Pattern == null || x.Pattern.Equals(""))).OrderBy(x => x.Ord))
                     {
-                        if (Regex.IsMatch(fwp.Name, "^" + lr.FileName + "$", RegexOptions.IgnoreCase))
+                        if (Regex.IsMatch(fwp.Name, "^" + lr.Pattern + "$", RegexOptions.IgnoreCase))
                         {
                             cnt++;
                             if (cnt == 1) //первое совпадение в цикле
@@ -187,21 +187,21 @@ namespace ToolsStoreService.file
                                 fwp.SignValidData = true;
 
                                 string errMsg;
-                                string xsdPath = lr.PathToXsd + lr.XsdName;
+                                string xsdPath = lr.PathName;
                                 //валидация xml
                                 if (CheckValidate(xnldoc, xsdPath, out errMsg)) //успешная валдация - правило найдено - прекращение поиска правил
                                 {
                                     fwp.CodeRule = lr.Code;
-                                    fwp.MethodLoad = lr.MethodLoad;
+                                    fwp.MethodLoad = lr.Method;
                                     fwp.SignValidXml = true;
                                     fwp.ErrorMsg = null;
-                                    fwp.Order = lr.Order;
+                                    fwp.Order = lr.Ord;
                                     break;
                                 }
                                 else
                                 {
                                     fwp.SignValidXml = false;
-                                    fwp.ErrorMsg = string.IsNullOrEmpty(fwp.ErrorMsg) ? string.Concat(lr.XsdName, ": ", errMsg) : string.Concat(fwp.ErrorMsg, " ", string.Concat(lr.XsdName, ": ", errMsg));
+                                    fwp.ErrorMsg = string.IsNullOrEmpty(fwp.ErrorMsg) ? string.Concat(lr.FileName, ": ", errMsg) : string.Concat(fwp.ErrorMsg, " ", string.Concat(lr.FileName, ": ", errMsg));
                                 }
                             }
                             catch (Exception ex)
