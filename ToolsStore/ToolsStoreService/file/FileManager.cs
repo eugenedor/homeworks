@@ -127,16 +127,21 @@ namespace ToolsStoreService.file
 
                 //правила загрузки
                 lrs = Utils.GetLoadRules();
+
                 if (lrs == null)
                 {
                     Log.write("Список правил загрузок пустой!");
                     return fwps;
                 }
+
                 if (lrs.Where(x => x.IsActive && !(x.Pattern == null || x.Pattern.Equals(""))).Count() == 0)
                 {
                     Log.write("Список правил загрузок некорректен!");
                     return fwps;
                 }
+
+                //создание директории по правилам загрузки
+                CreateDirByRules(lrs);
 
                 //прохождение по списку файлов FileInfo
                 foreach (FileInfo file in files)
@@ -247,6 +252,20 @@ namespace ToolsStoreService.file
             }
         }
 
+        /// <summary>
+        /// Создание директории по правилам загрузки
+        /// </summary>
+        private static void CreateDirByRules(List<LoadRule> lrs)
+        {
+            foreach (LoadRule lr in lrs)
+            {
+                if (lr == null || lr.Specs == null)
+                    continue;
+
+                foreach (LoadRuleSpec s in lr.Specs)
+                    CreateDir(s.PathToFile);
+            }
+        }
 
         /// <summary>
         /// Создание директории
