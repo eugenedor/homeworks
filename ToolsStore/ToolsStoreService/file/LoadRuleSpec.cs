@@ -29,7 +29,13 @@ namespace ToolsStoreService.file
         /// <summary>
         /// Путь к файлам (расширенный)
         /// </summary>
-        public string PathName { get; set; }
+        public string PathName
+        {
+            get
+            {
+                return PathToFile + FileName;
+            }
+        }
 
         /// <summary>
         /// Основной из файлов правила загрузки

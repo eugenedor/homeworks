@@ -14,7 +14,7 @@
   <xs:element name="dsLoadRule" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsLoadRule" msprop:Generator_UserDSName="dsLoadRule">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_GET_LOAD_RULE" msprop:Generator_TableClassName="SP_GET_LOAD_RULEDataTable" msprop:Generator_TableVarName="tableSP_GET_LOAD_RULE" msprop:Generator_TablePropName="SP_GET_LOAD_RULE" msprop:Generator_RowDeletingName="SP_GET_LOAD_RULERowDeleting" msprop:Generator_RowChangingName="SP_GET_LOAD_RULERowChanging" msprop:Generator_RowEvHandlerName="SP_GET_LOAD_RULERowChangeEventHandler" msprop:Generator_RowDeletedName="SP_GET_LOAD_RULERowDeleted" msprop:Generator_UserTableName="SP_GET_LOAD_RULE" msprop:Generator_RowChangedName="SP_GET_LOAD_RULERowChanged" msprop:Generator_RowEvArgName="SP_GET_LOAD_RULERowChangeEvent" msprop:Generator_RowClassName="SP_GET_LOAD_RULERow">
+        <xs:element name="SP_GET_LOAD_RULE" msprop:Generator_TableClassName="SP_GET_LOAD_RULEDataTable" msprop:Generator_TableVarName="tableSP_GET_LOAD_RULE" msprop:Generator_RowChangedName="SP_GET_LOAD_RULERowChanged" msprop:Generator_TablePropName="SP_GET_LOAD_RULE" msprop:Generator_RowDeletingName="SP_GET_LOAD_RULERowDeleting" msprop:Generator_RowChangingName="SP_GET_LOAD_RULERowChanging" msprop:Generator_RowEvHandlerName="SP_GET_LOAD_RULERowChangeEventHandler" msprop:Generator_RowDeletedName="SP_GET_LOAD_RULERowDeleted" msprop:Generator_RowClassName="SP_GET_LOAD_RULERow" msprop:Generator_UserTableName="SP_GET_LOAD_RULE" msprop:Generator_RowEvArgName="SP_GET_LOAD_RULERowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="LoadRuleId" msprop:Generator_ColumnVarNameInTable="columnLoadRuleId" msprop:Generator_ColumnPropNameInRow="LoadRuleId" msprop:Generator_ColumnPropNameInTable="LoadRuleIdColumn" msprop:Generator_UserColumnName="LoadRuleId" type="xs:long" />
@@ -60,13 +60,6 @@
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="1252" />
-                  </xs:restriction>
-                </xs:simpleType>
-              </xs:element>
-              <xs:element name="PathName" msprop:Generator_ColumnVarNameInTable="columnPathName" msprop:Generator_ColumnPropNameInRow="PathName" msprop:Generator_ColumnPropNameInTable="PathNameColumn" msprop:Generator_UserColumnName="PathName">
-                <xs:simpleType>
-                  <xs:restriction base="xs:string">
-                    <xs:maxLength value="1352" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>

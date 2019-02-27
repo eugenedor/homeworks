@@ -299,8 +299,6 @@ namespace ToolsStoreService.ds {
             
             private global::System.Data.DataColumn columnPathToFile;
             
-            private global::System.Data.DataColumn columnPathName;
-            
             private global::System.Data.DataColumn columnIsMain;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -418,14 +416,6 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn PathNameColumn {
-                get {
-                    return this.columnPathName;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public global::System.Data.DataColumn IsMainColumn {
                 get {
                     return this.columnIsMain;
@@ -469,7 +459,7 @@ namespace ToolsStoreService.ds {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public SP_GET_LOAD_RULERow AddSP_GET_LOAD_RULERow(long LoadRuleId, string Code, string Pattern, string Method, string Descr, bool IsActive, int Ord, long LoadRuleSpecId, string FileName, string PathToFile, string PathName, bool IsMain) {
+            public SP_GET_LOAD_RULERow AddSP_GET_LOAD_RULERow(long LoadRuleId, string Code, string Pattern, string Method, string Descr, bool IsActive, int Ord, long LoadRuleSpecId, string FileName, string PathToFile, bool IsMain) {
                 SP_GET_LOAD_RULERow rowSP_GET_LOAD_RULERow = ((SP_GET_LOAD_RULERow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         LoadRuleId,
@@ -482,7 +472,6 @@ namespace ToolsStoreService.ds {
                         LoadRuleSpecId,
                         FileName,
                         PathToFile,
-                        PathName,
                         IsMain};
                 rowSP_GET_LOAD_RULERow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowSP_GET_LOAD_RULERow);
@@ -516,7 +505,6 @@ namespace ToolsStoreService.ds {
                 this.columnLoadRuleSpecId = base.Columns["LoadRuleSpecId"];
                 this.columnFileName = base.Columns["FileName"];
                 this.columnPathToFile = base.Columns["PathToFile"];
-                this.columnPathName = base.Columns["PathName"];
                 this.columnIsMain = base.Columns["IsMain"];
             }
             
@@ -543,8 +531,6 @@ namespace ToolsStoreService.ds {
                 base.Columns.Add(this.columnFileName);
                 this.columnPathToFile = new global::System.Data.DataColumn("PathToFile", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnPathToFile);
-                this.columnPathName = new global::System.Data.DataColumn("PathName", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnPathName);
                 this.columnIsMain = new global::System.Data.DataColumn("IsMain", typeof(bool), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnIsMain);
                 this.columnLoadRuleId.AllowDBNull = false;
@@ -562,8 +548,6 @@ namespace ToolsStoreService.ds {
                 this.columnFileName.MaxLength = 100;
                 this.columnPathToFile.AllowDBNull = false;
                 this.columnPathToFile.MaxLength = 1252;
-                this.columnPathName.AllowDBNull = false;
-                this.columnPathName.MaxLength = 1352;
                 this.columnIsMain.AllowDBNull = false;
             }
             
@@ -817,17 +801,6 @@ namespace ToolsStoreService.ds {
                 }
                 set {
                     this[this.tableSP_GET_LOAD_RULE.PathToFileColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string PathName {
-                get {
-                    return ((string)(this[this.tableSP_GET_LOAD_RULE.PathNameColumn]));
-                }
-                set {
-                    this[this.tableSP_GET_LOAD_RULE.PathNameColumn] = value;
                 }
             }
             

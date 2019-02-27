@@ -38,7 +38,6 @@ namespace ToolsStoreService.db
                         new System.Data.Common.DataColumnMapping("LoadRuleSpecId", "LoadRuleSpecId"),
                         new System.Data.Common.DataColumnMapping("FileName", "FileName"),
                         new System.Data.Common.DataColumnMapping("PathToFile", "PathToFile"),
-                        new System.Data.Common.DataColumnMapping("PathName", "PathName"),
                         new System.Data.Common.DataColumnMapping("IsMain", "IsMain")})});
 
                 var dsLoadRule = new dsLoadRule();
@@ -63,7 +62,6 @@ namespace ToolsStoreService.db
                         lrs1.LoadRuleSpecId = row.LoadRuleSpecId;
                         lrs1.FileName = row.FileName;
                         lrs1.PathToFile = row.PathToFile;
-                        lrs1.PathName = row.PathName;
                         lrs1.IsMain = row.IsMain;
 
                         lr1.Specs.Add(lrs1);
@@ -76,7 +74,6 @@ namespace ToolsStoreService.db
                         lrs2.LoadRuleSpecId = row.LoadRuleSpecId;
                         lrs2.FileName = row.FileName;
                         lrs2.PathToFile = row.PathToFile;
-                        lrs2.PathName = row.PathName;
                         lrs2.IsMain = row.IsMain;
                         lr2.Specs.Add(lrs2);
                     }

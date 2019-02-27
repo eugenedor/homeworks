@@ -18,7 +18,7 @@ namespace ToolsStoreService.file
         {
             try
             {
-                string pathToXsd = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                string pathToXsd = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location);
                 List<LoadRule> loadrules = new List<LoadRule>();
 
                 if (!DataBaseManager.GetLoadRule(pathToXsd, out loadrules))
