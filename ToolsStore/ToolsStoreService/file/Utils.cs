@@ -41,19 +41,9 @@ namespace ToolsStoreService.file
                 if (!DataBaseManager.GetRuleDataBytes(loadRuleSpecId, out data))
                     throw new Exception("Ошибка данных");
 
-                FileStream fstream = null;
-                try
+                using (var fstream = new FileStream(pathName, System.IO.FileMode.OpenOrCreate))
                 {
-                    fstream = new FileStream(pathName, System.IO.FileMode.OpenOrCreate);
-                    fstream.Write(data, 0, (int)data.Length);
-                }
-                catch (Exception)
-                {
-                    throw;
-                }
-                finally
-                {
-                    fstream.Close();
+                    fstream.Write(data, 0, data.Length);
                 }
             }
             catch (Exception ex)
