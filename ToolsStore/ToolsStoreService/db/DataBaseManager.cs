@@ -89,6 +89,41 @@ namespace ToolsStoreService.db
             }
         }
 
+        public static bool GetRuleDataBytes(long loadRuleSpecId, out Byte[] data)
+        {
+            data = null;
+            try
+            {
+                string conn;
+                conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
+
+                SqlCommand comm_unload_file = new SqlCommand();
+                comm_unload_file.CommandType = System.Data.CommandType.StoredProcedure;
+                comm_unload_file.CommandText = "SP_GET_RULE_DATA";
+                comm_unload_file.Connection = new SqlConnection(conn);
+                comm_unload_file.CommandTimeout = 1800;
+
+                comm_unload_file.Parameters.Add("@LoadRuleSpecId", SqlDbType.BigInt, 8);
+
+                comm_unload_file.Parameters["@LoadRuleSpecId"].Value = loadRuleSpecId;
+
+                if (comm_unload_file.Connection.State != ConnectionState.Closed)
+                    comm_unload_file.Connection.Close();
+
+                comm_unload_file.Connection.Open();                
+                data = (Byte[])comm_unload_file.ExecuteScalar();              
+                comm_unload_file.Connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                data = null;
+                return false;
+            }
+        }
+
         public static bool LoadCategory(string code, string name, int ord)
         {
             string conn;

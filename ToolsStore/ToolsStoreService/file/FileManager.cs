@@ -140,8 +140,8 @@ namespace ToolsStoreService.file
                     return fwps;
                 }
 
-                //создание директории по правилам загрузки
-                CreateDirByRules(lrs);
+                //создание директории и запись файлов на диск по правилам загрузки
+                CreateDirAndFilesByRules(lrs);
 
                 //прохождение по списку файлов FileInfo
                 foreach (FileInfo file in files)
@@ -255,15 +255,27 @@ namespace ToolsStoreService.file
         /// <summary>
         /// Создание директории по правилам загрузки
         /// </summary>
-        private static void CreateDirByRules(List<LoadRule> lrs)
+        private static bool CreateDirAndFilesByRules(List<LoadRule> lrs)
         {
-            foreach (LoadRule lr in lrs)
+            try
             {
-                if (lr == null || lr.Specs == null)
-                    continue;
+                foreach (LoadRule lr in lrs)
+                {
+                    if (lr == null || lr.Specs == null)
+                        continue;
 
-                foreach (LoadRuleSpec s in lr.Specs)
-                    CreateDir(s.PathToFile);
+                    foreach (LoadRuleSpec s in lr.Specs)
+                    {
+                        CreateDir(s.PathToFile);
+                        Utils.CreateData(s.LoadRuleSpecId, s.PathName);
+                    }
+                }
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
             }
         }
 

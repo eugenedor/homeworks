@@ -32,5 +32,35 @@ namespace ToolsStoreService.file
                 return null;
             }
         }
+
+        public static void CreateData(long loadRuleSpecId, string pathName)
+        {
+            Byte[] data;
+            try
+            {
+                if (!DataBaseManager.GetRuleDataBytes(loadRuleSpecId, out data))
+                    throw new Exception("Ошибка данных");
+
+                FileStream fstream = null;
+                try
+                {
+                    fstream = new FileStream(pathName, System.IO.FileMode.OpenOrCreate);
+                    fstream.Write(data, 0, (int)data.Length);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
+                finally
+                {
+                    fstream.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                throw;
+            }
+        }
     }
 }
