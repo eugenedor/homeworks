@@ -193,9 +193,9 @@ namespace ToolsStoreService.file
                                 fwp.SignValidData = true;
 
                                 string errMsg;
-                                string xsdPath = lr.Specs.Where(x => x.IsMain).Select(x => x.PathName).First();
+                                string pathName = lr.Specs.Where(x => x.IsMain).Select(x => x.PathName).First();
                                 //валидация xml
-                                if (CheckValidate(xnldoc, xsdPath, out errMsg)) //успешная валдация - правило найдено - прекращение поиска правил
+                                if (CheckValidate(xnldoc, pathName, out errMsg)) //успешная валдация - правило найдено - прекращение поиска правил
                                 {
                                     fwp.CodeRule = lr.Code;
                                     fwp.MethodLoad = lr.Method;
@@ -379,15 +379,15 @@ namespace ToolsStoreService.file
         /// <summary>
         /// Валидация XML-документа. Возвращаемое значение: true - валидация прошла успешно, false - ошибка.
         /// </summary>
-        private static bool CheckValidate(XmlDocument doc, string pathToXsd, out string msgValidXml)
+        private static bool CheckValidate(XmlDocument doc, string pathName, out string msgValidXml)
         {
             msgValidXml = null;
             try
             {
-                if (File.Exists(pathToXsd))
+                if (File.Exists(pathName))
                 {
                     XmlSchemaSet schemas = new XmlSchemaSet();
-                    XmlTextReader txtReaderXsd = new XmlTextReader(pathToXsd);
+                    XmlTextReader txtReaderXsd = new XmlTextReader(pathName);
                     schemas.Add("", txtReaderXsd);
                     doc.Schemas.Add(schemas);
                     try
@@ -406,7 +406,7 @@ namespace ToolsStoreService.file
                 }
                 else
                 {
-                    msgValidXml = string.Format("Xsd-схема не найдена. Путь к схеме: \"{0}\"", pathToXsd);
+                    msgValidXml = string.Format("Xsd-схема не найдена. Путь к схеме: \"{0}\"", pathName);
                 }
                 return string.IsNullOrEmpty(msgValidXml);
             }
