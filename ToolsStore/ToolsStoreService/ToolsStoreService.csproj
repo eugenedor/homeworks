@@ -102,11 +102,9 @@
     </None>
     <None Include="xsd\Category.xsd">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="xsd\Vat.xsd">
       <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="_installWinService.bat">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
