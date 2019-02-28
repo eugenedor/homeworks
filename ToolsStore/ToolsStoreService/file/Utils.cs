@@ -33,7 +33,27 @@ namespace ToolsStoreService.file
             }
         }
 
-        public static void CreateData(long loadRuleSpecId, string pathName)
+        /// <summary>
+        /// Создание директории
+        /// </summary>
+        public static void CreateDir(string dir)
+        {
+            try
+            {
+                if (!Directory.Exists(dir))
+                    Directory.CreateDirectory(dir);
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Создание (выгрузка) файлов из правил
+        /// </summary>
+        public static void CreateFileByRule(long loadRuleSpecId, string pathName)
         {
             Byte[] data;
             try
@@ -52,5 +72,40 @@ namespace ToolsStoreService.file
                 throw;
             }
         }
+
+        /// <summary>
+        /// Удаление файлов
+        /// </summary>
+        public static void DeleteFileByRule(string pathName)
+        {
+            try
+            {
+                if (File.Exists(pathName))
+                    File.Delete(pathName);
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// Удаление директории
+        /// </summary>
+        public static void DeleteDir(string dir)
+        {
+            try
+            {
+                if (Directory.Exists(dir))
+                    Directory.Delete(dir);
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                throw;
+            }
+        }
+
     }
 }

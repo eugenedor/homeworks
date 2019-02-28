@@ -74,7 +74,7 @@ namespace ToolsStoreService.file
                         {
                             successCount++;
                             if (successCount == 1) // создание директории для первого загруженного файла
-                                CreateDir(archivePath);
+                                Utils.CreateDir(archivePath);
                             Log.write("Файл загружен.");
                             fwp.MoveTo(archivePath);
                         }
@@ -82,7 +82,7 @@ namespace ToolsStoreService.file
                         {
                             errorCount++;
                             if (errorCount == 1) // создание директории для первого незагруженного файла
-                                CreateDir(trashPath);
+                                Utils.CreateDir(trashPath);
                             Log.write("Файл не загружен.");
                             fwp.MoveTo(trashPath);
                         }
@@ -117,7 +117,7 @@ namespace ToolsStoreService.file
             {
                 fwps = new List<FileWithParam>();
                 string filePath = ConfigurationManager.AppSettings["filePath"];
-                CreateDir(filePath);
+                Utils.CreateDir(filePath);
 
                 DirectoryInfo dir = new DirectoryInfo(filePath);
                 List<FileInfo> files = dir.GetFiles().ToList();
@@ -140,8 +140,9 @@ namespace ToolsStoreService.file
                     return fwps;
                 }
 
-                //создание директории и запись файлов на диск по правилам загрузки
-                CreateDirAndFilesByRules(lrs);
+                //создание директорий и запись файлов на диск по правилам загрузки
+                if (!CreateDirAndFilesByRules(lrs))
+                    return fwps;
 
                 //прохождение по списку файлов FileInfo
                 foreach (FileInfo file in files)
@@ -243,6 +244,10 @@ namespace ToolsStoreService.file
                     }
                     fwps.Add(fwp);
                 }
+
+                //удаление файлов с диска и директорий по правилам загрузки
+                DeleteFilesAndDirByRules(lrs);
+
                 return fwps;
             }
             catch (Exception ex)
@@ -266,8 +271,8 @@ namespace ToolsStoreService.file
 
                     foreach (LoadRuleSpec s in lr.Specs)
                     {
-                        CreateDir(s.PathToFile);
-                        Utils.CreateData(s.LoadRuleSpecId, s.PathName);
+                        Utils.CreateDir(s.PathToFile);
+                        Utils.CreateFileByRule(s.LoadRuleSpecId, s.PathName);
                     }
                 }
                 return true;
@@ -280,16 +285,41 @@ namespace ToolsStoreService.file
         }
 
         /// <summary>
-        /// Создание директории
+        /// Удаление файлов с диска и директорий по правилам загрузки
         /// </summary>
-        public static void CreateDir(string dir)
+        private static bool DeleteFilesAndDirByRules(List<LoadRule> lrs)
         {
-            if (!Directory.Exists(dir))
-                Directory.CreateDirectory(dir);
+            try
+            {
+                //delete file
+                foreach (LoadRule lr in lrs)
+                {
+                    if (lr == null || lr.Specs == null)
+                        continue;
+                    foreach (LoadRuleSpec s in lr.Specs)
+                        Utils.DeleteFileByRule(s.PathName);
+                }
+
+                //delete directory
+                foreach (LoadRule lr in lrs)
+                {
+                    if (lr == null || lr.Specs == null)
+                        continue;
+                    foreach (LoadRuleSpec s in lr.Specs)
+                        Utils.DeleteDir(s.PathToFile);
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
         }
 
         #region Methods for GetFiles
-        
+
         /// <summary>
         /// Кодировка xml-документа
         /// </summary>
@@ -357,7 +387,8 @@ namespace ToolsStoreService.file
                 if (File.Exists(pathToXsd))
                 {
                     XmlSchemaSet schemas = new XmlSchemaSet();
-                    schemas.Add("", new XmlTextReader(pathToXsd));
+                    XmlTextReader txtReaderXsd = new XmlTextReader(pathToXsd);
+                    schemas.Add("", txtReaderXsd);
                     doc.Schemas.Add(schemas);
                     try
                     {
@@ -367,6 +398,10 @@ namespace ToolsStoreService.file
                     catch (XmlSchemaValidationException e)
                     {
                         msgValidXml = e.Message;
+                    }
+                    finally
+                    {
+                        txtReaderXsd.Close();
                     }
                 }
                 else

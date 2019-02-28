@@ -27,7 +27,7 @@ namespace ToolsStoreService.file
         public string PathToFile { get; set; }
 
         /// <summary>
-        /// Путь к файлам (расширенный)
+        /// Путь к файлам c наименование файла
         /// </summary>
         public string PathName
         {

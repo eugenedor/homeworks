@@ -18,10 +18,15 @@ namespace ToolsStoreService
         {
             InitializeComponent();
 
-            string conn;
-            conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
-            Log.write(conn);
-            FileManager.LoadFiles();
+            //string conn;
+            //conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
+            //Log.write(conn);
+            FileManager.LoadFiles();            
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
