@@ -113,6 +113,69 @@ namespace ToolsStoreService.file
         }
         #endregion
 
+        #region Checks LoadFile    
+        /// <summary>
+        /// Проверка корректности имени файла.
+        /// </summary>
+        public static bool CheckFileName(FileWithParam fwp)
+        {
+            if (!fwp.SignFileName)
+                Log.write("Ошибка загрузки файла. Некорректное имя файла.");
 
+            return fwp.SignFileName;
+        }
+
+        /// <summary>
+        /// Проверка действительности данных
+        /// </summary>
+        public static bool CheckValidData(FileWithParam fwp)
+        {
+            if (!fwp.SignValidData)
+                Log.write(string.Concat("Ошибка загрузки файла. ", fwp.ErrorMsg ?? "Недействительные данные."));
+
+            return fwp.SignValidData;
+        }
+
+        /// <summary>
+        /// Проверка корректности кодировки
+        /// </summary>
+        public static bool CheckEncodingXml(FileWithParam fwp)
+        {
+            string en = fwp.Encoding == null ? "" : (fwp.Encoding.HeaderName ?? "");
+            string enXml = ConfigurationManager.AppSettings["encodingXml"] ?? "";
+
+            if (!fwp.SignEncodingXml)
+                Log.write(string.Format("Ошибка загрузки файла. Несоответствие кодировок в XML-документе: \"{0}\" и config: \"{1}\".", en.ToLower(), enXml.ToLower()));
+
+            return fwp.SignEncodingXml;
+        }
+
+        /// <summary>
+        /// Проверка валидации файла
+        /// </summary>
+        public static bool CheckValidXml(FileWithParam fwp)
+        {
+            if (!fwp.SignValidXml)
+                Log.write(string.Concat("Ошибка загрузки файла.  Не найдена верна xsd-схема и метод загрузки. ", fwp.ErrorMsg ?? "").Trim());
+
+            return fwp.SignValidXml;
+        }
+
+        /// <summary>
+        /// Проверка xml-строки
+        /// </summary>
+        public static bool CheckXmlString(string xmlStr)
+        {
+            if (string.IsNullOrEmpty(xmlStr))
+            {
+                Log.write("Xml-строка является пустой.");
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+        #endregion
     }
 }
