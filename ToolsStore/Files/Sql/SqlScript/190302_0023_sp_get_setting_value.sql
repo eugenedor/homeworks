@@ -1,0 +1,14 @@
+USE ToolsStore
+GO
+
+CREATE PROCEDURE dbo.SP_GET_SETTING_VALUE
+	@Code  NVARCHAR(50),
+	@Value NVARCHAR(250) OUTPUT
+AS
+BEGIN
+  SET @Code = ISNULL(LOWER(LTRIM(RTRIM(@Code))), '');
+
+  SELECT @Value = s.Value
+  FROM dbo.MT_SETTING s
+  WHERE s.Code = @Code;
+END
