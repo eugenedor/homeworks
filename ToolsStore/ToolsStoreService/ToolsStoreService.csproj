@@ -60,6 +60,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsLoadRule.xsd</DependentUpon>
     </Compile>
+    <Compile Include="file\FileCheck.cs" />
     <Compile Include="file\FileManager.cs" />
     <Compile Include="file\FileWithParam.cs" />
     <Compile Include="file\LoadRule.cs" />

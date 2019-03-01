@@ -169,7 +169,7 @@ namespace ToolsStoreService.file
                                 fwp.SignFileName = true;
 
                                 //кодировка xml-файла
-                                fwp.Encoding = GetEncoding(fwp);
+                                fwp.Encoding = FileCheck.GetEncoding(fwp);
                                 if (fwp.Encoding == null)
                                 {
                                     fwp.SignValidData = false; //ошибка действительности данных - прекращение поиска правил
@@ -177,7 +177,7 @@ namespace ToolsStoreService.file
                                 }
 
                                 //проверка кодировки
-                                fwp.SignEncodingXml = CheckEncoding(fwp);
+                                fwp.SignEncodingXml = FileCheck.CheckEncoding(fwp);
                                 if (!fwp.SignEncodingXml) //Некорректная кодировка
                                 {
                                     fwp.SignValidData = true; //не является ошибкой действительности данных
@@ -195,7 +195,7 @@ namespace ToolsStoreService.file
                                 string errMsg;
                                 string pathName = lr.Specs.Where(x => x.IsMain).Select(x => x.PathName).First();
                                 //валидация xml
-                                if (CheckValidate(xnldoc, pathName, out errMsg)) //успешная валдация - правило найдено - прекращение поиска правил
+                                if (FileCheck.CheckValidate(xnldoc, pathName, out errMsg)) //успешная валдация - правило найдено - прекращение поиска правил
                                 {
                                     fwp.CodeRule = lr.Code;
                                     fwp.MethodLoad = lr.Method;
@@ -258,7 +258,7 @@ namespace ToolsStoreService.file
         }
 
         /// <summary>
-        /// Создание директории по правилам загрузки
+        /// Cоздание директорий и запись файлов на диск по правилам загрузки
         /// </summary>
         private static bool CreateDirAndFilesByRules(List<LoadRule> lrs)
         {
@@ -317,107 +317,6 @@ namespace ToolsStoreService.file
                 return false;
             }
         }
-
-        #region Methods for GetFiles
-
-        /// <summary>
-        /// Кодировка xml-документа
-        /// </summary>
-        private static Encoding GetEncoding(FileWithParam fwp)
-        {
-            try
-            {
-                using (var strmReader = new StreamReader(fwp.FullName))
-                {
-                    using (var xmlReader = XmlReader.Create(strmReader))
-                    {
-                        if (!xmlReader.Read())
-                        {
-                            xmlReader.Close();
-                            strmReader.Close();
-                            Log.write("Ошибка чтения XML-документа (XmlReader).");
-                            return null;
-                        }
-
-                        string encoding = xmlReader.GetAttribute("encoding");
-                        Encoding en = Encoding.GetEncoding(encoding);
-                        return en;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                fwp.ErrorMsg = ex.Message;
-                return null;
-            }
-        }
-
-        /// <summary>
-        /// Проверка xml-документа на кодировку. Возвращаемое значение: true - успешно, false - ошибка.
-        /// </summary>
-        private static bool CheckEncoding(FileWithParam fwp)
-        {
-            try
-            {
-                Encoding en;
-                string encodingXml = ConfigurationManager.AppSettings["encodingXml"] ?? ""; //можно перенести в правила загрузки
-
-                if (fwp.Encoding != null)
-                    en = fwp.Encoding;
-                else
-                    return false;
-
-                return (encodingXml.ToLower() == en.HeaderName.ToLower());
-            }
-            catch (Exception ex)
-            {
-                Log.write(ex.Message);
-                return false;
-            }
-        }
-
-        /// <summary>
-        /// Валидация XML-документа. Возвращаемое значение: true - валидация прошла успешно, false - ошибка.
-        /// </summary>
-        private static bool CheckValidate(XmlDocument doc, string pathName, out string msgValidXml)
-        {
-            msgValidXml = null;
-            try
-            {
-                if (File.Exists(pathName))
-                {
-                    XmlSchemaSet schemas = new XmlSchemaSet();
-                    XmlTextReader txtReaderXsd = new XmlTextReader(pathName);
-                    schemas.Add("", txtReaderXsd);
-                    doc.Schemas.Add(schemas);
-                    try
-                    {
-                        doc.Validate(null); //eventHandler
-                        msgValidXml = "";
-                    }
-                    catch (XmlSchemaValidationException e)
-                    {
-                        msgValidXml = e.Message;
-                    }
-                    finally
-                    {
-                        txtReaderXsd.Close();
-                    }
-                }
-                else
-                {
-                    msgValidXml = string.Format("Xsd-схема не найдена. Путь к схеме: \"{0}\"", pathName);
-                }
-                return string.IsNullOrEmpty(msgValidXml);
-            }
-            catch (Exception ex)
-            {
-                msgValidXml = ex.Message;
-                return false;
-            }
-        }
-
-        #endregion
 
         #region Checks LoadFile
 
