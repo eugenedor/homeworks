@@ -6,9 +6,10 @@ CREATE PROCEDURE dbo.SP_GET_SETTING_VALUE
 	@Value NVARCHAR(250) OUTPUT
 AS
 BEGIN
+  SET @Value = '';
   SET @Code = ISNULL(LOWER(LTRIM(RTRIM(@Code))), '');
 
   SELECT @Value = s.Value
   FROM dbo.MT_SETTING s
-  WHERE s.Code = @Code;
+  WHERE LOWER(s.Code) = @Code;
 END
