@@ -13,6 +13,49 @@ namespace ToolsStoreService.db
 {
     class DataBaseManager
     {
+        public static bool GetSettingValue(string code, out string value)
+        {
+            value = string.Empty;
+            try
+            {
+                string conn;
+                conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
+
+                SqlCommand cmdSet = new SqlCommand();
+                cmdSet.CommandType = System.Data.CommandType.StoredProcedure;
+                cmdSet.CommandText = "SP_GET_SETTING_VALUE";
+
+                cmdSet.Parameters.Add("@Code", SqlDbType.NVarChar, 50);
+                cmdSet.Parameters["@Code"].IsNullable = true;
+                cmdSet.Parameters["@Code"].Value = code;
+                cmdSet.Parameters.Add("@Value", SqlDbType.NVarChar, 250);
+                cmdSet.Parameters["@Value"].IsNullable = true;
+                cmdSet.Parameters["@Value"].Direction = ParameterDirection.Output;
+
+                cmdSet.Connection = new SqlConnection(conn);
+                cmdSet.CommandTimeout = 1800;
+
+                if (cmdSet.Connection.State != ConnectionState.Closed)
+                    cmdSet.Connection.Close();
+                cmdSet.Connection.Open();
+                cmdSet.ExecuteNonQuery();
+
+                if (cmdSet.Parameters["@Value"].Value == DBNull.Value)
+                    value = null;
+                else
+                    value = cmdSet.Parameters["@Value"].Value.ToString();
+
+                cmdSet.Connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
+        }
+
         public static bool GetLoadRule(string path, out List<LoadRule> LoadRules)
         {
             LoadRules = new List<LoadRule>();

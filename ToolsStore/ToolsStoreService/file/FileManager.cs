@@ -12,6 +12,7 @@ using System.Xml.Schema;
 using System.Xml.Serialization;
 using ToolsStoreService.log;
 using ToolsStoreService.abstr;
+using ToolsStoreService.db;
 
 namespace ToolsStoreService.file
 {
@@ -116,7 +117,11 @@ namespace ToolsStoreService.file
             try
             {
                 fwps = new List<FileWithParam>();
-                string filePath = ConfigurationManager.AppSettings["filePath"];
+
+                string filePath;
+                if (!DataBaseManager.GetSettingValue("filePath", out filePath))
+                    return fwps;
+
                 Utils.CreateDir(filePath);
 
                 DirectoryInfo dir = new DirectoryInfo(filePath);
