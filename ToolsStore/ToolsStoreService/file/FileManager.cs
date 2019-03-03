@@ -59,7 +59,11 @@ namespace ToolsStoreService.file
 
                     if (signGradation)
                     {
-                        cultureName = ConfigurationManager.AppSettings["cultureName"] ?? "en-US"; //региональные параметры
+                        if (!DataBaseManager.GetSettingValue("cultureName", out cultureName))
+                            return;
+
+                        if (string.IsNullOrEmpty(cultureName))
+                            cultureName = "en-US"; //региональные параметры
 
                         addPath = currentDate.ToString("yyyy") + "\\" 
                                 + currentDate.ToString("MM_MMMM", CultureInfo.GetCultureInfo(cultureName)) + "\\" 
