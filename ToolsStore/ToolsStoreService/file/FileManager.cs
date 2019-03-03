@@ -45,10 +45,12 @@ namespace ToolsStoreService.file
                     Log.write(string.Format("Всего файлов: {0}.", fwps.Count));
 
                     //архивный каталог
-                    archivePath = ConfigurationManager.AppSettings["archivePath"];
+                    if (!DataBaseManager.GetSettingValue("archivePath", out archivePath))
+                        return;
 
                     //каталог с ошибками
-                    trashPath = ConfigurationManager.AppSettings["trashPath"];
+                    if (!DataBaseManager.GetSettingValue("trashPath", out trashPath))
+                        return;
 
                     //признак градации
                     Boolean.TryParse(ConfigurationManager.AppSettings["signGradation"], out signGradation);
