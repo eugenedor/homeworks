@@ -28,7 +28,7 @@ namespace ToolsStoreService.file
             List<FileWithParam> fwps;
             DateTime currentDate = DateTime.Now;
             int count = 0, successCount = 0, errorCount = 0;
-            string archivePath, trashPath, addPath = "", cultureName = "en-US";
+            string archivePath, trashPath, addPath = "", signGradationStr, cultureName = "en-US";
             bool signGradation;
 
             try
@@ -53,7 +53,9 @@ namespace ToolsStoreService.file
                         return;
 
                     //признак градации
-                    Boolean.TryParse(ConfigurationManager.AppSettings["signGradation"], out signGradation);
+                    if (!DataBaseManager.GetSettingValue("signGradation", out signGradationStr))
+                        return;
+                    Boolean.TryParse(signGradationStr, out signGradation);
 
                     if (signGradation)
                     {
