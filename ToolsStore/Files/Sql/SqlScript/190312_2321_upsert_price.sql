@@ -1,16 +1,17 @@
 USE ToolsStore;
 GO
-/*SELECT pr.PriceId, pr.ProductId, pr.VatId, pr.PriceWithVat, pr.PriceWithoutVat, pr.DateBegin, pr.DateEnd
-FROM dbo.RS_PRICE pr
-ORDER BY pr.ProductId, pr.PriceId;*/
 
+--(+)--
 UPDATE RS_PRICE
 SET VatId     = (SELECT V.VATID FROM CT_VAT V WHERE V.CODE = 20),
+	PriceWithVat = 4990.00,
+	PriceWithoutVat =4158.33,
     DateBegin = CONVERT(DATETIME, CONVERT(NVARCHAR(4), YEAR(DateBegin)+1) + '0101', 112), --DATEADD(dd, DATEDIFF(dd, DateBegin, CONVERT(DATETIME, CONVERT(NVARCHAR(4), YEAR(DateBegin)+1) + '0101', 112)), DateBegin)
     DateEnd   = CONVERT(DATETIME, CONVERT(NVARCHAR(12), DateEnd, 112), 112)
 WHERE PriceId = 70;
 GO
 
+--(+)--
 UPDATE RS_PRICE
 SET DateEnd = DATEADD(dd, 
 	          DATEDIFF(dd, DateEnd, CONVERT(DATETIME, CONVERT(NVARCHAR(4), YEAR(DateEnd)+1) + '0101', 112))-1, 
@@ -18,17 +19,20 @@ SET DateEnd = DATEADD(dd,
 WHERE PriceId = 1;
 GO
 
+--(+)--
 UPDATE RS_PRICE
 SET DateEnd =  DATEADD(dd, -1, CONVERT(DATETIME, CONVERT(NVARCHAR(4), YEAR(DateBegin)+1) + '0101', 112))
 WHERE PriceId IN (2, 4, 8, 16, 32, 64);
 GO
 
+--(+)--
 INSERT INTO RS_PRICE (ProductId, VatId, PriceWithVat, PriceWithoutVat, DateBegin, DateEnd)
-VALUES (2, 4, 2048.00, 1735.59, CONVERT(DATETIME, '20190101', 112), CONVERT(DATETIME, '99991231', 112));
+VALUES (2, 4, 2449.00, 2040.83, CONVERT(DATETIME, '20190101', 112), CONVERT(DATETIME, '99991231', 112));
 GO
 
+--(+)--
 INSERT INTO RS_PRICE (ProductId, VatId, PriceWithVat, PriceWithoutVat, DateBegin, DateEnd)
-VALUES (4, 4, 9490.00, 8042.37, CONVERT(DATETIME, '20190101', 112), CONVERT(DATETIME, '99991231', 112));
+VALUES (4, 4, 9790.00, 8158.33, CONVERT(DATETIME, '20190101', 112), CONVERT(DATETIME, '99991231', 112));
 GO
 
 
