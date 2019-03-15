@@ -1,0 +1,50 @@
+USE ToolsStore
+GO
+
+CREATE FUNCTION dbo.FN_GET_VAT_PR
+(
+	@PriceWithoutVat DECIMAL(17,2),
+	@Percent INT 
+)
+RETURNS DECIMAL(17,2)
+AS
+BEGIN
+	RETURN ROUND(@PriceWithoutVat * CAST(@Percent AS DECIMAL(17,2))/100, 2)
+END
+GO
+
+CREATE FUNCTION dbo.FN_GET_PRVAT_PR
+(
+	@PriceWithoutVat DECIMAL(17,2),
+	@Percent INT 
+)
+RETURNS DECIMAL(17,2)
+AS
+BEGIN
+	RETURN @PriceWithoutVat + dbo.FN_GET_VAT_PR(@PriceWithoutVat, @Percent)
+END
+GO
+
+CREATE FUNCTION dbo.FN_GET_VAT_PRVAT
+(
+	@PriceWithVat DECIMAL(17,2),
+	@Percent INT 
+)
+RETURNS DECIMAL(17,2)
+AS
+BEGIN
+	RETURN ROUND(@PriceWithVat * CAST(@Percent AS DECIMAL(17,2))/(100 + @Percent), 2)
+END
+GO
+
+CREATE FUNCTION dbo.FN_GET_PR_PRVAT
+(
+	@PriceWithVat DECIMAL(17,2),
+	@Percent INT 
+)
+RETURNS DECIMAL(17,2)
+AS
+BEGIN
+	RETURN @PriceWithVat - dbo.FN_GET_VAT_PRVAT(@PriceWithVat, @Percent)
+END
+GO
