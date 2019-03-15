@@ -1,0 +1,16 @@
+USE ToolsStore
+GO
+
+CREATE TRIGGER dbo.TR_FOR_INS_UPD_RS_PRODUCT ON dbo.RS_PRODUCT FOR INSERT, UPDATE
+AS
+BEGIN TRAN
+
+  UPDATE dbo.RS_PRODUCT
+  SET Descr = dbo.FN_TRIM_STRING(Descr)
+  WHERE ProductId IN (SELECT i.ProductId 
+                      FROM INSERTED i);
+  COMMIT TRAN
+
+GO
+
+
