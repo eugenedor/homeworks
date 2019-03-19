@@ -19,13 +19,16 @@ namespace ToolsStore.WebUI.Controllers
             repository = repo;
         }
 
-        public ViewResult Prices(string searchProduct = null, bool orderPrices = false)
+        public ViewResult Prices(string searchProduct = null, bool groupProducts = false, bool orderPrices = false)
         {
             IQueryable<RS_PRICE> prices = repository.Prices;
             if (!string.IsNullOrEmpty(searchProduct))
                 prices = prices.Where(x => x.RS_PRODUCT.Name.Contains(searchProduct));
 
-            prices = (orderPrices) ? prices.OrderBy(x => x.PriceId) : prices.OrderByDescending(x => x.PriceId);
+            if (groupProducts)
+                prices = (orderPrices) ? prices.OrderBy(x => x.ProductId).ThenBy(y => y.PriceId) : prices.OrderByDescending(x => x.ProductId).ThenByDescending(y => y.PriceId);
+            else
+                prices = (orderPrices) ? prices.OrderBy(x => x.PriceId) : prices.OrderByDescending(x => x.PriceId);
             
             return View(((DbQuery<RS_PRICE>)prices).Include("RS_PRODUCT").Include("CT_VAT"));
         }

@@ -17,6 +17,9 @@
         Продукт:  @Html.TextBox("SearchProduct")                
     </p>
     <p>
+        Группировать по товарам: @Html.CheckBox("GroupProducts", htmlAttributes: new { @class = "form-control" })
+    </p>
+    <p>
         Упорядочить по возрастанию: @Html.CheckBox("OrderPrices", htmlAttributes: new { @class = "form-control" })
     </p>
     <input type="submit" value="Обновить" />
