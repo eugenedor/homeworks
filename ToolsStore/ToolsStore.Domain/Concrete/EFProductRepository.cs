@@ -300,7 +300,7 @@ namespace ToolsStore.Domain.Concrete
                 
                 da.UpdateCommand.CommandTimeout = 1800;
 
-                da.UpdateCommand.Parameters.AddWithValue("@isactive", isActive);
+                da.UpdateCommand.Parameters.AddWithValue("@IsActive", isActive);
 
                 if (da.UpdateCommand.Connection.State != ConnectionState.Open)
                     da.UpdateCommand.Connection.Open();
