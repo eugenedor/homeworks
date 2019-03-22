@@ -178,13 +178,13 @@ namespace ToolsStoreService.db
 
             try
             {
-                cmd.Parameters.Add("@code", SqlDbType.NVarChar, 100);
-                cmd.Parameters.Add("@name", SqlDbType.NVarChar, 250);
-                cmd.Parameters.Add("@ord", SqlDbType.Int);
+                cmd.Parameters.Add("@Code", SqlDbType.NVarChar, 100);
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 250);
+                cmd.Parameters.Add("@Ord", SqlDbType.Int);
 
-                cmd.Parameters["@code"].Value = code;
-                cmd.Parameters["@name"].Value = name;
-                cmd.Parameters["@ord"].Value = ord;
+                cmd.Parameters["@Code"].Value = code;
+                cmd.Parameters["@Name"].Value = name;
+                cmd.Parameters["@Ord"].Value = ord;
 
                 if (cmd.Connection.State != ConnectionState.Closed)
                     cmd.Connection.Close();
@@ -218,13 +218,13 @@ namespace ToolsStoreService.db
 
             try
             {
-                cmd.Parameters.Add("@code", SqlDbType.Int);
-                cmd.Parameters.Add("@name", SqlDbType.NVarChar, 100);
-                cmd.Parameters.Add("@isactive", SqlDbType.Bit);
+                cmd.Parameters.Add("@Code", SqlDbType.Int);
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 100);
+                cmd.Parameters.Add("@IsActive", SqlDbType.Bit);
 
-                cmd.Parameters["@code"].Value = code;
-                cmd.Parameters["@name"].Value = name;
-                cmd.Parameters["@isactive"].Value = isactive;
+                cmd.Parameters["@Code"].Value = code;
+                cmd.Parameters["@Name"].Value = name;
+                cmd.Parameters["@IsActive"].Value = isactive;
 
                 if (cmd.Connection.State != ConnectionState.Closed)
                     cmd.Connection.Close();
