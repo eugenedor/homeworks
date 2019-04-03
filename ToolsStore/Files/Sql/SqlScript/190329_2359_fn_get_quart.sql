@@ -1,32 +1,38 @@
 CREATE FUNCTION dbo.FN_GET_QUART
 (
-    @date DATETIME,
-    @qrt  SMALLINT = 0
+    @Date  DATETIME,
+    @Quart SMALLINT = 0
 )
-RETURNS @table TABLE (quart SMALLINT, dbeg DATETIME, dend DATETIME)
+RETURNS @Table TABLE 
+(
+	Quart SMALLINT, 
+	DateBegin DATETIME, 
+	DateEnd DATETIME
+)
 AS
 BEGIN    
-	DECLARE @dbeg DATETIME;
-	SET @dbeg = CONVERT(DATETIME, CAST(YEAR(@date) AS NVARCHAR(4)) + '0101', 112);
+	DECLARE @DateBegin DATETIME;
+	SET @DateBegin = CONVERT(DATETIME, CAST(YEAR(@Date) AS NVARCHAR(4)) + '0101', 112);
 
-	DECLARE @t TABLE(quart SMALLINT, dbeg DATETIME);
+	DECLARE @T TABLE (Quart SMALLINT, DateBegin DATETIME);
+
 	WITH t AS (SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5)) v(n))
-	INSERT INTO @t (quart, dbeg)
-	SELECT t.n, DATEADD(qq, t.n - 1, @dbeg) AS dbeg
+	INSERT INTO @T (Quart, DateBegin)
+	SELECT t.n, DATEADD(qq, t.n - 1, @DateBegin) AS DateBegin
 	FROM t;
 	
-	INSERT INTO @table (quart, dbeg, dend)  
-	SELECT t.quart, t.dbeg, DATEADD(dd, -1, DATEADD(qq, 1, t.dbeg)) AS dend
-	FROM @t t
-		 JOIN (SELECT t.quart
-			   FROM @t t
-			   WHERE @date BETWEEN dbeg AND DATEADD(dd, -1, DATEADD(qq, 1, t.dbeg))) tcur
-	       ON t.quart BETWEEN tcur.quart-1 AND tcur.quart+1
-	WHERE CASE @qrt 
-			WHEN -1 THEN tcur.quart-1
-			WHEN 0 THEN tcur.quart
-			WHEN 1 THEN tcur.quart+1
-		  END = t.quart;
+	INSERT INTO @Table (Quart, DateBegin, DateEnd)  
+	SELECT t.Quart, t.DateBegin, DATEADD(dd, -1, DATEADD(qq, 1, t.DateBegin)) AS DateEnd
+	FROM @T t
+		 JOIN (SELECT t.Quart
+			   FROM @T t
+			   WHERE @Date BETWEEN DateBegin AND DATEADD(dd, -1, DATEADD(qq, 1, t.DateBegin))) tcur
+	       ON t.Quart BETWEEN tcur.Quart-1 AND tcur.Quart+1
+	WHERE CASE @Quart 
+			WHEN -1 THEN tcur.Quart-1
+			WHEN 0 THEN tcur.Quart
+			WHEN 1 THEN tcur.Quart+1
+		  END = t.Quart;
 
 	RETURN;
 END
