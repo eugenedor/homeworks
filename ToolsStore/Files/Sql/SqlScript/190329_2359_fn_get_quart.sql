@@ -14,18 +14,18 @@ BEGIN
 	DECLARE @DateBegin DATETIME;
 	SET @DateBegin = CONVERT(DATETIME, CAST(YEAR(@Date) AS NVARCHAR(4)) + '0101', 112);
 
-	DECLARE @T TABLE (Quart SMALLINT, DateBegin DATETIME);
+	DECLARE @Tbl TABLE (Quart SMALLINT, DateBegin DATETIME);
 
 	WITH t AS (SELECT n FROM (VALUES (0),(1),(2),(3),(4),(5)) v(n))
-	INSERT INTO @T (Quart, DateBegin)
+	INSERT INTO @Tbl (Quart, DateBegin)
 	SELECT t.n, DATEADD(qq, t.n - 1, @DateBegin) AS DateBegin
 	FROM t;
 	
 	INSERT INTO @Table (Quart, DateBegin, DateEnd)  
 	SELECT t.Quart, t.DateBegin, DATEADD(dd, -1, DATEADD(qq, 1, t.DateBegin)) AS DateEnd
-	FROM @T t
+	FROM @Tbl t
 		 JOIN (SELECT t.Quart
-			   FROM @T t
+			   FROM @Tbl t
 			   WHERE @Date BETWEEN DateBegin AND DATEADD(dd, -1, DATEADD(qq, 1, t.DateBegin))) tcur
 	       ON t.Quart BETWEEN tcur.Quart-1 AND tcur.Quart+1
 	WHERE CASE @Quart 
