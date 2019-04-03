@@ -3,7 +3,7 @@ CREATE FUNCTION dbo.FN_GET_QUART
     @Date  DATETIME,
     @Quart SMALLINT = 0
 )
-RETURNS @Table TABLE 
+RETURNS @Quarter TABLE 
 (
 	Quart SMALLINT, 
 	DateBegin DATETIME, 
@@ -21,7 +21,7 @@ BEGIN
 	SELECT t.n, DATEADD(qq, t.n - 1, @DateBegin) AS DateBegin
 	FROM t;
 	
-	INSERT INTO @Table (Quart, DateBegin, DateEnd)  
+	INSERT INTO @Quarter (Quart, DateBegin, DateEnd)  
 	SELECT t.Quart, t.DateBegin, DATEADD(dd, -1, DATEADD(qq, 1, t.DateBegin)) AS DateEnd
 	FROM @Tbl t
 		 JOIN (SELECT t.Quart
