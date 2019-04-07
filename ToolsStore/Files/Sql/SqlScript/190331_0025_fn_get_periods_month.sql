@@ -1,7 +1,7 @@
 USE ToolsStore
 GO
 
-CREATE FUNCTION dbo.FN_GET_PERIOD_MONTH
+CREATE FUNCTION dbo.FN_GET_PERIODS_MONTH
 (
     @DateBegin DATETIME,
     @DateEnd   DATETIME
@@ -21,10 +21,10 @@ BEGIN
 		    ty.Y, tm.M, 
 		    DATEADD(mm, tm.M -1, CONVERT(DATETIME, CAST(ty.Y AS NVARCHAR(4)) + '0101', 112)) AS DateBegin
 	 FROM (SELECT n1.Value AS Y
-	       FROM dbo.FN_GET_NUM(YEAR(@DateBegin), YEAR(@DateEnd)) n1) ty
+	       FROM dbo.FN_GET_NUMBERS(YEAR(@DateBegin), YEAR(@DateEnd)) n1) ty
 		   CROSS JOIN 
 		  (SELECT n2.Value AS M
-		   FROM dbo.FN_GET_NUM(1, 12) n2) tm)
+		   FROM dbo.FN_GET_NUMBERS(1, 12) n2) tm)
 
     INSERT INTO @PeriodsMonth (Year, Month, DateBegin, DateEnd, Quart)  
 	SELECT tp.Y AS Year, 
