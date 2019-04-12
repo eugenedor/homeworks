@@ -388,15 +388,14 @@ namespace ToolsStoreService.file
         }
 
         /// <summary>
-        /// Загрузка. Получение xml-строки и корневого узла
+        /// Загузка TextReader с помощью XmlDocument
         /// </summary>
-        private static bool Load(FileWithParam fwp, string xAttr, out XmlRootAttribute xRoot, out string xmlStr)
+        private static bool GetTextViaXmlDocument(FileWithParam fwp, string xAttr, out TextReader reader)
         {
-            xRoot = new XmlRootAttribute();
-            xmlStr = "";
+            string xmlStr = "";
+            reader = null;
             try
             {
-                //xml-документ
                 XmlDocument xDoc = new XmlDocument();
                 StreamReader sr = new StreamReader(fwp.FullName, Encoding.GetEncoding(fwp.Encoding.HeaderName));
                 try
@@ -413,42 +412,59 @@ namespace ToolsStoreService.file
                     sr.Close();
                 }
 
-                //xml-корень
-                xRoot.ElementName = xAttr;
-                xRoot.IsNullable = true;
-
-                //xml-string
                 XmlNode xNode = xDoc.SelectSingleNode(xAttr);
                 xmlStr = xNode.OuterXml;
-
-                return true;
             }
             catch (Exception ex)
             {
                 Log.write(ex.Message);
                 return false;
             }
+
+            if (!FileCheck.CheckXmlString(xmlStr)) return false;
+
+            reader = new StringReader(xmlStr);
+            return true;
         }
 
         /// <summary>
-        /// Загузка. XmlSerializer и TextReader
+        /// Загузка TextReader с помощью XmlReader
         /// </summary>
-        private static bool Load(FileWithParam fwp, string xAttr, Type type, out XmlSerializer xSer, out TextReader reader)
+        private static bool GetTextViaXmlReader(FileWithParam fwp, string xAttr, out TextReader reader)
         {
-            XmlRootAttribute xRoot;
-            string xmlStr;
-            xSer = null;
             reader = null;
+            try
+            {
+                using (var strmReader = new StreamReader(fwp.FullName))
+                {
+                    using (var xmlReader = XmlReader.Create(strmReader))
+                    {
+                        if (!xmlReader.Read())
+                        {
+                            xmlReader.Close();
+                            strmReader.Close();
+                            Log.write("Ошибка чтения XML-документа (XmlReader).");
+                            return false;
+                        }
 
-            //xml-узел, xml-строка
-            if (!Load(fwp, xAttr, out xRoot, out xmlStr)) return false;
-
-            //проверка xml-строки
-            if (!FileCheck.CheckXmlString(xmlStr)) return false;
-
-            xSer = new XmlSerializer(type, xRoot);
-            reader = new StringReader(xmlStr);
-            return true;
+                        while (xmlReader.Read())
+                        {
+                            if (xmlReader.Name.Equals(xAttr)
+                                && xmlReader.NodeType == XmlNodeType.Element)
+                            {
+                                reader = new StringReader(xmlReader.ReadOuterXml());
+                                return true;
+                            }
+                        }                        
+                    }
+                }
+                return false;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
         }
 
         /// <summary>
@@ -467,10 +483,14 @@ namespace ToolsStoreService.file
         /// </summary>
         private static bool LoadCategory(FileWithParam fwp)
         {
-            XmlSerializer xSer;
-            TextReader reader;
-            if (!Load(fwp, "packet", typeof(clss.category.packet), out xSer, out reader))
+            Type type = typeof(clss.category.packet);
+            XmlRootAttribute xRoot = new XmlRootAttribute() { ElementName = type.Name, IsNullable = true };
+            XmlSerializer xSer = new XmlSerializer(type, xRoot);
+
+            TextReader reader = null;
+            if (!GetTextViaXmlDocument(fwp, type.Name, out reader))
                 return false;
+
             try
             {
                 ILoadManager ilmngr = xSer.Deserialize(reader) as clss.category.packet;
@@ -492,10 +512,14 @@ namespace ToolsStoreService.file
         /// </summary>
         private static bool LoadVat(FileWithParam fwp)
         {
-            XmlSerializer xSer;
-            TextReader reader;
-            if (!Load(fwp, "packet", typeof(clss.vat.packet), out xSer, out reader))
+            Type type = typeof(clss.vat.packet);
+            XmlRootAttribute xRoot = new XmlRootAttribute() { ElementName = type.Name, IsNullable = true };           
+            XmlSerializer xSer = new XmlSerializer(type, xRoot);
+
+            TextReader reader = null;
+            if (!GetTextViaXmlReader(fwp, type.Name, out reader))
                 return false;
+
             try
             {
                 ILoadManager ilmngr = xSer.Deserialize(reader) as clss.vat.packet;
