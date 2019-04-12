@@ -354,10 +354,7 @@ namespace ToolsStoreService.file
                     { "loadvat", LoadVat },
                 };
 
-                if (!oper.ContainsKey(fwp.MethodLoad.ToLower()))
-                    loaded = LoadError(fwp);
-
-                loaded = oper[fwp.MethodLoad.ToLower()](fwp);
+                loaded = oper.ContainsKey(fwp.MethodLoad.ToLower()) ? oper[fwp.MethodLoad.ToLower()](fwp) : LoadError(fwp);
 
                 //switch (fwp.MethodLoad.ToLower())
                 //{

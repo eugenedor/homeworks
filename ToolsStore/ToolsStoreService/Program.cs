@@ -15,16 +15,16 @@ namespace ToolsStoreService
         /// </summary>
         static void Main()
         {
-            //Application.EnableVisualStyles();
-            //Application.SetCompatibleTextRenderingDefault(false);
-            //Application.Run(new Form1());
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
 
-            ServiceBase[] ServicesToRun;
-            ServicesToRun = new ServiceBase[]
-            {
-                new ToolsStoreService()
-            };
-            ServiceBase.Run(ServicesToRun);
+            //ServiceBase[] ServicesToRun;
+            //ServicesToRun = new ServiceBase[]
+            //{
+            //    new ToolsStoreService()
+            //};
+            //ServiceBase.Run(ServicesToRun);
         }
     }
 }
