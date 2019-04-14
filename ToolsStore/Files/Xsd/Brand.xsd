@@ -7,8 +7,14 @@
         <xs:element name="hdr">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="type" type="xs:string"/>
-              <xs:element name="version" type="xs:decimal"/>
+              <xs:element name="type">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:pattern value="Brand"/>
+                  </xs:restriction>
+                </xs:simpleType>                
+              </xs:element>
+              <xs:element name="version" type="xs:decimal" fixed="1.1"/>
               <xs:element name="date" type="xs:string"/>
             </xs:sequence>
           </xs:complexType>
