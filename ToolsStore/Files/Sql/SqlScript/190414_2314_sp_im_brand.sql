@@ -20,7 +20,10 @@ CREATE PROCEDURE dbo.SP_IM_BRAND
 	@Name     NVARCHAR(500)
 AS
 BEGIN
-	DECLARE @tempMessage NVARCHAR(MAX) = NULL
+	DECLARE @tempMessage NVARCHAR(MAX) = NULL,
+	        @DateCur	 DATETIME;
+
+	SET @DateCur = GETDATE();
 
 	IF (NULLIF(LTRIM(RTRIM(@Code)), '') IS NULL)
 	BEGIN
@@ -30,12 +33,13 @@ BEGIN
 	END
 
 	UPDATE CT_BRAND
-	SET Name = @Name
+	SET Name     = @Name,
+	    DateLoad = @DateCur
 	WHERE CT_BRAND.Code = @Code;
 
-	INSERT INTO CT_BRAND(Code, Name)
-	SELECT im.Code, im.Name AS Name
-	FROM (SELECT @Code AS Code, @Name AS Name) im 
+	INSERT INTO CT_BRAND(Code, Name, DateLoad)
+	SELECT im.Code, im.Name AS Name, im.DateLoad
+	FROM (SELECT @Code AS Code, @Name AS Name, @DateCur AS DateLoad) im 
 	     LEFT JOIN CT_BRAND b 
 		   ON im.Code = b.Code
 	WHERE b.BrandId IS NULL
