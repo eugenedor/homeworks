@@ -246,5 +246,43 @@ namespace ToolsStoreService.db
                     cmd.Connection.Close();
             }
         }
+
+        public static bool LoadBrand(string code, string name)
+        {
+            string conn;
+            conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
+
+            var cmd = new SqlCommand("SP_IM_BRAND", new SqlConnection(conn));
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 3600;
+
+            try
+            {
+                cmd.Parameters.Add("@Code", SqlDbType.NVarChar, 100);
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 500);
+
+                cmd.Parameters["@Code"].Value = code;
+                cmd.Parameters["@Name"].Value = name;
+
+                if (cmd.Connection.State != ConnectionState.Closed)
+                    cmd.Connection.Close();
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (cmd.Connection.State != ConnectionState.Closed)
+                    cmd.Connection.Close();
+            }
+        }
     }
 }

@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="abstr\ILoadManager.cs" />
     <Compile Include="clss\brand\Brand.cs" />
+    <Compile Include="clss\brand\BrandExtra.cs" />
     <Compile Include="clss\category\Category.cs" />
     <Compile Include="clss\category\CategoryExtra.cs" />
     <Compile Include="clss\vat\Vat.cs" />
