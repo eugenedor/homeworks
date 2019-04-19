@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <packet>
   <hdr>
-    <type>Brand</type>
+    <type>brand</type>
     <version>1.1</version>
     <date>2019.04.14</date>
   </hdr>
