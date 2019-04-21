@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<packet>
+  <hdr>
+    <type>model</type>
+    <version>1.1</version>
+    <date>2019.04.21</date>
+  </hdr>
+  <rec>
+    <Code>1000000000</Code>
+    <Name> </Name>
+    <Brand>Empty</Brand>
+  </rec>
+  <rec>
+    <Code>1000000001</Code>
+    <Name>Makita BO3710</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>1000000002</Code>
+    <Name>Интерскол ПШМ-104/220</Name>
+    <Brand>Interskol</Brand>
+  </rec>
+  <rec>
+    <Code>1000000003</Code>
+    <Name>Фиолент МПШ 4-28Э</Name>
+    <Brand>Fiolent</Brand>
+  </rec>
+  <rec>
+    <Code>2000000004</Code>
+    <Name>Makita DF031DWAE</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>2000000005</Code>
+    <Name>Bosch PSR1440LI-2</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>2000000006</Code>
+    <Name>Зубр ДА-18-2-ЛиКНМ1</Name>
+    <Brand>Bison</Brand>
+  </rec>
+  <rec>
+    <Code>3000000007</Code>
+    <Name>Makita HP2050</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>3000000008</Code>
+    <Name>DeWalt D21805KS</Name>
+    <Brand>DeWalt</Brand>
+  </rec>
+  <rec>
+    <Code>3000000009</Code>
+    <Name>Hitachi DV13VSS</Name>
+    <Brand>Hitachi</Brand>
+  </rec>
+  <rec>
+    <Code>4000000010</Code>
+    <Name>Hitachi CJ65V3</Name>
+    <Brand>Hitachi</Brand>
+  </rec>
+  <rec>
+    <Code>4000000011</Code>
+    <Name>Makita 4350T</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>4000000012</Code>
+    <Name>Зубр Л-400-55</Name>
+    <Brand>Bison</Brand>
+  </rec>
+  <rec>
+    <Code>5000000013</Code>
+    <Name>Makita HR2470</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>5000000014</Code>
+    <Name>Интерскол П-18/450ЭР</Name>
+    <Brand>Interskol</Brand>
+  </rec>
+  <rec>
+    <Code>5000000015</Code>
+    <Name>Bosch Gbh 2-26 dre</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>6000000016</Code>
+    <Name>Makita HS6601J</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>6000000017</Code>
+    <Name>Зубр ЗПД-900</Name>
+    <Brand>Bison</Brand>
+  </rec>
+  <rec>
+    <Code>6000000018</Code>
+    <Name>Интерскол ДП-190/1600М</Name>
+    <Brand>Interskol</Brand>
+  </rec>
+  <rec>
+    <Code>7000000019</Code>
+    <Name>Интерскол ФЭ-2000Э</Name>
+    <Brand>Interskol</Brand>
+  </rec>
+  <rec>
+    <Code>7000000020</Code>
+    <Name>Metabo H16-500 601650500</Name>
+    <Brand>Metabo</Brand>
+  </rec>
+  <rec>
+    <Code>7000000021</Code>
+    <Name>Hitachi H 2000</Name>
+    <Brand>Hitachi</Brand>
+  </rec>
+  <rec>
+    <Code>8000000022</Code>
+    <Name>DeWalt DWE 4051</Name>
+    <Brand>DeWalt</Brand>
+  </rec>
+  <rec>
+    <Code>8000000023</Code>
+    <Name>Makita 9558HN</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>8000000024</Code>
+    <Name>Bosch GWS7-115E</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>9000000025</Code>
+    <Name>Bosch POF 1400 ACE</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>9000000026</Code>
+    <Name>Интерскол ФМ-32/1900Э</Name>
+    <Brand>Interskol</Brand>
+  </rec>
+  <rec>
+    <Code>9000000027</Code>
+    <Name>Фиолент МФ3-1100Э</Name>
+    <Brand>Fiolent</Brand>
+  </rec>
+  <rec>
+    <Code>10000000028</Code>
+    <Name>Байкал Е-312АК</Name>
+    <Brand>Baikal</Brand>
+  </rec>
+  <rec>
+    <Code>10000000029</Code>
+    <Name>DeWalt DW 680</Name>
+    <Brand>DeWalt</Brand>
+  </rec>
+  <rec>
+    <Code>10000000030</Code>
+    <Name>Black&amp;Decker KW 712KA</Name>
+    <Brand>Black&amp;Decker</Brand>
+  </rec>
+  <rec>
+    <Code>11000000031</Code>
+    <Name>Dremel 4000 (1/45) F0134000JC</Name>
+    <Brand>Dremel</Brand>
+  </rec>
+  <rec>
+    <Code>11000000032</Code>
+    <Name>Зубр ЗГ-130ЭК H172</Name>
+    <Brand>Bison</Brand>
+  </rec>
+  <rec>
+    <Code>11000000033</Code>
+    <Name>Bosch GRO</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>12000000034</Code>
+    <Name>Dexell T111C Т</Name>
+    <Brand>Dexell</Brand>
+  </rec>
+  <rec>
+    <Code>12000000035</Code>
+    <Name>Bosch SORT.Т-ХВОС</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>13000000036</Code>
+    <Name>Bosch 2608628408</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>14000000037</Code>
+    <Name>Metabo 624307000</Name>
+    <Brand>Metabo</Brand>
+  </rec>
+  <rec>
+    <Code>14000000038</Code>
+    <Name>Bosch 2608600549</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>14000000039</Code>
+    <Name>Makita P-52940</Name>
+    <Brand>Makita</Brand>
+  </rec>
+  <rec>
+    <Code>14000000040</Code>
+    <Name>Matrix 74327</Name>
+    <Brand>Matrix</Brand>
+  </rec>
+  <rec>
+    <Code>15000000041</Code>
+    <Name>Bosch HSS-R</Name>
+    <Brand>Bosch</Brand>
+  </rec>
+  <rec>
+    <Code>15000000042</Code>
+    <Name>Зубр 29615-H13</Name>
+    <Brand>Bison</Brand>
+  </rec>
+  <rec>
+    <Code>16000000043</Code>
+    <Name>Matrix SDS - Plus</Name>
+    <Brand>Matrix</Brand>
+  </rec>
+  <rec>
+    <Code>17000000044</Code>
+    <Name>Brigadier 21087</Name>
+    <Brand>Brigadier</Brand>
+  </rec>
+  <rec>
+    <Code>17000000045</Code>
+    <Name>Stayer 22027-5-18_Z01</Name>
+    <Brand>Stayer</Brand>
+  </rec>
+  <rec>
+    <Code>17000000046</Code>
+    <Name>Matrix 17524</Name>
+    <Brand>Matrix</Brand>
+  </rec>
+  <rec>
+    <Code>17000000047</Code>
+    <Name>Jonnesway P107</Name>
+    <Brand>Jonnesway</Brand>
+  </rec>
+  <rec>
+    <Code>17000000048</Code>
+    <Name>Brigadier 13820630</Name>
+    <Brand>Brigadier</Brand>
+  </rec>
+  <rec>
+    <Code>18000000049</Code>
+    <Name>КВТ WS-12/69476</Name>
+    <Brand>КВТ</Brand>
+  </rec>
+  <rec>
+    <Code>18000000050</Code>
+    <Name>Fit 60033</Name>
+    <Brand>Fit</Brand>
+  </rec>
+  <rec>
+    <Code>18000000051</Code>
+    <Name>Force F-6805</Name>
+    <Brand>Force</Brand>
+  </rec>
+  <rec>
+    <Code>19000000052</Code>
+    <Name>Brigadier 13820489</Name>
+    <Brand>Brigadier</Brand>
+  </rec>
+  <rec>
+    <Code>20000000053</Code>
+    <Name>Dexter 18850329</Name>
+    <Brand>Dexter</Brand>
+  </rec>
+  <rec>
+    <Code>21000000054</Code>
+    <Name>Stayer Master 23055-29</Name>
+    <Brand>Stayer</Brand>
+  </rec>
+  <rec>
+    <Code>21000000055</Code>
+    <Name>Brigadier Aviation Extrema 21237</Name>
+    <Brand>Brigadier</Brand>
+  </rec>
+  <rec>
+    <Code>22000000056</Code>
+    <Name>Энкор 10401</Name>
+    <Brand>Enkor</Brand>
+  </rec>
+  <rec>
+    <Code>23000000057</Code>
+    <Name>Stayer Standard 1865_z01</Name>
+    <Brand>Stayer</Brand>
+  </rec>
+  <rec>
+    <Code>24000000058</Code>
+    <Name>Stayer MS180</Name>
+    <Brand>Stayer</Brand>
+  </rec>
+  <rec>
+    <Code>25000000059</Code>
+    <Name>Зубр Мастер 06850-60-12_z02</Name>
+    <Brand>Bison</Brand>
+  </rec>
+  <rec>
+    <Code>25000000060</Code>
+    <Name>Dremel 910-3</Name>
+    <Brand>Dremel</Brand>
+  </rec>
+  <rec>
+    <Code>32000000061</Code>
+    <Name>Brigadier 13382896</Name>
+    <Brand>Brigadier</Brand>
+  </rec>
+  <rec>
+    <Code>34000000062</Code>
+    <Name>Matrix Magnetic</Name>
+    <Brand>Matrix</Brand>
+  </rec>
+  <rec>
+    <Code>34000000063</Code>
+    <Name>Matrix Double fixation</Name>
+    <Brand>Matrix</Brand>
+  </rec>
+  <rec>
+    <Code>35000000064</Code>
+    <Name>Matrix 4-34583-120</Name>
+    <Brand>Matrix</Brand>
+  </rec>
+  <rec>
+    <Code>38000000065</Code>
+    <Name>Stayer 2-271256-H12</Name>
+    <Brand>Stayer</Brand>
+  </rec>
+  <rec>
+    <Code>43000000066</Code>
+    <Name>Зубр 20012-05</Name>
+    <Brand>Bison</Brand>
+  </rec>
+  <rec>
+    <Code>43000000067</Code>
+    <Name>Энкор 1/6/36 23021</Name>
+    <Brand>Enkor</Brand>
+  </rec>
+  <rec>
+    <Code>43000000068</Code>
+    <Name>Fit 44288</Name>
+    <Brand>Fit</Brand>
+  </rec>
+  <rec>
+    <Code>46000000069</Code>
+    <Name>Зубр Эксперт (20111-5_z02)</Name>
+    <Brand>Bison</Brand>
+  </rec>
+</packet>
