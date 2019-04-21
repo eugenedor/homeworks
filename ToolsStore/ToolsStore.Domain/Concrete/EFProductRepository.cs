@@ -422,6 +422,7 @@ namespace ToolsStore.Domain.Concrete
         #region Brand - Бренд
         public void SaveBrand(CT_BRAND brand)
         {
+            brand.DateLoad = DateTime.Now;
             if (brand.BrandId == 0)
             {
                 context.CT_BRAND.Add(brand);
@@ -433,6 +434,7 @@ namespace ToolsStore.Domain.Concrete
                 {
                     dbEntry.Code = brand.Code;
                     dbEntry.Name = brand.Name;
+                    dbEntry.DateLoad = brand.DateLoad;
                 }
             }
             context.SaveChanges();

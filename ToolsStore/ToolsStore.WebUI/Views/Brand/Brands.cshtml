@@ -20,6 +20,7 @@
         <th>ID</th>
         <th>Код</th>
         <th>Наименование</th>
+        <th>Дата загрузки</th>
         <th>Действие</th>
     </tr>
     @foreach (var item in Model)
@@ -28,6 +29,7 @@
             <td>@item.BrandId</td>
             <td>@Html.ActionLink(item.Code, "BrandEdit", new { item.BrandId })</td>
             <td>@item.Name</td>
+            <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             <td>
                 @using (Html.BeginForm("BrandDelete", "Brand"))
                 {

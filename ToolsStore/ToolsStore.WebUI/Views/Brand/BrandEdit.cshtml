@@ -26,6 +26,10 @@
     <div>
         @Html.EditorFor(x => x.Name)
     </div>
+    <div>&nbsp;</div>
+    <div>
+        @Html.HiddenFor(x => x.DateLoad)
+    </div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Brands")
 }
