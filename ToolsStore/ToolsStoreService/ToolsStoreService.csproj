@@ -54,6 +54,7 @@
     <Compile Include="clss\brand\BrandExtra.cs" />
     <Compile Include="clss\category\Category.cs" />
     <Compile Include="clss\category\CategoryExtra.cs" />
+    <Compile Include="clss\model\Model.cs" />
     <Compile Include="clss\vat\Vat.cs" />
     <Compile Include="clss\vat\VatExtra.cs" />
     <Compile Include="db\DataBaseManager.cs" />
