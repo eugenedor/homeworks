@@ -38,11 +38,12 @@ BEGIN
 	WHERE CT_BRAND.Code = @Code;
 
 	INSERT INTO CT_BRAND(Code, Name, DateLoad)
-	SELECT im.Code, im.Name AS Name, im.DateLoad
-	FROM (SELECT @Code AS Code, @Name AS Name, @DateCur AS DateLoad) im 
+	SELECT im.Code, im.Name, im.DateLoad
+	FROM (SELECT @Code AS Code, 
+	             @Name AS Name, 
+				 @DateCur AS DateLoad) im 
 	     LEFT JOIN CT_BRAND b 
 		   ON im.Code = b.Code
 	WHERE b.BrandId IS NULL
-		AND im.Code IS NOT NULL
 END
 GO
