@@ -30,8 +30,8 @@ namespace ToolsStoreService.clss.model
                         return false;
                     }
 
-                    //if (!DataBaseManager.LoadModel(pcktRec.Code, pcktRec.Name, pcktRec.Brand))
-                    //    return false;
+                    if (!DataBaseManager.LoadModel(pcktRec.Code, pcktRec.Name, pcktRec.Brand))
+                        return false;
                 }
                 return true;
             }

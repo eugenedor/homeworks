@@ -284,5 +284,45 @@ namespace ToolsStoreService.db
                     cmd.Connection.Close();
             }
         }
+
+        public static bool LoadModel(long code, string name, string brand)
+        {
+            string conn;
+            conn = System.Configuration.ConfigurationManager.ConnectionStrings["ToolsStoreConnectionString"].ToString();
+
+            var cmd = new SqlCommand("SP_IM_MODEL", new SqlConnection(conn));
+            cmd.CommandType = CommandType.StoredProcedure;
+            cmd.CommandTimeout = 3600;
+
+            try
+            {
+                cmd.Parameters.Add("@Code", SqlDbType.BigInt);
+                cmd.Parameters.Add("@Name", SqlDbType.NVarChar, 500);
+                cmd.Parameters.Add("@Brand", SqlDbType.NVarChar, 100);
+
+                cmd.Parameters["@Code"].Value = code;
+                cmd.Parameters["@Name"].Value = name;
+                cmd.Parameters["@Brand"].Value = brand;
+
+                if (cmd.Connection.State != ConnectionState.Closed)
+                    cmd.Connection.Close();
+
+                cmd.Connection.Open();
+                cmd.ExecuteNonQuery();
+                cmd.Connection.Close();
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
+            finally
+            {
+                if (cmd.Connection.State != ConnectionState.Closed)
+                    cmd.Connection.Close();
+            }
+        }
     }
 }
