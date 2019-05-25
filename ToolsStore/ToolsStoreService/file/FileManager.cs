@@ -353,6 +353,7 @@ namespace ToolsStoreService.file
                     { "loadcategory", LoadCategory },
                     { "loadvat", LoadVat },
                     { "loadbrand", LoadBrand },
+                    { "loadmodel", LoadModel },
                 };
 
                 loaded = oper.ContainsKey(fwp.MethodLoad.ToLower()) ? oper[fwp.MethodLoad.ToLower()](fwp) : LoadError(fwp);
@@ -550,6 +551,32 @@ namespace ToolsStoreService.file
             try
             {
                 ILoadManager ilmngr = xSer.Deserialize(reader) as clss.brand.packet;
+                return Load(ilmngr);
+            }
+            catch (Exception ex)
+            {
+                Log.write(ex.Message);
+                return false;
+            }
+            finally
+            {
+                reader.Close();
+            }
+        }
+
+        private static bool LoadModel(FileWithParam fwp)
+        {
+            Type type = typeof(clss.model.packet);
+            XmlRootAttribute xRoot = new XmlRootAttribute() { ElementName = type.Name, IsNullable = true };
+            XmlSerializer xSer = new XmlSerializer(type, xRoot);
+
+            TextReader reader = null;
+            if (!GetTextViaXmlDocument(fwp, type.Name, out reader))
+                return false;
+
+            try
+            {
+                ILoadManager ilmngr = xSer.Deserialize(reader) as clss.model.packet;
                 return Load(ilmngr);
             }
             catch (Exception ex)
