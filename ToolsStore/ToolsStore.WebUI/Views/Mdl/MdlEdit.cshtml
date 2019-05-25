@@ -34,6 +34,9 @@
         @Html.EditorFor(x => x.Mdl.Name)
     </div>
     <div>&nbsp;</div>
+    <div>
+        @Html.HiddenFor(x => x.Mdl.DateLoad)
+    </div>
     <input type="submit" value="Сохранить" />
     @Html.ActionLink("Отменить и вернуться к списку", "Mdls")
 }

@@ -455,6 +455,7 @@ namespace ToolsStore.Domain.Concrete
         #region Model - Модель
         public void SaveModel(SK_MODEL mdl)
         {
+            mdl.DateLoad = DateTime.Now;
             if (mdl.ModelId == 0)
             {
                 context.SK_MODEL.Add(mdl);
@@ -468,6 +469,7 @@ namespace ToolsStore.Domain.Concrete
                     dbEntry.Code = mdl.Code;
                     dbEntry.Name = mdl.Name;
                     dbEntry.CT_BRAND = mdl.CT_BRAND;
+                    dbEntry.DateLoad = mdl.DateLoad;
                 }
             }
             context.SaveChanges();
