@@ -93,3 +93,8 @@ E:\projects\ToolsStore\ToolsStore.WebUI\bin\Ninject.xml
 E:\projects\ToolsStore\ToolsStore.WebUI\bin\System.Threading.Tasks.Extensions.xml
 E:\projects\ToolsStore\ToolsStore.WebUI\bin\System.ValueTuple.xml
 E:\projects\ToolsStore\ToolsStore.WebUI\obj\Release\ToolsStore.WebUI.csprojResolveAssemblyReference.cache
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\ICSharpCode.SharpZipLib.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.OOXML.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.OpenXml4Net.dll
+E:\projects\ToolsStore\ToolsStore.WebUI\bin\NPOI.OpenXmlFormats.dll

@@ -32,6 +32,7 @@
         <th>Код</th>
         <th>Наименование</th>
         <th>Бренд</th>
+        <th>Дата загрузки</th>
         <th>Действие</th>
     </tr>
     @foreach (var item in Model)
@@ -41,6 +42,7 @@
             <td>@Html.ActionLink(item.Code.ToString(), "MdlEdit", new { item.ModelId })</td>
             <td>@item.Name</td>
             <td>@Html.DisplayFor(modelItem => item.CT_BRAND.Name)</td>
+            <td>@Html.DisplayFor(modelItem => item.DateLoad)</td>
             <td>
                 @using (Html.BeginForm("MdlDelete", "Mdl"))
                 {
