@@ -22,7 +22,7 @@ namespace ToolsStore.Domain.Concrete
             get { return context.RS_CART; }
         }
 
-        public IEnumerable<OrderContent> OrderContents
+        public IEnumerable<ORDER_CONTENT> OrderContents
         {
             get
             {
@@ -38,7 +38,7 @@ namespace ToolsStore.Domain.Concrete
                                      from prc in prc2.DefaultIfEmpty()
 
                                      orderby crt.CartId, crt.OrderId
-                                     select new OrderContent
+                                     select new ORDER_CONTENT
                                      {
                                          CartId = crt.CartId,
                                          OrderId = crt.OrderId,

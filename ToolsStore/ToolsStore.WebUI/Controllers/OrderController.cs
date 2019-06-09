@@ -25,7 +25,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult OrderContent(long orderId)
         {
-            IEnumerable<OrderContent> orderContents = repository.OrderContents.Where(x => x.OrderId == orderId);
+            IEnumerable<ORDER_CONTENT> orderContents = repository.OrderContents.Where(x => x.OrderId == orderId);
             return View(orderContents);
         }
     }
