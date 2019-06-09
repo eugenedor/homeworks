@@ -11,18 +11,18 @@ namespace ToolsStore.Domain.Entities
     /// </summary>
     public class Cart
     {
-        private List<CartLine> lineCollection = new List<CartLine>();
+        private List<CART_LINE> lineCollection = new List<CART_LINE>();
 
         /// <summary>
         /// Добавить товар в корзину
         /// </summary>
         public void AddItem(Product product, int quantity)
         {
-            CartLine line = lineCollection.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
+            CART_LINE line = lineCollection.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
 
             if (line == null)
             {
-                lineCollection.Add(new CartLine
+                lineCollection.Add(new CART_LINE
                 {
                     Product = product,
                     Quantity = quantity
@@ -43,7 +43,7 @@ namespace ToolsStore.Domain.Entities
             int cntQuantity = lineCollection.Where(p => p.Product.ProductId == product.ProductId).Sum(x => x.Quantity);
             if (cntQuantity > 1)
             {
-                CartLine line = lineCollection.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
+                CART_LINE line = lineCollection.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
                 line.Quantity -= 1;
             }
             else
@@ -79,7 +79,7 @@ namespace ToolsStore.Domain.Entities
         /// <summary>
         /// Список товаров
         /// </summary>
-        public IEnumerable<CartLine> Lines
+        public IEnumerable<CART_LINE> Lines
         {
             get { return lineCollection; }
         }

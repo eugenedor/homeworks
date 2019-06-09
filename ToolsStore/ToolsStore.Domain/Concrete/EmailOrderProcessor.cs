@@ -108,7 +108,7 @@ namespace ToolsStore.Domain.Concrete
 
             if (orderId > 0)
             {
-                foreach (CartLine crtLine in cart.Lines)
+                foreach (CART_LINE crtLine in cart.Lines)
                 {
                     RS_CART crt = new RS_CART();
                     crt.OrderId = orderId;

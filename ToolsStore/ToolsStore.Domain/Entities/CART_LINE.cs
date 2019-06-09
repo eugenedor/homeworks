@@ -9,7 +9,7 @@ namespace ToolsStore.Domain.Entities
     /// <summary>
     /// Позиция товара в корзине
     /// </summary>
-    public class CartLine
+    public class CART_LINE
     {
         /// <summary>
         /// Товар

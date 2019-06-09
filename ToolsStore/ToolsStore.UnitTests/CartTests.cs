@@ -29,7 +29,7 @@ namespace ToolsStore.UnitTests
             // Act
             target.AddItem(p1, 1);
             target.AddItem(p2, 1);
-            CartLine[] results = target.Lines.ToArray();
+            CART_LINE[] results = target.Lines.ToArray();
             // Assert
             Assert.AreEqual(results.Length, 2);
             Assert.AreEqual(results[0].Product, p1);
@@ -48,7 +48,7 @@ namespace ToolsStore.UnitTests
             target.AddItem(p1, 1);
             target.AddItem(p2, 1);
             target.AddItem(p1, 10);
-            CartLine[] results = target.Lines.OrderBy(c => c.Product.ProductId).ToArray();
+            CART_LINE[] results = target.Lines.OrderBy(c => c.Product.ProductId).ToArray();
             // Assert
             Assert.AreEqual(results.Length, 2);
             Assert.AreEqual(results[0].Quantity, 11);
