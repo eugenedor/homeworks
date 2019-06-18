@@ -30,7 +30,7 @@ namespace ToolsStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        public ViewResult Checkout(Cart cart, SHIPPING_DETAILS shippingDetails)
         {
             if (cart.Lines.Count() == 0)
             {
@@ -97,7 +97,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Checkout()
         {
-            return View(new ShippingDetails());
+            return View(new SHIPPING_DETAILS());
         }
 
         public RedirectToRouteResult ClearCart(Cart cart, string returnUrl)

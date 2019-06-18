@@ -107,7 +107,7 @@
     <Compile Include="Entities\RS_ORDER.cs" />
     <Compile Include="Entities\RS_PRICE.cs" />
     <Compile Include="Entities\RS_PRODUCT.cs" />
-    <Compile Include="Entities\ShippingDetails.cs" />
+    <Compile Include="Entities\SHIPPING_DETAILS.cs" />
     <Compile Include="Entities\SK_EQUIPMENT.cs" />
     <Compile Include="Entities\SK_MODEL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

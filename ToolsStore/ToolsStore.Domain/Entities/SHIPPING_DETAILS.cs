@@ -7,7 +7,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ToolsStore.Domain.Entities
 {
-    public class ShippingDetails
+    public class SHIPPING_DETAILS
     {
         
         [Required(ErrorMessage = "Введите фамилию")]

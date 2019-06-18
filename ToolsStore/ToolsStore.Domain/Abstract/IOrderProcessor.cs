@@ -4,8 +4,8 @@ namespace ToolsStore.Domain.Abstract
 {
     public interface IOrderProcessor
     {
-        void ProcessOrder(Cart cart, ShippingDetails shippingDetails);
+        void ProcessOrder(Cart cart, SHIPPING_DETAILS shippingDetails);
 
-        void SaveOrder(Cart cart, ShippingDetails shippingInfo);
+        void SaveOrder(Cart cart, SHIPPING_DETAILS shippingInfo);
     }
 }

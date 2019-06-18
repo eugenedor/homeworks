@@ -172,13 +172,13 @@ namespace ToolsStore.UnitTests
             // Arrange - create an empty cart
             Cart cart = new Cart();
             // Arrange - create shipping details
-            ShippingDetails shippingDetails = new ShippingDetails();
+            SHIPPING_DETAILS shippingDetails = new SHIPPING_DETAILS();
             // Arrange - create an instance of the controller
             CartController target = new CartController(null, mock.Object);
             // Act
             ViewResult result = target.Checkout(cart, shippingDetails);
             // Assert - check that the order hasn't been passed on to the processor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never());
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<SHIPPING_DETAILS>()), Times.Never());
             // Assert - check that the method is returning the default view
             Assert.AreEqual("", result.ViewName);
             // Assert - check that we are passing an invalid model to the view
@@ -186,7 +186,7 @@ namespace ToolsStore.UnitTests
         }
 
         [TestMethod]
-        public void Cannot_Checkout_Invalid_ShippingDetails()
+        public void Cannot_Checkout_Invalid_Shipping_Details()
         {
             // Arrange - create a mock order processor
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
@@ -198,9 +198,9 @@ namespace ToolsStore.UnitTests
             // Arrange - add an error to the model
             target.ModelState.AddModelError("error", "error");
             // Act - try to checkout
-            ViewResult result = target.Checkout(cart, new ShippingDetails());
+            ViewResult result = target.Checkout(cart, new SHIPPING_DETAILS());
             // Assert - check that the order hasn't been passed on to the processor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Never());
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<SHIPPING_DETAILS>()), Times.Never());
             // Assert - check that the method is returning the default view
             Assert.AreEqual("", result.ViewName);
             // Assert - check that we are passing an invalid model to the view
@@ -218,9 +218,9 @@ namespace ToolsStore.UnitTests
             // Arrange - create an instance of the controller
             CartController target = new CartController(null, mock.Object);
             // Act - try to checkout
-            ViewResult result = target.Checkout(cart, new ShippingDetails());
+            ViewResult result = target.Checkout(cart, new SHIPPING_DETAILS());
             // Assert - check that the order has been passed on to the processor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<ShippingDetails>()), Times.Once());
+            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<SHIPPING_DETAILS>()), Times.Once());
             // Assert - check that the method is returning the Completed view
             Assert.AreEqual("Completed", result.ViewName);
             // Assert - check that we are passing a valid model to the view
