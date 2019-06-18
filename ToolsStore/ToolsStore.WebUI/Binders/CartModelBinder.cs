@@ -16,16 +16,16 @@ namespace ToolsStore.WebUI.Binders
         public object BindModel(ControllerContext controllerContext, ModelBindingContext
         bindingContext)
         {
-            // Получить объект Cart из сессии
-            Cart cart = (Cart)controllerContext.HttpContext.Session[sessionKey];
+            // Получить объект CART из сессии
+            CART cart = (CART)controllerContext.HttpContext.Session[sessionKey];
 
-            // Создать экземпляр Cart, если его не обнаружено в данных сеанса
+            // Создать экземпляр CART, если его не обнаружено в данных сеанса
             if (cart == null)
             {
-                cart = new Cart();
+                cart = new CART();
                 controllerContext.HttpContext.Session[sessionKey] = cart;
             }
-            // Вернуть объект Cart
+            // Вернуть объект CART
             return cart;
         }
     }

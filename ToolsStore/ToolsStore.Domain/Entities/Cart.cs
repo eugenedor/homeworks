@@ -9,7 +9,7 @@ namespace ToolsStore.Domain.Entities
     /// <summary>
     /// Тележка (корзина)
     /// </summary>
-    public class Cart
+    public class CART
     {
         private List<CART_LINE> lineCollection = new List<CART_LINE>();
 

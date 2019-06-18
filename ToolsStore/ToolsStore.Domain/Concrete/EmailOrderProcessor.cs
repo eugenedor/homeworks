@@ -20,7 +20,7 @@ namespace ToolsStore.Domain.Concrete
             emailSettings = settings;
         }
 
-        public void ProcessOrder(Cart cart, SHIPPING_DETAILS shippingInfo)
+        public void ProcessOrder(CART cart, SHIPPING_DETAILS shippingInfo)
         {
             using (var smtpClient = new SmtpClient())
             {
@@ -84,7 +84,7 @@ namespace ToolsStore.Domain.Concrete
             }
         }
 
-        public void SaveOrder(Cart cart, SHIPPING_DETAILS shippingInfo)
+        public void SaveOrder(CART cart, SHIPPING_DETAILS shippingInfo)
         {
             RS_ORDER ordr = new RS_ORDER();
             ordr.Surname = shippingInfo.Surname;

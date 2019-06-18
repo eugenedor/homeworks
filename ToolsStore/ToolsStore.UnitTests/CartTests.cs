@@ -25,7 +25,7 @@ namespace ToolsStore.UnitTests
             Product p1 = new Product { ProductId = 1, Name = "P1" };
             Product p2 = new Product { ProductId = 2, Name = "P2" };
             // Arrange - create a new cart
-            Cart target = new Cart();
+            CART target = new CART();
             // Act
             target.AddItem(p1, 1);
             target.AddItem(p2, 1);
@@ -43,7 +43,7 @@ namespace ToolsStore.UnitTests
             Product p1 = new Product { ProductId = 1, Name = "P1" };
             Product p2 = new Product { ProductId = 2, Name = "P2" };
             // Arrange - create a new cart
-            Cart target = new Cart();
+            CART target = new CART();
             // Act
             target.AddItem(p1, 1);
             target.AddItem(p2, 1);
@@ -63,7 +63,7 @@ namespace ToolsStore.UnitTests
             Product p2 = new Product { ProductId = 2, Name = "P2" };
             Product p3 = new Product { ProductId = 3, Name = "P3" };
             // Arrange - create a new cart
-            Cart target = new Cart();
+            CART target = new CART();
             // Arrange - add some products to the cart
             target.AddItem(p1, 1);
             target.AddItem(p2, 3);
@@ -85,7 +85,7 @@ namespace ToolsStore.UnitTests
             Product p1 = new Product { ProductId = 1, Name = "P1", PriceWithVat = 100M };
             Product p2 = new Product { ProductId = 2, Name = "P2", PriceWithVat = 50M };
             // Arrange - create a new cart
-            Cart target = new Cart();
+            CART target = new CART();
             // Act
             target.AddItem(p1, 1);
             target.AddItem(p2, 1);
@@ -102,7 +102,7 @@ namespace ToolsStore.UnitTests
             Product p1 = new Product { ProductId = 1, Name = "P1", PriceWithVat = 100M };
             Product p2 = new Product { ProductId = 2, Name = "P2", PriceWithVat = 50M };
             // Arrange - create a new cart
-            Cart target = new Cart();
+            CART target = new CART();
             // Arrange - add some items
             target.AddItem(p1, 1);
             target.AddItem(p2, 1);
@@ -121,7 +121,7 @@ namespace ToolsStore.UnitTests
                                                 new Product {ProductId = 1, Name = "P1", CategoryName = "Apples"},
             }.AsQueryable());
             // Arrange - create a Cart
-            Cart cart = new Cart();
+            CART cart = new CART();
             // Arrange - create the controller
             CartController target = new CartController(mock.Object, null);
             // Act - add a product to the cart
@@ -140,7 +140,7 @@ namespace ToolsStore.UnitTests
                                                 new Product {ProductId = 1, Name = "P1", CategoryName = "Apples"},
             }.AsQueryable());
             // Arrange - create a Cart
-            Cart cart = new Cart();
+            CART cart = new CART();
             // Arrange - create the controller
             CartController target = new CartController(mock.Object, null);
             // Act - add a product to the cart
@@ -154,7 +154,7 @@ namespace ToolsStore.UnitTests
         public void Can_View_Cart_Contents()
         {
             // Arrange - create a Cart
-            Cart cart = new Cart();
+            CART cart = new CART();
             // Arrange - create the controller
             CartController target = new CartController(null, null);
             // Act - call the Index action method
@@ -170,7 +170,7 @@ namespace ToolsStore.UnitTests
             // Arrange - create a mock order processor
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             // Arrange - create an empty cart
-            Cart cart = new Cart();
+            CART cart = new CART();
             // Arrange - create shipping details
             SHIPPING_DETAILS shippingDetails = new SHIPPING_DETAILS();
             // Arrange - create an instance of the controller
@@ -178,7 +178,7 @@ namespace ToolsStore.UnitTests
             // Act
             ViewResult result = target.Checkout(cart, shippingDetails);
             // Assert - check that the order hasn't been passed on to the processor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<SHIPPING_DETAILS>()), Times.Never());
+            mock.Verify(m => m.ProcessOrder(It.IsAny<CART>(), It.IsAny<SHIPPING_DETAILS>()), Times.Never());
             // Assert - check that the method is returning the default view
             Assert.AreEqual("", result.ViewName);
             // Assert - check that we are passing an invalid model to the view
@@ -191,7 +191,7 @@ namespace ToolsStore.UnitTests
             // Arrange - create a mock order processor
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             // Arrange - create a cart with an item
-            Cart cart = new Cart();
+            CART cart = new CART();
             cart.AddItem(new Product(), 1);
             // Arrange - create an instance of the controller
             CartController target = new CartController(null, mock.Object);
@@ -200,7 +200,7 @@ namespace ToolsStore.UnitTests
             // Act - try to checkout
             ViewResult result = target.Checkout(cart, new SHIPPING_DETAILS());
             // Assert - check that the order hasn't been passed on to the processor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<SHIPPING_DETAILS>()), Times.Never());
+            mock.Verify(m => m.ProcessOrder(It.IsAny<CART>(), It.IsAny<SHIPPING_DETAILS>()), Times.Never());
             // Assert - check that the method is returning the default view
             Assert.AreEqual("", result.ViewName);
             // Assert - check that we are passing an invalid model to the view
@@ -213,14 +213,14 @@ namespace ToolsStore.UnitTests
             // Arrange - create a mock order processor
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             // Arrange - create a cart with an item
-            Cart cart = new Cart();
+            CART cart = new CART();
             cart.AddItem(new Product(), 1);
             // Arrange - create an instance of the controller
             CartController target = new CartController(null, mock.Object);
             // Act - try to checkout
             ViewResult result = target.Checkout(cart, new SHIPPING_DETAILS());
             // Assert - check that the order has been passed on to the processor
-            mock.Verify(m => m.ProcessOrder(It.IsAny<Cart>(), It.IsAny<SHIPPING_DETAILS>()), Times.Once());
+            mock.Verify(m => m.ProcessOrder(It.IsAny<CART>(), It.IsAny<SHIPPING_DETAILS>()), Times.Once());
             // Assert - check that the method is returning the Completed view
             Assert.AreEqual("Completed", result.ViewName);
             // Assert - check that we are passing a valid model to the view

@@ -21,7 +21,7 @@ namespace ToolsStore.WebUI
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ControllerBuilder.Current.SetControllerFactory(new NinjectControllerFactory());
-            ModelBinders.Binders.Add(typeof(Cart), new CartModelBinder());
+            ModelBinders.Binders.Add(typeof(CART), new CartModelBinder());
         }
     }
 }

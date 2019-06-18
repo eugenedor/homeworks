@@ -10,7 +10,7 @@ namespace ToolsStore.WebUI.Models
         /// <summary>
         /// Тележка
         /// </summary>
-        public Cart Cart { get; set; }
+        public CART Cart { get; set; }
 
         /// <summary>
         /// Url

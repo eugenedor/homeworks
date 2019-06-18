@@ -21,7 +21,7 @@ namespace ToolsStore.WebUI.Controllers
         }
 
         // GET: Cart
-        public ViewResult Index(Cart cart, string returnUrl)
+        public ViewResult Index(CART cart, string returnUrl)
         {
             return View(new CartIndexViewModel {
                 Cart = cart,                      //Теперь через специальный связыватель модели, а так: "Cart = GetCart(),"
@@ -30,7 +30,7 @@ namespace ToolsStore.WebUI.Controllers
         }
 
         [HttpPost]
-        public ViewResult Checkout(Cart cart, SHIPPING_DETAILS shippingDetails)
+        public ViewResult Checkout(CART cart, SHIPPING_DETAILS shippingDetails)
         {
             if (cart.Lines.Count() == 0)
             {
@@ -49,7 +49,7 @@ namespace ToolsStore.WebUI.Controllers
             }
         }
 
-        public RedirectToRouteResult AddToCart(Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult AddToCart(CART cart, int productId, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
@@ -59,7 +59,7 @@ namespace ToolsStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemFromCart(Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult RemFromCart(CART cart, int productId, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
@@ -69,7 +69,7 @@ namespace ToolsStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        public RedirectToRouteResult RemLineFromCart(Cart cart, int productId, string returnUrl)
+        public RedirectToRouteResult RemLineFromCart(CART cart, int productId, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
@@ -79,18 +79,18 @@ namespace ToolsStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
-        private Cart GetCart()
+        private CART GetCart()
         {
-            Cart cart = (Cart)Session["Cart"];
+            CART cart = (CART)Session["Cart"];
             if (cart == null)
             {
-                cart = new Cart();
+                cart = new CART();
                 Session["Cart"] = cart;
             }
             return cart;
         }
 
-        public PartialViewResult Summary(Cart cart)
+        public PartialViewResult Summary(CART cart)
         {
             return PartialView(cart);
         }
@@ -100,7 +100,7 @@ namespace ToolsStore.WebUI.Controllers
             return View(new SHIPPING_DETAILS());
         }
 
-        public RedirectToRouteResult ClearCart(Cart cart, string returnUrl)
+        public RedirectToRouteResult ClearCart(CART cart, string returnUrl)
         {
             if (cart.Lines.Count() > 0)
             {
