@@ -48,5 +48,12 @@ namespace ToolsStore.Domain.Concrete
             }
             return dbEntry;
         }
+
+        public string NameApp()
+        {
+            string nameApp;
+            nameApp = context.MT_SETTING.Where(x => x.Code.ToLower() == "nameapp").FirstOrDefault().Value.ToString();
+            return nameApp;
+        }
     }
 }

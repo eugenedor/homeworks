@@ -61,5 +61,7 @@ namespace ToolsStore.Domain.Abstract
         RS_PRICE DeletePrice(long priceId);
 
         void ClearImage(long productId);
+
+        string NameApp();
     }
 }

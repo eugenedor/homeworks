@@ -14,5 +14,7 @@ namespace ToolsStore.Domain.Abstract
         void SaveSetting(MT_SETTING setting);
 
         MT_SETTING DeleteSetting(long settingId);
+
+        string NameApp();
     }
 }

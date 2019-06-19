@@ -1,7 +1,7 @@
 ﻿@model ToolsStore.WebUI.Models.ProductsListViewModel
 
 @{
-    ViewBag.Title = "Products";
+    ViewBag.Title = @ViewBag.NameApp;
 }
 
 @foreach (var p in Model.Products)

@@ -525,5 +525,13 @@ namespace ToolsStore.Domain.Concrete
             return dbEntry;
         }
         #endregion
+
+        public string NameApp()
+        {
+            string nameApp;
+            var settingRepo = new EFSettingRepository();
+            nameApp = settingRepo.NameApp();
+            return nameApp;
+        }
     }
 }

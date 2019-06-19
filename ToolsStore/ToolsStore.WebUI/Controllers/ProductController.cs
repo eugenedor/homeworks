@@ -42,7 +42,8 @@ namespace ToolsStore.WebUI.Controllers
             //                      .Skip((page - 1) * PageSize)
             //                      .Take(PageSize));
 
-            DateTime curDate = DateTime.Today;
+            ViewBag.NameApp = this.repository.NameApp();
+            DateTime curDate = DateTime.Today;            
 
             IEnumerable<PRODUCT> prd = (from p in repository.Products
                                         where (equipment == -1 || p.EquipmentId == equipment)

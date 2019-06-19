@@ -9,7 +9,7 @@
 <body>
     <div id="header">
         @{Html.RenderAction("Summary", "Cart");}
-        <div class="title">Магазин инструментов</div>
+        <div class="title">@ViewBag.Title</div>
     </div>
     <div id="categories">
         @{ Html.RenderAction("MenuCategory", "Nav"); }
