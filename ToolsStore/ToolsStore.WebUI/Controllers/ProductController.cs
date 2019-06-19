@@ -44,7 +44,7 @@ namespace ToolsStore.WebUI.Controllers
 
             DateTime curDate = DateTime.Today;
 
-            IEnumerable<Product> prd = (from p in repository.Products
+            IEnumerable<PRODUCT> prd = (from p in repository.Products
                                         where (equipment == -1 || p.EquipmentId == equipment)
                                               && (category == -1 || p.CategoryId == category)
                                         orderby p.ProductId
@@ -186,7 +186,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult ProductInfo(long productId, string returnUrl)
         {
-            Product product = repository.Products.Where(p => p.ProductId == productId).FirstOrDefault();
+            PRODUCT product = repository.Products.Where(p => p.ProductId == productId).FirstOrDefault();
             ViewBag.ReturnUrl = returnUrl;
             return View(product);
         }

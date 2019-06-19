@@ -51,7 +51,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public RedirectToRouteResult AddToCart(CART cart, int productId, string returnUrl)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
+            PRODUCT product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
             {
                 cart.AddItem(product, 1);         //GetCart().AddItem(product, 1);
@@ -61,7 +61,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public RedirectToRouteResult RemFromCart(CART cart, int productId, string returnUrl)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
+            PRODUCT product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
             {
                 cart.RemoveItem(product);         //GetCart().RemoveItem(product);
@@ -71,7 +71,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public RedirectToRouteResult RemLineFromCart(CART cart, int productId, string returnUrl)
         {
-            Product product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
+            PRODUCT product = repository.Products.FirstOrDefault(p => p.ProductId == productId);
             if (product != null)
             {
                 cart.RemoveLine(product);         //GetCart().RemoveLine(product);

@@ -16,7 +16,7 @@ namespace ToolsStore.Domain.Entities
         /// <summary>
         /// Добавить товар в корзину
         /// </summary>
-        public void AddItem(Product product, int quantity)
+        public void AddItem(PRODUCT product, int quantity)
         {
             CART_LINE line = lineCollection.Where(p => p.Product.ProductId == product.ProductId).FirstOrDefault();
 
@@ -37,7 +37,7 @@ namespace ToolsStore.Domain.Entities
         /// <summary>
         /// Удалить 1 элемент товара из корзины
         /// </summary>
-        public void RemoveItem(Product product)
+        public void RemoveItem(PRODUCT product)
         {
             //Удалить одну позицию
             int cntQuantity = lineCollection.Where(p => p.Product.ProductId == product.ProductId).Sum(x => x.Quantity);
@@ -55,7 +55,7 @@ namespace ToolsStore.Domain.Entities
         /// <summary>
         /// Удалить товар из корзины
         /// </summary>
-        public void RemoveLine(Product product)
+        public void RemoveLine(PRODUCT product)
         {
             lineCollection.RemoveAll(l => l.Product.ProductId == product.ProductId);
         }

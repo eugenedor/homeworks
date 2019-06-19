@@ -26,7 +26,7 @@ namespace ToolsStore.Domain.Abstract
 
         IQueryable<SK_EQUIPMENT> NavEquipments { get; }
 
-        IEnumerable<Product> Products { get; }
+        IEnumerable<PRODUCT> Products { get; }
 
         void SaveCategory(CT_CATEGORY category);
 

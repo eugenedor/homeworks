@@ -22,8 +22,8 @@ namespace ToolsStore.UnitTests
         public void Can_Add_New_Lines()
         {
             // Arrange - create some test products
-            Product p1 = new Product { ProductId = 1, Name = "P1" };
-            Product p2 = new Product { ProductId = 2, Name = "P2" };
+            PRODUCT p1 = new PRODUCT { ProductId = 1, Name = "P1" };
+            PRODUCT p2 = new PRODUCT { ProductId = 2, Name = "P2" };
             // Arrange - create a new cart
             CART target = new CART();
             // Act
@@ -40,8 +40,8 @@ namespace ToolsStore.UnitTests
         public void Can_Add_Quantity_For_Existing_Lines()
         {
             // Arrange - create some test products
-            Product p1 = new Product { ProductId = 1, Name = "P1" };
-            Product p2 = new Product { ProductId = 2, Name = "P2" };
+            PRODUCT p1 = new PRODUCT { ProductId = 1, Name = "P1" };
+            PRODUCT p2 = new PRODUCT { ProductId = 2, Name = "P2" };
             // Arrange - create a new cart
             CART target = new CART();
             // Act
@@ -59,9 +59,9 @@ namespace ToolsStore.UnitTests
         public void Can_Remove_Line()
         {
             // Arrange - create some test products
-            Product p1 = new Product { ProductId = 1, Name = "P1" };
-            Product p2 = new Product { ProductId = 2, Name = "P2" };
-            Product p3 = new Product { ProductId = 3, Name = "P3" };
+            PRODUCT p1 = new PRODUCT { ProductId = 1, Name = "P1" };
+            PRODUCT p2 = new PRODUCT { ProductId = 2, Name = "P2" };
+            PRODUCT p3 = new PRODUCT { ProductId = 3, Name = "P3" };
             // Arrange - create a new cart
             CART target = new CART();
             // Arrange - add some products to the cart
@@ -82,8 +82,8 @@ namespace ToolsStore.UnitTests
         public void Calculate_Cart_Total()
         {
             // Arrange - create some test products
-            Product p1 = new Product { ProductId = 1, Name = "P1", PriceWithVat = 100M };
-            Product p2 = new Product { ProductId = 2, Name = "P2", PriceWithVat = 50M };
+            PRODUCT p1 = new PRODUCT { ProductId = 1, Name = "P1", PriceWithVat = 100M };
+            PRODUCT p2 = new PRODUCT { ProductId = 2, Name = "P2", PriceWithVat = 50M };
             // Arrange - create a new cart
             CART target = new CART();
             // Act
@@ -99,8 +99,8 @@ namespace ToolsStore.UnitTests
         public void Can_Clear_Contents()
         {
             // Arrange - create some test products
-            Product p1 = new Product { ProductId = 1, Name = "P1", PriceWithVat = 100M };
-            Product p2 = new Product { ProductId = 2, Name = "P2", PriceWithVat = 50M };
+            PRODUCT p1 = new PRODUCT { ProductId = 1, Name = "P1", PriceWithVat = 100M };
+            PRODUCT p2 = new PRODUCT { ProductId = 2, Name = "P2", PriceWithVat = 50M };
             // Arrange - create a new cart
             CART target = new CART();
             // Arrange - add some items
@@ -117,8 +117,8 @@ namespace ToolsStore.UnitTests
         {
             // Arrange - create the mock repository
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new Product[] {
-                                                new Product {ProductId = 1, Name = "P1", CategoryName = "Apples"},
+            mock.Setup(m => m.Products).Returns(new PRODUCT[] {
+                                                new PRODUCT {ProductId = 1, Name = "P1", CategoryName = "Apples"},
             }.AsQueryable());
             // Arrange - create a Cart
             CART cart = new CART();
@@ -136,8 +136,8 @@ namespace ToolsStore.UnitTests
         {
             // Arrange - create the mock repository
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new Product[] {
-                                                new Product {ProductId = 1, Name = "P1", CategoryName = "Apples"},
+            mock.Setup(m => m.Products).Returns(new PRODUCT[] {
+                                                new PRODUCT {ProductId = 1, Name = "P1", CategoryName = "Apples"},
             }.AsQueryable());
             // Arrange - create a Cart
             CART cart = new CART();
@@ -192,7 +192,7 @@ namespace ToolsStore.UnitTests
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             // Arrange - create a cart with an item
             CART cart = new CART();
-            cart.AddItem(new Product(), 1);
+            cart.AddItem(new PRODUCT(), 1);
             // Arrange - create an instance of the controller
             CartController target = new CartController(null, mock.Object);
             // Arrange - add an error to the model
@@ -214,7 +214,7 @@ namespace ToolsStore.UnitTests
             Mock<IOrderProcessor> mock = new Mock<IOrderProcessor>();
             // Arrange - create a cart with an item
             CART cart = new CART();
-            cart.AddItem(new Product(), 1);
+            cart.AddItem(new PRODUCT(), 1);
             // Arrange - create an instance of the controller
             CartController target = new CartController(null, mock.Object);
             // Act - try to checkout

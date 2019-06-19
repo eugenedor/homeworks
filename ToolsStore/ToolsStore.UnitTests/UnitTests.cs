@@ -22,12 +22,12 @@ namespace ToolsStore.UnitTests
             // Arrange
             // - create the mock repository
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new Product[] {
-                                                new Product {ProductId = 1, Name = "P1"},
-                                                new Product {ProductId = 2, Name = "P2"},
-                                                new Product {ProductId = 3, Name = "P3"},
-                                                new Product {ProductId = 4, Name = "P4"},
-                                                new Product {ProductId = 5, Name = "P5"}
+            mock.Setup(m => m.Products).Returns(new PRODUCT[] {
+                                                new PRODUCT {ProductId = 1, Name = "P1"},
+                                                new PRODUCT {ProductId = 2, Name = "P2"},
+                                                new PRODUCT {ProductId = 3, Name = "P3"},
+                                                new PRODUCT {ProductId = 4, Name = "P4"},
+                                                new PRODUCT {ProductId = 5, Name = "P5"}
             }.AsQueryable());
             // create a controller and make the page size 3 items
             ProductController controller = new ProductController(mock.Object);
@@ -35,7 +35,7 @@ namespace ToolsStore.UnitTests
             // Action
             ProductsListViewModel result = (ProductsListViewModel)controller.List(-1, -1, 2).Model; //IEnumerable<RS_PRODUCT> result = (IEnumerable<RS_PRODUCT>)controller.List(2).Model;
             // Assert
-            Product[] prodArray = result.Products.ToArray();
+            PRODUCT[] prodArray = result.Products.ToArray();
             Assert.IsTrue(prodArray.Length == 2);
             Assert.AreEqual(prodArray[0].Name, "P4");
             Assert.AreEqual(prodArray[1].Name, "P5");
@@ -69,12 +69,12 @@ namespace ToolsStore.UnitTests
         {
             // Arrange
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new Product[] {
-                                                new Product {ProductId = 1, EquipmentId = 1, Name = "P1"},
-                                                new Product {ProductId = 2, EquipmentId = 2, Name = "P2"},
-                                                new Product {ProductId = 3, EquipmentId = 3, Name = "P3"},
-                                                new Product {ProductId = 4, EquipmentId = 4, Name = "P4"},
-                                                new Product {ProductId = 5, EquipmentId = 5, Name = "P5"}
+            mock.Setup(m => m.Products).Returns(new PRODUCT[] {
+                                                new PRODUCT {ProductId = 1, EquipmentId = 1, Name = "P1"},
+                                                new PRODUCT {ProductId = 2, EquipmentId = 2, Name = "P2"},
+                                                new PRODUCT {ProductId = 3, EquipmentId = 3, Name = "P3"},
+                                                new PRODUCT {ProductId = 4, EquipmentId = 4, Name = "P4"},
+                                                new PRODUCT {ProductId = 5, EquipmentId = 5, Name = "P5"}
             }.AsQueryable());
             // Arrange
             ProductController controller = new ProductController(mock.Object);
@@ -95,18 +95,18 @@ namespace ToolsStore.UnitTests
             // Arrange
             // - create the mock repository
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new Product[] {
-                                                new Product {ProductId = 1, Name = "P1", EquipmentId = 1},
-                                                new Product {ProductId = 2, Name = "P2", EquipmentId = 2},
-                                                new Product {ProductId = 3, Name = "P3", EquipmentId = 1},
-                                                new Product {ProductId = 4, Name = "P4", EquipmentId = 2},
-                                                new Product {ProductId = 5, Name = "P5", EquipmentId = 3}
+            mock.Setup(m => m.Products).Returns(new PRODUCT[] {
+                                                new PRODUCT {ProductId = 1, Name = "P1", EquipmentId = 1},
+                                                new PRODUCT {ProductId = 2, Name = "P2", EquipmentId = 2},
+                                                new PRODUCT {ProductId = 3, Name = "P3", EquipmentId = 1},
+                                                new PRODUCT {ProductId = 4, Name = "P4", EquipmentId = 2},
+                                                new PRODUCT {ProductId = 5, Name = "P5", EquipmentId = 3}
             }.AsQueryable());
             // Arrange - create a controller and make the page size 3 items
             ProductController controller = new ProductController(mock.Object);
             controller.PageSize = 3;
             // Action
-            Product[] result = ((ProductsListViewModel)controller.List(-1, 2, 1).Model).Products.ToArray();
+            PRODUCT[] result = ((ProductsListViewModel)controller.List(-1, 2, 1).Model).Products.ToArray();
             // Assert
             Assert.AreEqual(result.Length, 2);
             Assert.IsTrue(result[0].Name == "P2" && result[0].EquipmentId == 2);
@@ -160,12 +160,12 @@ namespace ToolsStore.UnitTests
             // Arrange
             // - create the mock repository
             Mock<IProductRepository> mock = new Mock<IProductRepository>();
-            mock.Setup(m => m.Products).Returns(new Product[] {
-                                                new Product {ProductId = 1, Name = "P1", EquipmentId = 1},
-                                                new Product {ProductId = 2, Name = "P2", EquipmentId = 2},
-                                                new Product {ProductId = 3, Name = "P3", EquipmentId = 1},
-                                                new Product {ProductId = 4, Name = "P4", EquipmentId = 2},
-                                                new Product {ProductId = 5, Name = "P5", EquipmentId = 3}
+            mock.Setup(m => m.Products).Returns(new PRODUCT[] {
+                                                new PRODUCT {ProductId = 1, Name = "P1", EquipmentId = 1},
+                                                new PRODUCT {ProductId = 2, Name = "P2", EquipmentId = 2},
+                                                new PRODUCT {ProductId = 3, Name = "P3", EquipmentId = 1},
+                                                new PRODUCT {ProductId = 4, Name = "P4", EquipmentId = 2},
+                                                new PRODUCT {ProductId = 5, Name = "P5", EquipmentId = 3}
             }.AsQueryable());
             // Arrange - create a controller and make the page size 3 items
             ProductController target = new ProductController(mock.Object);

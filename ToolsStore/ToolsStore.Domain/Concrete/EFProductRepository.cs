@@ -58,8 +58,8 @@ namespace ToolsStore.Domain.Concrete
         }
         #endregion
 
-        #region Product - Продукция. Запрос или вьюха? Вот в чем вопрос.
-        public IEnumerable<Product> Products
+        #region PRODUCT - Продукция. Запрос или вьюха? Вот в чем вопрос.
+        public IEnumerable<PRODUCT> Products
         {
             get
             {
@@ -84,7 +84,7 @@ namespace ToolsStore.Domain.Concrete
                                 from v in v2.DefaultIfEmpty()
                                 where pr.IsActive
                                 orderby pr.ProductId
-                                select new Product
+                                select new PRODUCT
                                 {
                                     ProductId = pr.ProductId,
                                     EquipmentId = pr.EquipmentId,
@@ -313,7 +313,7 @@ namespace ToolsStore.Domain.Concrete
         }
         #endregion
 
-        #region Product - Товар
+        #region PRODUCT - Товар
         public void SaveProduct(RS_PRODUCT product)
         {
             //image
@@ -349,7 +349,7 @@ namespace ToolsStore.Domain.Concrete
                     img = context.CT_IMAGE.Where(x => x.ImageId == product.ImageId).Single();
             }
 
-            //product
+            //PRODUCT
             product.ImageId = img != null ? img.ImageId : (long?)null;
             product.CT_IMAGE = img;
 

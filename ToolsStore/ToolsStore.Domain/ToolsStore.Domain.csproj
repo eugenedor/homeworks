@@ -102,7 +102,7 @@
     <Compile Include="Entities\MT_LOAD_RULE_SPEC.cs" />
     <Compile Include="Entities\MT_SETTING.cs" />
     <Compile Include="Entities\ORDER_CONTENT.cs" />
-    <Compile Include="Entities\Product.cs" />
+    <Compile Include="Entities\PRODUCT.cs" />
     <Compile Include="Entities\RS_CART.cs" />
     <Compile Include="Entities\RS_ORDER.cs" />
     <Compile Include="Entities\RS_PRICE.cs" />

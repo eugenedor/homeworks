@@ -14,7 +14,7 @@ namespace ToolsStore.Domain.Entities
         /// <summary>
         /// Товар
         /// </summary>
-        public Product Product { get; set; }
+        public PRODUCT Product { get; set; }
 
         /// <summary>
         /// Количество

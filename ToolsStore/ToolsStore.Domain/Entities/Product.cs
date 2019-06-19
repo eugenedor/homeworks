@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ToolsStore.Domain.Entities
 {
-    public class Product
+    public class PRODUCT
     {
         public long ProductId { get; set; }
 
