@@ -52,7 +52,7 @@ namespace ToolsStore.Domain.Concrete
         public string NameApp()
         {
             string nameApp;
-            nameApp = context.MT_SETTING.Where(x => x.Code.ToLower() == "nameapp").FirstOrDefault().Value.ToString();
+            nameApp = context.MT_SETTING.Where(x => x.Code.ToLower() == "nameapp").FirstOrDefault().Value.ToString() ?? "Магазин инструментов";
             return nameApp;
         }
     }

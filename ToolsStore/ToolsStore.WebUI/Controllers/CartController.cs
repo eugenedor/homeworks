@@ -23,6 +23,7 @@ namespace ToolsStore.WebUI.Controllers
         // GET: Cart
         public ViewResult Index(CART cart, string returnUrl)
         {
+            ViewBag.NameApp = this.repository.NameApp();
             return View(new CartIndexViewModel {
                 Cart = cart,                      //Теперь через специальный связыватель модели, а так: "Cart = GetCart(),"
                 ReturnUrl = returnUrl
@@ -40,6 +41,7 @@ namespace ToolsStore.WebUI.Controllers
             {
                 orderProcessor.ProcessOrder(cart, shippingDetails);
                 orderProcessor.SaveOrder(cart, shippingDetails);
+                ViewBag.NameApp = this.repository.NameApp();
                 cart.Clear();
                 return View("Completed");
             }
@@ -97,6 +99,7 @@ namespace ToolsStore.WebUI.Controllers
 
         public ViewResult Checkout()
         {
+            ViewBag.NameApp = this.repository.NameApp();
             return View(new SHIPPING_DETAILS());
         }
 
