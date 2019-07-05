@@ -21,7 +21,6 @@ namespace ToolsStore.Domain.Entities
         public virtual DbSet<MT_LOAD_RULE> MT_LOAD_RULE { get; set; }
         public virtual DbSet<MT_LOAD_RULE_SPEC> MT_LOAD_RULE_SPEC { get; set; }
         public virtual DbSet<MT_SETTING> MT_SETTING { get; set; }
-        public virtual DbSet<RS_CART> RS_CART { get; set; }
         public virtual DbSet<RS_ORDER> RS_ORDER { get; set; }
         public virtual DbSet<RS_ORDER_CONTENT> RS_ORDER_CONTENT { get; set; }
         public virtual DbSet<RS_PRICE> RS_PRICE { get; set; }
@@ -52,11 +51,6 @@ namespace ToolsStore.Domain.Entities
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RS_ORDER>()
-                .HasMany(e => e.RS_CART)
-                .WithRequired(e => e.RS_ORDER)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<RS_ORDER>()
                 .HasMany(e => e.RS_ORDER_CONTENT)
                 .WithRequired(e => e.RS_ORDER)
                 .WillCascadeOnDelete(false);
@@ -84,11 +78,6 @@ namespace ToolsStore.Domain.Entities
             modelBuilder.Entity<RS_PRODUCT>()
                 .Property(e => e.Height)
                 .HasPrecision(10, 2);
-
-            modelBuilder.Entity<RS_PRODUCT>()
-                .HasMany(e => e.RS_CART)
-                .WithRequired(e => e.RS_PRODUCT)
-                .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<RS_PRODUCT>()
                 .HasMany(e => e.RS_ORDER_CONTENT)

@@ -11,7 +11,6 @@ namespace ToolsStore.Domain.Entities
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public RS_PRODUCT()
         {
-            RS_CART = new HashSet<RS_CART>();
             RS_ORDER_CONTENT = new HashSet<RS_ORDER_CONTENT>();
             RS_PRICE = new HashSet<RS_PRICE>();
         }
@@ -51,9 +50,6 @@ namespace ToolsStore.Domain.Entities
         public bool IsActive { get; set; }
 
         public virtual CT_IMAGE CT_IMAGE { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<RS_CART> RS_CART { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_ORDER_CONTENT> RS_ORDER_CONTENT { get; set; }
