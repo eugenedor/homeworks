@@ -1,0 +1,8 @@
+USE ToolsStore;
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE OBJECT_ID = OBJECT_ID('dbo.RS_CART') AND type = N'U')
+BEGIN
+  DROP TABLE dbo.RS_CART;
+END
+GO
