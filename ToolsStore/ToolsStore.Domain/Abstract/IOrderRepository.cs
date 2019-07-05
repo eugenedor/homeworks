@@ -11,7 +11,7 @@ namespace ToolsStore.Domain.Abstract
     {
         IQueryable<RS_ORDER> Orders { get; }
 
-        IQueryable<RS_ORDER_CONTENT> Carts { get; }
+        IQueryable<RS_ORDER_CONTENT> OrderContents { get; }
 
         IEnumerable<ORDER_CONTENT> OrdContents { get; }
     }

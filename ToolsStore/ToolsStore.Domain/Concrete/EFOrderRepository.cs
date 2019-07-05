@@ -17,7 +17,7 @@ namespace ToolsStore.Domain.Concrete
             get { return context.RS_ORDER; }
         }
 
-        public IQueryable<RS_ORDER_CONTENT> Carts       //TODO: Rename
+        public IQueryable<RS_ORDER_CONTENT> OrderContents
         {
             get { return context.RS_ORDER_CONTENT; }
         }
