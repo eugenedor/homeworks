@@ -8,7 +8,7 @@ namespace ToolsStore.Domain.Entities
 {
     public class ORDER_CONTENT
     {
-        public long CartId { get; set; }
+        public long OrderContentId { get; set; }
 
         public long OrderId { get; set; }
 

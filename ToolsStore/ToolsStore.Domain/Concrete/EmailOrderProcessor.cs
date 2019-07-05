@@ -110,12 +110,12 @@ namespace ToolsStore.Domain.Concrete
             {
                 foreach (CART_LINE crtLine in cart.Lines)
                 {
-                    RS_CART crt = new RS_CART();
-                    crt.OrderId = orderId;
-                    crt.ProductId = crtLine.Product.ProductId;
-                    crt.PriceId = crtLine.Product.PriceId;
-                    crt.Quantity = crtLine.Quantity;
-                    context.RS_CART.Add(crt);
+                    RS_ORDER_CONTENT orc = new RS_ORDER_CONTENT();
+                    orc.OrderId = orderId;
+                    orc.ProductId = crtLine.Product.ProductId;
+                    orc.PriceId = crtLine.Product.PriceId;
+                    orc.Quantity = crtLine.Quantity;
+                    context.RS_ORDER_CONTENT.Add(orc);
                 }
                 context.SaveChanges();
             }

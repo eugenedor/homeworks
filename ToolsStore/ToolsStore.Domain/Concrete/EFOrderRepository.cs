@@ -17,39 +17,39 @@ namespace ToolsStore.Domain.Concrete
             get { return context.RS_ORDER; }
         }
 
-        public IQueryable<RS_CART> Carts
+        public IQueryable<RS_ORDER_CONTENT> Carts       //TODO: Rename
         {
-            get { return context.RS_CART; }
+            get { return context.RS_ORDER_CONTENT; }
         }
 
         public IEnumerable<ORDER_CONTENT> OrderContents
         {
             get
             {
-                var orderContent = ( from crt in context.RS_CART
+                var orderContent = ( from orc in context.RS_ORDER_CONTENT
 
-                                     join pr in context.RS_PRODUCT on crt.ProductId equals pr.ProductId
+                                     join pr in context.RS_PRODUCT on orc.ProductId equals pr.ProductId
 
                                      join eq in context.SK_EQUIPMENT on pr.EquipmentId equals eq.EquipmentId
 
                                      join ct in context.CT_CATEGORY on eq.CategoryId equals ct.CategoryId
 
-                                     join prc1 in context.RS_PRICE on crt.PriceId equals prc1.PriceId into prc2
+                                     join prc1 in context.RS_PRICE on orc.PriceId equals prc1.PriceId into prc2
                                      from prc in prc2.DefaultIfEmpty()
 
-                                     orderby crt.CartId, crt.OrderId
+                                     orderby orc.OrderContentId, orc.OrderId
                                      select new ORDER_CONTENT
                                      {
-                                         CartId = crt.CartId,
-                                         OrderId = crt.OrderId,
-                                         ProductId = crt.ProductId,
+                                         OrderContentId = orc.OrderContentId,
+                                         OrderId = orc.OrderId,
+                                         ProductId = orc.ProductId,
                                          ProductName = pr.Name,
                                          EquipmentName = eq.Name,
                                          CategoryName = (ct != null) ? ct.Name : string.Empty,
                                          PriceId = (prc != null) ? prc.PriceId : -1,
                                          Price = (prc != null) ? prc.PriceWithVat : 0,
-                                         Quantity = crt.Quantity,
-                                         Summ = ((prc != null) ? prc.PriceWithVat : 0) * crt.Quantity
+                                         Quantity = orc.Quantity,
+                                         Summ = ((prc != null) ? prc.PriceWithVat : 0) * orc.Quantity
                                      }).ToList();
 
                 return orderContent;

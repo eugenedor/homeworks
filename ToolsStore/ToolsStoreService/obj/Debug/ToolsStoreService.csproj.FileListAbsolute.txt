@@ -9,4 +9,3 @@ E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.ToolsStoreS
 E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.csproj.GenerateResource.Cache
 E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.exe
 E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.pdb
-E:\projects\ToolsStore\ToolsStoreService\obj\Debug\ToolsStoreService.csprojResolveAssemblyReference.cache
