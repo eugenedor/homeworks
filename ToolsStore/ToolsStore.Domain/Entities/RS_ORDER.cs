@@ -12,6 +12,7 @@ namespace ToolsStore.Domain.Entities
         public RS_ORDER()
         {
             RS_CART = new HashSet<RS_CART>();
+            RS_ORDER_CONTENT = new HashSet<RS_ORDER_CONTENT>();
         }
 
         [Key]
@@ -64,5 +65,8 @@ namespace ToolsStore.Domain.Entities
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RS_CART> RS_CART { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<RS_ORDER_CONTENT> RS_ORDER_CONTENT { get; set; }
     }
 }
