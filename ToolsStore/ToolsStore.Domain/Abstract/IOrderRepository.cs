@@ -13,6 +13,6 @@ namespace ToolsStore.Domain.Abstract
 
         IQueryable<RS_ORDER_CONTENT> Carts { get; }
 
-        IEnumerable<ORDER_CONTENT> OrderContents { get; }
+        IEnumerable<ORDER_CONTENT> OrdContents { get; }
     }
 }

@@ -22,7 +22,7 @@ namespace ToolsStore.Domain.Concrete
             get { return context.RS_ORDER_CONTENT; }
         }
 
-        public IEnumerable<ORDER_CONTENT> OrderContents
+        public IEnumerable<ORDER_CONTENT> OrdContents
         {
             get
             {
