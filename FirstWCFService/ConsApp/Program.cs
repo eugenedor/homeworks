@@ -20,7 +20,7 @@ namespace ConsApp
             //SecondAsync
             Console.WriteLine(Method1Async(cl).Result);
 
-            //thirdAsync
+            //ThirdAsync
             Console.WriteLine(Method2Async(cl, str).Result);
 
             Console.ReadKey();
