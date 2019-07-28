@@ -32,6 +32,12 @@ namespace ConsApp.ServiceReference1 {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFirstWCFService/Second", ReplyAction="http://tempuri.org/IFirstWCFService/SecondResponse")]
         System.Threading.Tasks.Task<string> SecondAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFirstWCFService/Third", ReplyAction="http://tempuri.org/IFirstWCFService/ThirdResponse")]
+        string Third(string name);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IFirstWCFService/Third", ReplyAction="http://tempuri.org/IFirstWCFService/ThirdResponse")]
+        System.Threading.Tasks.Task<string> ThirdAsync(string name);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -83,6 +89,14 @@ namespace ConsApp.ServiceReference1 {
         
         public System.Threading.Tasks.Task<string> SecondAsync() {
             return base.Channel.SecondAsync();
+        }
+        
+        public string Third(string name) {
+            return base.Channel.Third(name);
+        }
+        
+        public System.Threading.Tasks.Task<string> ThirdAsync(string name) {
+            return base.Channel.ThirdAsync(name);
         }
     }
 }

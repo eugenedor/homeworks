@@ -18,14 +18,22 @@ namespace ConsApp
             Console.WriteLine(cl.First(str));
 
             //SecondAsync
-            Console.WriteLine(MethodAsync(cl).Result);
+            Console.WriteLine(Method1Async(cl).Result);
+
+            //thirdAsync
+            Console.WriteLine(Method2Async(cl, str).Result);
 
             Console.ReadKey();
         }
 
-        static async Task<string> MethodAsync(FirstWCFServiceClient c)
+        static async Task<string> Method1Async(FirstWCFServiceClient c)
         {
             return await c.SecondAsync();
+        }
+
+        static async Task<string> Method2Async(FirstWCFServiceClient c, string txt)
+        {
+            return await c.ThirdAsync(txt);
         }
     }
 }

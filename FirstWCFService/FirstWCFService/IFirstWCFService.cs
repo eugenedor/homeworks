@@ -19,5 +19,8 @@ namespace FirstWCFService
 
         [OperationContract]
         string Second();
+
+        [OperationContract]
+        string Third(string name);
     }
 }

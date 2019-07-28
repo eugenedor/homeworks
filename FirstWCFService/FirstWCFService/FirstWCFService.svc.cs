@@ -24,5 +24,10 @@ namespace FirstWCFService
         {
             return "Welcome to the second method WCF web service application!";
         }
+
+        public string Third(string name)
+        {
+            return "Welcome to the third method WCF web service application" + name;
+        }
     }
 }
