@@ -1,7 +1,7 @@
 USE ToolsStore;
 GO
 
-declare @TableName sysname = 'V_PRODUCT'
+declare @TableName sysname = 'MT_SETTING'
 declare @Result varchar(max) = 'public class ' + @TableName + '
 {'
 
