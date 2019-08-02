@@ -11,7 +11,7 @@ FROM sys.objects AS o
      JOIN sys.types AS t 
 	   ON c.user_type_id=t.user_type_id  
 WHERE o.type = 'U'
-      and lower(o.name) = 'ct_category'; 
+      and lower(o.name) = 'mt_setting'; 
 
 --
 --view--
@@ -33,7 +33,7 @@ FROM sys.objects o
      join sys.parameters p on o.object_id = p.object_id 
 	 join sys.types t on p.user_type_id = t.user_type_id
 WHERE o.type = 'P' 
-      AND lower(o.name) = 'sp_im_category'   
+      AND lower(o.name) = 'sp_get_load_rule'   
 ORDER BY o.name;
 
 --
