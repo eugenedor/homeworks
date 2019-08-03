@@ -30,10 +30,12 @@ INSERT INTO @tDescr (Type, Name) VALUES
 SELECT DISTINCT o.object_id ObjectId,
                 o.name ObjectName,
                 o.type ObjectType,
-				(SELECT DISTINCT t.Name FROM @tDescr t WHERE t.Type COLLATE Latin1_General_CI_AI = o.Type) AS ObjectTypeDescr,
+				(SELECT DISTINCT t.Name 
+				 FROM @tDescr t 
+				 WHERE t.Type COLLATE Latin1_General_CI_AI = o.Type) AS ObjectTypeDescr,
 				c.text Txt
 FROM sys.objects o
      JOIN sys.syscomments c
 	   ON o.object_id = c.id
 WHERE o.type in ('P', 'FN', 'TF', 'TR', 'V', 'U')
-      AND lower(c.text) LIKE '%@position%';
+      AND LOWER(c.text) LIKE '%@position%';
