@@ -1,9 +1,7 @@
 USE ToolsStore
 GO
 
---
 --syscomments--
---
 SELECT DISTINCT o.object_id,
                 o.name AS ObjectName,
                 o.type,
