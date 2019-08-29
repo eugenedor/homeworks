@@ -8,11 +8,25 @@ SELECT t1.id1 FROM @t1 t1;
 SELECT t2.id2, t2.name FROM @t2 t2;
 
 --1--
-SELECT t1.id1, (SELECT DISTINCT t2.name FROM @t2 t2 WHERE t2.id2 = t1.id1) name
+SELECT t1.id1, 
+       (SELECT DISTINCT t2.name 
+        FROM @t2 t2 
+	    WHERE t2.id2 = t1.id1) name
 FROM @t1 t1
-WHERE t1.id1 IN (SELECT id2 FROM @t2);
+WHERE t1.id1 IN (SELECT id2 
+                 FROM @t2);
 
 --2--
+SELECT t1.id1, 
+       (SELECT DISTINCT t2.name 
+        FROM @t2 t2 
+	    WHERE t2.id2 = t1.id1) name
+FROM @t1 t1
+WHERE EXISTS (SELECT 1 
+              FROM @t2 
+			  WHERE id2 = t1.id1);
+
+--3--
 SELECT t1.id1, t2.name
 FROM @t1 t1
      join @t2 t2
