@@ -1,4 +1,4 @@
-DECLARE @tData TABLE (id BIGINT IDENTITY(157, 1), nam NVARCHAR(100), dat DATETIME);
+DECLARE @tData TABLE (id BIGINT IDENTITY(157, 1), nam NVARCHAR(100), dat DATETIME); --таблица с данными
 
 --SELECT DATEDIFF(dd, 0, GETDATE()) AS num,
 --       DATEADD(dd, DATEDIFF(dd, 0, GETDATE()), 0) AS date1,
@@ -16,12 +16,9 @@ BEGIN
   VALUES ('txt_' + CAST(@i+1 AS NVARCHAR(5)), DATEADD(dd, -@i, @curdate));
   SET @i = @i +1;
 END
-
 --SELECT * FROM @tData;
 
-DECLARE @t TABLE (id BIGINT, rowNumber INT);
-
-
+DECLARE @t TABLE (id BIGINT, rowNumber INT);  --таблица с номерами строк
 DECLARE @totalItems   INT, --количество	
 		@itemsPerPage INT, --количество на странице		
         @currentPage  INT, --текущая страница
@@ -35,23 +32,21 @@ FROM @tData d;
 
 SET @totalItems = @@ROWCOUNT;
 SET @itemsPerPage = 100;
-SET @currentPage = 9;
-
-SELECT @totalItems AS totalCount;
-
+SET @currentPage = 2;
+SELECT @pagesCount = CEILING(CAST(@totalItems AS DECIMAL) / @itemsPerPage);
 --1--
 SET @pagesCount1 = @totalItems / @itemsPerPage;
 IF (@pagesCount1 * @itemsPerPage < @totalItems) SET @pagesCount1 = @pagesCount1 + 1;
 --2--
 SELECT @pagesCount2 = @totalItems / @itemsPerPage + CASE WHEN (@totalItems % @itemsPerPage) > 0 THEN 1 ELSE 0 END;
---3--
-SELECT @pagesCount = CEILING(CAST(@totalItems AS DECIMAL) / @itemsPerPage);
+
+SELECT @totalItems AS totalCount,
+       @itemsPerPage AS itemsPerPage,
+	   @currentPage AS currentPage,
+       @pagesCount AS pagesCount, @pagesCount1 AS pagesCount1, @pagesCount2 AS pagesCount2
 
 
-SELECT @pagesCount pagesCount, @pagesCount1 pagesCount1, @pagesCount2 pagesCount2
-
-
---FINALLY--
+--FIN--
 SELECT d.id, d.nam, d.dat
 FROM @tData d
      JOIN @t t
