@@ -11,14 +11,10 @@ namespace Nloguse
     {
         static void Main(string[] args)
         {
-            Logger log = LogManager.GetCurrentClassLogger();
+            //Logger log = LogManager.GetCurrentClassLogger();
+            //log.Info("info message");
 
-            log.Trace("trace message");
-            log.Debug("debug message");
-            log.Info("info message");
-            log.Warn("warn message");
-            log.Error("error message");
-            log.Fatal("fatal message");
+            LoggerHelper.Instance.Log.Info("info message");
         }
     }
 }
