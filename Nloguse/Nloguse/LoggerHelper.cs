@@ -9,16 +9,15 @@ namespace Nloguse
 {
     public class LoggerHelper
     {
-        // Поле должно быть volatile!
         private static volatile LoggerHelper _instance;
-        private static readonly object _syncRoot = new object();
-
-        public Logger Log { get; private set; }
+        private static readonly object _syncRoot = new object();        
 
         LoggerHelper()
         {
             Log = LogManager.GetLogger(GetType().FullName);
         }
+
+        public Logger Log { get; private set; }
 
         public static LoggerHelper Instance
         {
