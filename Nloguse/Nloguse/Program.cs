@@ -11,10 +11,20 @@ namespace Nloguse
     {
         static void Main(string[] args)
         {
-            //Logger log = LogManager.GetCurrentClassLogger();
-            //log.Info("info message");
+            try
+            {
+                var txt = Console.ReadLine();
+                LoggerHelper.Instance.Log.Info("info message");
+                LoggerHelper.Instance.Log.Info($"{txt}");
+                Console.ReadKey();
 
-            LoggerHelper.Instance.Log.Info("info message");
+                //Logger log = LogManager.GetCurrentClassLogger();
+                //log.Info("info message");
+            }
+            catch (Exception ex)
+            {
+                LoggerHelper.Instance.Log.Info($"{ex.Message}");
+            }
         }
     }
 }
