@@ -9,8 +9,7 @@ namespace Nloguse
 {
     public class LoggerHelper
     {
-        private static volatile LoggerHelper _instance;
-        private static readonly object _syncRoot = new object();        
+        private static readonly Lazy<LoggerHelper> _instance = new Lazy<LoggerHelper>(() => new LoggerHelper());        
 
         LoggerHelper()
         {
@@ -23,17 +22,7 @@ namespace Nloguse
         {
             get
             {
-                if (_instance == null)
-                {
-                    lock (_syncRoot)
-                    {
-                        if (_instance == null)
-                        {
-                            _instance = new LoggerHelper();
-                        }
-                    }
-                }
-                return _instance;
+                return _instance.Value;
             }
         }
     }
