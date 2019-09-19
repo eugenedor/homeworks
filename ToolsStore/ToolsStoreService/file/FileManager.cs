@@ -2,13 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Configuration;
 using System.IO;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using System.Xml;
-using System.Xml.Schema;
 using System.Xml.Serialization;
 using ToolsStoreService.log;
 using ToolsStoreService.abstr;
