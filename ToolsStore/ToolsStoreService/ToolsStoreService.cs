@@ -9,14 +9,15 @@ using System.Text;
 using System.Threading.Tasks;
 using ToolsStoreService.log;
 using ToolsStoreService.file;
+using System.Timers;
 
 namespace ToolsStoreService
 {
     public partial class ToolsStoreService : ServiceBase
     {
         private readonly Object _locker;
-        private System.Timers.Timer _timer;
-        public const int TIME_INTERVAL_DEFAULT = 86400; //интервал времени по умолчанию = суткам (в секундах)
+        private Timer _timer;
+        public const int TIME_INTERVAL_DEFAULT = 86400; //интервал по умолчанию = суткам (в сек)
 
         public ToolsStoreService()
         {
@@ -29,27 +30,22 @@ namespace ToolsStoreService
             int timeInterval;
             lock (_locker)
             {
-                Log.write("Сервис стартовал." + Environment.NewLine);
-
-                //запуск загрузки xml при старте
+                Log.write("Сервис стартовал." + Environment.NewLine);                
                 try
                 {
-                    FileManager.LoadFiles();
+                    FileManager.LoadFiles(); //запуск загрузки xml при старте
                 }
                 catch (Exception ex)
                 {
                     Log.write(ex.Message);
                 }
 
-                //запуск по таймеру спустя интервал времени
                 Int32.TryParse(System.Configuration.ConfigurationManager.AppSettings["timeInterval"], out timeInterval);
                 if (timeInterval == 0)
-                {
                     timeInterval = TIME_INTERVAL_DEFAULT;
-                }
 
                 _timer = new System.Timers.Timer((double)timeInterval * 1000) { Enabled = true, AutoReset = false };
-                _timer.Elapsed += TimerElapsed;
+                _timer.Elapsed += TimerElapsed;  //запуск по таймеру спустя интервал времени
             }
         }
 
