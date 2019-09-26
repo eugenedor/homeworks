@@ -1,0 +1,71 @@
+USE ToolsStore
+GO
+
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+
+IF EXISTS (SELECT * FROM sys.objects WHERE OBJECT_ID = OBJECT_ID('FN_TRANSLIT') AND type = N'FN')
+BEGIN
+	DROP FUNCTION dbo.FN_TRANSLIT
+END
+GO
+
+CREATE FUNCTION dbo.FN_TRANSLIT 
+(
+	@String NVARCHAR(MAX)
+)  
+RETURNS NVARCHAR(MAX) 
+AS 
+BEGIN  
+	DECLARE @tTrans TABLE(Rus CHAR PRIMARY KEY, Lat VarChar(2));
+	DECLARE	@Value	VARCHAR(MAX);
+ 
+	INSERT @tTrans (Rus, Lat)
+	          SELECT 'À', 'A'
+	UNION ALL SELECT 'Á', 'B'
+	UNION ALL SELECT 'Â', 'V'
+	UNION ALL SELECT 'Ã', 'G'
+	UNION ALL SELECT 'Ä', 'D'
+	UNION ALL SELECT 'Å', 'E'
+	UNION ALL SELECT '¨', 'Yo'
+	UNION ALL SELECT 'Æ', 'Zh'
+	UNION ALL SELECT 'Ç', 'Z'
+	UNION ALL SELECT 'È', 'I'
+	UNION ALL SELECT 'É', 'Y'
+	UNION ALL SELECT 'Ê', 'K'
+	UNION ALL SELECT 'Ë', 'L'
+	UNION ALL SELECT 'Ì', 'M'
+	UNION ALL SELECT 'Í', 'N'
+	UNION ALL SELECT 'Î', 'O'
+	UNION ALL SELECT 'Ï', 'P'
+	UNION ALL SELECT 'Ð', 'R'
+	UNION ALL SELECT 'Ñ', 'S'
+	UNION ALL SELECT 'Ò', 'T'
+	UNION ALL SELECT 'Ó', 'U'
+	UNION ALL SELECT 'Ô', 'F'
+	UNION ALL SELECT 'Õ', 'H'
+	UNION ALL SELECT 'Ö', 'C'
+	UNION ALL SELECT '×', 'Ch'
+	UNION ALL SELECT 'Ø', 'Sh'
+	UNION ALL SELECT 'Ù', 'Sh'
+	UNION ALL SELECT 'Ú', ''
+	UNION ALL SELECT 'Û', 'Y'
+	UNION ALL SELECT 'Ü', ''
+	UNION ALL SELECT 'Ý', 'E'
+	UNION ALL SELECT 'Þ', 'Yu'
+	UNION ALL SELECT 'ß', 'Ya';
+	
+	SET	@Value	= @String;
+	
+	SELECT @Value = REPLACE(@Value, UPPER(Rus) COLLATE Cyrillic_General_CS_AS, Lat) 
+	FROM @tTrans 
+	WHERE @String LIKE '%' + Rus + '%';
+
+	SELECT @Value = REPLACE(@Value, LOWER(Rus) COLLATE Cyrillic_General_CI_AS, LOWER(Lat)) 
+	FROM @tTrans 
+	WHERE @String LIKE '%' + Rus + '%';
+	
+	RETURN @Value;   
+END  
