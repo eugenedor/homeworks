@@ -62,3 +62,13 @@ WHERE o.type = 'FN'
       and o.object_id = object_id('fn_get_weekdays')
       --AND lower(o.name) = 'fn_get_weekdays'   
 ORDER BY o.name;
+
+--
+--trigger--
+--
+SELECT o.object_id, o.name AS object_name, o.type_desc
+FROM sys.objects o 
+WHERE o.type = 'TR' 
+      and o.object_id = object_id('tr_for_ins_upd_mt_load_rule_spec')
+      AND lower(o.name) = 'TR_FOR_INS_UPD_MT_LOAD_RULE_SPEC'   
+ORDER BY o.name;
