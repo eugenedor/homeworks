@@ -13,11 +13,11 @@ CREATE TABLE dbo.Animals(
 	Squad nvarchar(50) NOT NULL,
 	Type nvarchar(50) NULL,
 	TypicalWeight decimal(18,3) NOT NULL,
-PRIMARY KEY CLUSTERED 
+CONSTRAINT PK_Animals PRIMARY KEY CLUSTERED 
 (
 	AnimalCode ASC
 ) ON [PRIMARY],
-UNIQUE NONCLUSTERED 
+CONSTRAINT UQ_Animals UNIQUE NONCLUSTERED 
 (
 	AnimalCode ASC,
 	Name ASC
