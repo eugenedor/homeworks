@@ -32,4 +32,26 @@ GO
 ALTER TABLE dbo.Animals  WITH CHECK ADD CHECK  ((TypicalWeight>(0)))
 GO
 
+CREATE TABLE dbo.Countries(
+	CountryCode int NOT NULL,
+	Name nvarchar(25) NOT NULL,
+	Mainland nvarchar(25) NOT NULL,
+	Capital nvarchar(25) NOT NULL,
+	AmountNationalReserves decimal(18, 3) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	CountryCode ASC
+) ON [PRIMARY],
+UNIQUE NONCLUSTERED 
+(
+	CountryCode ASC
+) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE dbo.Countries ADD  DEFAULT ((1)) FOR AmountNationalReserves
+GO
+
+ALTER TABLE dbo.Countries  WITH CHECK ADD CHECK  ((AmountNationalReserves>(0)))
+GO
 
