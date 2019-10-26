@@ -30,3 +30,16 @@ PRIMARY KEY (CountryCode),
 CHECK (AmountNationalReserves > 0)
 )
 GO
+
+CREATE TABLE Habitat (
+AnimalCode INT NOT NULL,
+CountryCode INT NOT NULL,
+Population INT NOT NULL
+CONSTRAINT FK_Habitat_Animals
+FOREIGN KEY (AnimalCode)
+REFERENCES Animals (AnimalCode),
+CONSTRAINT FK_Habitat_Countries
+FOREIGN KEY (CountryCode)
+REFERENCES Countries (CountryCode)
+)
+GO

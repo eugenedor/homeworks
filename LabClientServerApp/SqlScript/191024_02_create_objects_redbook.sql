@@ -55,3 +55,24 @@ GO
 ALTER TABLE dbo.Countries  WITH CHECK ADD CHECK  ((AmountNationalReserves>(0)))
 GO
 
+CREATE TABLE dbo.Habitat(
+	AnimalCode int NOT NULL,
+	CountryCode int NOT NULL,
+	Population int NOT NULL
+) ON [PRIMARY]
+
+GO
+
+ALTER TABLE dbo.Habitat  WITH CHECK ADD  CONSTRAINT FK_Habitat_Animals FOREIGN KEY(AnimalCode)
+REFERENCES dbo.Animals (AnimalCode)
+GO
+
+ALTER TABLE dbo.Habitat CHECK CONSTRAINT FK_Habitat_Animals
+GO
+
+ALTER TABLE dbo.Habitat  WITH CHECK ADD  CONSTRAINT FK_Habitat_Countries FOREIGN KEY(CountryCode)
+REFERENCES dbo.Countries (CountryCode)
+GO
+
+ALTER TABLE dbo.Habitat CHECK CONSTRAINT FK_Habitat_Countries
+GO
