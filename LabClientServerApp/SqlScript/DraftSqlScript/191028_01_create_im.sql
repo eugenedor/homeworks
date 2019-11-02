@@ -12,10 +12,7 @@ AnimalCode NVARCHAR(100) NOT NULL,
 AnimalName NVARCHAR(100) NOT NULL,
 SquadName NVARCHAR(100) NOT NULL,
 TypeName NVARCHAR(100) NULL,
-TypicalWeight DECIMAL(18,3) NOT NULL /*DEFAULT 1,*/
-/*UNIQUE (AnimalCode, Name),*/
-/*PRIMARY KEY (AnimalCode),*/
-/*CHECK (TypicalWeight > 0)*/
+TypicalWeight DECIMAL(18,3) NOT NULL
 )
 GO
 
@@ -31,17 +28,20 @@ TypeName NVARCHAR(100) NOT NULL,
 )
 GO
 
---CREATE TABLE dbo.Countries (
---CountryCode INT NOT NULL,
---Name NVARCHAR(25) NOT NULL,
---Mainland NVARCHAR(25) NOT NULL,
---Capital NVARCHAR(25) NOT NULL, 
---AmountNationalReserves DECIMAL(18,3) NULL DEFAULT 1,
---UNIQUE (CountryCode),
---PRIMARY KEY (CountryCode),
---CHECK (AmountNationalReserves > 0)
---)
---GO
+CREATE TABLE dbo.IM_Countries (
+CountryCode NVARCHAR(100) NOT NULL,
+CountryName NVARCHAR(100) NOT NULL,
+ContinentName NVARCHAR(100) NOT NULL,
+Capital NVARCHAR(100) NOT NULL, 
+AmountNationalReserves INT NULL,
+)
+GO
+
+CREATE TABLE dbo.IM_Continents (
+ContinentCode NVARCHAR(100) NOT NULL,
+ContinentName NVARCHAR(100) NOT NULL,
+)
+GO
 
 --CREATE TABLE Habitat (
 --AnimalCode INT NOT NULL,

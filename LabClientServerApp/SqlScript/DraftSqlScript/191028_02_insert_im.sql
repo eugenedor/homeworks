@@ -1,5 +1,5 @@
 --
---INSERT IM_Animals
+--insert IM_Animals
 --
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Amur_tiger', 'Амурский тигр', 'Хищные', 'Хордовые', 200);
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Muskrat', 'Выхухоль', 'Насекомоядные', 'Хордовые', 0.45);
@@ -35,7 +35,7 @@ INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, Typical
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Madagascar_shepherds', 'Мадагаскарские пастушки', 'Журавлеобразные', 'Хордовые', 2);
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Grevys_Zebra', 'Зебра Греви', 'Непарнокопытные', 'Хордовые', 400);
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Lemur', 'Лемур', 'Приматы', 'Хордовые', 3.05);
-INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('a_lion', 'Лев', 'Хищные', 'Хордовые', 180);
+INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Lion', 'Лев', 'Хищные', 'Хордовые', 180);
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Smoky_leopard', 'Дымчатый леопард', 'Хищные', 'Хордовые', 20);
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Mouse', 'Мышь', 'Грызуны', 'Хордовые', 0.01);
 INSERT INTO dbo.IM_Animals (AnimalCode, AnimalName, SquadName, TypeName, TypicalWeight) VALUES ('Elephant_indian', 'Слон индийский', 'Хоботные', 'Хордовые', 3800);
@@ -72,3 +72,52 @@ INSERT INTO dbo.IM_Squads (SquadCode, SquadName) VALUES ('Bristle-winged', 'Щети
 INSERT INTO dbo.IM_Types (TypeCode, TypeName) VALUES ('Annelids', 'Кольчатые черви');
 INSERT INTO dbo.IM_Types (TypeCode, TypeName) VALUES ('Chordate', 'Хордовые');
 INSERT INTO dbo.IM_Types (TypeCode, TypeName) VALUES ('Arthropods', 'Членистоногие');
+
+
+--
+--insert IM_Countries
+--
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('RUS', 'Россия                   ', 'Евразия                  ', 'Москва                   ', 93);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('LVA', 'Латвия                   ', 'Евразия                  ', 'Рига', 4);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('CHN', 'Китай                    ', 'Евразия                  ', 'Пекин', 319);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('BLR', 'Белорусь                 ', 'Евразия                  ', 'Минск', 6);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('KAZ', 'Казахстан                ', 'Евразия                  ', 'Астана                   ', 10);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('JPN', 'Япония                   ', 'Евразия                  ', 'Токио                    ', 7);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('UKR', 'Украина                  ', 'Евразия                  ', 'Киев                     ', 19);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('IND', 'Индия                    ', 'Евразия                  ', 'Нью-Дели                 ', 34);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('MNG', 'Монголия                 ', 'Евразия                  ', 'Улан-Батор               ', 11);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('TJK', 'Таджикистан              ', 'Евразия                  ', 'Душанбе                  ', 5);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('ARM', 'Армения                  ', 'Евразия                  ', 'Ереван                   ', 5);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('GRC', 'Греция                   ', 'Евразия                  ', 'Афины                    ', NULL);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('IDN', 'Индонезия                ', 'Евразия                  ', 'Джакарта                 ', 6);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('MMR', 'Мьянма                   ', 'Евразия                  ', 'Нейпьидо                 ', 2);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('BGD', 'Бангладеш                ', 'Евразия                  ', 'Дакка                    ', 3);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('COG', 'Республика Конго                    ', 'Африка                   ', 'Киншаса                  ', 5);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('AUS', 'Австралия                ', 'Австралия                ', 'Канберра                 ', 4);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('CAN', 'Канада                   ', 'Северная Америка         ', 'Оттава                   ', 15);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('USA', 'США                      ', 'Северная Америка         ', 'Вашингтон                ', 50);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('VNM', 'Вьетнам                  ', 'Евразия                  ', 'Ханой                    ', 34);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('CHL', 'Чили                     ', 'Южная Америка            ', 'Саньтьяго                ', NULL);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('ARG', 'Аргентина                ', 'Южная Америка   ', 'Буенос-Айрес             ', 23);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('GAB', 'Габон                    ', 'Африка                   ', 'Либревиль                ', 3);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('NGA', 'Нигерия                  ', 'Африка                   ', 'Абудже                   ', NULL);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('MDG', 'Мадагаскар               ', 'Африка                   ', 'Антананариву             ', 2);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('KEN', 'Кения                    ', 'Африка                   ', 'Найроби                  ', 3);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('LUX', 'Люксенбург               ', 'Евразия                  ', 'Люксенбург               ', NULL);
+INSERT INTO dbo.IM_Countries (CountryCode, CountryName, ContinentName, Capital, AmountNationalReserves) VALUES ('DNK', 'Дания                    ', 'Евразия                  ', 'Копенгаген               ', NULL);
+
+UPDATE IM_Countries
+SET CountryName = LTRIM(RTRIM(CountryName)),
+    ContinentName = LTRIM(RTRIM(ContinentName)),
+	Capital = LTRIM(RTRIM(Capital))
+
+
+--
+--insert IM_Continents
+--
+INSERT INTO dbo.IM_Continents (ContinentCode, ContinentName) VALUES ('Africa', 'Африка');
+INSERT INTO dbo.IM_Continents (ContinentCode, ContinentName) VALUES ('Antarctica', 'Антарктида');
+INSERT INTO dbo.IM_Continents (ContinentCode, ContinentName) VALUES ('Australia', 'Австралия');
+INSERT INTO dbo.IM_Continents (ContinentCode, ContinentName) VALUES ('Eurasia', 'Евразия');
+INSERT INTO dbo.IM_Continents (ContinentCode, ContinentName) VALUES ('North America', 'Северная Америка');
+INSERT INTO dbo.IM_Continents (ContinentCode, ContinentName) VALUES ('South America', 'Южная Америка');
