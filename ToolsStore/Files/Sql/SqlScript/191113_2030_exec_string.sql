@@ -1,9 +1,9 @@
 DECLARE @table Table (ID INT IDENTITY(1,1), Condition VARCHAR(250), RiskGroup INT);
 
 INSERT INTO @table (Condition, RiskGroup)
-VALUES ('значение < начало',                        0), 
-       ('начало <= значение и значение <= конец', 1), 
-	   ('значение > конец',                        2);
+VALUES ('val < beg',                 0), 
+       ('beg <= val and val <= fin', 1), 
+	   ('val > fin',                 2);
 
 SELECT t.ID, t.Condition, t.RiskGroup
 FROM @table t;
@@ -14,39 +14,35 @@ DECLARE @val DECIMAL(18,9),
 		@fin DECIMAL(18,9);
 
 
-SELECT @beg = 2, 
-	   @fin = 4, 
-	   @val = 2.3;
-
-
-SELECT @val    AS val,
-	   @beg AS beg,
-	   @fin AS fin;
+SELECT @beg = 2, @fin = 4, @val = 2.3;
+SELECT @val AS val, @beg AS beg, @fin AS fin;
 	   
-
 SELECT t.ID, 
-       t.Condition, 
-	   REPLACE(REPLACE(REPLACE(REPLACE(t.Condition, 'значение', 'val'), 'начало', 'beg'), 'конец', 'fin'), ' и ', ' AND ') Formula, 
+       t.Condition, --REPLACE(REPLACE(REPLACE(REPLACE(t.Condition, 'значение', 'val'), 'начало', 'beg'), 'конец', 'fin'), ' и ', ' AND ') Formula, 
 	   t.RiskGroup
 FROM @table t;
 
 
-DECLARE @query VARCHAR(MAX);
-SELECT @query = isnull(@query, 'SELECT CASE ') + 
-                'WHEN ' + 
-				REPLACE(REPLACE(REPLACE(REPLACE(t.Condition, 'значение', 'val'), 'начало', 'beg'), 'конец', 'fin'), ' и ', ' AND ') + ' ' +
-				'THEN ' + CAST(t.RiskGroup AS VARCHAR(20)) + ' ' 
-FROM @table t;
-SELECT @query = @query + 'END FROM (SELECT ' + 
-                CAST(@val AS VARCHAR(20)) + ' AS val, ' + 
-				CAST(@beg AS VARCHAR(20)) + ' AS beg, ' + 
-				CAST(@fin AS VARCHAR(20)) + ' AS fin) t'
-
+DECLARE @query NVARCHAR(MAX);
+WITH tcnt AS (SELECT COUNT(t0.id) countRows
+			  FROM @table t0)
+SELECT @query = ISNULL(@query, 'SELECT CASE ') + 
+                'WHEN ' + t.Condition + ' ' +
+				'THEN ' + CAST(t.RiskGroup AS NVARCHAR(20)) + ' ' +
+				CASE 
+				  WHEN ROW_NUMBER() OVER (ORDER BY t.id ASC) = tcnt.countRows THEN 'END FROM (SELECT ' 
+				  + CAST(@val AS NVARCHAR(50)) + ' as val, ' 
+				  + CAST(@beg AS NVARCHAR(50)) + ' as beg, ' 
+				  + CAST(@fin AS NVARCHAR(50)) + ' as fin) t' 
+				  ELSE '' 
+				END
+FROM @table t 
+     CROSS JOIN tcnt;
 PRINT @query;
 
-DECLARE @t TABLE (result int)
+DECLARE @t TABLE (RiskGroup int)
 INSERT @t
-EXEC (@query)
+EXECUTE sp_executesql @query
 
-SELECT result 
-FROM @t;
+SELECT t.RiskGroup
+FROM @t t;
