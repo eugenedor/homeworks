@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 
 namespace Algorithms
 {
@@ -13,13 +14,23 @@ namespace Algorithms
             var cntItem = 10;
 
             //BubbleSort
-            var array0 = SetArr(cntItem);
+            var arr0 = SetArr(cntItem);
             Console.WriteLine("Сортировка пузырьком:");
             Console.WriteLine("До:");
-            PrintArr(array0);
-            Algorithm.BubbleSort(array0);
+            PrintArr(arr0);
+            Algorithm.BubbleSort(arr0);
             Console.WriteLine("После:");
-            PrintArr(array0);
+            PrintArr(arr0);
+            Console.WriteLine();
+
+            //SelectionSort
+            var arr1 = SetArr(cntItem);
+            Console.WriteLine("Сортировка выборкой:");
+            Console.WriteLine("До:");
+            PrintArr(arr1);
+            Algorithm.SelectionSort(arr1);
+            Console.WriteLine("После:");
+            PrintArr(arr1);
             Console.WriteLine();
 
             Console.ReadKey();
@@ -33,6 +44,8 @@ namespace Algorithms
             {
                 arr[i] = ran.Next(1, 99);
             }
+
+            Thread.Sleep(100);
             return arr;
         }
 

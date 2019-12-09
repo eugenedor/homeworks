@@ -27,5 +27,27 @@ namespace Algorithms
                 }
             }
         }
+
+        /// <summary>
+        /// Сортировка выбором
+        /// </summary>
+        /// <param name="arr"></param>
+        public static void SelectionSort(int[] arr)
+        {
+            for (int i = 0; i < arr.Length - 1; i++)
+            {
+                int min = i;
+                for (int j = i + 1; j < arr.Length; j++)
+                {
+                    if (arr[j] < arr[min])
+                    {
+                        min = j;
+                    }
+                }
+                int buf = arr[i];
+                arr[i] = arr[min];
+                arr[min] = buf;
+            }
+        }
     }
 }
