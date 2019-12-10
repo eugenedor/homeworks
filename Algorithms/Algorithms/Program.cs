@@ -33,6 +33,16 @@ namespace Algorithms
             PrintArr(arr1);
             Console.WriteLine();
 
+            //InsertionSort
+            var arr2 = SetArr(cntItem);
+            Console.WriteLine("Сортировка вставкой:");
+            Console.WriteLine("До:");
+            PrintArr(arr2);
+            Algorithm.SelectionSort(arr2);
+            Console.WriteLine("После:");
+            PrintArr(arr2);
+            Console.WriteLine();
+
             Console.ReadKey();
         }
 
