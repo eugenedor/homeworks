@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Algorithms
 {
-    public static class Algorithm
+    public static class AlgorithmsSort
     {
         /// <summary>
         /// Сортировка пузырьком

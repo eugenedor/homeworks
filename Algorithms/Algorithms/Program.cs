@@ -11,14 +11,18 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var cntItem = 10;
+            var items = 10;
+            Sort(items);
+        }
 
+        public static void Sort(int cntItem)
+        {
             //BubbleSort
             var arr0 = SetArr(cntItem);
             Console.WriteLine("Сортировка пузырьком:");
             Console.WriteLine("До:");
             PrintArr(arr0);
-            Algorithm.BubbleSort(arr0);
+            AlgorithmsSort.BubbleSort(arr0);
             Console.WriteLine("После:");
             PrintArr(arr0);
             Console.WriteLine();
@@ -28,7 +32,7 @@ namespace Algorithms
             Console.WriteLine("Сортировка выборкой:");
             Console.WriteLine("До:");
             PrintArr(arr1);
-            Algorithm.SelectionSort(arr1);
+            AlgorithmsSort.SelectionSort(arr1);
             Console.WriteLine("После:");
             PrintArr(arr1);
             Console.WriteLine();
@@ -38,7 +42,7 @@ namespace Algorithms
             Console.WriteLine("Сортировка вставкой:");
             Console.WriteLine("До:");
             PrintArr(arr2);
-            Algorithm.SelectionSort(arr2);
+            AlgorithmsSort.SelectionSort(arr2);
             Console.WriteLine("После:");
             PrintArr(arr2);
             Console.WriteLine();
@@ -52,7 +56,7 @@ namespace Algorithms
             Random ran = new Random();
             for (int i = 0; i < arr.Length; i++)
             {
-                arr[i] = ran.Next(1, 99);
+                arr[i] = ran.Next(0, 99);
             }
 
             Thread.Sleep(100);
