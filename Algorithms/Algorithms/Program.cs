@@ -47,6 +47,16 @@ namespace Algorithms
             PrintArr(arr2);
             Console.WriteLine();
 
+            //InsertionSort
+            var arr3 = SetArr(cntItem);
+            Console.WriteLine("Сортировка слиянием:");
+            Console.WriteLine("До:");
+            PrintArr(arr3);
+            AlgorithmsSort.MergeSort(arr3, 0, cntItem-1);
+            Console.WriteLine("После:");
+            PrintArr(arr3);
+            Console.WriteLine();
+
             Console.ReadKey();
         }
 
