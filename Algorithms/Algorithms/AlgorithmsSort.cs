@@ -75,7 +75,7 @@ namespace Algorithms
         /// <param name="arr">массив</param>
         /// <param name="p">индекс - начало массива</param>
         /// <param name="r">индекс - конец массива</param>
-        static public void MergeSort(int[] arr, int p, int r)
+        public static void MergeSort(int[] arr, int p, int r)
         {
             if (p >= r)
                 return;  //recursion bottom
@@ -83,14 +83,13 @@ namespace Algorithms
             int q = (p + r) / 2;
             MergeSort(arr, p, q);
             MergeSort(arr, q + 1, r);
-            Merge(arr, p, q, r);
-            
+            Merge(arr, p, q, r);            
         }
 
         /// <summary>
         /// Слияние
         /// </summary>
-        static public void Merge(int[] arr, int p, int q, int r)
+        public static void Merge(int[] arr, int p, int q, int r)
         {
             int i, j, k;
             int n1 = q - p + 1;
