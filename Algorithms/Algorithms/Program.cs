@@ -11,7 +11,7 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var items = 6;
+            var items = 8;
             Sort(items);
             Console.ReadKey();
         }
@@ -30,7 +30,7 @@ namespace Algorithms
 
             var arr2 = SetArr(cntItem);
             PrintArr(arr2, "InsertionSort");
-            //AlgorithmsSort.InsertionSort(arr2);
+            AlgorithmsSort.InsertionSort(arr2);
             PrintArr(arr2);        
 
             var arr3 = SetArr(cntItem);

@@ -56,7 +56,7 @@ namespace Algorithms
         /// <param name="arr">массив</param>
         public static void InsertionSort(int[] arr)
         {
-            for (int i = 1; i < arr.Length - 1; i++)
+            for (int i = 1; i < arr.Length; i++)
             {
                 int key = arr[i];
                 int j = i - 1;
