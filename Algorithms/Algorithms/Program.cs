@@ -11,58 +11,41 @@ namespace Algorithms
     {
         static void Main(string[] args)
         {
-            var items = 10;
+            var items = 6;
             Sort(items);
+            Console.ReadKey();
         }
 
         public static void Sort(int cntItem)
         {
-            //BubbleSort
             var arr0 = SetArr(cntItem);
-            Console.WriteLine("Сортировка пузырьком:");
-            Console.WriteLine("До:");
-            PrintArr(arr0);
-            AlgorithmsSort.BubbleSort(arr0);
-            Console.WriteLine("После:");
-            PrintArr(arr0);
-            Console.WriteLine();
+            PrintArr(arr0, "BubbleSort");
+            AlgorithmsSort.BubbleSort(arr0); 
+            PrintArr(arr0);            
 
-            //SelectionSort
             var arr1 = SetArr(cntItem);
-            Console.WriteLine("Сортировка выборкой:");
-            Console.WriteLine("До:");
-            PrintArr(arr1);
+            PrintArr(arr1, "SelectionSort");
             AlgorithmsSort.SelectionSort(arr1);
-            Console.WriteLine("После:");
-            PrintArr(arr1);
-            Console.WriteLine();
+            PrintArr(arr1); 
 
-            //InsertionSort
             var arr2 = SetArr(cntItem);
-            Console.WriteLine("Сортировка вставкой:");
-            Console.WriteLine("До:");
-            PrintArr(arr2);
-            AlgorithmsSort.SelectionSort(arr2);
-            Console.WriteLine("После:");
-            PrintArr(arr2);
-            Console.WriteLine();
+            PrintArr(arr2, "InsertionSort");
+            //AlgorithmsSort.InsertionSort(arr2);
+            PrintArr(arr2);        
 
-            //InsertionSort
             var arr3 = SetArr(cntItem);
-            Console.WriteLine("Сортировка слиянием:");
-            Console.WriteLine("До:");
-            PrintArr(arr3);
+            PrintArr(arr3, "MergeSort");
             AlgorithmsSort.MergeSort(arr3, 0, cntItem-1);
-            Console.WriteLine("После:");
             PrintArr(arr3);
-            Console.WriteLine();
-
-            Console.ReadKey();
         }
 
-        public static int[] SetArr(int c)
+
+        /// <summary>
+        /// Рандомный массив из n элементов
+        /// </summary>
+        public static int[] SetArr(int n)
         {
-            var arr = new int[c];
+            var arr = new int[n];
             Random ran = new Random();
             for (int i = 0; i < arr.Length; i++)
             {
@@ -73,13 +56,32 @@ namespace Algorithms
             return arr;
         }
 
-        public static void PrintArr(int[] arr)
+        public static void PrintArr(int[] arr, string nameAlgo = "")
         {
+            if (!string.IsNullOrEmpty(nameAlgo))
+                PrintBefore(nameAlgo);
+            else
+                PrintAfter();
+
             for (int i = 0; i < arr.Length; i++)
             {
                 Console.Write("{0} ", arr[i]);
             }
+
             Console.WriteLine();
+            if (string.IsNullOrEmpty(nameAlgo))
+                Console.WriteLine();     
+        }
+
+        public static void PrintBefore(string nameAlgorithm)
+        {
+            Console.WriteLine($"{nameAlgorithm}");
+            Console.WriteLine("Before:");
+        }
+
+        public static void PrintAfter()
+        {
+            Console.WriteLine("After:");
         }
     }
 }
