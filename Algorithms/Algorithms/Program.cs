@@ -13,6 +13,7 @@ namespace Algorithms
         {
             var items = 8;
             Sort(items);
+            Search(items);
             Console.ReadKey();
         }
 
@@ -39,6 +40,14 @@ namespace Algorithms
             PrintArr(arr3);
         }
 
+        public static void Search(int cntItem)
+        {
+            var arr4 = new int[] { 1, 2, 3, 5, 7, 12, 25, 37};
+            PrintArr(arr4, "LinearSearch");
+            var inx = AlgorithmsSearch.LinearSearch(arr4, 7);
+            Console.WriteLine("After:");
+            Console.WriteLine($"index = {inx}");
+        }
 
         /// <summary>
         /// Рандомный массив из n элементов
