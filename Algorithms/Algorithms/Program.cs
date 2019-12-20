@@ -20,33 +20,34 @@ namespace Algorithms
         public static void Sort(int cntItem)
         {
             var arr0 = SetArr(cntItem);
-            PrintArr(arr0, "BubbleSort");
-            AlgorithmsSort.BubbleSort(arr0); 
-            PrintArr(arr0);            
+            Print.PrintArr(arr0, "BubbleSort");
+            AlgorithmsSort.BubbleSort(arr0);
+            Print.PrintArr(arr0);            
 
             var arr1 = SetArr(cntItem);
-            PrintArr(arr1, "SelectionSort");
+            Print.PrintArr(arr1, "SelectionSort");
             AlgorithmsSort.SelectionSort(arr1);
-            PrintArr(arr1); 
+            Print.PrintArr(arr1); 
 
             var arr2 = SetArr(cntItem);
-            PrintArr(arr2, "InsertionSort");
+            Print.PrintArr(arr2, "InsertionSort");
             AlgorithmsSort.InsertionSort(arr2);
-            PrintArr(arr2);        
+            Print.PrintArr(arr2);        
 
             var arr3 = SetArr(cntItem);
-            PrintArr(arr3, "MergeSort");
+            Print.PrintArr(arr3, "MergeSort");
             AlgorithmsSort.MergeSort(arr3, 0, cntItem-1);
-            PrintArr(arr3);
+            Print.PrintArr(arr3);
         }
 
         public static void Search(int cntItem)
         {
             var arr4 = new int[] { 1, 2, 3, 5, 7, 12, 25, 37};
-            PrintArr(arr4, "LinearSearch");
-            var inx = AlgorithmsSearch.LinearSearch(arr4, 7);
+            var val = 7;
+            Print.PrintArr(arr4, "LinearSearch");
+            var inx = AlgorithmsSearch.LinearSearch(arr4, val);
             Console.WriteLine("After:");
-            Console.WriteLine($"index = {inx}");
+            Console.WriteLine($"Value = {val}; index = {inx}");
         }
 
         /// <summary>
@@ -63,34 +64,6 @@ namespace Algorithms
 
             Thread.Sleep(100);
             return arr;
-        }
-
-        public static void PrintArr(int[] arr, string nameAlgo = "")
-        {
-            if (!string.IsNullOrEmpty(nameAlgo))
-                PrintBefore(nameAlgo);
-            else
-                PrintAfter();
-
-            for (int i = 0; i < arr.Length; i++)
-            {
-                Console.Write("{0} ", arr[i]);
-            }
-
-            Console.WriteLine();
-            if (string.IsNullOrEmpty(nameAlgo))
-                Console.WriteLine();     
-        }
-
-        public static void PrintBefore(string nameAlgorithm)
-        {
-            Console.WriteLine($"{nameAlgorithm}");
-            Console.WriteLine("Before:");
-        }
-
-        public static void PrintAfter()
-        {
-            Console.WriteLine("After:");
         }
     }
 }

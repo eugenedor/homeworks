@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="AlgorithmsSearch.cs" />
     <Compile Include="AlgorithmsSort.cs" />
+    <Compile Include="Print.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
