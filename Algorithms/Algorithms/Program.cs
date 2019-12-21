@@ -43,11 +43,11 @@ namespace Algorithms
         public static void Search(int cntItem)
         {
             var arr4 = new int[] { 1, 2, 3, 5, 7, 12, 25, 37};
-            var val = 7;
+            int val = 7, inxL = 3, inxR = 6;
             Print.PrintArr(arr4, "LinearSearch");
-            var inx = AlgorithmsSearch.LinearSearch(arr4, val);
+            var inx = AlgorithmsSearch.LinearSearch(arr4, inxL, inxR, val);
             Console.WriteLine("After:");
-            Console.WriteLine($"Value = {val}; index = {inx}");
+            Console.WriteLine($"Value = {val}; indexLeft = {inxL}; indexRight = {inxR}; indexSearch = {inx}");
         }
 
         /// <summary>
