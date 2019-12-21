@@ -11,15 +11,15 @@ namespace Algorithms
         /// <summary>
         /// Линейный поиск
         /// </summary>
-        public static int LinearSearch(int[] arr, int inxL, int inxR, int key)
+        public static int LinearSearch(int key, int[] arr, int p, int q)
         {
-            inxL = Math.Max(0, inxL);
-            inxR = Math.Min(arr.Length - 1, inxR);
+            int low = Math.Max(0, p);
+            int high = Math.Min(arr.Length - 1, q);
 
-            if (inxL > inxR)
+            if (low > high)
                 return -1;
 
-            for (int i = inxL; i <= inxR; i++)
+            for (int i = low; i <= high; i++)
             {
                 if (arr[i] == key)
                 {
@@ -28,5 +28,13 @@ namespace Algorithms
             }
             return -1;
         }
+
+        ///// <summary>
+        ///// Бинарный поиск
+        ///// </summary>
+        //public static int BinarySearch(int key, int[] arr, int p, int q)
+        //{
+
+        //}
     }
 }
