@@ -8,20 +8,20 @@ namespace Algorithms
 {
     public static class Print
     {
-        public static void PrintArr(int[] arr, string nameAlgo = "")
+        public static void PrintArr(int[] arr, string name = "")
         {
-            if (!string.IsNullOrEmpty(nameAlgo))
-                PrintBefore(nameAlgo);
+            if (!string.IsNullOrEmpty(name))
+                PrintBefore(name);
             else
                 PrintAfter();
 
-            for (int i = 0; i < arr.Length; i++)
+            foreach (var a in arr)
             {
-                Console.Write("{0} ", arr[i]);
+                Console.Write("{0} ", a);
             }
 
             Console.WriteLine();
-            if (string.IsNullOrEmpty(nameAlgo))
+            if (string.IsNullOrEmpty(name))
                 Console.WriteLine();
         }
 

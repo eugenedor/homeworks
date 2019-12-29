@@ -13,13 +13,13 @@ namespace Algorithms
         /// </summary>
         public static int LinearSearch(int key, int[] arr, int p, int q)
         {
-            int low = Math.Max(0, p);
-            int high = Math.Min(arr.Length - 1, q);
+            var low = Math.Max(0, p);
+            var high = Math.Min(arr.Length - 1, q);
 
             if (low > high)
                 return -1;
 
-            for (int i = low; i <= high; i++)
+            for (var i = low; i <= high; i++)
             {
                 if (arr[i] == key)
                 {
