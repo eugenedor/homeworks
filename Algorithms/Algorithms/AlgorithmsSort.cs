@@ -18,12 +18,12 @@ namespace Algorithms
             {
                 for (var j = arr.Length - 1; j > i; j--)
                 {
-                    if (arr[j] < arr[j - 1])
-                    {
-                        var buf = arr[j];
-                        arr[j] = arr[j - 1];
-                        arr[j - 1] = buf;
-                    }
+                    if (arr[j] >= arr[j - 1])
+                        continue;
+
+                    var buf = arr[j];
+                    arr[j] = arr[j - 1];
+                    arr[j - 1] = buf;
                 }
             }
         }
@@ -63,7 +63,7 @@ namespace Algorithms
                 while (j >= 0 && arr[j] > key)
                 {
                     arr[j + 1] = arr[j];
-                    j = j - 1;
+                    j -= 1; //j = j - 1;
                 }
                 arr[j + 1] = key;
             }
