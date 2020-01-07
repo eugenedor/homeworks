@@ -14,13 +14,13 @@ namespace Algorithms
         /// <param name="arr">массив</param>
         public static void BubbleSort(int[] arr)
         {
-            for (int i = 0; i < arr.Length - 1; i++)
+            for (var i = 0; i < arr.Length - 1; i++)
             {
-                for (int j = arr.Length - 1; j > i; j--)
+                for (var j = arr.Length - 1; j > i; j--)
                 {
                     if (arr[j] < arr[j - 1])
                     {
-                        int buf = arr[j];
+                        var buf = arr[j];
                         arr[j] = arr[j - 1];
                         arr[j - 1] = buf;
                     }
@@ -34,17 +34,17 @@ namespace Algorithms
         /// <param name="arr">массив</param>
         public static void SelectionSort(int[] arr)
         {
-            for (int i = 0; i < arr.Length - 1; i++)
+            for (var i = 0; i < arr.Length - 1; i++)
             {
-                int min = i;
-                for (int j = i + 1; j < arr.Length; j++)
+                var min = i;
+                for (var j = i + 1; j < arr.Length; j++)
                 {
                     if (arr[j] < arr[min])
                     {
                         min = j;
                     }
                 }
-                int buf = arr[i];
+                var buf = arr[i];
                 arr[i] = arr[min];
                 arr[min] = buf;
             }
@@ -56,10 +56,10 @@ namespace Algorithms
         /// <param name="arr">массив</param>
         public static void InsertionSort(int[] arr)
         {
-            for (int i = 1; i < arr.Length; i++)
+            for (var i = 1; i < arr.Length; i++)
             {
-                int key = arr[i];
-                int j = i - 1;
+                var key = arr[i];
+                var j = i - 1;
                 while (j >= 0 && arr[j] > key)
                 {
                     arr[j + 1] = arr[j];
@@ -80,7 +80,7 @@ namespace Algorithms
             if (p >= r)
                 return;  //recursion bottom
 
-            int q = (p + r) / 2;
+            var q = (p + r) / 2;
             MergeSort(arr, p, q);
             MergeSort(arr, q + 1, r);
             Merge(arr, p, q, r);            
@@ -91,9 +91,9 @@ namespace Algorithms
         /// </summary>
         public static void Merge(int[] arr, int p, int q, int r)
         {
-            int i, j, k;
-            int n1 = q - p + 1;
-            int n2 = r - q;
+            int i, j;
+            var n1 = q - p + 1;
+            var n2 = r - q;
             int[] L = new int[n1];  //left array
             int[] R = new int[n2];  //right array
             for (i = 0; i < n1; i++)
@@ -106,7 +106,7 @@ namespace Algorithms
             }
             i = 0;
             j = 0;
-            k = p;
+            int k = p;
             while (i < n1 && j < n2)
             {
                 if (L[i] <= R[j])
