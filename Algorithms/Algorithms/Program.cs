@@ -7,9 +7,9 @@ using System.Threading;
 
 namespace Algorithms
 {
-    class Program
+    internal class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
             var items = 8;
             Sort(items);
@@ -56,8 +56,8 @@ namespace Algorithms
         public static int[] SetArr(int n)
         {
             var arr = new int[n];
-            Random ran = new Random();
-            for (int i = 0; i < arr.Length; i++)
+            var ran = new Random();
+            for (var i = 0; i < arr.Length; i++)
             {
                 arr[i] = ran.Next(0, 99);
             }
