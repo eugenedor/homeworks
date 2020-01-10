@@ -43,7 +43,7 @@ namespace Algorithms
         public static void Search()
         {
             var arr4 = new int[] { 1, 2, 3, 5, 7, 12, 25, 37};
-            int val4 = 7;
+            int val4 = 5;
             Print.PrintArr(arr4, "LinearSearch");
             var inx4 = AlgorithmsSearch.LinearSearch(arr4, val4);
             Console.WriteLine("After:");
@@ -52,10 +52,18 @@ namespace Algorithms
 
             var arr5 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
             int val5 = 6;
-            Print.PrintArr(arr5, "BinarySearch");
-            var inx5 = AlgorithmsSearch.BinarySearch(arr5, val5, 0, arr5.Length - 1);
+            Print.PrintArr(arr5, "BinarySearchRecursion");
+            var inx5 = AlgorithmsSearch.BinarySearchRecursion(arr5, val5, 0, arr5.Length - 1);
             Console.WriteLine("After:");
             Console.WriteLine($"Value = {val5}; indexSearch = {inx5}");
+            Console.WriteLine();
+
+            var arr6 = arr5;
+            int val6 = 777;
+            Print.PrintArr(arr6, "BinarySearchCicle");
+            var inx6 = AlgorithmsSearch.BinarySearchCicle(arr6, val6, 0, arr6.Length - 1);
+            Console.WriteLine("After:");
+            Console.WriteLine($"Value = {val6}; indexSearch = {inx6}");
             Console.WriteLine();
         }
 

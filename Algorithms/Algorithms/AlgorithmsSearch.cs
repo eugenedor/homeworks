@@ -11,11 +11,11 @@ namespace Algorithms
         /// <summary>
         /// Линейный поиск
         /// </summary>
-        public static int LinearSearch(int[] arr, int key)
+        public static int LinearSearch(int[] arr, int val)
         {
             for (var i = 0; i < arr.Length; i++)
             {
-                if (arr[i] == key)
+                if (arr[i] == val)
                 {
                     return i;
                 }
@@ -26,7 +26,7 @@ namespace Algorithms
         /// <summary>
         /// Бинарный поиск (рекурсия)
         /// </summary>
-        public static int BinarySearch(int[] arr, int key, int p, int r)
+        public static int BinarySearchRecursion(int[] arr, int val, int p, int r)
         {
             //p = Math.Max(0, p);
             //r = Math.Min(arr.Length - 1, r);
@@ -35,15 +35,40 @@ namespace Algorithms
                 return -1; //item not found (recursion bottom)
 
             var q = (p + r) / 2;
-            var val = arr[q];
+            var mid = arr[q];
 
-            if (val == key)
+            if (val == mid)
                 return q; //recursion bottom
 
-            if (val > key)
-                return BinarySearch(arr, key, p, q);     //left array
+            if (val < mid)
+                return BinarySearchRecursion(arr, val, p, q);     //left array
             else
-                return BinarySearch(arr, key, q + 1, r); //right array
+                return BinarySearchRecursion(arr, val, q + 1, r); //right array
+        }
+
+        /// <summary>
+        /// Бинарный поиск (цикл)
+        /// </summary>
+        public static int BinarySearchCicle(int[] arr, int val, int p, int r)
+        {
+            if (p > r)
+                return -1; //item not found
+
+            while (p <= r)
+            {
+                var q = (p + r) / 2;
+                var mid = arr[q];
+
+                if (val == mid)
+                    return q;
+
+                if (val < mid)
+                    r = q - 1; //narrowing on the right side
+                else
+                    p = q + 1; //narrowing on the left side
+            }
+
+            return -1;
         }
     }
 }
