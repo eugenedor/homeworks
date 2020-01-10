@@ -13,7 +13,7 @@ namespace Algorithms
         {
             var items = 8;
             Sort(items);
-            Search(items);
+            Search();
             Console.ReadKey();
         }
 
@@ -40,17 +40,25 @@ namespace Algorithms
             Print.PrintArr(arr3);
         }
 
-        public static void Search(int cntItem)
+        public static void Search()
         {
             var arr4 = new int[] { 1, 2, 3, 5, 7, 12, 25, 37};
-            int val = 7, inxL = 3, inxR = 6;
+            int val4 = 7, inxL4 = 3, inxR4 = 6;
             Print.PrintArr(arr4, "LinearSearch");
-            Print.PrintShort(arr4, inxL, inxR);
-            var inx = AlgorithmsSearch.LinearSearch(val, arr4, inxL, inxR);
+            Print.PrintShort(arr4, inxL4, inxR4);
+            var inx4 = AlgorithmsSearch.LinearSearch(arr4, val4, inxL4, inxR4);
             Console.WriteLine("After:");
-            Console.WriteLine($"Value = {val}; indexLeft = {inxL}; indexRight = {inxR}; indexSearch = {inx}");
+            Console.WriteLine($"Value = {val4}; indexLeft = {inxL4}; indexRight = {inxR4}; indexSearch = {inx4}");
+            Console.WriteLine();
 
-            //var arr5 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            var arr5 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int val5 = 6, inxL5 = 1, inxR5 = 7;
+            Print.PrintArr(arr5, "BinarySearch");
+            Print.PrintShort(arr5, inxL5, inxR5);
+            var inx5 = AlgorithmsSearch.BinarySearch(arr5, val5, inxL5, inxR5);
+            Console.WriteLine("After:");
+            Console.WriteLine($"Value = {val5}; indexLeft = {inxL5}; indexRight = {inxR5}; indexSearch = {inx5}");
+            Console.WriteLine();
         }
 
         /// <summary>
