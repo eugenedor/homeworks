@@ -11,15 +11,9 @@ namespace Algorithms
         /// <summary>
         /// Линейный поиск
         /// </summary>
-        public static int LinearSearch(int[] arr, int key, int p, int q)
+        public static int LinearSearch(int[] arr, int key)
         {
-            var low = Math.Max(0, p);
-            var high = Math.Min(arr.Length - 1, q);
-
-            if (low > high)
-                return -1;
-
-            for (var i = low; i <= high; i++)
+            for (var i = 0; i < arr.Length; i++)
             {
                 if (arr[i] == key)
                 {
@@ -34,22 +28,22 @@ namespace Algorithms
         /// </summary>
         public static int BinarySearch(int[] arr, int key, int p, int r)
         {
-            var low = Math.Max(0, p);
-            var high = Math.Min(arr.Length - 1, r);
+            //p = Math.Max(0, p);
+            //r = Math.Min(arr.Length - 1, r);
 
-            if (low > high)
+            if (p > r)
                 return -1; //item not found (recursion bottom)
 
-            var middle = (low + high) / 2;
-            var val = arr[middle];
+            var q = (p + r) / 2;
+            var val = arr[q];
 
             if (val == key)
-                return middle; //recursion bottom
+                return q; //recursion bottom
 
             if (val > key)
-                return BinarySearch(arr, key, low, middle);  //left array
+                return BinarySearch(arr, key, p, q);     //left array
             else
-                return BinarySearch(arr, key, middle + 1, high); //right array
+                return BinarySearch(arr, key, q + 1, r); //right array
         }
     }
 }

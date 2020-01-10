@@ -39,21 +39,5 @@ namespace Algorithms
         {
             Console.WriteLine("After:");
         }
-
-        public static void PrintShort(int[] arr, int p, int q)
-        {
-            var low = Math.Max(0, p);
-            var high = Math.Min(arr.Length - 1, q);
-
-            if (low > high)
-                return;
-
-            Console.WriteLine("Short:");
-            for (var i = low; i <= high; i++)
-            {
-                Console.Write("{0} ", arr[i]);
-            }
-            Console.WriteLine();
-        }
     }
 }
