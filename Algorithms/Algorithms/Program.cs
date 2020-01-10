@@ -45,9 +45,12 @@ namespace Algorithms
             var arr4 = new int[] { 1, 2, 3, 5, 7, 12, 25, 37};
             int val = 7, inxL = 3, inxR = 6;
             Print.PrintArr(arr4, "LinearSearch");
+            Print.PrintShort(arr4, inxL, inxR);
             var inx = AlgorithmsSearch.LinearSearch(val, arr4, inxL, inxR);
             Console.WriteLine("After:");
             Console.WriteLine($"Value = {val}; indexLeft = {inxL}; indexRight = {inxR}; indexSearch = {inx}");
+
+            //var arr5 = new int[] { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
         }
 
         /// <summary>
