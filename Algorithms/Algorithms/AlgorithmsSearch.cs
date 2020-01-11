@@ -49,7 +49,7 @@ namespace Algorithms
         /// <summary>
         /// Бинарный поиск (цикл)
         /// </summary>
-        public static int BinarySearchCicle(int[] arr, int val, int p, int r)
+        public static int BinarySearchCycle(int[] arr, int val, int p, int r)
         {
             if (p > r)
                 return -1; //item not found

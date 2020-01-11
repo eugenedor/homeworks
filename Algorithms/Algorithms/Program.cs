@@ -11,9 +11,9 @@ namespace Algorithms
     {
         private static void Main(string[] args)
         {
-            var items = 8;
-            Sort(items);
+            Sort(8);
             Search();
+            Factorials(5);
             Console.ReadKey();
         }
 
@@ -59,18 +59,31 @@ namespace Algorithms
             Console.WriteLine();
 
             var arr6 = arr5;
-            int val6 = 777;
-            Print.PrintArr(arr6, "BinarySearchCicle");
-            var inx6 = AlgorithmsSearch.BinarySearchCicle(arr6, val6, 0, arr6.Length - 1);
+            int val6 = 7;
+            Print.PrintArr(arr6, "BinarySearchCycle");
+            var inx6 = AlgorithmsSearch.BinarySearchCycle(arr6, val6, 0, arr6.Length - 1);
             Console.WriteLine("After:");
             Console.WriteLine($"Value = {val6}; indexSearch = {inx6}");
             Console.WriteLine();
         }
 
-        /// <summary>
-        /// Рандомный массив из n элементов
-        /// </summary>
-        public static int[] SetArr(int n)
+        public static void Factorials(int n)
+        {
+            Console.WriteLine("FactorialRecursion");
+            var n0 = AlgorithmsFactorial.FactorialRecursion(n);
+            Console.WriteLine($"Value = {n0}");
+            Console.WriteLine();
+
+            Console.WriteLine("FactorialCycle");
+            var n1 = AlgorithmsFactorial.FactorialCycle(n);
+            Console.WriteLine($"Value = {n1}");
+            Console.WriteLine();
+        }
+
+    /// <summary>
+    /// Рандомный массив из n элементов
+    /// </summary>
+    public static int[] SetArr(int n)
         {
             var arr = new int[n];
             var ran = new Random();
