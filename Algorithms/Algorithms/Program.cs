@@ -14,6 +14,7 @@ namespace Algorithms
             Sort(8);
             Search();
             Factorials(5);
+            Reverse(9);
             Console.ReadKey();
         }
 
@@ -80,10 +81,18 @@ namespace Algorithms
             Console.WriteLine();
         }
 
-    /// <summary>
+        public static void Reverse(int cntItem)
+        {
+            var arr7 = SetArr(cntItem);
+            Print.PrintArr(arr7, "Reverse");
+            AlgorithmsReverse.Reverse(arr7);
+            Print.PrintArr(arr7);
+        }
+
+        /// <summary>
     /// Рандомный массив из n элементов
     /// </summary>
-    public static int[] SetArr(int n)
+        public static int[] SetArr(int n)
         {
             var arr = new int[n];
             var ran = new Random();

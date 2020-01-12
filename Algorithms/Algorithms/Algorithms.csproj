@@ -44,6 +44,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AlgorithmsFactorial.cs" />
+    <Compile Include="AlgorithmsReverse.cs" />
     <Compile Include="AlgorithmsSearch.cs" />
     <Compile Include="AlgorithmsSort.cs" />
     <Compile Include="Print.cs" />
