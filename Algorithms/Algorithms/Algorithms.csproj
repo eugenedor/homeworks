@@ -48,6 +48,7 @@
     <Compile Include="AlgorithmsReverse.cs" />
     <Compile Include="AlgorithmsSearch.cs" />
     <Compile Include="AlgorithmsSort.cs" />
+    <Compile Include="CaesarCipher.cs" />
     <Compile Include="Print.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

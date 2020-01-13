@@ -16,6 +16,7 @@ namespace Algorithms
             Factorial(5);
             Reverse(9);
             Fibonacci(4);
+            Caesar("Abc. London is the capital of Great Britain.", 3);
             Console.ReadKey();
         }
 
@@ -92,6 +93,20 @@ namespace Algorithms
             Console.WriteLine($"FibonacciRecursion({n}) = {n0}");
             var n1 = AlgorithmsFibonacci.FibonacciCycle(n);
             Console.WriteLine($"FibonacciCycle({n}) = {n1}");
+            Console.WriteLine();
+        }
+
+        public static void Caesar(string text, int key)
+        {
+            Console.WriteLine("CaesarCipher");
+            Console.WriteLine("Text Data:");
+            Console.WriteLine(text);
+            Console.WriteLine("Encrypted Data:");
+            var encryptText = CaesarCipher.Encipher(text, key);
+            Console.WriteLine(encryptText);
+            Console.WriteLine("Decrypted Data:");
+            var decryptText = CaesarCipher.Decipher(encryptText, key);
+            Console.WriteLine(decryptText);
             Console.WriteLine();
         }
 
