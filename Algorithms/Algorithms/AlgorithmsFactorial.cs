@@ -8,6 +8,8 @@ namespace Algorithms
 {
     public static class AlgorithmsFactorial
     {
+        //5! = 1 * 2 * 3 * 4 * 5 = 120
+
         /// <summary>
         /// Пример неправильного решения: вычисление факториала с помощью рекурсии
         /// </summary>

@@ -13,8 +13,9 @@ namespace Algorithms
         {
             Sort(8);
             Search();
-            Factorials(5);
+            Factorial(5);
             Reverse(9);
+            Fibonacci(4);
             Console.ReadKey();
         }
 
@@ -68,16 +69,12 @@ namespace Algorithms
             Console.WriteLine();
         }
 
-        public static void Factorials(int n)
+        public static void Factorial(int n)
         {
-            Console.WriteLine("FactorialRecursion");
             var n0 = AlgorithmsFactorial.FactorialRecursion(n);
-            Console.WriteLine($"Value = {n0}");
-            Console.WriteLine();
-
-            Console.WriteLine("FactorialCycle");
+            Console.WriteLine($"FactorialRecursion({n}) = {n0}");
             var n1 = AlgorithmsFactorial.FactorialCycle(n);
-            Console.WriteLine($"Value = {n1}");
+            Console.WriteLine($"FactorialCycle({n}) = {n1}");
             Console.WriteLine();
         }
 
@@ -89,9 +86,18 @@ namespace Algorithms
             Print.PrintArr(arr7);
         }
 
+        public static void Fibonacci(int n)
+        {
+            var n0 = AlgorithmsFibonacci.FibonacciRecursion(n);
+            Console.WriteLine($"FibonacciRecursion({n}) = {n0}");
+            var n1 = AlgorithmsFibonacci.FibonacciCycle(n);
+            Console.WriteLine($"FibonacciCycle({n}) = {n1}");
+            Console.WriteLine();
+        }
+
         /// <summary>
-    /// Рандомный массив из n элементов
-    /// </summary>
+        /// Рандомный массив из n элементов
+        /// </summary>
         public static int[] SetArr(int n)
         {
             var arr = new int[n];
