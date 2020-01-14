@@ -17,6 +17,7 @@ namespace Algorithms
             Reverse(9);
             Fibonacci(4);
             Caesar("Abc. London is the capital of Great Britain.", 3);
+            DblShift();
             Console.ReadKey();
         }
 
@@ -108,6 +109,11 @@ namespace Algorithms
             var decryptText = CaesarCipher.Decipher(encryptText, key);
             Console.WriteLine(decryptText);
             Console.WriteLine();
+        }
+
+        public static void DblShift()
+        {
+            DoubleShift.M();
         }
 
         /// <summary>
