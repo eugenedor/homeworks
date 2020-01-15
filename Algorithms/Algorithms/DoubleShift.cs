@@ -13,64 +13,64 @@ namespace Algorithms
         {
             int n, m, i, j, k;
             var strBegin = "карлукларыукралкораллы";
-            var key1 = "514362";
-            m = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(strBegin.Length) / key1.Length));
-            n = Convert.ToInt32(key1.Length);
+            var keyClmn = "403251";
+            m = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(strBegin.Length) / keyClmn.Length));
+            n = Convert.ToInt32(keyClmn.Length);
             Console.WriteLine(strBegin);
-            Console.WriteLine($"key1: {key1}");
-            Console.WriteLine($"Длина key1={n}, длина key2 должна составлять={m} ");
+            Console.WriteLine($"keyClmn: {keyClmn}");
+            Console.WriteLine($"Длина keyClmn={n}, длина keyRw должна составлять={m} ");
 
-            var key2 = "4312";
-            m = Convert.ToInt32(key2.Length);
-            Console.WriteLine($"key2: {key2}");
-            Console.WriteLine($"Длина key2={m}");
+            var keyRw = "3201";
+            m = Convert.ToInt32(keyRw.Length);
+            Console.WriteLine($"keyRw: {keyRw}");
+            Console.WriteLine($"Длина keyRw={m}");
 
             //ШИФРАТОР
             Console.WriteLine("\nШИФРАТОР");
-            var arrA = new char[m, n]; //char[,]
-            var arrB = new char[m, n]; //char[,]
-            arrA = writeArr(strBegin, m, n);
+            var arr = new char[m, n]; //char[,]
+            var buf = new char[m, n]; //char[,]
+            arr = writeArr(strBegin, m, n);
             Console.WriteLine($"Преобразуем строку в массив размером {m}*{n}");
-            printArr(arrA, m, n);
+            printArr(arr, m, n);
 
             //Перестановка столбцов матрицы по ключу №1 
             var vectr1 = new char[n];
-            vectr1 = key1.ToCharArray();
+            vectr1 = keyClmn.ToCharArray();
             for (j = 0; j < n; j++)
             {
                 for (k = 0; k < n; k++)
                 {
-                    if (j != int.Parse(Convert.ToString(vectr1[k]))-1)
+                    if (j != int.Parse(Convert.ToString(vectr1[k])))
                         continue; //Условие для определения правильного порядка столбцов
 
                     for (i = 0; i < m; i++)
                     {
-                        arrB[i, j] = arrA[i, k];
+                        buf[i, j] = arr[i, k];
                     }
 
                 }
             }
-            Console.WriteLine($"Матрица с перестановленными столбцами по ключу №1 {key1}:");
-            printArr(arrB, m, n);
+            Console.WriteLine($"Матрица с перестановленными столбцами по ключу №1 {keyClmn}:");
+            printArr(buf, m, n);
 
             //Перестановка строк матрицы по ключу №2
             var vectr2 = new char[m];
-            vectr2 = key2.ToCharArray();
+            vectr2 = keyRw.ToCharArray();
             for (i = 0; i < m; i++)
             {
                 for (k = 0; k < m; k++)
                 {
-                    if (i != int.Parse(Convert.ToString(vectr2[k]))-1)
+                    if (i != int.Parse(Convert.ToString(vectr2[k])))
                         continue; //Условие для определения правильного порядка строк
                     
                     for (j = 0; j < n; j++)
                     {
-                        arrA[i, j] = arrB[k, j];
+                        arr[i, j] = buf[k, j];
                     }
                 }
             }
-            Console.WriteLine($"Матрица с перестановленными строками по ключу №2 {key2}:");
-            printArr(arrA, m, n);
+            Console.WriteLine($"Матрица с перестановленными строками по ключу №2 {keyRw}:");
+            printArr(arr, m, n);
 
             //Зашифрованная строка
             var strCipher = "";
@@ -78,7 +78,7 @@ namespace Algorithms
             {
                 for (j = 0; j < n; j++)
                 {
-                    strCipher += Convert.ToString(arrA[i, j]);
+                    strCipher += Convert.ToString(arr[i, j]);
                 }
             }
             Console.WriteLine($"Зашифрованная строка исходящего сообщения: {strCipher}");
@@ -94,12 +94,12 @@ namespace Algorithms
             //    {
             //        if (k < strcipher.Length)
             //        {
-            //            arrA[i, j] = strcipher[k];
+            //            arr[i, j] = strcipher[k];
             //            k++;
             //        }
             //        else
             //        {
-            //            arrA[i, j] = Convert.ToChar("-");
+            //            arr[i, j] = Convert.ToChar("-");
             //        }
             //    }
             //}
@@ -109,53 +109,53 @@ namespace Algorithms
             //{
             //    for (j = 0; j < n; j++)
             //    {
-            //        Console.Write(arrA[i, j]);
+            //        Console.Write(arr[i, j]);
             //    }
             //    Console.WriteLine();
             //}
             //Console.WriteLine();
 
             ////---------- Обратная перестановка строк матрицы --------------------------------- 
-            //vectr = key2.ToCharArray();
+            //vectr = keyRw.ToCharArray();
             //for (i = 0; i < m; i++)
             //{
             //    for (j = 0; j < n; j++)
             //    {
             //        l = int.Parse(Convert.ToString(vectr[i])) - 1;
-            //        arrB[i, j] = arrA[l, j];
+            //        buf[i, j] = arr[l, j];
             //    }
             //}
 
             ////---------- Вывод матрицы на с перестановленными строками по ключу №2 -----------
-            //Console.WriteLine("Матрица с перестановленными строками по ключу №2 {0}:", key2);
+            //Console.WriteLine("Матрица с перестановленными строками по ключу №2 {0}:", keyRw);
             //for (i = 0; i < m; i++)
             //{
             //    for (j = 0; j < n; j++)
             //    {
-            //        Console.Write(arrB[i, j]);
+            //        Console.Write(buf[i, j]);
             //    }
             //    Console.WriteLine();
             //}
             //Console.WriteLine();
 
             ////---------- Обратная перестановка столбцов матрицы ------------------------------
-            //vectr = key1.ToCharArray();
+            //vectr = keyClmn.ToCharArray();
             //for (j = 0; j < n; j++)
             //{
             //    for (i = 0; i < m; i++)
             //    {
             //        l = int.Parse(Convert.ToString(vectr[j])) - 1;
-            //        arrA[i, j] = arrB[i, l];
+            //        arr[i, j] = buf[i, l];
             //    }
             //}
 
             ////---------- Вывод матрицы с перестановленными столбцами по ключу №1 -------------
-            //Console.WriteLine("Матрица с перестановленными столбцами по ключу №1 {0}:", key1);
+            //Console.WriteLine("Матрица с перестановленными столбцами по ключу №1 {0}:", keyClmn);
             //for (i = 0; i < m; i++)
             //{
             //    for (j = 0; j < n; j++)
             //    {
-            //        Console.Write(arrA[i, j]);
+            //        Console.Write(arr[i, j]);
             //    }
             //    Console.WriteLine();
             //}
@@ -167,41 +167,41 @@ namespace Algorithms
             //{
             //    for (j = 0; j < n; j++)
             //    {
-            //        strEnd = strEnd + Convert.ToString(arrA[i, j]);
+            //        strEnd = strEnd + Convert.ToString(arr[i, j]);
             //    }
             //}
             //Console.WriteLine("Расшифрованная строка полученного сообщения: {0}", strEnd);
             Console.ReadLine();
         }
 
-        private static char[,] writeArr(string str, int m, int n)
+        private static char[,] writeArr(string str, int rw, int clmn)
         {
             var k = 0;
-            var mas = new char[m, n]; //char[,]
-            for (var i = 0; i < m; i++)
+            var array = new char[rw, clmn]; //char[,]
+            for (var i = 0; i < rw; i++)
             {
-                for (var j = 0; j < n; j++)
+                for (var j = 0; j < clmn; j++)
                 {
                     if (k < str.Length)
                     {
-                        mas[i, j] = str[k];
+                        array[i, j] = str[k];
                         k++;
                     }
                     else
                     {
-                        mas[i, j] = Convert.ToChar("-");
+                        array[i, j] = Convert.ToChar("-");
                     }
                 }
             }
 
-            return mas;
+            return array;
         }
 
-        private static void printArr(char[,] mas, int m, int n)
+        private static void printArr(char[,] mas, int rw, int clmn)
         {
-            for (var i = 0; i < m; i++)
+            for (var i = 0; i < rw; i++)
             {
-                for (var j = 0; j < n; j++)
+                for (var j = 0; j < clmn; j++)
                 {
                     Console.Write(mas[i, j]);
                 }
