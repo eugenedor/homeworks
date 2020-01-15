@@ -72,37 +72,53 @@ namespace Algorithms
             //перестановка столбцов матрицы по ключу keyClmn 
             for (j = 0; j < clmn; j++)
             {
-                for (k = 0; k < clmn; k++)
+                for (i = 0; i < rw; i++)
                 {
-                    if (j != arrKeyClmn[k]) //условие для определения правильного порядка столбцов
-                        continue;
-
-                    //по каждой строке
-                    for (i = 0; i < rw; i++)
-                    {
-                        buf[i, j] = arr[i, k];
-                    }
-
+                    k = arrKeyClmn[j];
+                    buf[i, k] = arr[i, j];
                 }
             }
+            //for (j = 0; j < clmn; j++)
+            //{
+            //    for (k = 0; k < clmn; k++)
+            //    {
+            //        if (j != arrKeyClmn[k]) //условие для определения правильного порядка столбцов
+            //            continue;
+
+            //        //по каждой строке
+            //        for (i = 0; i < rw; i++)
+            //        {
+            //            buf[i, j] = arr[i, k];
+            //        }
+
+            //    }
+            //}
             Console.WriteLine($"Матрица с перестановленными столбцами по ключу keyClmn \"{keyClmn}\":");
             printArr(buf, rw, clmn);
 
             //перестановка строк матрицы по ключу keyRw
             for (i = 0; i < rw; i++)
             {
-                for (k = 0; k < rw; k++)
+                for (j = 0; j < clmn; j++)
                 {
-                    if (i != arrKeyRw[k]) //условие для определения правильного порядка строк
-                        continue;
-
-                    //по каждому столбцу
-                    for (j = 0; j < clmn; j++)
-                    {
-                        arr[i, j] = buf[k, j];
-                    }
+                    k = arrKeyRw[i];
+                    arr[k, j] = buf[i, j];
                 }
             }
+            //for (i = 0; i < rw; i++)
+            //{
+            //    for (k = 0; k < rw; k++)
+            //    {
+            //        if (i != arrKeyRw[k]) //условие для определения правильного порядка строк
+            //            continue;
+
+            //        //по каждому столбцу
+            //        for (j = 0; j < clmn; j++)
+            //        {
+            //            arr[i, j] = buf[k, j];
+            //        }
+            //    }
+            //}
             Console.WriteLine($"Матрица с перестановленными строками по ключу keyRw \"{keyRw}\":");
             printArr(arr, rw, clmn);
 
