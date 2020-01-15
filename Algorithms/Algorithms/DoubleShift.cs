@@ -13,9 +13,11 @@ namespace Algorithms
         {
             int n, m, i, j, k;
             var strBegin = "карлукларыукралкораллы";
-            var keyClmn = "403251";
-            m = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(strBegin.Length) / keyClmn.Length));
-            n = Convert.ToInt32(keyClmn.Length);
+            var keyClmn = "4|0|3|2|5|1";
+            string[] arrKeyClmn = keyClmn.Split(new Char[] { '|' });
+
+            m = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(strBegin.Length) / arrKeyClmn.Length));
+            n = Convert.ToInt32(arrKeyClmn.Length);
             Console.WriteLine(strBegin);
             Console.WriteLine($"keyClmn: {keyClmn}");
             Console.WriteLine($"Длина keyClmn={n}, длина keyRw должна составлять={m} ");
@@ -33,14 +35,12 @@ namespace Algorithms
             Console.WriteLine($"Преобразуем строку в массив размером {m}*{n}");
             printArr(arr, m, n);
 
-            //Перестановка столбцов матрицы по ключу №1 
-            var vectr1 = new char[n];
-            vectr1 = keyClmn.ToCharArray();
+            //Перестановка столбцов матрицы по ключу keyClmn 
             for (j = 0; j < n; j++)
             {
                 for (k = 0; k < n; k++)
                 {
-                    if (j != int.Parse(Convert.ToString(vectr1[k])))
+                    if (j != int.Parse(Convert.ToString(arrKeyClmn[k])))
                         continue; //Условие для определения правильного порядка столбцов
 
                     for (i = 0; i < m; i++)
@@ -50,10 +50,10 @@ namespace Algorithms
 
                 }
             }
-            Console.WriteLine($"Матрица с перестановленными столбцами по ключу №1 {keyClmn}:");
+            Console.WriteLine($"Матрица с перестановленными столбцами по ключу keyClmn \"{keyClmn}\":");
             printArr(buf, m, n);
 
-            //Перестановка строк матрицы по ключу №2
+            //Перестановка строк матрицы по ключу keyRw
             var vectr2 = new char[m];
             vectr2 = keyRw.ToCharArray();
             for (i = 0; i < m; i++)
@@ -69,7 +69,7 @@ namespace Algorithms
                     }
                 }
             }
-            Console.WriteLine($"Матрица с перестановленными строками по ключу №2 {keyRw}:");
+            Console.WriteLine($"Матрица с перестановленными строками по ключу keyRw \"{keyRw}\":");
             printArr(arr, m, n);
 
             //Зашифрованная строка
@@ -171,7 +171,6 @@ namespace Algorithms
             //    }
             //}
             //Console.WriteLine("Расшифрованная строка полученного сообщения: {0}", strEnd);
-            Console.ReadLine();
         }
 
         private static char[,] writeArr(string str, int rw, int clmn)
