@@ -9,17 +9,24 @@ namespace Algorithms
 {
     public class DoubleShift
     {
-        public static void Cipher(string input, string keyRw, string keyClmn)
+        private static void Cipher(string input, 
+                                   string keyRw, 
+                                   string keyClmn, 
+                                   out char[,] arr, 
+                                   out char[,] buf, 
+                                   out int[] arrKeyRw, 
+                                   out int[] arrKeyClmn)
         {
-            int rw, clmn, i, j, k;
+            arr = null;
+            buf = null;
+            arrKeyRw = null;
+            arrKeyClmn = null;
 
-            Console.WriteLine("\nН.у.");
+            int rw, clmn;
             //var input = "карлукларыукралкораллы";
-            Console.WriteLine($"Строка исходящего сообщения: {input}");
 
             //var keyRw = "3|2|0|1";
             string[] aKeyRw;
-            int[] arrKeyRw;
             try
             {
                 aKeyRw = keyRw.Split(new Char[] { '|' });
@@ -30,13 +37,10 @@ namespace Algorithms
                 Console.WriteLine(ex.Message);
                 return;
             }
-            rw = Convert.ToInt32(arrKeyRw.Length);
-            Console.WriteLine($"keyRw: {keyRw}");
-            Console.WriteLine($"Длина keyRw={rw}");
+            rw = arrKeyRw.Length;
 
             //var keyClmn = "4|0|3|2|5|1";
             string[] aKeyClmn;
-            int[] arrKeyClmn;
             try
             {
                 aKeyClmn = keyClmn.Split(new Char[] { '|' });
@@ -46,11 +50,10 @@ namespace Algorithms
             {
                 Console.WriteLine(ex.Message);
                 return;
-            }           
-
-            clmn = Convert.ToInt32(arrKeyClmn.Length);            
-            Console.WriteLine($"keyClmn: {keyClmn}");
-            Console.WriteLine($"Длина keyClmn={clmn}");
+            }
+            clmn = arrKeyClmn.Length;
+            Console.WriteLine($"длина keyRw={rw} keyClmn={clmn}");
+            Console.WriteLine();
 
             var clmnCalc = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(input.Length) / arrKeyRw.Length));
             if (clmn != clmnCalc)
@@ -59,23 +62,38 @@ namespace Algorithms
                 return;
             }
 
-            //
-            //encoder (шифратор)
-            //
-            Console.WriteLine("\nШифратор");
-            var arr = new char[rw, clmn]; //char[,]
-            var buf = new char[rw, clmn]; //char[,]
+            arr = new char[rw, clmn]; //char[,]
+            buf = new char[rw, clmn]; //char[,]
 
             Console.WriteLine($"Преобразуем строку в массив размером {rw}*{clmn}");
             arr = writeArr(input, rw, clmn);
             printArr(arr, rw, clmn);
+        }
 
+        public static string Encipher(string input, string keyRw, string keyClmn)
+        {
+            int rw, clmn;
+            char[,] arr, buf;
+            int[] arrKeyRw, arrKeyClmn;
+
+            Cipher(input, keyRw, keyClmn, out arr, out buf, out arrKeyRw, out arrKeyClmn);
+
+            if (arr == null)
+                return String.Empty;
+
+            rw = arrKeyRw.Length;
+            clmn = arrKeyClmn.Length;
+
+            //
+            //encoder (шифратор)
+            //
+            Console.WriteLine("Шифратор");
             //перестановка строк матрицы по ключу keyRw
-            for (i = 0; i < rw; i++)
+            for (var i = 0; i < rw; i++)
             {
-                for (j = 0; j < clmn; j++)
+                for (var j = 0; j < clmn; j++)
                 {
-                    k = arrKeyRw[i];
+                    var k = arrKeyRw[i];
                     buf[k, j] = arr[i, j];
                 }
             }
@@ -83,11 +101,11 @@ namespace Algorithms
             printArr(buf, rw, clmn);
 
             //перестановка столбцов матрицы по ключу keyClmn 
-            for (j = 0; j < clmn; j++)
+            for (var j = 0; j < clmn; j++)
             {
-                for (i = 0; i < rw; i++)
+                for (var i = 0; i < rw; i++)
                 {
-                    k = arrKeyClmn[j];
+                    var k = arrKeyClmn[j];
                     arr[i, k] = buf[i, j];
                 }
             }
@@ -95,31 +113,33 @@ namespace Algorithms
             printArr(arr, rw, clmn);
 
             //зашифрованная строка
-            var strCipher = "";
-            for (i = 0; i < rw; i++)
-            {
-                for (j = 0; j < clmn; j++)
-                {
-                    strCipher += Convert.ToString(arr[i, j]);
-                }
-            }
-            Console.WriteLine($"Зашифрованная строка исходящего сообщения: {strCipher}");
+            return getStr(arr, rw, clmn);
+        }
+
+        public static string Decipher(string input, string keyRw, string keyClmn)
+        {
+            int rw, clmn;
+            char[,] arr, buf;
+            int[] arrKeyRw, arrKeyClmn;
+
+            Cipher(input, keyRw, keyClmn, out arr, out buf, out arrKeyRw, out arrKeyClmn);
+
+            if (arr == null)
+                return String.Empty;
+
+            rw = arrKeyRw.Length;
+            clmn = arrKeyClmn.Length;
 
             //
             //dencoder (дешифратор)
             //
-            Console.WriteLine("\nДешифратор");
-
-            Console.WriteLine($"Преобразуем строку в массив размером {rw}*{clmn}");
-            arr = writeArr(strCipher, rw, clmn);
-            printArr(arr, rw, clmn);
-
+            Console.WriteLine("Дешифратор");
             //обратная перестановка столбцов матрицы
-            for (j = 0; j < clmn; j++)
+            for (var j = 0; j < clmn; j++)
             {
-                for (i = 0; i < rw; i++)
+                for (var i = 0; i < rw; i++)
                 {
-                    k = arrKeyClmn[j];
+                    var k = arrKeyClmn[j];
                     buf[i, j] = arr[i, k];
                 }
             }
@@ -127,11 +147,11 @@ namespace Algorithms
             printArr(buf, rw, clmn);
 
             //обратная перестановка строк матрицы
-            for (i = 0; i < rw; i++)
+            for (var i = 0; i < rw; i++)
             {
-                for (j = 0; j < clmn; j++)
+                for (var j = 0; j < clmn; j++)
                 {
-                    k = arrKeyRw[i];
+                    var k = arrKeyRw[i];
                     arr[i, j] = buf[k, j];
                 }
             }
@@ -139,15 +159,7 @@ namespace Algorithms
             printArr(arr, rw, clmn);
 
             //расшифрованная строка
-            var strEnd = "";
-            for (i = 0; i < rw; i++)
-            {
-                for (j = 0; j < clmn; j++)
-                {
-                    strEnd += Convert.ToString(arr[i, j]);
-                }
-            }
-            Console.WriteLine($"Расшифрованная строка полученного сообщения: {strEnd}");
+            return getStr(arr, rw, clmn).TrimEnd();
         }
 
         private static char[,] writeArr(string str, int rw, int clmn)
@@ -184,6 +196,19 @@ namespace Algorithms
                 Console.WriteLine();
             }
             Console.WriteLine();
+        }
+
+        private static string getStr(char[,] mas, int rw, int clmn)
+        {
+            var str = "";
+            for (var i = 0; i < rw; i++)
+            {
+                for (var j = 0; j < clmn; j++)
+                {
+                    str += Convert.ToString(mas[i, j]);
+                }
+            }
+            return str;
         }
     }
 }

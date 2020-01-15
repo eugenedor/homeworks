@@ -16,8 +16,8 @@ namespace Algorithms
             Factorial(5);
             Reverse(9);
             Fibonacci(4);
-            Caesar("Abc. London is the capital of Great Britain.", 3);
-            DblShift();
+            Caesar("Abc. Everyone has one's own path.", 3);
+            DblShift("Everyone has one's own path.", "3|2|4|0|1", "4|0|3|2|5|1");
             Console.ReadKey();
         }
 
@@ -99,21 +99,36 @@ namespace Algorithms
 
         public static void Caesar(string text, int key)
         {
-            Console.WriteLine("CaesarCipher");
-            Console.WriteLine("Text Data:");
-            Console.WriteLine(text);
+            Console.WriteLine("=====CaesarCipher=====");
+            Console.WriteLine($"Text Data: \"{text}\"");
+            Console.WriteLine($"key: {key}");
+
             Console.WriteLine("Encrypted Data:");
             var encryptText = CaesarCipher.Encipher(text, key);
-            Console.WriteLine(encryptText);
+            Console.WriteLine($"Encrypt Text: \"{encryptText}\"");
+
             Console.WriteLine("Decrypted Data:");
             var decryptText = CaesarCipher.Decipher(encryptText, key);
-            Console.WriteLine(decryptText);
+            Console.WriteLine($"Decrypt Text: \"{decryptText}\"");
+
             Console.WriteLine();
         }
 
-        public static void DblShift()
+        public static void DblShift(string text, string key0, string key1)
         {
-            DoubleShift.Cipher("карлукларыукралкораллы", "3|2|0|1", "4|0|3|2|5|1");
+            Console.WriteLine("=====DoubleShift=====");
+            Console.WriteLine($"Text Data: \"{text}\"");
+            Console.WriteLine($"keyRw: {key0}  keyClmn: {key1}");
+
+            Console.WriteLine("\nEncrypted Data:");
+            var encryptText = DoubleShift.Encipher(text, key0, key1);
+            Console.WriteLine($"Encrypt Text: \"{encryptText}\"");
+
+            Console.WriteLine("\nDecrypted Data:");
+            var decryptText = DoubleShift.Decipher(encryptText, key0, key1);
+            Console.WriteLine($"Decrypt Text: \"{decryptText}\"");
+
+            Console.WriteLine();
         }
 
         /// <summary>
