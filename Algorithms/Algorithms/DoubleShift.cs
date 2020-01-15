@@ -9,11 +9,15 @@ namespace Algorithms
 {
     public class DoubleShift
     {
-        public static void M()
+        public static void Cipher(string input, string keyClmn, string keyRw)
         {
             int rw, clmn, i, j, k;
-            var strBegin = "карлукларыукралкораллы";
-            var keyClmn = "4|0|3|2|5|1";
+
+            Console.WriteLine("\nН.у.");
+            //var input = "карлукларыукралкораллы";
+            Console.WriteLine($"Строка исходящего сообщения: {input}");
+
+            //var keyClmn = "4|0|3|2|5|1";
             string[] aKeyClmn;
             int[] arrKeyClmn;
             try
@@ -25,25 +29,43 @@ namespace Algorithms
             {
                 Console.WriteLine(ex.Message);
                 return;
-            }
-            
+            }           
 
-            rw = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(strBegin.Length) / arrKeyClmn.Length));
-            clmn = Convert.ToInt32(arrKeyClmn.Length);
-            Console.WriteLine(strBegin);
+            clmn = Convert.ToInt32(arrKeyClmn.Length);            
             Console.WriteLine($"keyClmn: {keyClmn}");
-            Console.WriteLine($"Длина keyClmn={clmn}, длина keyRw должна составлять={rw} ");
+            Console.WriteLine($"Длина keyClmn={clmn}");
 
-            var keyRw = "3201";
-            rw = Convert.ToInt32(keyRw.Length);
+            //var keyRw = "3|2|0|1";
+            string[] aKeyRw;
+            int[] arrKeyRw;
+            try
+            {
+                aKeyRw = keyRw.Split(new Char[] { '|' });
+                arrKeyRw = aKeyRw.Select(x => Int32.Parse(x)).ToArray();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return;
+            }
+            rw = Convert.ToInt32(arrKeyRw.Length);
             Console.WriteLine($"keyRw: {keyRw}");
             Console.WriteLine($"Длина keyRw={rw}");
 
+            var lenRw = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(input.Length) / arrKeyClmn.Length));
+            if (rw != lenRw)
+            {
+                Console.WriteLine($"Длина keyRw должна составлять={lenRw} ");
+                return;
+            }
+
+            //
             //encoder (шифратор)
-            Console.WriteLine("\nШИФРАТОР");
+            //
+            Console.WriteLine("\nШифратор");
             var arr = new char[rw, clmn]; //char[,]
             var buf = new char[rw, clmn]; //char[,]
-            arr = writeArr(strBegin, rw, clmn);
+            arr = writeArr(input, rw, clmn);
             Console.WriteLine($"Преобразуем строку в массив размером {rw}*{clmn}");
             printArr(arr, rw, clmn);
 
@@ -67,13 +89,11 @@ namespace Algorithms
             printArr(buf, rw, clmn);
 
             //перестановка строк матрицы по ключу keyRw
-            var vectr2 = new char[rw];
-            vectr2 = keyRw.ToCharArray();
             for (i = 0; i < rw; i++)
             {
                 for (k = 0; k < rw; k++)
                 {
-                    if (i != int.Parse(Convert.ToString(vectr2[k]))) //условие для определения правильного порядка строк
+                    if (i != arrKeyRw[k]) //условие для определения правильного порядка строк
                         continue;
 
                     //по каждому столбцу
@@ -86,7 +106,7 @@ namespace Algorithms
             Console.WriteLine($"Матрица с перестановленными строками по ключу keyRw \"{keyRw}\":");
             printArr(arr, rw, clmn);
 
-            //Зашифрованная строка
+            //зашифрованная строка
             var strCipher = "";
             for (i = 0; i < rw; i++)
             {

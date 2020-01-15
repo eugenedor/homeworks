@@ -113,7 +113,7 @@ namespace Algorithms
 
         public static void DblShift()
         {
-            DoubleShift.M();
+            DoubleShift.Cipher("карлукларыукралкораллы", "4|0|3|2|5|1", "3|2|0|1");
         }
 
         /// <summary>
