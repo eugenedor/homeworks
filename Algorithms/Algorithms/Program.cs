@@ -17,7 +17,7 @@ namespace Algorithms
             Reverse(9);
             Fibonacci(4);
             Caesar("Abc. Everyone has one's own path.", 3);
-            DblShift("Everyone has one's own path.", "3|2|4|0|1", "4|0|3|2|5|1");
+            DoubleShift("Everyone has one's own path.", "3|2|4|0|1", "4|0|3|2|5|1");
             Console.ReadKey();
         }
 
@@ -114,18 +114,18 @@ namespace Algorithms
             Console.WriteLine();
         }
 
-        public static void DblShift(string text, string key0, string key1)
+        public static void DoubleShift(string text, string key0, string key1)
         {
             Console.WriteLine("=====DoubleShift=====");
             Console.WriteLine($"Text Data: \"{text}\"");
             Console.WriteLine($"keyRw: {key0}  keyClmn: {key1}");
 
             Console.WriteLine("\nEncrypted Data:");
-            var encryptText = DoubleShift.Encipher(text, key0, key1);
+            var encryptText = DoubleShiftCipher.Encipher(text, key0, key1);
             Console.WriteLine($"Encrypt Text: \"{encryptText}\"");
 
             Console.WriteLine("\nDecrypted Data:");
-            var decryptText = DoubleShift.Decipher(encryptText, key0, key1);
+            var decryptText = DoubleShiftCipher.Decipher(encryptText, key0, key1);
             Console.WriteLine($"Decrypt Text: \"{decryptText}\"");
 
             Console.WriteLine();

@@ -8,7 +8,7 @@ namespace Algorithms
 {
     public static class CaesarCipher
     {
-        private static char Cipher(char ch, int key)
+        private static char cipher(char ch, int key)
         {
             if (!char.IsLetter(ch))
                 return ch;
@@ -23,7 +23,7 @@ namespace Algorithms
 
             foreach (var ch in input)
             {
-                output += Cipher(ch, key);
+                output += cipher(ch, key);
             }
 
             return output;

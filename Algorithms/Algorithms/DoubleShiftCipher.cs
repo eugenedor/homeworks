@@ -3,18 +3,17 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Microsoft.CSharp.RuntimeBinder;
 
 namespace Algorithms
 {
-    public class DoubleShift
+    public class DoubleShiftCipher
     {
-        private static void Cipher(string input, 
-                                   string keyRw, 
-                                   string keyClmn, 
-                                   out char[,] arr, 
-                                   out char[,] buf, 
-                                   out int[] arrKeyRw, 
+        private static void cipher(string input,
+                                   string keyRw,
+                                   string keyClmn,
+                                   out char[,] arr,
+                                   out char[,] buf,
+                                   out int[] arrKeyRw,
                                    out int[] arrKeyClmn)
         {
             arr = null;
@@ -55,10 +54,17 @@ namespace Algorithms
             Console.WriteLine($"длина keyRw={rw} keyClmn={clmn}");
             Console.WriteLine();
 
+            var len = rw * clmn;
+            if (len < input.Length)
+            {
+                Console.WriteLine($"Рассчитанная длина массива {len} меньше входящей строки {input.Length}");
+                return;
+            }
+
             var clmnCalc = Convert.ToInt32(Math.Ceiling(Convert.ToDecimal(input.Length) / arrKeyRw.Length));
             if (clmn != clmnCalc)
             {
-                Console.WriteLine($"Длина keyClmn должна составлять={clmnCalc} ");
+                Console.WriteLine($"Длина keyClmn={clmn} неравна clmnCalc={clmnCalc} ");
                 return;
             }
 
@@ -66,7 +72,7 @@ namespace Algorithms
             buf = new char[rw, clmn]; //char[,]
 
             Console.WriteLine($"Преобразуем строку в массив размером {rw}*{clmn}");
-            arr = writeArr(input, rw, clmn);
+            arr = getArr(input, rw, clmn);
             printArr(arr, rw, clmn);
         }
 
@@ -76,7 +82,7 @@ namespace Algorithms
             char[,] arr, buf;
             int[] arrKeyRw, arrKeyClmn;
 
-            Cipher(input, keyRw, keyClmn, out arr, out buf, out arrKeyRw, out arrKeyClmn);
+            cipher(input, keyRw, keyClmn, out arr, out buf, out arrKeyRw, out arrKeyClmn);
 
             if (arr == null)
                 return String.Empty;
@@ -122,7 +128,7 @@ namespace Algorithms
             char[,] arr, buf;
             int[] arrKeyRw, arrKeyClmn;
 
-            Cipher(input, keyRw, keyClmn, out arr, out buf, out arrKeyRw, out arrKeyClmn);
+            cipher(input, keyRw, keyClmn, out arr, out buf, out arrKeyRw, out arrKeyClmn);
 
             if (arr == null)
                 return String.Empty;
@@ -162,27 +168,27 @@ namespace Algorithms
             return getStr(arr, rw, clmn).TrimEnd();
         }
 
-        private static char[,] writeArr(string str, int rw, int clmn)
+        private static char[,] getArr(string str, int rw, int clmn)
         {
             var k = 0;
-            var array = new char[rw, clmn]; //char[,]
+            var mas = new char[rw, clmn]; //char[,]
             for (var i = 0; i < rw; i++)
             {
                 for (var j = 0; j < clmn; j++)
                 {
                     if (k < str.Length)
                     {
-                        array[i, j] = str[k];
+                        mas[i, j] = str[k];
                         k++;
                     }
                     else
                     {
-                        array[i, j] = Convert.ToChar(" ");
+                        mas[i, j] = Convert.ToChar(" ");
                     }
                 }
             }
 
-            return array;
+            return mas;
         }
 
         private static void printArr(char[,] mas, int rw, int clmn)
