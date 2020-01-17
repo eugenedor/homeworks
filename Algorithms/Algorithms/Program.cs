@@ -14,7 +14,7 @@ namespace Algorithms
             Sort(8);
             Search();
             Factorial(5);
-            Fibonacci(4);
+            Fibonacci(5);
             Reverse(9);
             Caesar("Abc. Everyone has one's own path.", 3);
             DoubleShift("Everyone has one's own path.", "3|2|4|0|1", "4|0|3|2|5|1");
