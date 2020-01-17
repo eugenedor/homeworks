@@ -15,7 +15,7 @@ namespace Algorithms
 
             var offset = char.IsUpper(ch) ? 'A' : 'a';
 
-            return (char)((ch + key - offset) % 26 + offset);
+            return (char)((ch - offset + key) % 26 + offset);
         }
         public static string Encipher(string input, int key)
         {

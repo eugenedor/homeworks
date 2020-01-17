@@ -15,7 +15,7 @@ namespace Algorithms
         /// </summary>
         public static int FactorialRecursion(int n)
         {
-            if (n == 1)
+            if (n <= 1)
                 return 1; //recursion bottom
 
             return n * FactorialRecursion(n - 1);

@@ -14,8 +14,8 @@ namespace Algorithms
             Sort(8);
             Search();
             Factorial(5);
-            Reverse(9);
             Fibonacci(4);
+            Reverse(9);
             Caesar("Abc. Everyone has one's own path.", 3);
             DoubleShift("Everyone has one's own path.", "3|2|4|0|1", "4|0|3|2|5|1");
             Console.ReadKey();
@@ -73,10 +73,35 @@ namespace Algorithms
 
         public static void Factorial(int n)
         {
-            var n0 = AlgorithmsFactorial.FactorialRecursion(n);
-            Console.WriteLine($"FactorialRecursion({n}) = {n0}");
-            var n1 = AlgorithmsFactorial.FactorialCycle(n);
-            Console.WriteLine($"FactorialCycle({n}) = {n1}");
+            for (var i = 0; i <= n; i++)
+            {
+                var res = AlgorithmsFactorial.FactorialRecursion(i);
+                Console.WriteLine($"FactorialRecursion({i}) = {res}");
+            }
+
+            for (var i = 0; i <= n; i++)
+            {
+                var res = AlgorithmsFactorial.FactorialCycle(i);
+                Console.WriteLine($"FactorialCycle({i}) = {res}");
+            }
+
+            Console.WriteLine();
+        }
+
+        public static void Fibonacci(int n)
+        {            
+            for (var i = 0; i <= n; i++)
+            {
+                var res= AlgorithmsFibonacci.FibonacciRecursion(i);
+                Console.WriteLine($"FibonacciRecursion({i}) = {res}");
+            }
+
+            for (var i = 0; i <= n; i++)
+            {
+                var res = AlgorithmsFibonacci.FibonacciCycle(i);
+                Console.WriteLine($"FibonacciCycle({i}) = {res}");
+            }
+
             Console.WriteLine();
         }
 
@@ -86,15 +111,6 @@ namespace Algorithms
             Print.PrintArr(arr7, "Reverse");
             AlgorithmsReverse.Reverse(arr7);
             Print.PrintArr(arr7);
-        }
-
-        public static void Fibonacci(int n)
-        {
-            var n0 = AlgorithmsFibonacci.FibonacciRecursion(n);
-            Console.WriteLine($"FibonacciRecursion({n}) = {n0}");
-            var n1 = AlgorithmsFibonacci.FibonacciCycle(n);
-            Console.WriteLine($"FibonacciCycle({n}) = {n1}");
-            Console.WriteLine();
         }
 
         public static void Caesar(string text, int key)
