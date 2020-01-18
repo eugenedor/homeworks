@@ -43,6 +43,13 @@ ContinentName NVARCHAR(100) NOT NULL,
 )
 GO
 
+CREATE TABLE IM_Habitat (
+AnimalCode  NVARCHAR(100) NOT NULL,
+CountryCode NVARCHAR(100) NOT NULL,
+Population INT NOT NULL
+)
+GO
+
 --CREATE TABLE Habitat (
 --AnimalCode INT NOT NULL,
 --CountryCode INT NOT NULL,
