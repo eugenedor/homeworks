@@ -22,9 +22,13 @@ SELECT t.Id,
 	   t.Txt.value('(//node)[4]', 'varchar(1000)') AS xml_node4
 FROM #tmp t
 
-SELECT Id, p.value('.', 'varchar(1000)') AS Txts
+SELECT Id, 
+       Txt,
+       p.value('.', 'varchar(1000)') AS TxtValue, 
+	   p.query('.') AS TxtQuery,
+	   p.query('.').value('.', 'varchar(1000)') AS TxtQueryValue
 FROM #tmp
-    CROSS APPLY Txt.nodes('//node') t(p)
+    CROSS APPLY Txt.nodes('//node') t(p);
 
 
 IF OBJECT_Id('tempdb..#tmp') IS NOT NULL
