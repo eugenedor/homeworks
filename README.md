@@ -1,5 +1,5 @@
-# projects
-projects repository
+# homeworks
+homeworks repository
 
 ToolsStore           - МАГАЗИН ИНСТРУМЕНТОВ "ToolsStore"
 ToolsStore.WebUI     - ASP.NET MVC
